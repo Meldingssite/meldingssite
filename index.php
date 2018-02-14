@@ -16,7 +16,7 @@
             document.write("<h1>" + text + "</h1>");
         };
         
-        writeh1("This is an example.");
+        writeh1("This is Dion.");
     </script>
 </body>
 </html>
