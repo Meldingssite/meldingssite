@@ -40,6 +40,7 @@ main {
 }
 
 .btn {
+    position: relative;
     background: #eee;
     color: #333;
     border: 1px solid #ccc;
@@ -60,6 +61,15 @@ main {
 
 .btn:hover {
     background: #ccc;    
+}
+
+.btn img {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+
+    max-width: 32px;
+    max-height: 32px;
 }
 
 .box {
