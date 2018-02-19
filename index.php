@@ -7,17 +7,30 @@
     <link rel="stylesheet" href="style.css">
     <script source="homepage.js"></script>
     <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
-    <script>
-            function writeline(text){
-        document.write(text + "<br><br>");
-        };
-        function writeh1(text){
-            document.write("<h1>" + text + "</h1>");
-        };
+<?php
+    $image_dir = "./resources/images/";
+?>
+
+    <header>
+        <img src="<?php echo $image_dir ?>banner.jpg" alt="">
+    </header>
+    
+    <main>
+        <div class="box">Wat wilt u melden</div>
+
+        <div class="btn">Ongeval</div>
+        <div class="btn">Vechtpartij</div>
+        <div class="btn">Wapens</div>
+        <div class="btn">Drugs</div>
+        <div class="btn">Diefstal</div>
+        <div class="btn">Pesten</div>
+        <div class="btn">Overlast</div>
+        <div class="btn">Overige</div>
         
-        writeh1("Mijn naam is Joep.");
-    </script>
+    </main>
 </body>
 </html>
