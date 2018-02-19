@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
 <?php
@@ -18,10 +20,16 @@
     
     <main>
         <div class="box">Wat wilt u melden</div>
+        
         <div class="btn">Ongeval</div>
         <div class="btn">Vechtpartij</div>
         <div class="btn">Wapens</div>
         <div class="btn">Drugs</div>
+        <div class="btn">Diefstal</div>
+        <div class="btn">Pesten</div>
+        <div class="btn">Overlast</div>
+        <div class="btn">Overige</div>
+        
         
     </main>
 </body>

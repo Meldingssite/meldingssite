@@ -6,20 +6,21 @@
 
 html {
     background-color: #ccc;
+    overflow-y: scroll;
+    
 }
 
 body {
     display: block;
     max-width: 720px;
     margin: 0 auto;
-    overflow: hidden;
+    height: 100%;    
 }
 
 
 header {
-    display: inline-block;
     max-width: 720px;
-    max-height: 150px;
+    max-height: 149px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -30,9 +31,12 @@ header img {
 
 main {
     background: #fff;
-    margin: 0 auto;
 
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-bottom: 1px;
+    margin: 0 auto;
+    height: 100%;
+
+    font-family: 'Source Sans Pro','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .btn {
@@ -49,12 +53,19 @@ main {
 
     width: calc(100% - 20px);
 
-    margin: 5px auto;
-    padding: 13px 0;
+    margin: 11px auto;
+    padding: 10px 0;
 
+}
+
+.btn:hover {
+    background: #ccc;    
 }
 
 .box {
     background: #111133;
     color: #fff;
+
+    text-align: center;
+    padding: 11px 0;
 }
