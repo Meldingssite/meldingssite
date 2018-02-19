@@ -8,15 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-            function writeline(text){
-        document.write(text + "<br><br>");
-        };
-        function writeh1(text){
-            document.write("<h1>" + text + "</h1>");
-        };
+<?php
+    $image_dir = "./resources/images/";
+?>
+
+    <header>
+        <img src="<?php echo $image_dir ?>banner.jpg" alt="">
+    </header>
+    
+    <main>
+        <div class="box">Wat wilt u melden</div>
+        <div class="btn">Ongeval</div>
+        <div class="btn">Vechtpartij</div>
+        <div class="btn">Wapens</div>
+        <div class="btn">Drugs</div>
         
-        writeh1("This is Dion.");
-    </script>
+    </main>
 </body>
 </html>
