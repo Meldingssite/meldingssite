@@ -1,9 +1,15 @@
 <?php
 
+// Enable Debugging Mode?
+define("DEBUG", true);  //  true: debug enabled     false: debugging disabled
+
 define("ROOT", dirname(__DIR__) . DIRECTORY_SEPARATOR);
 
 require(ROOT . "core/config.php");
 require(ROOT . "core/route.php");
 require(ROOT . "core/core.php");
+
+if(DEBUG)
+    require(ROOT . "core/debug.php");
 
 route();
