@@ -6,9 +6,11 @@
 
     <form action="">
         
-        <!-- Tekstveld -->
-        <label for="where">Waar is het gebeurd?</label>
-        <input type="text" name="where">
+        <fieldset>
+            <!-- Tekstveld -->
+            <legend>Waar is het gebeurd?</legend>
+            <input type="text" name="where" placeholder="Locatie">
+        </fieldset>
 
         <fieldset>
             <legend>Is het slachtoffer bewusteloos?</legend>
