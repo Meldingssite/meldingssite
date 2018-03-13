@@ -14,7 +14,11 @@ function render($filename)
 	if(DEBUG)	//	Is Debugging Enabled?
 	{
 		//  Notify That Debug Mode Is Active
+<<<<<<< HEAD
 		echo "<a href='" . ROOT . "'controller/HomeController.php'> <div class='debug'>Debug Mode</div> </a>";
+=======
+		echo "<a href='" . URL . "'><div class='debug'>Debug Mode</div></a>";
+>>>>>>> master
 		
 		require(ROOT . "core/debug.php");
 	}
