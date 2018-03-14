@@ -1,6 +1,11 @@
 
 console.log(SCRIPT_DIR);
 
+function clearMainHTML()
+{
+    document.getElementsByTagName("main")[0].innerHTML = "";
+}
+
 function createButtonHTML(buttonObj) // Generate HTML for a button and returns HTML
 {
 
@@ -35,7 +40,7 @@ xmlhttp.onreadystatechange = function()
         var myObj = JSON.parse(this.responseText);
         //console.dir(myObj);
 
-        mainHTML.innerHTML = ""; // Clear main
+        clearMainHTML(); // Clear main
         
         for (const button in myObj.buttons)
         {
