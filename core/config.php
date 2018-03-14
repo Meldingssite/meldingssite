@@ -16,5 +16,6 @@ define('URL_SUB_FOLDER', str_replace(URL_PUBLIC_FOLDER, '', dirname($_SERVER['SC
 define('URL', URL_PROTOCOL . URL_DOMAIN . URL_SUB_FOLDER);
 
 define('IMAGE_DIR', 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR);
+define('SCRIPT_DIR', 'public' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR);
 
 define('DEFAULT_CONTROLLER', 'Home');
