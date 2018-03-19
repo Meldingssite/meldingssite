@@ -30,12 +30,43 @@ function createButtonHTML(buttonObj) // Generate HTML for a button and returns H
 
 function renderTextbox()
 {
+    mainHTML = document.getElementsByTagName("main")[0];
 
+    textboxHTML = "";
+    // Opening tag
+    textboxHTML += "<div class='textbox'>"
+
+    // Content
+    textboxHTML += "Texting button boobies";
+    
+    // Closing tag
+    textboxHTML += "</div>";
+
+    mainHTML.innerHTML += textboxHTML;
 }
 
 function renderButton()
 {
+    mainHTML = document.getElementsByTagName("main")[0];
+    buttonObj = {name: "test", image_url: "test"};
+    var buttonHTML = "";
+    // Opening tag for .btn
+    buttonHTML += "<div class='btn'>";
     
+    // img tag
+    buttonHTML  += "<img src='"
+                + IMAGE_DIR
+                + buttonObj.image_url
+                + "'>";
+
+    // button text
+    buttonHTML += buttonObj.name;
+
+    // Closing tag for .btn
+    buttonHTML += "</div>";
+
+    mainHTML.innerHTML += buttonHTML;
+    console.log("rendering button?");
 }
 
 function renderPage(page) // Renders a page, which is an array of objects

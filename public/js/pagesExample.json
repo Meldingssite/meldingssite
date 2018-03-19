@@ -3,7 +3,7 @@
     [
         [
             {
-                "type": "textwbox",
+                "type": "textbox",
                 "color": "purple",
                 "text": "Wat wilt u melden?"
             },
