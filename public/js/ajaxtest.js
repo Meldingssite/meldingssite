@@ -28,7 +28,7 @@ function createButtonHTML(buttonObj) // Generate HTML for a button and returns H
     return buttonHTML;
 }
 
-function renderTextbox()
+function renderTextbox(textboxObj)
 {
     mainHTML = document.getElementsByTagName("main")[0];
 
@@ -37,7 +37,7 @@ function renderTextbox()
     textboxHTML += "<div class='textbox'>"
 
     // Content
-    textboxHTML += "Texting button boobies";
+    textboxHTML += textboxObj.text;
     
     // Closing tag
     textboxHTML += "</div>";
@@ -45,10 +45,10 @@ function renderTextbox()
     mainHTML.innerHTML += textboxHTML;
 }
 
-function renderButton()
+function renderButton(buttonObj)
 {
     mainHTML = document.getElementsByTagName("main")[0];
-    buttonObj = {name: "test", image_url: "test"};
+    //buttonObj = {name: "test", image_url: "test"};
     var buttonHTML = "";
     // Opening tag for .btn
     buttonHTML += "<div class='btn'>";
@@ -76,9 +76,9 @@ function renderPage(page) // Renders a page, which is an array of objects
     for(pageElement in page)    //  determine pageElement type
     {
         if(page[pageElement].type === "textbox")
-            renderTextbox();
+            renderTextbox(page[pageElement]);
         else if(page[pageElement].type === "button")
-            renderButton();
+            renderButton(page[pageElement]);
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
     }
