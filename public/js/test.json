@@ -1,0 +1,45 @@
+{
+    "buttons":
+    [
+        {
+            "name": "Ongeval",
+            "image_url": "category-FirstAid.png"
+        },
+
+        {
+            "name": "Vechtpartij",
+            "image_url": "category-fight.png"
+        },
+
+        {
+            "name": "Wapens",
+            "image_url": "category-weapons.png"
+        },
+
+        {
+            "name": "Drugs",
+            "image_url": "category-drugs.png"
+        },
+
+        {
+            "name": "Diefstal",
+            "image_url": "category-theft.png"
+        },
+
+        {
+            "name": "Snelle jelle",
+            "image_url": "category-bullying.png"
+        },
+
+        {
+            "name": "Overlast",
+            "image_url": "category-nuisance.png"
+        },
+
+        {
+            "name": "Overige",
+            "image_url": "category-other.png"
+        }
+        
+    ]
+}
