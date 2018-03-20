@@ -89,7 +89,7 @@ function renderRadio(radioObj) {
 }
 
 
-function renderPage(page) // Renders a page, which is an array of objects
+function renderPage(i) // Renders a page, which is an array of objects
 {
     clearMainHTML(); // Clear main
     var page = getPage(i);
