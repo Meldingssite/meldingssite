@@ -104,6 +104,23 @@ function renderTextInput(textInputObj) {
     console.log("rendering textinput?");
 }
 
+function renderForm(form) {
+
+    for (pageElement in form)    //  determine pageElement type
+    {
+        if (form[pageElement].type === "textbox")
+            renderTextbox(page[pageElement]);
+        else if (form[pageElement].type === "button")
+            renderButton(page[pageElement]);
+        else if (form[pageElement].type === "radioButton")
+            renderRadio(page[pageElement]);
+        else if (form[pageElement].type === "textInput")
+            renderTextInput(page[pageElement]);
+        // type is unknown
+        else console.log("Unknown type: " + page[pageElement].type);
+    }
+}
+
 
 function renderPage(i) // Renders a page, which is an array of objects
 {
@@ -117,6 +134,8 @@ function renderPage(i) // Renders a page, which is an array of objects
             renderTextbox(page[pageElement]);
         else if (page[pageElement].type === "button")
             renderButton(page[pageElement]);
+        else if (page[pageElement].type === "form")
+            renderRadio(page[pageElement]);
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
     }
