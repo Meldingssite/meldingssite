@@ -18,8 +18,8 @@
             <legend>Is het slachtoffer bewusteloos?</legend>
             <!-- Radio Buttons -->
             <section class=input>
-            Ja: <input type="radio" name="unconscious" value="Ja">
-            Nee: <input type="radio" name="unconscious" value="Nee">
+           <input type="radio" name="unconscious" value="Ja"> ja
+            <input type="radio" name="unconscious" value="Nee"> nee
             </section>
 
         </fieldset>
