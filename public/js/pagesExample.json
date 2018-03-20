@@ -40,7 +40,11 @@
 
             {
                 "type": "button",             
+<<<<<<< Updated upstream
                 "name": "Pesten",
+=======
+                "name": "Niet zo Snelle jelle",
+>>>>>>> Stashed changes
                 "image_url": "category-bullying.png"
             },
 
