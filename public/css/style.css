@@ -42,7 +42,7 @@ header
 header h1
 {
     padding: 20px;
-    background: #2d2d85;
+    -background: #2d2d85;
     color: #eee;
 }
 
@@ -100,7 +100,7 @@ main
 
 .textbox
 {
-    background: #2d2d85;
+    -background: #2d2d85;
     color: #fff;
 
     text-align: center;

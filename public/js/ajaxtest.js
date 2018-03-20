@@ -30,11 +30,19 @@ function createButtonHTML(buttonObj) // Generate HTML for a button and returns H
 
 function renderTextbox(textboxObj)
 {
+    // define default colors
+    if(textboxObj.color == "purple")
+        var color = "#2d2d85";
+    else                    //  hex code
+        var color = textboxObj.color;
     mainHTML = document.getElementsByTagName("main")[0];
 
     textboxHTML = "";
     // Opening tag
-    textboxHTML += "<div class='textbox'>"
+    textboxHTML +=  "<div class='textbox' "
+                +   "style='background-color:" 
+                +   color
+                +   ";'>";
 
     // Content
     textboxHTML += textboxObj.text;
