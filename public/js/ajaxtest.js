@@ -1,23 +1,22 @@
 
 
-function clearMainHTML()
-{
+function clearMainHTML() {
     document.getElementsByTagName("main")[0].innerHTML = "";
 }
 
 function createButtonHTML(buttonObj) // Generate HTML for a button and returns HTML
 {
 
-    
+
     var buttonHTML = "";
     // Opening tag for .btn
     buttonHTML += "<div class='btn'>";
-    
+
     // img tag
-    buttonHTML  += "<img src='"
-                + IMAGE_DIR
-                + buttonObj.image_url
-                + "'>";
+    buttonHTML += "<img src='"
+        + IMAGE_DIR
+        + buttonObj.image_url
+        + "'>";
 
     // button text
     buttonHTML += buttonObj.name;
@@ -28,8 +27,7 @@ function createButtonHTML(buttonObj) // Generate HTML for a button and returns H
     return buttonHTML;
 }
 
-function renderTextbox(textboxObj)
-{
+function renderTextbox(textboxObj) {
     mainHTML = document.getElementsByTagName("main")[0];
 
     textboxHTML = "";
@@ -38,26 +36,25 @@ function renderTextbox(textboxObj)
 
     // Content
     textboxHTML += textboxObj.text;
-    
+
     // Closing tag
     textboxHTML += "</div>";
 
     mainHTML.innerHTML += textboxHTML;
 }
 
-function renderButton(buttonObj)
-{
+function renderButton(buttonObj) {
     mainHTML = document.getElementsByTagName("main")[0];
     //buttonObj = {name: "test", image_url: "test"};
     var buttonHTML = "";
     // Opening tag for .btn
     buttonHTML += "<div class='btn'>";
-    
+
     // img tag
-    buttonHTML  += "<img src='"
-                + IMAGE_DIR
-                + buttonObj.image_url
-                + "'>";
+    buttonHTML += "<img src='"
+        + IMAGE_DIR
+        + buttonObj.image_url
+        + "'>";
 
     // button text
     buttonHTML += buttonObj.name;
@@ -69,15 +66,44 @@ function renderButton(buttonObj)
     console.log("rendering button?");
 }
 
+function renderRadio(radioObj) {
+    ainHTML = document.getElementsByTagName("main")[0];
+    var radioHTML = "";
+    // Opening tag for radiobutton
+    radioHTML += "<fieldset> <legend>"
+        + radioObj.Text;
+    //section
+    radioHTML += "<section class=input>"
+    //knop 1
+    radioHTML += "<input type='radio' name='"
+        + radioObj.name1
+        + "'value ='"
+        + radioObj.optie1
+        + "'>"
+        + radioObj.text1;
+    //knop 2
+    radioHTML += "<input type='radio' name='"
+        + radioObj.name2
+        + "'value ='"
+        + radioObj.optie2
+        + "'>"
+        + radioObj.text2;
+    //closing tags
+    radioHTML += "</section></fieldset> </legend>"
+    mainHTML.innerHTML += radioHTML;
+    console.log("rendering button?");
+}
+
+
 function renderPage(page) // Renders a page, which is an array of objects
 {
     console.dir(page);
 
-    for(pageElement in page)    //  determine pageElement type
+    for (pageElement in page)    //  determine pageElement type
     {
-        if(page[pageElement].type === "textbox")
+        if (page[pageElement].type === "textbox")
             renderTextbox(page[pageElement]);
-        else if(page[pageElement].type === "button")
+        else if (page[pageElement].type === "button")
             renderButton(page[pageElement]);
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
@@ -85,10 +111,8 @@ function renderPage(page) // Renders a page, which is an array of objects
 }
 
 var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function()
-{
-    if(this.readyState == 4 && this.status == 200)
-    {
+xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
         var mainHTML = document.getElementsByTagName("main")[0];
         var pageIndex = 0;
         // Make object based on the json file opened with .open()
@@ -96,7 +120,7 @@ xmlhttp.onreadystatechange = function()
         //console.dir(pages);
 
         clearMainHTML(); // Clear main
-        
+
         renderPage(pages[pageIndex]);   // render current page
     }
 }

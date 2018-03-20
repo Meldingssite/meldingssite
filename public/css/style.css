@@ -4,7 +4,15 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Source Sans Pro','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+
+    /* Disables User Highlight */
+    -webkit-touch-callout: none;/* iOS Safari */
+    -webkit-user-select: none;  /* Safari */
+    -khtml-user-select: none;   /* Konqueror HTML */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer/Edge */
+    user-select: none;          /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 html
@@ -47,7 +55,7 @@ main
 {
     background: #fff;
 
-    -padding-top: 50px;
+    padding-top: 50px;
     padding-bottom: 1px;
     margin: 0 auto;
     height: 100%;
@@ -164,14 +172,14 @@ label
     
 }
 
-input
+.input
 {
+    padding: 0px;
     color: #171717;
     font-size: 1em;
     border: 1px solid #ccc;
-
     padding: 10px 20px;
-    margin: 7px 0;
+    /* margin: 7px 0; */
 
 }
 
