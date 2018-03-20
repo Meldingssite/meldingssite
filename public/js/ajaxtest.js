@@ -1,10 +1,12 @@
-
+function getPages()
+{
+    return JSON.parse(xmlhttp.responseText).pages   
+}
 
 function clearMainHTML()
 {
     document.getElementsByTagName("main")[0].innerHTML = "";
 }
-
 
 function renderTextbox(textboxObj)
 {
@@ -52,13 +54,12 @@ function renderButton(buttonObj)
     buttonHTML += "</div>";
 
     mainHTML.innerHTML += buttonHTML;
-    console.log("rendering button?");
 }
 
 function renderPage(page) // Renders a page, which is an array of objects
 {
     clearMainHTML(); // Clear main
-    console.dir(page);
+    //console.dir(page);
 
     for(pageElement in page)    //  determine pageElement type
     {
@@ -79,7 +80,7 @@ xmlhttp.onreadystatechange = function()
         var mainHTML = document.getElementsByTagName("main")[0];
         var pageIndex = 0;
         // Make object based on the json file opened with .open()
-        var pages = JSON.parse(this.responseText).pages;
+        var pages = getPages();
         //console.dir(pages);
         
         renderPage(pages[pageIndex]);   // render current page
