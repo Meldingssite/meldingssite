@@ -1,6 +1,11 @@
-function getPages()
+function getPages()     // returns all pages
 {
     return JSON.parse(xmlhttp.responseText).pages   
+}
+
+function getPage(i)      // returns single page
+{
+    return JSON.parse(xmlhttp.responseText).pages[i]
 }
 
 function clearMainHTML()
@@ -39,7 +44,8 @@ function renderButton(buttonObj)
     //buttonObj = {name: "test", image_url: "test"};
     var buttonHTML = "";
     // Opening tag for .btn
-    buttonHTML += "<div class='btn'>";
+    buttonHTML  +=   "<div class='btn'"
+                +    "onclick='renderPage(1)'>";
     
     // img tag
     buttonHTML  += "<img src='"
@@ -56,9 +62,10 @@ function renderButton(buttonObj)
     mainHTML.innerHTML += buttonHTML;
 }
 
-function renderPage(page) // Renders a page, which is an array of objects
+function renderPage(i) // Renders a page, which is an array of objects
 {
     clearMainHTML(); // Clear main
+    var page = getPage(i);
     //console.dir(page);
 
     for(pageElement in page)    //  determine pageElement type
@@ -83,7 +90,7 @@ xmlhttp.onreadystatechange = function()
         var pages = getPages();
         //console.dir(pages);
         
-        renderPage(pages[pageIndex]);   // render current page
+        renderPage(0);   // render index page
     }
 }
 xmlhttp.open("GET", SCRIPT_DIR + "pagesExample.json", true);
