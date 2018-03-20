@@ -1,7 +1,7 @@
 {
     "pages": 
     [
-        [
+        [   
             {
                 "type": "textbox",
                 "color": "purple",
@@ -56,6 +56,14 @@
                 "image_url": "category-other.png"
             }
             
+        ],
+
+        [
+            {
+                "type": "textbox",
+                "color": "purple",
+                "text": "Page 2"
+            }
         ]
     ]
 }
