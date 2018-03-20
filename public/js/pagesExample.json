@@ -54,26 +54,32 @@
                 "text": "Page 2"
             },
             {
-                "type": "radioButtons",
-                "Text": "Is het slachtoffer bewusteloos?",
-                "options": [
+                "type": "form",
+                "formFunctie": "",
+                "content": [
                     {
-                        "name": "unconscious",
-                        "optie": "Ja",
-                        "text": "ja"
+                        "type": "radioButtons",
+                        "Text": "Is het slachtoffer bewusteloos?",
+                        "options": [
+                            {
+                                "name": "unconscious",
+                                "optie": "Ja",
+                                "text": "ja"
+                            },
+                            {
+                                "name": "unconscious",
+                                "optie": "Nee",
+                                "text": "nee"
+                            }
+                        ]
                     },
                     {
-                        "name": "unconscious",
-                        "optie": "Nee",
-                        "text": "nee"
+                        "type": "textInput",
+                        "text": "Waar is het gebeurd?",
+                        "name": "Where",
+                        "inhoud": "Locatie"
                     }
                 ]
-            },
-            {
-                "type": "textInput",
-                "text": "Waar is het gebeurd?",
-                "name": "Where",
-                "inhoud": "Locatie"
             }
         ]
     ]

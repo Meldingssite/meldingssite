@@ -105,7 +105,9 @@ function renderTextInput(textInputObj) {
 }
 
 function renderForm(form) {
-
+    document.getElementsByTagName("main")[0].innerHTML += "<form action='"
+        + formFunctie
+        + "'>";
     for (pageElement in form)    //  determine pageElement type
     {
         if (form[pageElement].type === "textbox")
@@ -119,6 +121,7 @@ function renderForm(form) {
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
     }
+    document.getElementsByTagName("main")[0].innerHTML += "</form>";
 }
 
 
