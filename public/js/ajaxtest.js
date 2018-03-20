@@ -109,12 +109,7 @@ function renderPage(i) // Renders a page, which is an array of objects
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        var mainHTML = document.getElementsByTagName("main")[0];
-        var pageIndex = 0;
-        // Make object based on the json file opened with .open()
-        var pages = getPages();
-        //console.dir(pages);
-        
+
         renderPage(0);   // render index page
     }
 }
