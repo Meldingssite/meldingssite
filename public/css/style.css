@@ -55,7 +55,7 @@ main
 {
     background: #fff;
 
-    -padding-top: 50px;
+    padding-top: 50px;
     padding-bottom: 1px;
     margin: 0 auto;
     height: 100%;
@@ -172,14 +172,14 @@ label
     
 }
 
-input
+.input
 {
+    padding: 0px;
     color: #171717;
     font-size: 1em;
     border: 1px solid #ccc;
-
     padding: 10px 20px;
-    margin: 7px 0;
+    /* margin: 7px 0; */
 
 }
 
