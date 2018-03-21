@@ -79,7 +79,7 @@ function renderRadio(radioObj) {
     //closing tags
     radioHTML += "</section></fieldset> </legend>"
     mainHTML.innerHTML += radioHTML;
-    console.log("rendering button?");
+    console.log("rendering radiobutton?");
 }
 
 function renderTextInput(textInputObj) {
@@ -124,6 +124,47 @@ function renderForm(form) {
     document.getElementsByTagName("main")[0].innerHTML += "</form>";
 }
 
+function renderTextInput(textInputObj) {
+    mainHTML = document.getElementsByTagName("main")[0];
+    var textInputHTML = "";
+    textInputHTML += "<fieldset>"
+        + "<legend>"
+        + textInputObj.text
+        + "</legend>";
+    //section start
+    textInputHTML += "<section class=input>";
+    //Input field
+    textInputHTML += "<input type='text' name='"
+        + textInputObj.name
+        + "' placeholder='"
+        + textInputObj.inhoud
+        + "'>";
+    //closing tags
+
+    textInputHTML += "</section> </fieldset>";
+    mainHTML.innerHTML += radioHTML;
+    console.log("rendering textinput?");
+}
+
+function renderForm(form) {
+    document.getElementsByTagName("main")[0].innerHTML += "<form action='"
+        + formFunctie
+        + "'>";
+    for (pageElement in form)    //  determine pageElement type
+    {
+        if (form[pageElement].type === "textbox")
+            renderTextbox(page[pageElement]);
+        else if (form[pageElement].type === "button")
+            renderButton(page[pageElement]);
+        else if (form[pageElement].type === "radioButton")
+            renderRadio(page[pageElement]);
+        else if (form[pageElement].type === "textInput")
+            renderTextInput(page[pageElement]);
+        // type is unknown
+        else console.log("Unknown type: " + page[pageElement].type);
+    }
+    document.getElementsByTagName("main")[0].innerHTML += "</form>";
+}
 
 function renderPage(i) // Renders a page, which is an array of objects
 {
@@ -147,12 +188,6 @@ function renderPage(i) // Renders a page, which is an array of objects
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        var mainHTML = document.getElementsByTagName("main")[0];
-        var pageIndex = 0;
-        // Make object based on the json file opened with .open()
-        var pages = getPages();
-        //console.dir(pages);
-
         renderPage(0);   // render index page
     }
 }
