@@ -12,6 +12,8 @@ function clearMainHTML() {
     document.getElementsByTagName("main")[0].innerHTML = "";
 }
 
+
+
 function renderTextbox(textboxObj) {
     textboxHTML = "";
 
@@ -150,6 +152,8 @@ function renderPage(i) // Renders a page, which is an array of objects
         else console.log("Unknown type: " + page[pageElement].type);
     }
 }
+
+
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
