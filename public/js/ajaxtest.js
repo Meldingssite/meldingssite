@@ -59,9 +59,38 @@ function renderButton(buttonObj) {
     mainHTML.innerHTML += buttonHTML;
 }
 
-function renderRadio(radioObj) {
+
+function renderTextInput(textInputObj) {
     mainHTML = document.getElementsByTagName("main")[0];
+    var textInputHTML = "";
+    textInputHTML += "<fieldset>"
+    + "<legend>"
+        + textInputObj.text
+        + "</legend>";
+    //section start
+    textInputHTML += "<section class=input>";
+    //Input field
+    textInputHTML += "<input type='text' name='"
+    + textInputObj.name
+        + "' placeholder='"
+        + textInputObj.inhoud
+        + "'>";
+        //closing tags
+
+        textInputHTML += "</section> </fieldset>";
+    mainHTML.innerHTML += textInputHTML;
+    console.log("rendering textinput?");
+}
+
+function renderRadio(radioObj)
+{
+    console.log("Rendering Radio");
+    console.dir(radioObj);
+
+    var mainHTML = document.getElementsByTagName("main")[0];
+    var options = radioObj.options;
     var radioHTML = "";
+    
     // Opening tag for radiobutton
     radioHTML += "<fieldset> <legend>"
         + radioObj.Text;
@@ -77,49 +106,28 @@ function renderRadio(radioObj) {
             + options[option].text;
     }
     //closing tags
-    radioHTML += "</section></fieldset> </legend>"
+    radioHTML += "</section></legend></fieldset>"
     mainHTML.innerHTML += radioHTML;
-    console.log("rendering button?");
+    console.log("rendering radiobutton?");
 }
 
-function renderTextInput(textInputObj) {
-    mainHTML = document.getElementsByTagName("main")[0];
-    var textInputHTML = "";
-    textInputHTML += "<fieldset>"
-        + "<legend>"
-        + textInputObj.text
-        + "</legend>";
-    //section start
-    textInputHTML += "<section class=input>";
-    //Input field
-    textInputHTML += "<input type='text' name='"
-        + textInputObj.name
-        + "' placeholder='"
-        + textInputObj.inhoud
-        + "'>";
-    //closing tags
-
-    textInputHTML += "</section> </fieldset>";
-    mainHTML.innerHTML += radioHTML;
-    console.log("rendering textinput?");
-}
-
-function renderForm(form) {
+function renderForm(form)       // renders a form and its elements  
+{
+    var content = form.content;
+    
+    //console.log("rendering form");
+    //console.log(content);
     document.getElementsByTagName("main")[0].innerHTML += "<form action='"
-        + formFunctie
+        + form.formFunctie
         + "'>";
-    for (pageElement in form)    //  determine pageElement type
+    for (formElement in content)    //  determine pageElement type
     {
-        if (form[pageElement].type === "textbox")
-            renderTextbox(page[pageElement]);
-        else if (form[pageElement].type === "button")
-            renderButton(page[pageElement]);
-        else if (form[pageElement].type === "radioButton")
-            renderRadio(page[pageElement]);
-        else if (form[pageElement].type === "textInput")
-            renderTextInput(page[pageElement]);
+        if (content[formElement].type === "textInput")
+            renderTextInput(content[formElement]);
+        else if (content[formElement].type === "radioButtons")
+            renderRadio(content[formElement]);
         // type is unknown
-        else console.log("Unknown type: " + page[pageElement].type);
+        else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementsByTagName("main")[0].innerHTML += "</form>";
 }
@@ -138,7 +146,7 @@ function renderPage(i) // Renders a page, which is an array of objects
         else if (page[pageElement].type === "button")
             renderButton(page[pageElement]);
         else if (page[pageElement].type === "form")
-            renderRadio(page[pageElement]);
+            renderForm(page[pageElement]);
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
     }
@@ -147,12 +155,6 @@ function renderPage(i) // Renders a page, which is an array of objects
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        var mainHTML = document.getElementsByTagName("main")[0];
-        var pageIndex = 0;
-        // Make object based on the json file opened with .open()
-        var pages = getPages();
-        //console.dir(pages);
-
         renderPage(0);   // render index page
     }
 }
