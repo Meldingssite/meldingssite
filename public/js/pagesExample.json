@@ -1,61 +1,75 @@
 {
-    "pages": 
-    [
+    "pages": [
         [
             {
                 "type": "textbox",
                 "color": "purple",
                 "text": "Wat wilt u melden?"
             },
-            
             {
-                "type": "button", 
+                "type": "button",
                 "name": "Ongeval",
                 "image_url": "category-FirstAid.png"
             },
-
             {
-                "type": "button",            
+                "type": "button",
                 "name": "Vechtpartij",
                 "image_url": "category-fight.png"
             },
-
             {
-                "type": "button",             
+                "type": "button",
                 "name": "Wapens",
                 "image_url": "category-weapons.png"
             },
-
             {
-                "type": "button",             
+                "type": "button",
                 "name": "Drugs",
                 "image_url": "category-drugs.png"
             },
-
             {
-                "type": "button",             
+                "type": "button",
                 "name": "Diefstal",
                 "image_url": "category-theft.png"
             },
-
             {
-                "type": "button",             
-                "name": "Snelle jelle",
+                "type": "button",
+                "name": "Pesten",
                 "image_url": "category-bullying.png"
             },
-
             {
-                "type": "button",             
+                "type": "button",
                 "name": "Overlast",
                 "image_url": "category-nuisance.png"
             },
-
             {
-                "type": "button",             
+                "type": "button",
                 "name": "Overige",
                 "image_url": "category-other.png"
             }
-            
+        ],
+        [
+            {
+                "type": "textbox",
+                "color": "purple",
+                "text": "Page 2"
+            }
+        ],
+        [
+            {
+                "Text": "Is het slachtoffer bewusteloos?",
+                "options": [
+                    {
+                        "name": "unconscious",
+                        "optie": "Ja",
+                        "text": "ja"
+                    },
+                    {
+                        "name": "unconscious",
+                        "optie": "Nee",
+                        "text": "nee"
+                    }
+                ]
+            }
         ]
     ]
 }
