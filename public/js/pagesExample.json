@@ -54,6 +54,12 @@
                 "text": "Page 2"
             },
             {
+                "type": "button",
+                "color": "purple",
+                "name": "Henk",
+                "image_url": "category-nuisance.png"
+            },
+            {
                 "type": "form",
                 "formFunctie": "",
                 "content": [
