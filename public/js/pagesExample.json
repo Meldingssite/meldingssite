@@ -65,6 +65,12 @@
                 "formFunctie": "",
                 "content": [
                     {
+                        "type": "textInput",
+                        "text": "Waar is het gebeurd?",
+                        "name": "Where",
+                        "inhoud": "Locatie"
+                    },
+                    {
                         "type": "radioButtons",
                         "Text": "Is het slachtoffer bewusteloos?",
                         "options": [
@@ -79,12 +85,6 @@
                                 "text": "nee"
                             }
                         ]
-                    },
-                    {
-                        "type": "textInput",
-                        "text": "Waar is het gebeurd?",
-                        "name": "Where",
-                        "inhoud": "Locatie"
                     }
                 ]
             }
