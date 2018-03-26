@@ -56,19 +56,14 @@
             {
                 "type": "button",
                 "color": "purple",
-                "name": "Henk",
+                "name": "test",
                 "image_url": "category-nuisance.png"
+                
             },
             {
                 "type": "form",
                 "formAction": "",
                 "content": [
-                    {
-                        "type": "textInput",
-                        "text": "Waar is het gebeurd?",
-                        "name": "Where",
-                        "inhoud": "Locatie"
-                    },
                     {
                         "type": "radioButtons",
                         "Text": "Is het slachtoffer bewusteloos?",
@@ -84,9 +79,15 @@
                                 "text": "nee"
                             }
                         ]
+                    },
+                    {
+                        "type": "textInput",
+                        "text": "Waar is het gebeurd?",
+                        "name": "Where",
+                        "inhoud": "Locatie"
                     }
                 ]
-            }
+                }
+            ]
         ]
-    ]
 }
