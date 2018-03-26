@@ -131,7 +131,6 @@ function renderForm(form)       // renders a form and its elements
     document.getElementsByTagName("main")[0].innerHTML += "</form>";
 }
 
-
 function renderPage(i) // Renders a page, which is an array of objects
 {
     var page = getPage(i);
