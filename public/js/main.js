@@ -1,3 +1,8 @@
+function createJSON()
+{
+
+}
+
 function getPages()     // returns all pages
 {
     return JSON.parse(xmlhttp.responseText).pages

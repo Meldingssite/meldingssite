@@ -61,7 +61,7 @@
             },
             {
                 "type": "form",
-                "formFunctie": "",
+                "formAction": "",
                 "content": [
                     {
                         "type": "textInput",
