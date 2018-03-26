@@ -112,7 +112,7 @@ main
 
 
 /* Forms Fieldsets Legends & Inputs */
-form, fieldset, legend, input,
+form, fieldset, legend, input
 {
     margin: 0;
     padding: 0;
