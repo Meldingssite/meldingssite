@@ -80,17 +80,23 @@
                         ]
                     },
                     {
-                        "type": "textMultipleInputs",
+                        "type": "textInput",
                         "Text": "contact gegevens",
                         "options": [
                             {
-                                "name": "naam"
+                                "name": "naam",
+                                "inputType": "text",
+                                "inhoud": "naam"
                             },
                             {
-                                "name": "email"
+                                "name": "email",
+                                "inputType": "text",
+                                "inhoud": "email"
                             },
                             {
-                                "name": "telefoon"
+                                "name": "telefoon",
+                                "inputType": "number",
+                                "inhoud": "telefoon"
                             }
                         ]
                     },
@@ -114,15 +120,20 @@
                                 "name": "button3",
                                 "optie": "",
                                 "function": "",
-                                "text": "dit is 4 button"
+                                "text": "dit is 2 button"
                             }
                         ]
                     },
                     {
                         "type": "textInput",
-                        "text": "Waar is het gebeurd?",
-                        "name": "Where",
-                        "inhoud": "Locatie"
+                        "Text": "Waar is het gebeurd?",
+                        "options": [
+                            {
+                                "name": "Where",
+                                "inputType": "text",
+                                "inhoud": "Locatie"
+                            }
+                        ]
                     }
                 ]
             }

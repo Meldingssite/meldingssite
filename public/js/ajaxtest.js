@@ -87,56 +87,60 @@ function renderFormButton(buttonObj) {
     mainHTML.innerHTML += formButtonHTML;
 }
 
-function renderMultipleTextInput(textInputObj) {
+function renderTextInput(textInputObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
     var options = textInputObj.options;
-    var textInputMultipleHTML = "";
+    var textInputHTML = "";
 
     // Opening tag for radiobutton
-    textInputMultipleHTML += "<fieldset> <legend>"
+    textInputHTML += "<fieldset> <legend>"
         + textInputObj.Text;
     //section
-    textInputMultipleHTML += "<section class=input>"
+    textInputHTML += "<section class=input>"
     //Inputs
     for (option in options) {
-        textInputMultipleHTML += "<input type='text' name='"
+        textInputHTML += "<input type='"
+            + options[option].inputType
+            + "' name='"
             + options[option].name
             + "' placeholder='"
-            + options[option].name
+            + options[option].inhoud
             + "'>";
     }
     //closing tags
-    textInputMultipleHTML += "</section></legend></fieldset>"
-
-    mainHTML.innerHTML += textInputMultipleHTML;
-}
-
-
-
-function renderTextInput(textInputObj) {
-    mainHTML = document.getElementsByTagName("main")[0];
-    var textInputHTML = "";
-
-    textInputHTML += "<fieldset>"
-        + "<legend>"
-        + textInputObj.text
-        + "</legend>";
-
-    //section start
-    textInputHTML += "<section class=input>";
-
-    //Input field
-    textInputHTML += "<input type='text' name='"
-        + textInputObj.name
-        + "' placeholder='"
-        + textInputObj.inhoud
-        + "'>";
-
-    //closing tags
-    textInputHTML += "</section> </fieldset>";
+    textInputHTML += "</section></legend></fieldset>"
 
     mainHTML.innerHTML += textInputHTML;
 }
+
+
+
+// function renderTextInput(textInputObj) {
+//     mainHTML = document.getElementsByTagName("main")[0];
+//     var textInputHTML = "";
+
+//     textInputHTML += "<fieldset>"
+//         + "<legend>"
+//         + textInputObj.text
+//         + "</legend>";
+
+//     //section start
+//     textInputHTML += "<section class=input>";
+
+//     //Input field
+//     textInputHTML += "<input type='"
+//         // + textInputObj.inputType
+//         + "' name='"
+//         + textInputObj.name
+//         + "' placeholder='"
+//         + textInputObj.inhoud
+//         + "'>";
+
+//     //closing tags
+//     textInputHTML += "</section> </fieldset>";
+
+//     mainHTML.innerHTML += textInputHTML;
+// }
 
 function renderRadio(radioObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
@@ -178,9 +182,9 @@ function renderForm(form)       // renders a form and its elements
             renderRadio(content[formElement]);
         else if (content[formElement].type === "textMultipleInputs")
             renderMultipleTextInput(content[formElement]);
-            else if (content[formElement].type === "FormButton")
+        else if (content[formElement].type === "FormButton")
             renderFormButton(content[formElement]);
-            
+
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
