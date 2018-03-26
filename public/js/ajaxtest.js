@@ -114,34 +114,6 @@ function renderTextInput(textInputObj) {
 }
 
 
-
-// function renderTextInput(textInputObj) {
-//     mainHTML = document.getElementsByTagName("main")[0];
-//     var textInputHTML = "";
-
-//     textInputHTML += "<fieldset>"
-//         + "<legend>"
-//         + textInputObj.text
-//         + "</legend>";
-
-//     //section start
-//     textInputHTML += "<section class=input>";
-
-//     //Input field
-//     textInputHTML += "<input type='"
-//         // + textInputObj.inputType
-//         + "' name='"
-//         + textInputObj.name
-//         + "' placeholder='"
-//         + textInputObj.inhoud
-//         + "'>";
-
-//     //closing tags
-//     textInputHTML += "</section> </fieldset>";
-
-//     mainHTML.innerHTML += textInputHTML;
-// }
-
 function renderRadio(radioObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
     var options = radioObj.options;

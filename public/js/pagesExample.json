@@ -90,12 +90,12 @@
                             },
                             {
                                 "name": "email",
-                                "inputType": "text",
+                                "inputType": "email",
                                 "inhoud": "email"
                             },
                             {
                                 "name": "telefoon",
-                                "inputType": "number",
+                                "inputType": "Tel",
                                 "inhoud": "telefoon"
                             }
                         ]
