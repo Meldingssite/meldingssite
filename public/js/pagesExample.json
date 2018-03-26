@@ -58,7 +58,6 @@
                 "color": "purple",
                 "name": "test",
                 "image_url": "category-nuisance.png"
-                
             },
             {
                 "type": "form",
@@ -96,13 +95,37 @@
                         ]
                     },
                     {
+                        "type": "FormButton",
+                        "Text": "Button Test",
+                        "options": [
+                            {
+                                "name": "button1",
+                                "optie": "",
+                                "function": "",
+                                "text": "Dit is een button"
+                            },
+                            {
+                                "name": "button2",
+                                "optie": "",
+                                "function": "",
+                                "text": "dit is 2 button"
+                            },
+                            {
+                                "name": "button3",
+                                "optie": "",
+                                "function": "",
+                                "text": "dit is 4 button"
+                            }
+                        ]
+                    },
+                    {
                         "type": "textInput",
                         "text": "Waar is het gebeurd?",
                         "name": "Where",
                         "inhoud": "Locatie"
                     }
                 ]
-                }
-            ]
+            }
         ]
+    ]
 }

@@ -59,6 +59,33 @@ function renderButton(buttonObj) {
 
     mainHTML.innerHTML += buttonHTML;
 }
+function renderFormButton(buttonObj) {
+    var formButtonHTML = document.getElementsByTagName("main")[0];
+    var options = buttonObj.options;
+    var formButtonHTML = "";
+
+    // Opening tag for formButton
+    formButtonHTML += "<fieldset> <legend>"
+        + buttonObj.Text;
+    //section
+    formButtonHTML += "<section class=input>"
+    //knop
+    for (option in options) {
+        formButtonHTML += "<button name='"
+            + options[option].name
+            + "' value ='"
+            + options[option].optie
+            + "' onclick='"
+            + options[option].function
+            + "'>"
+            + options[option].text
+            + "</button>";
+    }
+    //closing tags
+    formButtonHTML += "</section></legend></fieldset>"
+
+    mainHTML.innerHTML += formButtonHTML;
+}
 
 function renderMultipleTextInput(textInputObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
@@ -151,6 +178,9 @@ function renderForm(form)       // renders a form and its elements
             renderRadio(content[formElement]);
         else if (content[formElement].type === "textMultipleInputs")
             renderMultipleTextInput(content[formElement]);
+            else if (content[formElement].type === "FormButton")
+            renderFormButton(content[formElement]);
+            
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
