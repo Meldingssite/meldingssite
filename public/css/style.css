@@ -112,7 +112,7 @@ main
 
 
 /* Forms Fieldsets Legends & Inputs */
-form, fieldset, legend, input
+form, fieldset, legend, input,
 {
     margin: 0;
     padding: 0;
@@ -177,7 +177,6 @@ label
     padding: 0px;
     color: #171717;
     font-size: 1em;
-    border: 1px solid #ccc;
     padding: 10px 20px;
     /* margin: 7px 0; */
 
