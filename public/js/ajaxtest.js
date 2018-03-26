@@ -13,6 +13,8 @@ function clearMainHTML() {
 }
 
 function renderTextbox(textboxObj) {
+    textboxHTML = "";
+
     // define default colors
     if (textboxObj.color == "purple")
         var color = "#2d2d85";
@@ -20,12 +22,11 @@ function renderTextbox(textboxObj) {
         var color = textboxObj.color;
     mainHTML = document.getElementsByTagName("main")[0];
 
-    textboxHTML = "";
     // Opening tag
     textboxHTML += "<div class='textbox' "
-        + "style='background-color:"
-        + color
-        + ";'>";
+                + "style='background-color:"
+                + color
+                + ";'>";
 
     // Content
     textboxHTML += textboxObj.text;
@@ -38,17 +39,17 @@ function renderTextbox(textboxObj) {
 
 function renderButton(buttonObj) {
     mainHTML = document.getElementsByTagName("main")[0];
-    //buttonObj = {name: "test", image_url: "test"};
     var buttonHTML = "";
+
     // Opening tag for .btn
     buttonHTML += "<div class='btn'"
-        + "onclick='renderPage(1)'>";
+                + "onclick='renderPage(1)'>";
 
     // img tag
     buttonHTML += "<img src='"
-        + IMAGE_DIR
-        + buttonObj.image_url
-        + "'>";
+                + IMAGE_DIR
+                + buttonObj.image_url
+                + "'>";
 
     // button text
     buttonHTML += buttonObj.name;
@@ -63,30 +64,30 @@ function renderButton(buttonObj) {
 function renderTextInput(textInputObj) {
     mainHTML = document.getElementsByTagName("main")[0];
     var textInputHTML = "";
-    textInputHTML += "<fieldset>"
-    + "<legend>"
-        + textInputObj.text
-        + "</legend>";
+    
+    textInputHTML  += "<fieldset>"
+                    + "<legend>"
+                    + textInputObj.text
+                    + "</legend>";
+    
     //section start
     textInputHTML += "<section class=input>";
+    
     //Input field
-    textInputHTML += "<input type='text' name='"
-    + textInputObj.name
-        + "' placeholder='"
-        + textInputObj.inhoud
-        + "'>";
-        //closing tags
+    textInputHTML  += "<input type='text' name='"
+                    + textInputObj.name
+                    + "' placeholder='"
+                    + textInputObj.inhoud
+                    + "'>";
+    
+                    //closing tags
+    textInputHTML += "</section> </fieldset>";
 
-        textInputHTML += "</section> </fieldset>";
     mainHTML.innerHTML += textInputHTML;
-    console.log("rendering textinput?");
 }
 
 function renderRadio(radioObj)
 {
-    console.log("Rendering Radio");
-    console.dir(radioObj);
-
     var mainHTML = document.getElementsByTagName("main")[0];
     var options = radioObj.options;
     var radioHTML = "";
@@ -107,16 +108,14 @@ function renderRadio(radioObj)
     }
     //closing tags
     radioHTML += "</section></legend></fieldset>"
+
     mainHTML.innerHTML += radioHTML;
-    console.log("rendering radiobutton?");
 }
 
 function renderForm(form)       // renders a form and its elements  
 {
     var content = form.content;
     
-    //console.log("rendering form");
-    //console.log(content);
     document.getElementsByTagName("main")[0].innerHTML += "<form action='"
         + form.formFunctie
         + "'>";
@@ -134,9 +133,9 @@ function renderForm(form)       // renders a form and its elements
 
 function renderPage(i) // Renders a page, which is an array of objects
 {
-    clearMainHTML(); // Clear main
     var page = getPage(i);
-    //console.dir(page);
+
+    clearMainHTML(); // Clear main
 
     for (pageElement in page)    //  determine pageElement type
     {
