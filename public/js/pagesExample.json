@@ -81,6 +81,21 @@
                         ]
                     },
                     {
+                        "type": "textMultipleInputs",
+                        "Text": "contact gegevens",
+                        "options": [
+                            {
+                                "name": "naam"
+                            },
+                            {
+                                "name": "email"
+                            },
+                            {
+                                "name": "telefoon"
+                            }
+                        ]
+                    },
+                    {
                         "type": "textInput",
                         "text": "Waar is het gebeurd?",
                         "name": "Where",

@@ -72,7 +72,7 @@ function renderMultipleTextInput(textInputObj) {
     textInputMultipleHTML += "<section class=input>"
     //Inputs
     for (option in options) {
-        radioHTML += "<input type='text' name='"
+        textInputMultipleHTML += "<input type='text' name='"
             + options[option].name
             + "' placeholder='"
             + options[option].name
