@@ -200,17 +200,18 @@ function renderForm(form)       // renders a form and its elements
 function renderPage(i) // Renders a page, which is an array of objects
 {
     var page = getPage(i);
+    var content = page.content;
 
     clearPageHTML(); // Clear main
 
-    for (pageElement in page)    //  determine pageElement type
+    for (pageElement in content)    //  determine pageElement type
     {
-        if (page[pageElement].type === "textbox")
-            renderTextbox(page[pageElement]);
-        else if (page[pageElement].type === "button")
-            renderButton(page[pageElement]);
-        else if (page[pageElement].type === "form")
-            renderForm(page[pageElement]);
+        if (content[pageElement].type === "textbox")
+            renderTextbox(content[pageElement]);
+        else if (content[pageElement].type === "button")
+            renderButton(content[pageElement]);
+        else if (content[pageElement].type === "form")
+            renderForm(content[pageElement]);
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
     }

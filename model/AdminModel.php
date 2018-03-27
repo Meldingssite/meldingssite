@@ -2,9 +2,9 @@
 
 function saveJSON($JSONString)
 {
-    // If no permission error shows,
+    // If permission denied error shows,
     // chmod 777 project folder
-    $fp = fopen(ROOT . SCRIPT_DIR . "jsonWrite.json", 'w');
+    $fp = fopen(ROOT . SCRIPT_DIR . "pages.json", 'w');
     fwrite($fp, $JSONString);
     fclose($fp);
 }

@@ -10,7 +10,7 @@ xmlhttp.onreadystatechange = function () {
         renderPage(0);   // render index page
     
 }
-xmlhttp.open("GET", SCRIPT_DIR + "pagesExample.json", true);
+xmlhttp.open("GET", SCRIPT_DIR + "pages.json", true);
 xmlhttp.send();
 
 // testing shit
