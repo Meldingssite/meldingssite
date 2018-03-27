@@ -65,7 +65,7 @@
                 "content": [
                     {
                         "type": "radioButtons",
-                        "Text": "Is het slachtoffer bewusteloos?",
+                        "text": "Is het slachtoffer bewusteloos?",
                         "options": [
                             {
                                 "name": "unconscious",
@@ -81,7 +81,7 @@
                     },
                     {
                         "type": "textInput",
-                        "Text": "contact gegevens",
+                        "text": "contact gegevens",
                         "options": [
                             {
                                 "name": "naam",
@@ -101,8 +101,8 @@
                         ]
                     },
                     {
-                        "type": "FormButton",
-                        "Text": "Button Test",
+                        "type": "formButton",
+                        "text": "Button Test",
                         "options": [
                             {
                                 "name": "button1",
@@ -125,8 +125,25 @@
                         ]
                     },
                     {
+                        "type": "dropDown",
+                        "text": "Button Test",
+                        "name": "Dropdown booootens",
+                        "options": [
+                            {
+                                "name": "button1",
+                                "optie": "",
+                                "text": "Dit is een button"
+                            },
+                            {
+                                "name": "button2",
+                                "optie": "",
+                                "text": "dit is 2 button"
+                            }
+                        ]
+                    },
+                    {
                         "type": "textInput",
-                        "Text": "Waar is het gebeurd?",
+                        "text": "Waar is het gebeurd?",
                         "options": [
                             {
                                 "name": "Where",

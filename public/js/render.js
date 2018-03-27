@@ -72,7 +72,7 @@ function renderFormButton(buttonObj) {
 
     // Opening tag for formButton
     formButtonHTML += "<fieldset> <legend>"
-        + buttonObj.Text;
+        + buttonObj.text;
     //section
     formButtonHTML += "<section class=input>"
     //knop
@@ -100,7 +100,7 @@ function renderTextInput(textInputObj) {
 
     // Opening tag for radiobutton
     textInputHTML += "<fieldset> <legend>"
-        + textInputObj.Text;
+        + textInputObj.text;
     //section
     textInputHTML += "<section class=input>"
     //Inputs
@@ -127,7 +127,7 @@ function renderRadio(radioObj) {
 
     // Opening tag for radiobutton
     radioHTML += "<fieldset> <legend>"
-        + radioObj.Text;
+        + radioObj.text;
     //section
     radioHTML += "<section class=input>"
     //knop
@@ -143,6 +143,32 @@ function renderRadio(radioObj) {
     radioHTML += "</section></legend></fieldset>"
 
     mainHTML.innerHTML += radioHTML;
+}
+function renderDropDown(dropObj) {
+    var mainHTML = document.getElementsByTagName("main")[0];
+    var options = dropObj.options;
+    var dropHTML = "";
+
+    // Opening tag for radiobutton
+    dropHTML += "<fieldset><legend>"
+        + dropObj.text;
+    //section
+    dropHTML += "<section class=input><select name='"
+        + dropObj.name;
+    + "'>";
+    //knop
+    for (option in options) {
+        dropHTML += "<option  name='"
+            + options[option].name
+            + "'value ='"
+            + options[option].optie
+            + "'>"
+            + options[option].text;
+        + "</option>";
+    }
+    //closing tags
+    dropHTML += "</section></legend></fieldset>"
+    mainHTML.innerHTML += dropHTML;
 }
 
 function renderForm(form)       // renders a form and its elements  
@@ -160,8 +186,10 @@ function renderForm(form)       // renders a form and its elements
             renderRadio(content[formElement]);
         else if (content[formElement].type === "textMultipleInputs")
             renderMultipleTextInput(content[formElement]);
-        else if (content[formElement].type === "FormButton")
+        else if (content[formElement].type === "formButton")
             renderFormButton(content[formElement]);
+        else if (content[formElement].type === "dropDown")
+            renderDropDown(content[formElement]);
 
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
