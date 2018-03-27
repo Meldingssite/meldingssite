@@ -65,57 +65,60 @@ function renderButton(buttonObj) {
 
     mainHTML.innerHTML += buttonHTML;
 }
+function renderFormButton(buttonObj) {
+    var formButtonHTML = document.getElementsByTagName("main")[0];
+    var options = buttonObj.options;
+    var formButtonHTML = "";
 
-function renderMultipleTextInput(textInputObj) {
+    // Opening tag for formButton
+    formButtonHTML += "<fieldset> <legend>"
+        + buttonObj.text;
+    //section
+    formButtonHTML += "<section class=input>"
+    //knop
+    for (option in options) {
+        formButtonHTML += "<button name='"
+            + options[option].name
+            + "' value ='"
+            + options[option].optie
+            + "' onclick='"
+            + options[option].function
+            + "'>"
+            + options[option].text
+            + "</button>";
+    }
+    //closing tags
+    formButtonHTML += "</section></legend></fieldset>"
+
+    mainHTML.innerHTML += formButtonHTML;
+}
+
+function renderTextInput(textInputObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
     var options = textInputObj.options;
-    var textInputMultipleHTML = "";
+    var textInputHTML = "";
 
     // Opening tag for radiobutton
-    textInputMultipleHTML += "<fieldset> <legend>"
-        + textInputObj.Text;
+    textInputHTML += "<fieldset> <legend>"
+        + textInputObj.text;
     //section
-    textInputMultipleHTML += "<section class=input>"
+    textInputHTML += "<section class=input>"
     //Inputs
     for (option in options) {
-        radioHTML += "<input type='text' name='"
+        textInputHTML += "<input type='"
+            + options[option].inputType
+            + "' name='"
             + options[option].name
             + "' placeholder='"
-            + options[option].name
+            + options[option].inhoud
             + "'>";
     }
     //closing tags
-    textInputMultipleHTML += "</section></legend></fieldset>"
-
-    mainHTML.innerHTML += textInputMultipleHTML;
-}
-
-
-
-function renderTextInput(textInputObj) {
-    mainHTML = document.getElementsByTagName("main")[0];
-    var textInputHTML = "";
-
-    textInputHTML += "<fieldset>"
-        + "<legend>"
-        + textInputObj.text
-        + "</legend>";
-
-    //section start
-    textInputHTML += "<section class=input>";
-
-    //Input field
-    textInputHTML += "<input type='text' name='"
-        + textInputObj.name
-        + "' placeholder='"
-        + textInputObj.inhoud
-        + "'>";
-
-    //closing tags
-    textInputHTML += "</section> </fieldset>";
+    textInputHTML += "</section></legend></fieldset>"
 
     mainHTML.innerHTML += textInputHTML;
 }
+
 
 function renderRadio(radioObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
@@ -124,7 +127,7 @@ function renderRadio(radioObj) {
 
     // Opening tag for radiobutton
     radioHTML += "<fieldset> <legend>"
-        + radioObj.Text;
+        + radioObj.text;
     //section
     radioHTML += "<section class=input>"
     //knop
@@ -140,6 +143,32 @@ function renderRadio(radioObj) {
     radioHTML += "</section></legend></fieldset>"
 
     mainHTML.innerHTML += radioHTML;
+}
+function renderDropDown(dropObj) {
+    var mainHTML = document.getElementsByTagName("main")[0];
+    var options = dropObj.options;
+    var dropHTML = "";
+
+    // Opening tag for radiobutton
+    dropHTML += "<fieldset><legend>"
+        + dropObj.text;
+    //section
+    dropHTML += "<section class=input><select name='"
+        + dropObj.name
+        + "'>";
+    //knop
+    for (option in options) {
+        dropHTML += "<option  name='"
+            + options[option].name
+            + "'value ='"
+            + options[option].optie
+            + "'>"
+            + options[option].text
+            + "</option>";
+    }
+    //closing tags
+    dropHTML += "</section></legend></fieldset>"
+    mainHTML.innerHTML += dropHTML;
 }
 
 function renderForm(form)       // renders a form and its elements  
@@ -157,6 +186,11 @@ function renderForm(form)       // renders a form and its elements
             renderRadio(content[formElement]);
         else if (content[formElement].type === "textMultipleInputs")
             renderMultipleTextInput(content[formElement]);
+        else if (content[formElement].type === "formButton")
+            renderFormButton(content[formElement]);
+        else if (content[formElement].type === "dropDown")
+            renderDropDown(content[formElement]);
+
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
