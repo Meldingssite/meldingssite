@@ -30,9 +30,9 @@ function renderTextbox(textboxObj) {
 
     // Opening tag
     textboxHTML += "<div class='textbox' "
-                + "style='background-color:"
-                + color
-                + ";'>";
+        + "style='background-color:"
+        + color
+        + ";'>";
 
     // Content
     textboxHTML += textboxObj.text;
@@ -49,13 +49,13 @@ function renderButton(buttonObj) {
 
     // Opening tag for .btn
     buttonHTML += "<div class='btn'"
-                + "onclick='renderPage(1)'>";
+        + "onclick='renderPage(1)'>";
 
     // img tag
     buttonHTML += "<img src='"
-                + IMAGE_DIR
-                + buttonObj.image_url
-                + "'>";
+        + IMAGE_DIR
+        + buttonObj.image_url
+        + "'>";
 
     // button text
     buttonHTML += buttonObj.name;
@@ -65,39 +65,66 @@ function renderButton(buttonObj) {
 
     mainHTML.innerHTML += buttonHTML;
 }
+function renderFormButton(buttonObj) {
+    var formButtonHTML = document.getElementsByTagName("main")[0];
+    var options = buttonObj.options;
+    var formButtonHTML = "";
 
+    // Opening tag for formButton
+    formButtonHTML += "<fieldset> <legend>"
+        + buttonObj.Text;
+    //section
+    formButtonHTML += "<section class=input>"
+    //knop
+    for (option in options) {
+        formButtonHTML += "<button name='"
+            + options[option].name
+            + "' value ='"
+            + options[option].optie
+            + "' onclick='"
+            + options[option].function
+            + "'>"
+            + options[option].text
+            + "</button>";
+    }
+    //closing tags
+    formButtonHTML += "</section></legend></fieldset>"
+
+    mainHTML.innerHTML += formButtonHTML;
+}
 
 function renderTextInput(textInputObj) {
-    mainHTML = document.getElementsByTagName("main")[0];
+    var mainHTML = document.getElementsByTagName("main")[0];
+    var options = textInputObj.options;
     var textInputHTML = "";
-    
-    textInputHTML  += "<fieldset>"
-                    + "<legend>"
-                    + textInputObj.text
-                    + "</legend>";
-    
-    //section start
-    textInputHTML += "<section class=input>";
-    
-    //Input field
-    textInputHTML  += "<input type='text' name='"
-                    + textInputObj.name
-                    + "' placeholder='"
-                    + textInputObj.inhoud
-                    + "'>";
-    
-                    //closing tags
-    textInputHTML += "</section> </fieldset>";
+
+    // Opening tag for radiobutton
+    textInputHTML += "<fieldset> <legend>"
+        + textInputObj.Text;
+    //section
+    textInputHTML += "<section class=input>"
+    //Inputs
+    for (option in options) {
+        textInputHTML += "<input type='"
+            + options[option].inputType
+            + "' name='"
+            + options[option].name
+            + "' placeholder='"
+            + options[option].inhoud
+            + "'>";
+    }
+    //closing tags
+    textInputHTML += "</section></legend></fieldset>"
 
     mainHTML.innerHTML += textInputHTML;
 }
 
-function renderRadio(radioObj)
-{
+
+function renderRadio(radioObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
     var options = radioObj.options;
     var radioHTML = "";
-    
+
     // Opening tag for radiobutton
     radioHTML += "<fieldset> <legend>"
         + radioObj.Text;
@@ -121,7 +148,7 @@ function renderRadio(radioObj)
 function renderForm(form)       // renders a form and its elements  
 {
     var content = form.content;
-    
+
     document.getElementsByTagName("main")[0].innerHTML += "<form action='"
         + form.formFunctie
         + "'>";
@@ -131,12 +158,16 @@ function renderForm(form)       // renders a form and its elements
             renderTextInput(content[formElement]);
         else if (content[formElement].type === "radioButtons")
             renderRadio(content[formElement]);
+        else if (content[formElement].type === "textMultipleInputs")
+            renderMultipleTextInput(content[formElement]);
+        else if (content[formElement].type === "FormButton")
+            renderFormButton(content[formElement]);
+
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementsByTagName("main")[0].innerHTML += "</form>";
 }
-
 
 function renderPage(i) // Renders a page, which is an array of objects
 {

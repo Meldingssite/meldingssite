@@ -56,19 +56,13 @@
             {
                 "type": "button",
                 "color": "purple",
-                "name": "Henk",
+                "name": "test",
                 "image_url": "category-nuisance.png"
             },
             {
                 "type": "form",
                 "formAction": "",
                 "content": [
-                    {
-                        "type": "textInput",
-                        "text": "Waar is het gebeurd?",
-                        "name": "Where",
-                        "inhoud": "Locatie"
-                    },
                     {
                         "type": "radioButtons",
                         "Text": "Is het slachtoffer bewusteloos?",
@@ -82,6 +76,62 @@
                                 "name": "unconscious",
                                 "optie": "Nee",
                                 "text": "nee"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "textInput",
+                        "Text": "contact gegevens",
+                        "options": [
+                            {
+                                "name": "naam",
+                                "inputType": "text",
+                                "inhoud": "naam"
+                            },
+                            {
+                                "name": "email",
+                                "inputType": "email",
+                                "inhoud": "email"
+                            },
+                            {
+                                "name": "telefoon",
+                                "inputType": "Tel",
+                                "inhoud": "telefoon"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "FormButton",
+                        "Text": "Button Test",
+                        "options": [
+                            {
+                                "name": "button1",
+                                "optie": "",
+                                "function": "",
+                                "text": "Dit is een button"
+                            },
+                            {
+                                "name": "button2",
+                                "optie": "",
+                                "function": "",
+                                "text": "dit is 2 button"
+                            },
+                            {
+                                "name": "button3",
+                                "optie": "",
+                                "function": "",
+                                "text": "dit is 2 button"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "textInput",
+                        "Text": "Waar is het gebeurd?",
+                        "options": [
+                            {
+                                "name": "Where",
+                                "inputType": "text",
+                                "inhoud": "Locatie"
                             }
                         ]
                     }
