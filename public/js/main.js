@@ -21,16 +21,34 @@ function getJSONUrl(json)
     targetHTML.href = URL + "admin/savePage/" + json;
 }
 
+function sendJSON(str_json)
+{
+    request = new XMLHttpRequest();
+    request.open("POST", "JSON_Handler.php", true);
+    request.setRequestHeader("Content-type", "application/json");
+    request.send(str_json);
+
+    window.location.replace(window.location.href + "/savePage");
+}
+
 var json = new JSONExport;
 
 var mainPage = new Page;
 var snelleJellePage = new Page;
 
-var welcomeTextbox = new Textbox("Welcome", "purple");
 
-mainPage.content.push(welcomeTextbox);
+mainPage.content.push(new Textbox("Wat wilt u melden?", "purple"));
+mainPage.content.push(new Button("Ongeval"      ,"category-FirstAid.png" ));
+mainPage.content.push(new Button("Vechtpartij"  ,"category-fight.png" ));
+mainPage.content.push(new Button("Wapens"       ,"category-weapons.png" ));
+mainPage.content.push(new Button("Drugs"        ,"category-drugs.png" ));
+mainPage.content.push(new Button("Diefstal"     ,"category-theft.png" ));
+mainPage.content.push(new Button("Pesten"       ,"category-bullying.png" ));
+mainPage.content.push(new Button("Overlast"     ,"category-nuisance.png" ));
+mainPage.content.push(new Button("Overige"      ,"category-other.png" ));
+
+
+
 
 json.pages.push(mainPage);
 json.pages.push(snelleJellePage);
-
-getJSONUrl(JSON.stringify(json));
