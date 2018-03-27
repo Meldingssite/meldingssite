@@ -12,8 +12,8 @@ function getPage(i)      // returns single page
     return JSON.parse(xmlhttp.responseText).pages[i]
 }
 
-function clearMainHTML() {
-    document.getElementsByTagName("main")[0].innerHTML = "";
+function clearPageHTML() {
+    document.getElementById("page").innerHTML = "";
 }
 
 
@@ -26,7 +26,7 @@ function renderTextbox(textboxObj) {
         var color = "#2d2d85";
     else                    //  hex code
         var color = textboxObj.color;
-    mainHTML = document.getElementsByTagName("main")[0];
+    pageHTML = document.getElementById("page");
 
     // Opening tag
     textboxHTML += "<div class='textbox' "
@@ -40,11 +40,11 @@ function renderTextbox(textboxObj) {
     // Closing tag
     textboxHTML += "</div>";
 
-    mainHTML.innerHTML += textboxHTML;
+    pageHTML.innerHTML += textboxHTML;
 }
 
 function renderButton(buttonObj) {
-    mainHTML = document.getElementsByTagName("main")[0];
+    pageHTML = document.getElementById("page");
     var buttonHTML = "";
 
     // Opening tag for .btn
@@ -63,10 +63,10 @@ function renderButton(buttonObj) {
     // Closing tag for .btn
     buttonHTML += "</div>";
 
-    mainHTML.innerHTML += buttonHTML;
+    pageHTML.innerHTML += buttonHTML;
 }
 function renderFormButton(buttonObj) {
-    var formButtonHTML = document.getElementsByTagName("main")[0];
+    var pageHTML = document.getElementById("page");
     var options = buttonObj.options;
     var formButtonHTML = "";
 
@@ -90,11 +90,11 @@ function renderFormButton(buttonObj) {
     //closing tags
     formButtonHTML += "</section></legend></fieldset>"
 
-    mainHTML.innerHTML += formButtonHTML;
+    pageHTML.innerHTML += formButtonHTML;
 }
 
 function renderTextInput(textInputObj) {
-    var mainHTML = document.getElementsByTagName("main")[0];
+    var pageHTML = document.getElementById("page");
     var options = textInputObj.options;
     var textInputHTML = "";
 
@@ -116,12 +116,12 @@ function renderTextInput(textInputObj) {
     //closing tags
     textInputHTML += "</section></legend></fieldset>"
 
-    mainHTML.innerHTML += textInputHTML;
+    pageHTML.innerHTML += textInputHTML;
 }
 
 
 function renderRadio(radioObj) {
-    var mainHTML = document.getElementsByTagName("main")[0];
+    var pageHTML = document.getElementById("page");
     var options = radioObj.options;
     var radioHTML = "";
 
@@ -142,7 +142,7 @@ function renderRadio(radioObj) {
     //closing tags
     radioHTML += "</section></legend></fieldset>"
 
-    mainHTML.innerHTML += radioHTML;
+    pageHTML.innerHTML += radioHTML;
 }
 function renderDropDown(dropObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
@@ -175,7 +175,7 @@ function renderForm(form)       // renders a form and its elements
 {
     var content = form.content;
 
-    document.getElementsByTagName("main")[0].innerHTML += "<form action='"
+    document.getElementById("page").innerHTML += "<form action='"
         + form.formFunctie
         + "'>";
     for (formElement in content)    //  determine pageElement type
@@ -194,14 +194,14 @@ function renderForm(form)       // renders a form and its elements
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
-    document.getElementsByTagName("main")[0].innerHTML += "</form>";
+    document.getElementById("page").innerHTML += "</form>";
 }
 
 function renderPage(i) // Renders a page, which is an array of objects
 {
     var page = getPage(i);
 
-    clearMainHTML(); // Clear main
+    clearPageHTML(); // Clear main
 
     for (pageElement in page)    //  determine pageElement type
     {
