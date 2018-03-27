@@ -3,7 +3,7 @@
 </header>
 
 <main>
-    
+    <a id="saveJSON"><div class="btn">Generate JSON File</div></a>
 </main>
 
 <script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>
