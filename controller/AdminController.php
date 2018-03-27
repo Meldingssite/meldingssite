@@ -7,7 +7,9 @@ function index()
     render("admin/index");
 }
 
-function saveJSON()
+function savePage($JSONString)
 {
+    saveJSON($JSONString);
 
+    // header("Location:" . URL . "admin/index");
 }
