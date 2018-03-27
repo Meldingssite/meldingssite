@@ -4,7 +4,7 @@ xmlhttp.onreadystatechange = function () {
         renderPage(0);   // render index page
     }
 }
-xmlhttp.open("GET", SCRIPT_DIR + "", true);
+xmlhttp.open("GET", SCRIPT_DIR + "pagesExample.json", true);
 xmlhttp.send();
 
 // testing shit
