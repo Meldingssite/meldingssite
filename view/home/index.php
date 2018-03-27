@@ -4,11 +4,7 @@
 
 
 <main id="page">
-
-
-
-
-        
+    <!-- Javascript will render to this based on JSON file -->
 </main>
 
 <script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>
