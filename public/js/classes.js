@@ -8,7 +8,7 @@ class JSONExport
 }
 
 
-class page
+class Page
 {
     constructor()
     {
@@ -16,7 +16,7 @@ class page
     }
 }
 
-class textbox
+class Textbox
 {
     constructor(text, color)
     {
@@ -26,7 +26,7 @@ class textbox
     }
 }
 
-class button
+class Button
 {
     constructor(name, image_url)
     {
@@ -36,7 +36,7 @@ class button
     }
 }
 
-class form
+class Form
 {
     constructor()
     {
@@ -46,7 +46,7 @@ class form
     }
 }
 
-class textInput
+class TextInput
 {
     constructor(text, name, inhoud)
     {
@@ -57,7 +57,7 @@ class textInput
     }
 }
 
-class radioButton
+class RadioButton
 {
     constructor(text)
     {
@@ -67,7 +67,7 @@ class radioButton
     }
 }
 
-class radioButtonOption
+class RadioButtonOption
 {
     constructor(name, option, text)
     {
