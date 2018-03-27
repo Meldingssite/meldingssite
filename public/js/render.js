@@ -154,8 +154,8 @@ function renderDropDown(dropObj) {
         + dropObj.text;
     //section
     dropHTML += "<section class=input><select name='"
-        + dropObj.name;
-    + "'>";
+        + dropObj.name
+        + "'>";
     //knop
     for (option in options) {
         dropHTML += "<option  name='"
@@ -163,8 +163,8 @@ function renderDropDown(dropObj) {
             + "'value ='"
             + options[option].optie
             + "'>"
-            + options[option].text;
-        + "</option>";
+            + options[option].text
+            + "</option>";
     }
     //closing tags
     dropHTML += "</section></legend></fieldset>"
