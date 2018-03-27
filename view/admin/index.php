@@ -3,8 +3,9 @@
 </header>
 
 <main>
-    <form action="post" id="login">
-        <input type="text" name="username" id="username" placeholder="Username">
-        <input type="password" name="password" id="password" placeholder="Password">
-    </form>
+    
 </main>
+
+<script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>
+<script src="<?php echo URL . SCRIPT_DIR?>render.js"></script>
+<script src="<?php echo URL . SCRIPT_DIR?>main.js"></script>
