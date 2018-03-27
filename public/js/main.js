@@ -11,3 +11,5 @@ xmlhttp.onreadystatechange = function () {
 }
 xmlhttp.open("GET", SCRIPT_DIR + "pagesExample.json", true);
 xmlhttp.send();
+
+// testing shit
