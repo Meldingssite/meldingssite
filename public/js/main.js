@@ -24,10 +24,11 @@ function getJSONUrl(json)
 function sendJSON(str_json)
 {
     request = new XMLHttpRequest();
-    request.open("POST", "JSON_Handler.php", true);
+    request.open("POST", URL + "model/AdminModel.php", true)
     request.setRequestHeader("Content-type", "application/json");
     request.send(str_json);
-
+    console.dir(request);
+    
     window.location.replace(window.location.href + "/savePage");
 }
 

@@ -13,6 +13,7 @@
 
 <script>
 // Import PHP variables into JavaScript
+var ROOT = <?php echo json_encode(ROOT) ?>;
 var URL = <?php echo json_encode(URL) ?>;
 var SCRIPT_DIR = <?php echo json_encode(URL . SCRIPT_DIR) ?>;
 var IMAGE_DIR = <?php echo json_encode(URL . IMAGE_DIR) ?>;

@@ -3,7 +3,7 @@
 </header>
 
 <main>
-    <div class="btn" onclick="sendJSON(json)">Generate JSON File</div>
+    <div class="btn" onclick="sendJSON(JSON.stringify(json))">Generate JSON File</div>
 </main>
 
 <script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>
