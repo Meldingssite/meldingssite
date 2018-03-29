@@ -11,5 +11,5 @@ function savePage()
 {
     saveJSON();
 
-    // header("Location:" . URL . "admin");
+    header("Location:" . URL . "admin");
 }

@@ -1,5 +1,3 @@
-
-
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
     if (
@@ -15,21 +13,21 @@ xmlhttp.send();
 
 // testing shit
 
-function getJSONUrl(json)
-{
-    targetHTML = document.getElementById("saveJSON");
-    targetHTML.href = URL + "admin/savePage/" + json;
-}
-
 function sendJSON(str_json)
 {
     request = new XMLHttpRequest();
-    request.open("POST", URL + "model/AdminModel.php", true)
+    request.open("POST", "admin/savePage", true)
     request.setRequestHeader("Content-type", "application/json");
-    request.send(str_json);
+    request.onreadystatechange = function(){
+        if(request.readyState == 4)
+        {
+            console.log("Data transferred.");
+            
+            window.location.replace(window.location.href + "/savePage");
+        }    
+    }
+    console.dir(request.send(str_json));
     console.dir(request);
-    
-    window.location.replace(window.location.href + "/savePage");
 }
 
 var json = new JSONExport;
