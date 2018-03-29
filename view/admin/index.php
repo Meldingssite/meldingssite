@@ -4,7 +4,7 @@
 
 <main>
     <form action="<?php echo URL ?>admin/savePage" method="post">
-        <input type="text" name="JSON" id="JSONText">
+        <input type="text" name="JSON" id="JSONText" style="display:none;">
         <input type="submit" value="Generate JSON File">
     </form>
 </main>
