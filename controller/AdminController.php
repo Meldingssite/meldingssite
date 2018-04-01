@@ -7,6 +7,16 @@ function index()
     render("admin/index");
 }
 
+function createPage()
+{
+    render("admin/create");
+}
+
+function deletePage()
+{
+    render("admin/delete");
+}
+
 function savePage()
 {
     saveJSON();
