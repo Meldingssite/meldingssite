@@ -29,25 +29,3 @@ function sendJSON(str_json)
     console.dir(request.send(str_json));
     console.dir(request);
 }
-
-var json = new JSONExport;
-
-var mainPage = new Page;
-var snelleJellePage = new Page;
-
-
-mainPage.content.push(new Textbox("Wat wilt u melden?", "purple"));
-mainPage.content.push(new Button("Ongeval"      ,"category-FirstAid.png" ));
-mainPage.content.push(new Button("Vechtpartij"  ,"category-fight.png" ));
-mainPage.content.push(new Button("Wapens"       ,"category-weapons.png" ));
-mainPage.content.push(new Button("Drugs"        ,"category-drugs.png" ));
-mainPage.content.push(new Button("Diefstal"     ,"category-theft.png" ));
-mainPage.content.push(new Button("Pesten"       ,"category-bullying.png" ));
-mainPage.content.push(new Button("Overlast"     ,"category-nuisance.png" ));
-mainPage.content.push(new Button("Overige"      ,"category-other.png" ));
-
-
-
-
-json.pages.push(mainPage);
-json.pages.push(snelleJellePage);
