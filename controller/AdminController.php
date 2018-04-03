@@ -7,12 +7,12 @@ function index()
     render("admin/index");
 }
 
-function createPage()
+function create()
 {
     render("admin/create");
 }
 
-function deletePage()
+function delete()
 {
     render("admin/delete");
 }
@@ -22,4 +22,9 @@ function savePage()
     saveJSON();
 
     header("Location:" . URL . "admin");
+}
+
+function deletePages()
+{
+
 }

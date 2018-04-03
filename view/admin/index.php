@@ -3,16 +3,11 @@
 </header>
 
 <main>
-    <form action="<?php echo URL ?>admin/savePage" method="post">
-        <input type="text" name="JSON" id="JSONText" style="display:none;">
-        <input type="submit" value="Generate JSON File">
-    </form>
+    <a href="<?php echo URL ?>admin/create"><div class="btn">Create Page</div></a>
+
+    <a href="<?php echo URL ?>admin/delete"><div class="btn">Delete Page</div></a>
 </main>
 
 <script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR?>render.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR?>main.js"></script>
-
-<script>
-    document.getElementById("JSONText").value = JSON.stringify(json);
-</script>
