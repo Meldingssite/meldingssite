@@ -3,7 +3,9 @@
 </header>
 
 <main>
-    DELETE
+    <form action="<?php echo URL ?>admin/deletePages" method="post">
+        <button type="submit">Delete pages.json</button>
+    </form>
 </main>
 
 <script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>

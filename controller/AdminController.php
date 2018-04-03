@@ -26,5 +26,5 @@ function savePage()
 
 function deletePages()
 {
-
+    deleteJSON();
 }
