@@ -9,3 +9,9 @@ function saveJSON()
     fwrite($fp, $_POST["JSON"]);
     fclose($fp);
 }
+
+function deleteJSON()
+{
+    if(unlink(ROOT . SCRIPT_DIR . "pages.json"))
+    echo "File Deleted.";
+}
