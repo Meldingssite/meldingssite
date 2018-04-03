@@ -5,12 +5,27 @@ class JSONExport
     {
         this.pages = [];
     }
+
+    addPage(page)
+    {
+        this.pages.push(page);
+    }
 }
 
 
 class Page
 {
     constructor()
+    {
+        this.content = [];
+    }
+
+    addContent(content)
+    {
+        this.content.push(content);
+    }
+
+    clearContent()
     {
         this.content = [];
     }
