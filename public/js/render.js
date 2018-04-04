@@ -1,5 +1,6 @@
 /*****************************************************************/
 /*** All Functions used to render elements to the page go here ***/
+
 /*****************************************************************/
 
 function getPages()     // returns all pages
@@ -15,7 +16,6 @@ function getPage(i)      // returns single page
 function clearPageHTML() {
     document.getElementById("page").innerHTML = "";
 }
-
 
 
 function renderTextbox(textboxObj) {
@@ -65,6 +65,7 @@ function renderButton(buttonObj) {
 
     pageHTML.innerHTML += buttonHTML;
 }
+
 function renderFormButton(buttonObj) {
     var pageHTML = document.getElementById("page");
     var options = buttonObj.options;
@@ -144,6 +145,7 @@ function renderRadio(radioObj) {
 
     pageHTML.innerHTML += radioHTML;
 }
+
 function renderDropDown(dropObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
     var options = dropObj.options;

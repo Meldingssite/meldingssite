@@ -1,8 +1,6 @@
 /* CLASSES */
-class JSONExport
-{
-    constructor()
-    {
+class JSONExport {
+    constructor() {
         this.pages = [];
     }
 
@@ -13,10 +11,8 @@ class JSONExport
 }
 
 
-class Page
-{
-    constructor()
-    {
+class Page {
+    constructor() {
         this.content = [];
     }
 
@@ -31,64 +27,52 @@ class Page
     }
 }
 
-class Textbox
-{
-    constructor(text, color)
-    {
-        this.type   = "textbox";
-        this.text   = text;
-        this.color  = color;
+class Textbox {
+    constructor(text, color) {
+        this.type = "textbox";
+        this.text = text;
+        this.color = color;
     }
 }
 
-class Button
-{
-    constructor(name, image_url)
-    {
-        this.type       = "button";
-        this.name       = name;
-        this.image_url  = image_url;
+class Button {
+    constructor(name, image_url) {
+        this.type = "button";
+        this.name = name;
+        this.image_url = image_url;
     }
 }
 
-class Form
-{
-    constructor()
-    {
-        this.type       = "form";
+class Form {
+    constructor() {
+        this.type = "form";
         this.formAction = "";
-        this.content    = [];
+        this.content = [];
     }
 }
 
-class TextInput
-{
-    constructor(text, name, inhoud)
-    {
-        this.type   = "textInput";
-        this.text   = text;
-        this.name   = name;
+class TextInput {
+    constructor(text, name, inhoud) {
+        this.type = "textInput";
+        this.text = text;
+        this.name = name;
         this.inhoud = inhoud;
     }
 }
 
-class RadioButton
-{
-    constructor(text)
-    {
-        this.type    = "radioButtons";
-        this.text    = text;
+class RadioButton {
+    constructor(text) {
+        this.type = "radioButtons";
+        this.text = text;
         this.options = [];
     }
 }
 
-class RadioButtonOption
-{
-    constructor(name, option, text)
-    {
-        this.type   = "radioButtonOption";
-        this.name   = name;
+class RadioButtonOption {
+    constructor(name, option, text) {
+        this.type = "radioButtonOption";
+        this.name = name;
         this.option = option;
-        this.text   = text;
+        this.text = text;
     }
 }
