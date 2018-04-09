@@ -10,6 +10,11 @@ class JSONExport
     {
         this.pages.push(page);
     }
+
+    clear()
+    {
+        this.pages = [];
+    }
 }
 
 

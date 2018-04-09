@@ -27,4 +27,6 @@ function savePage()
 function deletePages()
 {
     deleteJSON();
+
+    header("Location:" . URL . "admin");    
 }
