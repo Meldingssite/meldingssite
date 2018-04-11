@@ -8,7 +8,7 @@ xmlhttp.onreadystatechange = function () {
         renderPage(0);   // render index page
 
 }
-xmlhttp.open("GET", SCRIPT_DIR + "pages.json", true);
+xmlhttp.open("GET", SCRIPT_DIR + "MeldingsApp.json", true);
 xmlhttp.send();
 
 // testing shit
