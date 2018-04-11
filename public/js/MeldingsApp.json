@@ -1,0 +1,164 @@
+{
+    "pages": [
+        {
+            "content": [
+                {
+                    "type": "textbox",
+                    "color": "purple",
+                    "text": "Wat wilt u melden?"
+                },
+                {
+                    "type": "button",
+                    "name": "Ongeval",
+                    "image_url": "category-FirstAid.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Vechtpartij",
+                    "image_url": "category-fight.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Wapens",
+                    "image_url": "category-weapons.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Drugs",
+                    "image_url": "category-drugs.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Diefstal",
+                    "image_url": "category-theft.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Pesten",
+                    "image_url": "category-bullying.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Overlast",
+                    "image_url": "category-nuisance.png"
+                },
+                {
+                    "type": "button",
+                    "name": "Overige",
+                    "image_url": "category-other.png"
+                }
+            ]
+        },
+
+        {
+            "content": [
+                {
+                    "type": "textbox",
+                    "color": "purple",
+                    "text": "Page 2"
+                },
+                {
+                    "type": "button",
+                    "color": "purple",
+                    "name": "test",
+                    "image_url": "category-nuisance.png"
+                },
+                {
+                    "type": "form",
+                    "formAction": "",
+                    "content": [
+                        {
+                            "type": "radioButtons",
+                            "text": "Is het slachtoffer bewusteloos?",
+                            "options": [
+                                {
+                                    "name": "unconscious",
+                                    "optie": "Ja",
+                                    "text": "ja"
+                                },
+                                {
+                                    "name": "unconscious",
+                                    "optie": "Nee",
+                                    "text": "nee"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "textInput",
+                            "text": "contact gegevens",
+                            "options": [
+                                {
+                                    "name": "naam",
+                                    "inputType": "text",
+                                    "inhoud": "naam"
+                                },
+                                {
+                                    "name": "email",
+                                    "inputType": "email",
+                                    "inhoud": "email"
+                                },
+                                {
+                                    "name": "telefoon",
+                                    "inputType": "Tel",
+                                    "inhoud": "telefoon"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "formButton",
+                            "text": "Button Test",
+                            "options": [
+                                {
+                                    "name": "button1",
+                                    "optie": "",
+                                    "function": "",
+                                    "text": "Dit is een button"
+                                },
+                                {
+                                    "name": "button2",
+                                    "optie": "",
+                                    "function": "",
+                                    "text": "dit is 2 button"
+                                },
+                                {
+                                    "name": "button3",
+                                    "optie": "",
+                                    "function": "",
+                                    "text": "dit is 2 button"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "dropDown",
+                            "text": "Button Test",
+                            "name": "Dropdown booootens",
+                            "options": [
+                                {
+                                    "name": "button1",
+                                    "optie": "",
+                                    "text": "Dit is een button"
+                                },
+                                {
+                                    "name": "button2",
+                                    "optie": "",
+                                    "text": "dit is 2 button"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "textInput",
+                            "text": "Waar is het gebeurd?",
+                            "options": [
+                                {
+                                    "name": "Where",
+                                    "inputType": "text",
+                                    "inhoud": "Locatie"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
