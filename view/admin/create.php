@@ -18,15 +18,27 @@
     </form>
 </main>
 
+<div id="createWindow" hidden>
+    <header id="createWindowHeader">Header</header>
+    <main id="createWindowMain">
+        <input type="text" name="buttonText" placeholder="Text">
+        <div id="createWindowSubmit" class="btn">Add Button</div>
+    </main>
+</div>
+
 <script src="<?php echo URL . SCRIPT_DIR?>classes.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR?>render.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR?>main.js"></script>
 
 <script>
+    var HTMLcreateWindow = document.getElementById("createWindow");
+    var HTMLcreateWindowHeader = document.getElementById("createWindowMain");
+    var HTMLcreateWindowMain = document.getElementById("createWindowMain");
 
     var json = new JSONExport;
     
     var mainPage = new Page;
+
         
     function clearPages()
     {
@@ -50,7 +62,10 @@
 
     function addButton()
     {
-        mainPage.addContent(new Button("button", "image_url"));        
+        //  Show Create Window
+        HTMLcreateWindow.hidden = false;
+
+        // mainPage.addContent(new Button("button", "image_url"));        
     }
 
     function addTextbox()
