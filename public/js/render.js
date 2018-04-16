@@ -215,7 +215,6 @@ function renderLocatie(i) {
 
 } // Renders Locatie Form
 
-
 function renderSubmit(naam) {
     document.getElementById("page").innerHTML += "<div class='btn'"
         + "onclick=nextPage('"
@@ -224,7 +223,6 @@ function renderSubmit(naam) {
         + "Volgende pagina"
         + "</div>";
 }   //Renders submit button for going to next page
-
 
 function nextPage(i) {
     ID++;
