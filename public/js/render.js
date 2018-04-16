@@ -3,22 +3,20 @@
 
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
+var locatieSubmit = false;
 
 function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
 }     // returns all pages
-
 
 function getPage(i) {
     return JSON.parse(xmlhttp.responseText).pages[i];
 
 }     // returns single page
 
-
 function clearPageHTML() {
     document.getElementById("page").innerHTML = "";
 } // clears HTML
-
 
 function renderTextbox(textboxObj) {
     textboxHTML = "";
@@ -198,6 +196,25 @@ function renderForm(form) {
     document.getElementById("page").innerHTML += "</form>";
 }      // renders a form and its elements
 
+function renderLocatie(i) {
+    locatieSubmit = true;
+    var page = getPage("Locaties");
+    pageHTML = document.getElementById("page");
+    var buttonHTML = "";
+    // Opening tag for .btn
+    buttonHTML += "<div class='btn'"
+        + "onclick=renderPage('"
+        + i
+        + "')>";
+
+    // button text
+    buttonHTML += "complete";
+    // Closing tag for .btn
+    buttonHTML += "</div>";
+    pageHTML.innerHTML += buttonHTML;
+
+} // Renders Locatie Form
+
 
 function renderSubmit(naam) {
     document.getElementById("page").innerHTML += "<div class='btn'"
@@ -215,27 +232,30 @@ function nextPage(i) {
 }   //Goes to next page
 
 function renderPage(i = "Home") {
+    clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
-        var content = page[ID].content;
+        if (locatieSubmit == true || i == "Home") {
+            var content = page[ID].content;
 
-        clearPageHTML(); // Clear main
-
-        for (pageElement in content)    //  determine pageElement type
-        {
-            if (content[pageElement].type === "textbox")
-                renderTextbox(content[pageElement]);
-            else if (content[pageElement].type === "button")
-                renderButton(content[pageElement]);
-            else if (content[pageElement].type === "form")
-                renderForm(content[pageElement]);
-            // type is unknown
-            else console.log("Unknown type: " + page[pageElement].type);
+            for (pageElement in content) {
+                if (content[pageElement].type === "textbox")
+                    renderTextbox(content[pageElement]);
+                else if (content[pageElement].type === "button")
+                    renderButton(content[pageElement]);
+                else if (content[pageElement].type === "form")
+                    renderForm(content[pageElement]);
+                // type is unknown
+                else console.log("Unknown type: " + page[pageElement].type);
+            }   //  determine pageElement type
+            if (i !== "Home") {
+                renderSubmit(i);
+            }
         }
-        if (i !== "Home") {
-            renderSubmit(i);
-
+        else {
+            renderLocatie(i);
         }
+
     }
     else {
         console.log('page does not exist yet!');
