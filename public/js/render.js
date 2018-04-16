@@ -4,16 +4,16 @@
 /*****************************************************************/
 var ID = 0;
 
-function getPages()     // returns all pages
-{
+function getPages(){
     return JSON.parse(xmlhttp.responseText).pages
-}
+}     // returns all pages
 
-function getPage(i)      // returns single page
-{
+
+function getPage(i) {
     return JSON.parse(xmlhttp.responseText).pages[i];
 
-}
+}     // returns single page
+
 
 function clearPageHTML() {
     document.getElementById("page").innerHTML = "";
@@ -176,8 +176,7 @@ function renderDropDown(dropObj) {
     mainHTML.innerHTML += dropHTML;
 }
 
-function renderForm(form)       // renders a form and its elements
-{
+function renderForm(form) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
         + form.formFunctie
@@ -198,7 +197,8 @@ function renderForm(form)       // renders a form and its elements
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
-}
+}      // renders a form and its elements
+
 
 function renderSubmit(naam) {
     document.getElementById("page").innerHTML += "<div class='btn'"
@@ -215,26 +215,31 @@ function nextPage(i) {
     renderPage(i);
 }
 
-function renderPage(i = "Home") // Renders a page, which is an array of objects
-{
+function renderPage(i = "Home"){
     var page = getPage(i);
-    var content = page[ID].content;
+    if (page) {
+        var content = page[ID].content;
 
-    clearPageHTML(); // Clear main
+        clearPageHTML(); // Clear main
 
-    for (pageElement in content)    //  determine pageElement type
-    {
-        if (content[pageElement].type === "textbox")
-            renderTextbox(content[pageElement]);
-        else if (content[pageElement].type === "button")
-            renderButton(content[pageElement]);
-        else if (content[pageElement].type === "form")
-            renderForm(content[pageElement]);
-        // type is unknown
-        else console.log("Unknown type: " + page[pageElement].type);
+        for (pageElement in content)    //  determine pageElement type
+        {
+            if (content[pageElement].type === "textbox")
+                renderTextbox(content[pageElement]);
+            else if (content[pageElement].type === "button")
+                renderButton(content[pageElement]);
+            else if (content[pageElement].type === "form")
+                renderForm(content[pageElement]);
+            // type is unknown
+            else console.log("Unknown type: " + page[pageElement].type);
+        }
+        if (i !== "Home") {
+            renderSubmit(i);
+
+        }
     }
-    if (i !== "Home") {
-        renderSubmit(i);
-
+    else {
+        console.log('page does not exist yet!');
     }
-}
+
+} // Renders a page, which is an array of objects
