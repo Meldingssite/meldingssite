@@ -3,7 +3,7 @@
 
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
-var locatieSubmit = false;
+var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
 
 function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
