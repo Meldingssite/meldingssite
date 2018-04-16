@@ -15,7 +15,7 @@ xmlhttp.send();
 
 function sendJSON(str_json) {
     request = new XMLHttpRequest();
-    request.open("POST", "admin/savePage", true)
+    request.open("POST", "admin/savePage", true);
     request.setRequestHeader("Content-type", "application/json");
     request.onreadystatechange = function () {
         if (request.readyState == 4) {
