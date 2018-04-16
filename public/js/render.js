@@ -180,6 +180,7 @@ function renderDropDown(dropObj) {
 
 function renderForm(form)       // renders a form and its elements  
 {
+    console.dir(form);
     var content = form.content;
 
     document.getElementById("page").innerHTML += "<form action='"
@@ -197,17 +198,36 @@ function renderForm(form)       // renders a form and its elements
             renderFormButton(content[formElement]);
         else if (content[formElement].type === "dropDown")
             renderDropDown(content[formElement]);
-
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
+    console.log("naam: " + form.constructor.name);
+
+    renderSubmit(form.name);
+
+}
+
+function renderSubmit(naam) {
+    document.getElementById("page").innerHTML += "<div class='btn'"
+        + "onclick=nextPage('"
+        + naam
+        + "')>"
+        + "Volgende pagina"
+        + "</div>";
+}
+
+
+function nextPage(i) {
+    ID++;
+    renderPage(i);
+
 }
 
 function renderPage(i) // Renders a page, which is an array of objects
 {
     var page = getPage(i);
-    var content = page[ID].content;
+    var content = page[0].content;
 
     clearPageHTML(); // Clear main
 
