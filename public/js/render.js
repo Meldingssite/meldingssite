@@ -9,7 +9,7 @@ function getPages()     // returns all pages
     return JSON.parse(xmlhttp.responseText).pages
 }
 
-function getPage(i = "Home")      // returns single page
+function getPage(i)      // returns single page
 {
     return JSON.parse(xmlhttp.responseText).pages[i];
 
@@ -176,7 +176,7 @@ function renderDropDown(dropObj) {
     mainHTML.innerHTML += dropHTML;
 }
 
-function renderForm(form, page)       // renders a form and its elements
+function renderForm(form)       // renders a form and its elements
 {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
@@ -198,8 +198,6 @@ function renderForm(form, page)       // renders a form and its elements
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
-    renderSubmit(page);
-
 }
 
 function renderSubmit(naam) {
@@ -217,7 +215,7 @@ function nextPage(i) {
     renderPage(i);
 }
 
-function renderPage(i) // Renders a page, which is an array of objects
+function renderPage(i = "Home") // Renders a page, which is an array of objects
 {
     var page = getPage(i);
     var content = page[ID].content;
@@ -231,8 +229,12 @@ function renderPage(i) // Renders a page, which is an array of objects
         else if (content[pageElement].type === "button")
             renderButton(content[pageElement]);
         else if (content[pageElement].type === "form")
-            renderForm(content[pageElement], i);
+            renderForm(content[pageElement]);
         // type is unknown
         else console.log("Unknown type: " + page[pageElement].type);
+    }
+    if (i !== "Home") {
+        renderSubmit(i);
+
     }
 }

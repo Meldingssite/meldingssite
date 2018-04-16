@@ -170,12 +170,6 @@
             "text": "Page 3"
           },
           {
-            "type": "button",
-            "color": "purple",
-            "name": "test",
-            "image_url": "category-nuisance.png"
-          },
-          {
             "type": "form",
             "formAction": "",
             "content": [
@@ -196,25 +190,10 @@
                 ]
               },
               {
-                "type": "textInput",
-                "text": "contact gegevens",
-                "options": [
-                  {
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
-                  }
-                ]
+                "type": "button",
+                "color": "purple",
+                "name": "test",
+                "image_url": "category-nuisance.png"
               },
               {
                 "type": "formButton",
@@ -237,6 +216,27 @@
                     "optie": "",
                     "function": "",
                     "text": "dit is 2 button"
+                  }
+                ]
+              },
+              {
+                "type": "textInput",
+                "text": "contact gegevens",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
                   }
                 ]
               },
