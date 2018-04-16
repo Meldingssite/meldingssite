@@ -2,9 +2,9 @@
 /*** All Functions used to render elements to the page go here ***/
 
 /*****************************************************************/
-var ID = 0;
+var ID = 0;     //ID for remembering which question you're at
 
-function getPages(){
+function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
 }     // returns all pages
 
@@ -17,7 +17,7 @@ function getPage(i) {
 
 function clearPageHTML() {
     document.getElementById("page").innerHTML = "";
-}
+} // clears HTML
 
 
 function renderTextbox(textboxObj) {
@@ -43,7 +43,7 @@ function renderTextbox(textboxObj) {
     textboxHTML += "</div>";
 
     pageHTML.innerHTML += textboxHTML;
-}
+} // renders TextBox element
 
 function renderButton(buttonObj) {
     pageHTML = document.getElementById("page");
@@ -67,7 +67,7 @@ function renderButton(buttonObj) {
     buttonHTML += "</div>";
 
     pageHTML.innerHTML += buttonHTML;
-}
+}   // Render Button Element
 
 function renderFormButton(buttonObj) {
     var pageHTML = document.getElementById("page");
@@ -95,7 +95,7 @@ function renderFormButton(buttonObj) {
     formButtonHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += formButtonHTML;
-}
+}   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
     var pageHTML = document.getElementById("page");
@@ -121,8 +121,7 @@ function renderTextInput(textInputObj) {
     textInputHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += textInputHTML;
-}
-
+}   //  Render a field for inputting text
 
 function renderRadio(radioObj) {
     var pageHTML = document.getElementById("page");
@@ -147,7 +146,7 @@ function renderRadio(radioObj) {
     radioHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += radioHTML;
-}
+}   // Renders radio buttons
 
 function renderDropDown(dropObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
@@ -174,7 +173,7 @@ function renderDropDown(dropObj) {
     //closing tags
     dropHTML += "</section></legend></fieldset>"
     mainHTML.innerHTML += dropHTML;
-}
+}   // Renders dropdown buttons
 
 function renderForm(form) {
     var content = form.content;
@@ -207,15 +206,15 @@ function renderSubmit(naam) {
         + "')>"
         + "Volgende pagina"
         + "</div>";
-}
+}   //Renders submit button for going to next page
 
 
 function nextPage(i) {
     ID++;
     renderPage(i);
-}
+}   //Goes to next page
 
-function renderPage(i = "Home"){
+function renderPage(i = "Home") {
     var page = getPage(i);
     if (page) {
         var content = page[ID].content;
