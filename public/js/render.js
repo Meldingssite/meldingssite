@@ -2,23 +2,21 @@
 /*** All Functions used to render elements to the page go here ***/
 
 /*****************************************************************/
-var ID = 0;
+var ID = 0;     //ID for remembering which question you're at
+var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
 
-function getPages()     // returns all pages
-{
+function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
-}
+}     // returns all pages
 
-function getPage(i)      // returns single page
-{
+function getPage(i) {
     return JSON.parse(xmlhttp.responseText).pages[i];
 
-}
+}     // returns single page
 
 function clearPageHTML() {
     document.getElementById("page").innerHTML = "";
-}
-
+} // clears HTML
 
 function renderTextbox(textboxObj) {
     textboxHTML = "";
@@ -43,7 +41,7 @@ function renderTextbox(textboxObj) {
     textboxHTML += "</div>";
 
     pageHTML.innerHTML += textboxHTML;
-}
+} // renders TextBox element
 
 function renderButton(buttonObj) {
     pageHTML = document.getElementById("page");
@@ -67,7 +65,7 @@ function renderButton(buttonObj) {
     buttonHTML += "</div>";
 
     pageHTML.innerHTML += buttonHTML;
-}
+}   // Render Button Element
 
 function renderFormButton(buttonObj) {
     var pageHTML = document.getElementById("page");
@@ -95,7 +93,7 @@ function renderFormButton(buttonObj) {
     formButtonHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += formButtonHTML;
-}
+}   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
     var pageHTML = document.getElementById("page");
@@ -121,8 +119,7 @@ function renderTextInput(textInputObj) {
     textInputHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += textInputHTML;
-}
-
+}   //  Render a field for inputting text
 
 function renderRadio(radioObj) {
     var pageHTML = document.getElementById("page");
@@ -147,7 +144,7 @@ function renderRadio(radioObj) {
     radioHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += radioHTML;
-}
+}   // Renders radio buttons
 
 function renderDropDown(dropObj) {
     var mainHTML = document.getElementsByTagName("main")[0];
@@ -174,10 +171,9 @@ function renderDropDown(dropObj) {
     //closing tags
     dropHTML += "</section></legend></fieldset>"
     mainHTML.innerHTML += dropHTML;
-}
+}   // Renders dropdown buttons
 
-function renderForm(form)       // renders a form and its elements
-{
+function renderForm(form) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
         + form.formFunctie
@@ -198,7 +194,26 @@ function renderForm(form)       // renders a form and its elements
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
-}
+}      // renders a form and its elements
+
+function renderLocatie(i) {
+    locatieSubmit = true;
+    var page = getPage("Locaties");
+    pageHTML = document.getElementById("page");
+    var buttonHTML = "";
+    // Opening tag for .btn
+    buttonHTML += "<div class='btn'"
+        + "onclick=renderPage('"
+        + i
+        + "')>";
+
+    // button text
+    buttonHTML += "complete";
+    // Closing tag for .btn
+    buttonHTML += "</div>";
+    pageHTML.innerHTML += buttonHTML;
+
+} // Renders Locatie Form
 
 function renderSubmit(naam) {
     document.getElementById("page").innerHTML += "<div class='btn'"
@@ -207,34 +222,41 @@ function renderSubmit(naam) {
         + "')>"
         + "Volgende pagina"
         + "</div>";
-}
-
+}   //Renders submit button for going to next page
 
 function nextPage(i) {
     ID++;
     renderPage(i);
-}
+}   //Goes to next page
 
-function renderPage(i = "Home") // Renders a page, which is an array of objects
-{
-    var page = getPage(i);
-    var content = page[ID].content;
-
+function renderPage(i = "Home") {
     clearPageHTML(); // Clear main
+    var page = getPage(i);
+    if (page) {
+        if (locatieSubmit == true || i == "Home") {
+            var content = page[ID].content;
 
-    for (pageElement in content)    //  determine pageElement type
-    {
-        if (content[pageElement].type === "textbox")
-            renderTextbox(content[pageElement]);
-        else if (content[pageElement].type === "button")
-            renderButton(content[pageElement]);
-        else if (content[pageElement].type === "form")
-            renderForm(content[pageElement]);
-        // type is unknown
-        else console.log("Unknown type: " + page[pageElement].type);
-    }
-    if (i !== "Home") {
-        renderSubmit(i);
+            for (pageElement in content) {
+                if (content[pageElement].type === "textbox")
+                    renderTextbox(content[pageElement]);
+                else if (content[pageElement].type === "button")
+                    renderButton(content[pageElement]);
+                else if (content[pageElement].type === "form")
+                    renderForm(content[pageElement]);
+                // type is unknown
+                else console.log("Unknown type: " + page[pageElement].type);
+            }   //  determine pageElement type
+            if (i !== "Home") {
+                renderSubmit(i);
+            }
+        }
+        else {
+            renderLocatie(i);
+        }
 
     }
-}
+    else {
+        console.log('page does not exist yet!');
+    }
+
+} // Renders a page, which is an array of objects
