@@ -2,15 +2,19 @@
 /*** All Functions used to render elements to the page go here ***/
 
 /*****************************************************************/
+var ID = 0;
 
 function getPages()     // returns all pages
 {
     return JSON.parse(xmlhttp.responseText).pages
 }
 
-function getPage(i)      // returns single page
+function getPage(i = "Home")      // returns single page
 {
-    return JSON.parse(xmlhttp.responseText).pages[i]
+    console.log(i);
+    console.log(JSON.parse(xmlhttp.responseText).pages[i]);
+    return JSON.parse(xmlhttp.responseText).pages[i];
+
 }
 
 function clearPageHTML() {
@@ -46,10 +50,11 @@ function renderTextbox(textboxObj) {
 function renderButton(buttonObj) {
     pageHTML = document.getElementById("page");
     var buttonHTML = "";
-
     // Opening tag for .btn
     buttonHTML += "<div class='btn'"
-        + "onclick='renderPage(1)'>";
+        + "onclick=renderPage('"
+        + buttonObj.name
+        + "')>";
 
     // img tag
     buttonHTML += "<img src='"
@@ -202,7 +207,7 @@ function renderForm(form)       // renders a form and its elements
 function renderPage(i) // Renders a page, which is an array of objects
 {
     var page = getPage(i);
-    var content = page.content;
+    var content = page[ID].content;
 
     clearPageHTML(); // Clear main
 
