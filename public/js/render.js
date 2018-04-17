@@ -196,49 +196,91 @@ function renderForm(form) {
     document.getElementById("page").innerHTML += "</form>";
 }      // renders a form and its elements
 
-function renderLocatie(i) {
-    renderLocatieForm();
-    pageHTML = document.getElementById("page");
-    var buttonHTML = "";
-    // Opening tag for .btn
-    buttonHTML += "<div class='btn'"
-        + "onclick=renderPage('"
-        + i
-        + "')>";
-    // button text
-    buttonHTML += "complete";
-    // Closing tag for .btn
-    buttonHTML += "</div>";
-    pageHTML.innerHTML += buttonHTML;
 
-
-    locatieSubmit = true;
-
-} // Renders Locatie Form
-
-function renderLocatieForm(school = null) {
-
+function renderLocatieForm(Locaties, school = null) {
+    clearPageHTML(); // Clear main
+    console.log(school);
     var page = getPage("Locaties");
     var content = page[ID].content;
-    console.log("runt");
     if (school === null) {
-        renderLocatieList(content);
+        renderLocatieList(Locaties, content);
 
     }
     else {
-        renderLocatieList(content);
-        renderLocatieElements(school);
-
-
+        renderLocatieElements(Locaties, content, school);
     }
 }
-function renderLocatieList(content){
-    console.dir(content);
-    for(var i = 0; i < content.length; i++){
-        console.log(content);
+
+function renderLocatieList(Locaties, content) {
+    var buttonHTML = "";
+    var pageHTML = document.getElementById("page");
+    var schoolNaam = "";
+    for (var i = 0; i < Object.keys(content).length; i++) {
+        // Opening tag for .btn
+        var schoolNaam = Object.keys(content)[i];
+        var schoolSplit = schoolNaam.replace(new RegExp(" ", "g"), '_');
+        console.log(schoolSplit);
+        buttonHTML += "<div class='btn'"
+            + "onclick=renderLocatieForm('"
+            + Locaties
+            + "','"
+            + schoolSplit
+            + "')"
+            + '>';
+        // button text
+        buttonHTML += Object.keys(content)[i];
+
+        // Closing tag for .btn
+        buttonHTML += "</div>";
     }
+    pageHTML.innerHTML += buttonHTML;
+
 }
-function renderLocatieElements(){
+
+function renderLocatieElements(Locaties, content, Parent) {
+    var items = content[Parent.replace(new RegExp("_", "g"), ' ')];
+    renderLocatieButtons(Locaties, items);
+    renderLocatieInput(Locaties);
+
+
+}
+
+function renderLocatieButtons(Locaties, Items) {
+    var buttonHTML = "";
+    var pageHTML = document.getElementById("page");
+    buttonHTML += "<section class=input>";
+    for (var i = 0; i < Items.length; i++) {
+        // Opening tag for .btn
+        var Naam = Items[i];
+        var Split = Naam.replace(new RegExp(" ", "g"), '_');
+        console.log(Split);
+        buttonHTML += "<div class='btn'"
+            + "onclick=locatieSend('"
+            + Locaties
+            + "','"
+            + Split
+            + "')"
+            + '>';
+        // button text
+        buttonHTML += Items[i];
+
+        // Closing tag for .btn
+        buttonHTML += "</div>";
+    }
+    buttonHTML += "<input class='btn'"
+        + " id='locatieName'"
+        + " placeholder='lokaal'"
+        + ">";
+    buttonHTML += '<button  id="lokaalButton" onclick="getLocatiecontent('
+        + "'"
+        + Locaties
+        + "'"
+        + ')"> Submit </button></section>';
+    //closing tags
+    pageHTML.innerHTML += buttonHTML;
+}
+
+function renderLocatieInput(Locaties) {
 
 }
 
@@ -277,7 +319,7 @@ function renderPage(i = "Home") {
             }
         }
         else {
-            renderLocatie(i);
+            renderLocatieForm(i);
         }
 
     }
@@ -286,3 +328,15 @@ function renderPage(i = "Home") {
     }
 
 } // Renders a page, which is an array of objects
+
+function locatieSend(Locaties, locatie) {
+    locatieSubmit = true;
+    console.log(Locaties + " " + locatie);
+    renderPage(Locaties);
+
+
+}
+
+function getLocatiecontent(Locaties) {
+    locatieSend(Locaties, document.getElementById('locatieName').value);
+}
