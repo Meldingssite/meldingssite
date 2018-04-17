@@ -28,5 +28,6 @@ function deletePages()
 {
     deleteJSON();
 
-    header("Location:" . URL . "admin");    
+    header("Location:" . URL . "admin");
 }
+

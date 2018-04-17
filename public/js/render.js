@@ -236,13 +236,10 @@ function renderLocatieList(Locaties, content) {
 
 function renderLocatieElements(Locaties, content, Parent) {
     var items = content[Parent.replace(new RegExp("_", "g"), ' ')];
-    renderLocatieButtons(Locaties, items);
-    renderLocatieInput(Locaties);
-
-
+    renderLocatieButtons(Locaties, items, Parent);
 } //renders second list with places in the school
 
-function renderLocatieButtons(Locaties, Items) {
+function renderLocatieButtons(Locaties, Items, school) {
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     buttonHTML += "<section class=input>";
@@ -253,6 +250,8 @@ function renderLocatieButtons(Locaties, Items) {
         buttonHTML += "<div class='btn'"
             + "onclick=locatieSend('"
             + Locaties
+            + "','"
+            + school
             + "','"
             + Split
             + "')"
@@ -270,6 +269,8 @@ function renderLocatieButtons(Locaties, Items) {
     buttonHTML += '<button  id="lokaalButton" onclick="getLocatiecontent('
         + "'"
         + Locaties
+        + "','"
+        + school
         + "'"
         + ')"> Submit </button></section>';
     //closing tags
@@ -321,11 +322,18 @@ function renderPage(i = "Home") {
 
 } // Renders a page, which is an array of objects
 
-function locatieSend(Locaties, locatie = null) {
+function locatieSend(Locaties, school, locatie = null,) {
     locatieSubmit = true;
     if (locatie == null) {
         locatie = document.getElementById('locatieName').value
     }
+    var data = ["Locaties", "school", "locatie"];
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Home/sendData", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(data);
+    console.dir(xhttp);
+
     console.log(Locaties + " " + locatie);
-    renderPage(Locaties);
+    // renderPage(Locaties);
 } // sends locatie and renders next page
