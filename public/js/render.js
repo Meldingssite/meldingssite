@@ -235,7 +235,6 @@ function renderPage(i = "Home") {
     if (page) {
         if (locatieSubmit == true || i == "Home") {
             var content = page[ID].content;
-
             for (pageElement in content) {
                 if (content[pageElement].type === "textbox")
                     renderTextbox(content[pageElement]);
