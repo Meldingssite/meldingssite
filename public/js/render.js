@@ -197,8 +197,7 @@ function renderForm(form) {
 }      // renders a form and its elements
 
 function renderLocatie(i) {
-
-    renderLocatieElements();
+    renderLocatieForm();
     pageHTML = document.getElementById("page");
     var buttonHTML = "";
     // Opening tag for .btn
@@ -218,18 +217,26 @@ function renderLocatie(i) {
 } // Renders Locatie Form
 
 function renderLocatieForm(school = null) {
-    
+
     var page = getPage("Locaties");
     var content = page[ID].content;
+    console.log("runt");
     if (school === null) {
-        renderLocatieList();
+        renderLocatieList(content);
+
     }
     else {
+        renderLocatieList(content);
         renderLocatieElements(school);
+
+
     }
 }
-function renderLocatieList(){
-
+function renderLocatieList(content){
+    console.dir(content);
+    for(var i = 0; i < content.length; i++){
+        console.log(content);
+    }
 }
 function renderLocatieElements(){
 
