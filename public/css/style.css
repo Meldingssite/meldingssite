@@ -19,13 +19,20 @@ html
 {
     background-color: #ccc;
     overflow-y: scroll;
+    height: 100%;    
     
 }
 
 body
 {
+    height: 100%
+}
+
+body main
+{
     display: block;
-    max-width: 720px;
+    width: 720px;
+    height: 100%;    
     margin: 0 auto;
     height: 100%;    
 }
@@ -285,3 +292,55 @@ input[type=radio]
     left: 10;
     top:10;
 }
+
+/* Monitor */
+
+#Monitor
+{
+    width: calc(100% - 50px);
+}
+
+.alertItem
+{
+    width: calc(100% - 10px);
+    height: 100px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.alertItem > div
+{
+    float: left;
+
+    border: 1px solid blue;
+    height: 100%;
+    width: 120px;
+    overflow: hidden;
+
+}
+
+.alertType
+{
+    /* Center text (Single Line) */
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    white-space: nowrap;
+}
+
+.alertLocation
+{
+
+}
+
+.alertLocation div
+{
+    height: 50%;
+
+    /* Center text (Single Line) */
+    text-align: center;
+    height: 50%;
+    line-height: 50%;
+    white-space: nowrap;
+}
+
