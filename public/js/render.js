@@ -196,10 +196,8 @@ function renderForm(form) {
     document.getElementById("page").innerHTML += "</form>";
 }      // renders a form and its elements
 
-
 function renderLocatieForm(Locaties, school = null) {
     clearPageHTML(); // Clear main
-    console.log(school);
     var page = getPage("Locaties");
     var content = page[ID].content;
     if (school === null) {
@@ -209,7 +207,7 @@ function renderLocatieForm(Locaties, school = null) {
     else {
         renderLocatieElements(Locaties, content, school);
     }
-}
+} //renders form for locaties
 
 function renderLocatieList(Locaties, content) {
     var buttonHTML = "";
@@ -219,7 +217,6 @@ function renderLocatieList(Locaties, content) {
         // Opening tag for .btn
         var schoolNaam = Object.keys(content)[i];
         var schoolSplit = schoolNaam.replace(new RegExp(" ", "g"), '_');
-        console.log(schoolSplit);
         buttonHTML += "<div class='btn'"
             + "onclick=renderLocatieForm('"
             + Locaties
@@ -235,7 +232,7 @@ function renderLocatieList(Locaties, content) {
     }
     pageHTML.innerHTML += buttonHTML;
 
-}
+} //renders first list with schools
 
 function renderLocatieElements(Locaties, content, Parent) {
     var items = content[Parent.replace(new RegExp("_", "g"), ' ')];
@@ -243,7 +240,7 @@ function renderLocatieElements(Locaties, content, Parent) {
     renderLocatieInput(Locaties);
 
 
-}
+} //renders second list with places in the school
 
 function renderLocatieButtons(Locaties, Items) {
     var buttonHTML = "";
@@ -253,7 +250,6 @@ function renderLocatieButtons(Locaties, Items) {
         // Opening tag for .btn
         var Naam = Items[i];
         var Split = Naam.replace(new RegExp(" ", "g"), '_');
-        console.log(Split);
         buttonHTML += "<div class='btn'"
             + "onclick=locatieSend('"
             + Locaties
@@ -278,11 +274,7 @@ function renderLocatieButtons(Locaties, Items) {
         + ')"> Submit </button></section>';
     //closing tags
     pageHTML.innerHTML += buttonHTML;
-}
-
-function renderLocatieInput(Locaties) {
-
-}
+}   //renders the buttons for places in the school
 
 function renderSubmit(naam) {
     document.getElementById("page").innerHTML += "<div class='btn'"
@@ -329,14 +321,11 @@ function renderPage(i = "Home") {
 
 } // Renders a page, which is an array of objects
 
-function locatieSend(Locaties, locatie) {
+function locatieSend(Locaties, locatie = null) {
     locatieSubmit = true;
+    if (locatie == null) {
+        locatie = document.getElementById('locatieName').value
+    }
     console.log(Locaties + " " + locatie);
     renderPage(Locaties);
-
-
-}
-
-function getLocatiecontent(Locaties) {
-    locatieSend(Locaties, document.getElementById('locatieName').value);
-}
+} // sends locatie and renders next page
