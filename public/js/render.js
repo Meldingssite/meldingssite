@@ -327,11 +327,17 @@ function locatieSend(Locaties, school, locatie = null,) {
     if (locatie == null) {
         locatie = document.getElementById('locatieName').value
     }
-    var data = ["Locaties", "school", "locatie"];
+    console.log(school);
+    var school = school.replace(new RegExp("_", "g"), ' ');
+    console.log(school);
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(data);
+    var Data = new FormData();
+    Data.append("School", school);
+    Data.append("type", Locaties);
+    Data.append("locatie", locatie);
+    xhttp.send(Data);
+
     console.dir(xhttp);
 
     console.log(Locaties + " " + locatie);

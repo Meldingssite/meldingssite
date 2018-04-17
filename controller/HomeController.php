@@ -7,7 +7,5 @@ function index()
 
 function sendData()
 {
-    die("test");
-    echo "werkt";
     sendDataModel();
 }
