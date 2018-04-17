@@ -197,8 +197,8 @@ function renderForm(form) {
 }      // renders a form and its elements
 
 function renderLocatie(i) {
-    locatieSubmit = true;
-    var page = getPage("Locaties");
+
+    renderLocatieElements();
     pageHTML = document.getElementById("page");
     var buttonHTML = "";
     // Opening tag for .btn
@@ -206,14 +206,34 @@ function renderLocatie(i) {
         + "onclick=renderPage('"
         + i
         + "')>";
-
     // button text
     buttonHTML += "complete";
     // Closing tag for .btn
     buttonHTML += "</div>";
     pageHTML.innerHTML += buttonHTML;
 
+
+    locatieSubmit = true;
+
 } // Renders Locatie Form
+
+function renderLocatieForm(school = null) {
+    
+    var page = getPage("Locaties");
+    var content = page[ID].content;
+    if (school === null) {
+        renderLocatieList();
+    }
+    else {
+        renderLocatieElements(school);
+    }
+}
+function renderLocatieList(){
+
+}
+function renderLocatieElements(){
+
+}
 
 function renderSubmit(naam) {
     document.getElementById("page").innerHTML += "<div class='btn'"
