@@ -236,7 +236,7 @@ function renderLocatieScholen(alertType, content) {
 
 function renderLocatieList(alertType, content, school) {
 
-    var items = content[toggleSpace(Parent)];
+    var Items = content[toggleSpace(school)];
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     buttonHTML += "<section class=input>";
@@ -345,7 +345,7 @@ function toggleSpace(item) {
         returnItem = item.replace(new RegExp("_", "g"), ' ');
     }
     else {
-        console.log("something appears to have gone wrong!");
+        console.log("something appears to have gone wrong with" + item + " !");
     }
     return returnItem;
 }   // Switches between _ and spaces
