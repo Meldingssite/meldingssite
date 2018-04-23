@@ -3,7 +3,7 @@
 
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
-var locatieSubmit = true; //Houd bij of de locatie al is ingevoerd.
+var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
 var FormList = [];
 var sendArray = [];
 
@@ -288,13 +288,16 @@ function renderLocatieList(alertType, content, school) {
     pageHTML.innerHTML += buttonHTML;
 }   //renders the buttons for places in the school
 
-function renderSubmit(naam) {
+function renderSubmit(naam, school) {
     console.dir(naam);
 
     document.getElementById("page").innerHTML += "<div class='btn'"
         + "onclick=submitContents('"
         + naam
-        + "')>"
+        + "'"
+        + ',"'
+        + toggleSpace(school)
+        + '")>'
         + "Submit"
         + "</div>";
 }   //Renders submit button for going to next page
@@ -304,7 +307,7 @@ function nextPage(i) {
     renderPage(i);
 }   //Goes to next page
 
-function renderPage(i = "Home") {
+function renderPage(i = "Home", school = null) {
     clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
@@ -316,7 +319,7 @@ function renderPage(i = "Home") {
                 else if (content[pageElement].type === "button")
                     renderButton(content[pageElement]);
                 else if (content[pageElement].type === "form")
-                    renderSubmit(renderForm(content[pageElement]));
+                    renderSubmit(renderForm(content[pageElement]), school);
                 // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             }   //  determine pageElement type
@@ -346,7 +349,7 @@ function locatieSend(alertType, school, locatie = null,) {
     Data.append("type", alertType);
     Data.append("locatie", locatie);
     xhttp.send(Data);
-    renderPage(alertType);
+    renderPage(alertType, school);
 } // sends locatie and renders next page
 
 function dataSend(sendArray, school) {
@@ -359,18 +362,18 @@ function dataSend(sendArray, school) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
 
-    Data.append("type", alertType);
-    Data.append("locatie", locatie);
-    xhttp.send(Data);
-    renderPage(alertType);
+
+
 
     for (var x = 0; x < sendArray[0].length; x++) {
-
+        Data.append(sendArray[0][x], sendArray[1][x]);
     }
+    console.dir(Data);
+    // xhttp.send(Data);
 
 }
 
-function submitContents(naam) {
+function submitContents(naam, school) {
     naam = naam.split(",");
     sendArray = [];
     var dataArray = [];
@@ -393,7 +396,7 @@ function submitContents(naam) {
     }
     sendArray = [nameArray, dataArray];
     console.dir(sendArray);
-    dataSend(sendArray);
+    dataSend(sendArray, school);
 }
 
 function toggleSpace(item) {
@@ -403,6 +406,9 @@ function toggleSpace(item) {
     }
     else if (item.indexOf('_') > -1) {
         returnItem = item.replace(new RegExp("_", "g"), ' ');
+    }
+    else if(item.indexOf(' ') < 1 && item.indexOf('_') < 1){
+
     }
     else {
         console.log("something appears to have gone wrong with" + item + " !");
