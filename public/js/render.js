@@ -196,30 +196,30 @@ function renderForm(form) {
     document.getElementById("page").innerHTML += "</form>";
 }      // renders a form and its elements
 
-function renderLocatieForm(Locaties, school = null) {
+function renderLocatieForm(alertType, school = null) {
     clearPageHTML(); // Clear main
     var page = getPage("Locaties");
     var content = page[ID].content;
     if (school === null) {
-        renderLocatieList(Locaties, content);
+        renderLocatieScholen(alertType, content);
 
     }
     else {
-        renderLocatieElements(Locaties, content, school);
+        renderLocatieList(alertType, content, school);
     }
 } //renders form for locaties
 
-function renderLocatieList(Locaties, content) {
+function renderLocatieScholen(alertType, content) {
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     var schoolNaam = "";
     for (var i = 0; i < Object.keys(content).length; i++) {
         // Opening tag for .btn
         var schoolNaam = Object.keys(content)[i];
-        var schoolSplit = schoolNaam.replace(new RegExp(" ", "g"), '_');
+        var schoolSplit = toggleSpace(schoolNaam);
         buttonHTML += "<div class='btn'"
             + "onclick=renderLocatieForm('"
-            + Locaties
+            + alertType
             + "','"
             + schoolSplit
             + "')"
@@ -234,25 +234,21 @@ function renderLocatieList(Locaties, content) {
 
 } //renders first list with schools
 
-function renderLocatieElements(Locaties, content, Parent) {
-    var items = content[Parent.replace(new RegExp("_", "g"), ' ')];
-    renderLocatieButtons(Locaties, items);
-    renderLocatieInput(Locaties);
+function renderLocatieList(alertType, content, school) {
 
-
-} //renders second list with places in the school
-
-function renderLocatieButtons(Locaties, Items) {
+    var Items = content[toggleSpace(school)];
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     buttonHTML += "<section class=input>";
     for (var i = 0; i < Items.length; i++) {
         // Opening tag for .btn
         var Naam = Items[i];
-        var Split = Naam.replace(new RegExp(" ", "g"), '_');
+        var Split = toggleSpace(Naam);
         buttonHTML += "<div class='btn'"
             + "onclick=locatieSend('"
-            + Locaties
+            + alertType
+            + "','"
+            + school
             + "','"
             + Split
             + "')"
@@ -269,7 +265,9 @@ function renderLocatieButtons(Locaties, Items) {
         + ">";
     buttonHTML += '<button  id="lokaalButton" onclick="getLocatiecontent('
         + "'"
-        + Locaties
+        + alertType
+        + "','"
+        + school
         + "'"
         + ')"> Submit </button></section>';
     //closing tags
@@ -321,11 +319,33 @@ function renderPage(i = "Home") {
 
 } // Renders a page, which is an array of objects
 
-function locatieSend(Locaties, locatie = null) {
+function locatieSend(alertType, school, locatie = null,) {
     locatieSubmit = true;
     if (locatie == null) {
         locatie = document.getElementById('locatieName').value
     }
-    console.log(Locaties + " " + locatie);
-    renderPage(Locaties);
+
+    school = toggleSpace(school);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Home/sendData", true);
+    var Data = new FormData();
+    Data.append("School", school);
+    Data.append("type", alertType);
+    Data.append("locatie", locatie);
+    xhttp.send(Data);
+    renderPage(alertType);
 } // sends locatie and renders next page
+
+function toggleSpace(item) {
+    var returnItem = "";
+    if (item.indexOf(' ') > -1) {
+        returnItem = item.replace(new RegExp(" ", "g"), '_');
+    }
+    else if (item.indexOf('_') > -1) {
+        returnItem = item.replace(new RegExp("_", "g"), ' ');
+    }
+    else {
+        console.log("something appears to have gone wrong with" + item + " !");
+    }
+    return returnItem;
+}   // Switches between _ and spaces
