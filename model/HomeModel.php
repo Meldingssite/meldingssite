@@ -2,14 +2,13 @@
 function sendDataModel()
 {
     $servername = "localhost";
-//           ;
     $type = $_POST["type"];
     $locatie = $_POST['locatie'];
     $username = "root";
     $passwordDB = "mysql";
     $database = "meldingssite";
-    $tabel =  $_POST['School'];
-   // LEERPARKPROMENADE 100
+    $tabel = $_POST['School'];
+    // LEERPARKPROMENADE 100
 
     $conn = new mysqli($servername, $username, $passwordDB, $database);
     if ($conn->connect_error) {

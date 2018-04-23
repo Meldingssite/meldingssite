@@ -3,7 +3,9 @@
 
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
-var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
+var locatieSubmit = true; //Houd bij of de locatie al is ingevoerd.
+var FormList = [];
+var sendArray = [];
 
 function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
@@ -93,12 +95,14 @@ function renderFormButton(buttonObj) {
     formButtonHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += formButtonHTML;
+    return buttonObj.name;
 }   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
     var pageHTML = document.getElementById("page");
     var options = textInputObj.options;
     var textInputHTML = "";
+    var names = [];
 
     // Opening tag for radiobutton
     textInputHTML += "<fieldset> <legend>"
@@ -114,11 +118,13 @@ function renderTextInput(textInputObj) {
             + "' placeholder='"
             + options[option].inhoud
             + "'>";
+        names.push(options[option].name);
     }
     //closing tags
-    textInputHTML += "</section></legend></fieldset>"
+    textInputHTML += "</section></legend></fieldset>";
 
     pageHTML.innerHTML += textInputHTML;
+    return names;
 }   //  Render a field for inputting text
 
 function renderRadio(radioObj) {
@@ -130,20 +136,21 @@ function renderRadio(radioObj) {
     radioHTML += "<fieldset> <legend>"
         + radioObj.text;
     //section
-    radioHTML += "<section class=input>"
+    radioHTML += "<section class=input>";
     //knop
     for (option in options) {
         radioHTML += "<input type='radio' name='"
-            + options[option].name
+            + radioObj.name
             + "'value ='"
             + options[option].optie
             + "'>"
             + options[option].text;
     }
     //closing tags
-    radioHTML += "</section></legend></fieldset>"
+    radioHTML += "</section></legend></fieldset>";
 
     pageHTML.innerHTML += radioHTML;
+    return radioObj.name;
 }   // Renders radio buttons
 
 function renderDropDown(dropObj) {
@@ -169,31 +176,38 @@ function renderDropDown(dropObj) {
             + "</option>";
     }
     //closing tags
-    dropHTML += "</section></legend></fieldset>"
+    dropHTML += "</section></legend></fieldset>";
     mainHTML.innerHTML += dropHTML;
+    return dropObj.name;
 }   // Renders dropdown buttons
+
 
 function renderForm(form) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
-        + form.formFunctie
+        + form.formAction
         + "'>";
     for (formElement in content)    //  determine pageElement type
     {
-        if (content[formElement].type === "textInput")
-            renderTextInput(content[formElement]);
+        if (content[formElement].type === "textInput") {
+            var textInputList = renderTextInput(content[formElement]);
+            for (var x = 0; x < textInputList.length; x++) {
+                FormList.push(textInputList[x]);
+            }
+        }
         else if (content[formElement].type === "radioButtons")
-            renderRadio(content[formElement]);
+            FormList.push(renderRadio(content[formElement]));
         else if (content[formElement].type === "textMultipleInputs")
-            renderMultipleTextInput(content[formElement]);
+            FormList.push(renderMultipleTextInput(content[formElement]));
         else if (content[formElement].type === "formButton")
-            renderFormButton(content[formElement]);
+            FormList.push(renderFormButton(content[formElement]));
         else if (content[formElement].type === "dropDown")
-            renderDropDown(content[formElement]);
+            FormList.push(renderDropDown(content[formElement]));
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
+    return FormList;
 }      // renders a form and its elements
 
 function renderLocatieForm(alertType, school = null) {
@@ -275,11 +289,13 @@ function renderLocatieList(alertType, content, school) {
 }   //renders the buttons for places in the school
 
 function renderSubmit(naam) {
+    console.dir(naam);
+
     document.getElementById("page").innerHTML += "<div class='btn'"
-        + "onclick=nextPage('"
+        + "onclick=submitContents('"
         + naam
         + "')>"
-        + "Volgende pagina"
+        + "Submit"
         + "</div>";
 }   //Renders submit button for going to next page
 
@@ -300,13 +316,10 @@ function renderPage(i = "Home") {
                 else if (content[pageElement].type === "button")
                     renderButton(content[pageElement]);
                 else if (content[pageElement].type === "form")
-                    renderForm(content[pageElement]);
+                    renderSubmit(renderForm(content[pageElement]));
                 // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             }   //  determine pageElement type
-            if (i !== "Home") {
-                renderSubmit(i);
-            }
         }
         else {
             renderLocatieForm(i);
@@ -335,6 +348,53 @@ function locatieSend(alertType, school, locatie = null,) {
     xhttp.send(Data);
     renderPage(alertType);
 } // sends locatie and renders next page
+
+function dataSend(sendArray, school) {
+    locatieSubmit = true;
+    var Data = new FormData();
+    Data.append("School", school);
+
+
+    school = toggleSpace(school);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Home/sendData", true);
+
+    Data.append("type", alertType);
+    Data.append("locatie", locatie);
+    xhttp.send(Data);
+    renderPage(alertType);
+
+    for (var x = 0; x < sendArray[0].length; x++) {
+
+    }
+
+}
+
+function submitContents(naam) {
+    naam = naam.split(",");
+    sendArray = [];
+    var dataArray = [];
+    var nameArray = [];
+    for (var x = 0; x < naam.length; x++) {
+        console.log(naam[x] + " " + document.getElementsByName(naam[x]).length);
+        if (document.getElementsByName(naam[x]).length > 1) {
+            for (var y = 1; document.getElementsByName(naam[x]).length > y; y++) {
+                if (document.getElementsByName(naam[x])[y].checked) {
+                    dataArray[x] = document.getElementsByName(naam[x])[y].value;
+                    nameArray[x] = naam[x];
+                }
+            }
+        }
+        else {
+            dataArray[x] = document.getElementsByName(naam[x])[0].value;
+            nameArray[x] = naam[x];
+        }
+
+    }
+    sendArray = [nameArray, dataArray];
+    console.dir(sendArray);
+    dataSend(sendArray);
+}
 
 function toggleSpace(item) {
     var returnItem = "";
