@@ -15,3 +15,6 @@
         
     </div>
 </main>
+
+<script src="<?php echo SCRIPT_DIR?>monitor.js">
+</script>
