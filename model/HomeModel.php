@@ -14,10 +14,5 @@ function sendDataModel()
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    if ($conn) {
-        $conn->close();
-    }
-    if ($conn2) {
-        $conn2->close();
-    }
+    $conn->close();
 }
