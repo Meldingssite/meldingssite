@@ -1,3 +1,5 @@
+var latestTimeStamp;    //  Latest timestamp pulled from DB, used to check if DB has been updated
+
 function checkDB()
 {
     console.log("Checking Database");
