@@ -3,18 +3,20 @@
 //	FUCK PDO
 function openDatabaseConnection() 
 {
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-if ($conn->connect_error) {
-	$conn2 = new mysqli($servername, $username, '', $database);
-	if ($conn2->connect_error) {
-		die("Connection failed: " . $conn->connect_error . $conn->connect_error);
+	if ($conn->connect_error)
+	{
+		$conn2 = new mysqli($servername, $username, '', $database);
+		if ($conn2->connect_error)
+		{
+			die("Connection failed: " . $conn->connect_error . $conn->connect_error);
+		}
+		else
+			$conn = $conn2;
 	}
-	else
-		$conn = $conn2;
-	
 
-return $conn;
+	return $conn;
 }
 
 function render($filename)
