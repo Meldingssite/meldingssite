@@ -6,6 +6,8 @@ function sendDataModel()
     $locatie = $_POST['locatie'];
     $tabel =  $_POST['School'];
 
+    $conn = OpenDatabaseConnection();
+
     $sql = "INSERT INTO `$tabel` (type, locatie)
   VALUES ('$type', '$locatie')";
     if ($conn->query($sql) === TRUE) {
