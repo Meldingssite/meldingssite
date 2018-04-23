@@ -1,6 +1,5 @@
 <?php
 
-//	FUCK PDO
 function openDatabaseConnection() 
 {
 	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
