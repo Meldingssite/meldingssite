@@ -369,7 +369,7 @@ function dataSend(sendArray, school) {
         Data.append(sendArray[0][x], sendArray[1][x]);
     }
     console.dir(Data);
-    // xhttp.send(Data);
+    xhttp.send(Data);
 
 }
 
@@ -408,7 +408,7 @@ function toggleSpace(item) {
         returnItem = item.replace(new RegExp("_", "g"), ' ');
     }
     else if(item.indexOf(' ') < 1 && item.indexOf('_') < 1){
-
+        return item;
     }
     else {
         console.log("something appears to have gone wrong with" + item + " !");
