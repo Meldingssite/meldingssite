@@ -1,6 +1,12 @@
 <?php
+
 function sendDataModel()
 {
+    /*
+    Function Description
+    */
+
+    //  Variable Init
     $tabel = $_POST['School'];
     $conn = OpenDatabaseConnection();
     $keys = [];
@@ -12,7 +18,9 @@ function sendDataModel()
             $data[] = $ls_value;
         }
     }
-    $dataString = implode(", ", $data); // convert array to comma separated string
+    
+    // convert array to comma separated string
+    $dataString = implode(", ", $data);
     $keyString = implode(", ", $keys);
     if (!$id) {
         $sql = "INSERT INTO `$tabel`  ($keyString) VALUES (";
