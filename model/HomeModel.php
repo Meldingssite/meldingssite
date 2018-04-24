@@ -13,7 +13,14 @@ function sendDataModel()
     }
     $dataString = implode(", ", $data); // convert array to comma separated string
     $keyString = implode(", ", $keys);
-    $sql = "INSERT INTO `$tabel`  ($keyString) VALUES ('$dataString')";
+    $sql = "INSERT INTO `$tabel`  ($keyString) VALUES (";
+            foreach ($data as $key) {
+                $sql .= '"';
+                $sql .= $key;
+                $sql .= '",';
+            }
+    $sql = substr($sql, 0, -1);
+            $sql .= ")";
     if ($conn->query($sql) === TRUE) {
         echo "Account created successfully";
     } else {
