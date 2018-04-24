@@ -180,7 +180,7 @@ function renderFormButton(buttonObj) {
     formButtonHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += formButtonHTML;
-    return buttonO-bj.name;
+    return buttonObj.name;
 }   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
@@ -255,7 +255,7 @@ function renderDropDown(dropObj) {
         dropHTML += "<option  name='"
             + options[option].name
             + "'value ='"
-            + options[option].optie
+            + options[option].name
             + "'>"
             + options[option].text
             + "</option>";
