@@ -1,6 +1,91 @@
 /*****************************************************************/
-/*** All Functions used to render elements to the page go here ***/
+/************************** CLASSES ******************************/
+/*****************************************************************/
+class JSONExport {
+    constructor() {
+        this.pages = [];
+    }
 
+    addPage(page)
+    {
+        this.pages.push(page);
+    }
+
+    clear()
+    {
+        this.pages = [];
+    }
+}
+
+
+class Page {
+    constructor() {
+        this.content = [];
+    }
+
+    addContent(content)
+    {
+        this.content.push(content);
+    }
+
+    clearContent()
+    {
+        this.content = [];
+    }
+}
+
+class Textbox {
+    constructor(text, color) {
+        this.type = "textbox";
+        this.text = text;
+        this.color = color;
+    }
+}
+
+class Button {
+    constructor(name, image_url) {
+        this.type = "button";
+        this.name = name;
+        this.image_url = image_url;
+    }
+}
+
+class Form {
+    constructor() {
+        this.type = "form";
+        this.formAction = "";
+        this.content = [];
+    }
+}
+
+class TextInput {
+    constructor(text, name, inhoud) {
+        this.type = "textInput";
+        this.text = text;
+        this.name = name;
+        this.inhoud = inhoud;
+    }
+}
+
+class RadioButton {
+    constructor(text) {
+        this.type = "radioButtons";
+        this.text = text;
+        this.options = [];
+    }
+}
+
+class RadioButtonOption {
+    constructor(name, option, text) {
+        this.type = "radioButtonOption";
+        this.name = name;
+        this.option = option;
+        this.text = text;
+    }
+}
+
+/*****************************************************************/
+/*** All Functions used to render elements to the page go here ***/
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
 var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
@@ -95,7 +180,7 @@ function renderFormButton(buttonObj) {
     formButtonHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += formButtonHTML;
-    return buttonObj.name;
+    return buttonO-bj.name;
 }   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
@@ -419,3 +504,34 @@ function toggleSpace(item) {
     }
     return returnItem;
 }   // Switches between _ and spaces
+
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function () {
+    if (
+        this.readyState == 4 &&
+        this.status == 200 &&
+        document.getElementById("page")     // Element with ID page exists
+    )
+        renderPage();   // render index page
+
+}
+xmlhttp.open("GET", SCRIPT_DIR + "MeldingsApp.json", true);
+xmlhttp.send();
+
+// testing shit
+
+function sendJSON(str_json) {
+    request = new XMLHttpRequest();
+    request.open("POST", "admin/savePage", true);
+    request.setRequestHeader("Content-type", "application/json");
+    request.onreadystatechange = function () {
+        if (request.readyState == 4) {
+            console.log("Data transferred.");
+
+            window.location.replace(window.location.href + "/savePage");
+        }
+    }
+    console.dir(request.send(str_json));
+    console.dir(request);
+}
