@@ -288,8 +288,8 @@ function renderLocatieList(alertType, content, school) {
     pageHTML.innerHTML += buttonHTML;
 }   //renders the buttons for places in the school
 
-function renderSubmit(naam, school) {
-    console.dir(naam);
+function renderSubmit(naam, school, id) {
+    console.log(id);
 
     document.getElementById("page").innerHTML += "<div class='btn'"
         + "onclick=submitContents('"
@@ -297,6 +297,8 @@ function renderSubmit(naam, school) {
         + "'"
         + ',"'
         + toggleSpace(school)
+        + '","'
+        + id
         + '")>'
         + "Submit"
         + "</div>";
@@ -307,7 +309,8 @@ function nextPage(i) {
     renderPage(i);
 }   //Goes to next page
 
-function renderPage(i = "Home", school = null) {
+function renderPage(i = "Home", school = null, id = null) {
+    console.log(id);
     clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
@@ -319,7 +322,7 @@ function renderPage(i = "Home", school = null) {
                 else if (content[pageElement].type === "button")
                     renderButton(content[pageElement]);
                 else if (content[pageElement].type === "form")
-                    renderSubmit(renderForm(content[pageElement]), school);
+                    renderSubmit(renderForm(content[pageElement]), school, id);
                 // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             }   //  determine pageElement type
@@ -336,6 +339,7 @@ function renderPage(i = "Home", school = null) {
 } // Renders a page, which is an array of objects
 
 function locatieSend(alertType, school, locatie = null,) {
+    var id = "";
     locatieSubmit = true;
     if (locatie == null) {
         locatie = document.getElementById('locatieName').value
@@ -348,32 +352,32 @@ function locatieSend(alertType, school, locatie = null,) {
     Data.append("School", school);
     Data.append("type", alertType);
     Data.append("locatie", locatie);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            id = xhttp.responseText;
+            console.log(id);
+            renderPage(alertType, school, id);
+        }
+    };
     xhttp.send(Data);
-    renderPage(alertType, school);
 } // sends locatie and renders next page
 
-function dataSend(sendArray, school) {
+function dataSend(sendArray, school, id) {
     locatieSubmit = true;
     var Data = new FormData();
-    Data.append("School", school);
-
-
     school = toggleSpace(school);
+    Data.append("School", school);
+    Data.append("id", id);
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
-
-
-
-
     for (var x = 0; x < sendArray[0].length; x++) {
         Data.append(sendArray[0][x], sendArray[1][x]);
     }
     console.dir(Data);
     xhttp.send(Data);
-
 }
 
-function submitContents(naam, school) {
+function submitContents(naam, school, id) {
     naam = naam.split(",");
     sendArray = [];
     var dataArray = [];
@@ -396,7 +400,7 @@ function submitContents(naam, school) {
     }
     sendArray = [nameArray, dataArray];
     console.dir(sendArray);
-    dataSend(sendArray, school);
+    dataSend(sendArray, school, id);
 }
 
 function toggleSpace(item) {
@@ -407,7 +411,7 @@ function toggleSpace(item) {
     else if (item.indexOf('_') > -1) {
         returnItem = item.replace(new RegExp("_", "g"), ' ');
     }
-    else if(item.indexOf(' ') < 1 && item.indexOf('_') < 1){
+    else if (item.indexOf(' ') < 1 && item.indexOf('_') < 1) {
         return item;
     }
     else {
