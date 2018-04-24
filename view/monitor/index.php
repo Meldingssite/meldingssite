@@ -11,5 +11,10 @@
             <div>Leerpark</div>
             <div>Kantine</div>
         </div>
+
+        
     </div>
 </main>
+
+<script src="<?php echo SCRIPT_DIR?>monitor.js">
+</script>

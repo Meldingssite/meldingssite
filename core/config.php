@@ -2,12 +2,12 @@
 
 // Define Constants Here
 
+
 define('DB_TYPE', 'mysql');
 define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'meldings_app');
 define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_CHARSET', 'utf8');
+define('DB_PASS', 'mysql');
+define('DB_NAME', 'meldingssite');
 
 define('URL_PUBLIC_FOLDER', 'public');
 define('URL_PROTOCOL', '//');
