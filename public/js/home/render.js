@@ -21,11 +21,11 @@ function clearPageHTML() {
 } // clears HTML
 
 function renderTextbox(textboxObj) {
-    textboxHTML = "";
+    var textboxHTML = "";
 
     // define default colors
     if (textboxObj.color == "purple")
-        var color = "#2d2d85";
+        var color = "#850084";
     else                    //  hex code
         var color = textboxObj.color;
     pageHTML = document.getElementById("page");
@@ -46,7 +46,7 @@ function renderTextbox(textboxObj) {
 } // renders TextBox element
 
 function renderButton(buttonObj) {
-    pageHTML = document.getElementById("page");
+    var pageHTML = document.getElementById("page");
     var buttonHTML = "";
     // Opening tag for .btn
     buttonHTML += "<div class='btn'"
