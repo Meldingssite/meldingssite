@@ -1,5 +1,4 @@
 <?php
-
 require(ROOT . "model/AdminModel.php");
 
 function index()

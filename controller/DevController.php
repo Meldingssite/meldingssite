@@ -1,4 +1,6 @@
 <?php
+require(ROOT . "model/DevModel.php");
+
 
 function index()
 {

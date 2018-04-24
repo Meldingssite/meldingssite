@@ -1,4 +1,5 @@
 <?php
+require(ROOT . "model/ErrorModel.php");
 
 function index()
 {

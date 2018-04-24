@@ -1,4 +1,5 @@
 <?php
+require(ROOT . "model/MonitorModel.php");
 
 function index()
 {
