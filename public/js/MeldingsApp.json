@@ -130,6 +130,100 @@
         ]
       }
     ],
+    "Vechtpartij": [
+      {
+        "content": [
+          {
+            "type": "textbox",
+            "color": "purple",
+            "text": "Gevecht melden"
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "type": "textInput",
+                "text": "waar is het gebeurd?",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "type": "textInput",
+                "text": "hoeveel personen zijn er aan het vechten",
+                "options": [
+                  {
+                    "name": "vechtNumber",
+                    "inputType": "number",
+                    "inhoud": "getal"
+                  }
+                ]
+              },
+              {
+                "type": "dropDown",
+                "text": "heeft u een wapen gezien?",
+                "name": "wapen",
+                "options": [
+                  {
+                    "name": "geweer",
+                    "text": "geweer"
+                  },
+                  {
+                    "name": "mes",
+                    "text": "mes"
+                  },
+                  {
+                    "name": "knuppel",
+                    "text": "knuppel"
+                  }
+                ]
+              },
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "type": "textInput",
+                "text": "contact gegevens",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "Locaties": [
       {
         "type": "locatieForm",
@@ -191,6 +285,7 @@
             "TWEEDE VERDIEPING CENTRALE HAL"
           ],
           "MBW": [
+            "De snoekzone"
           ]
         }
       }

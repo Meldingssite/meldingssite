@@ -170,7 +170,7 @@ function renderDropDown(dropObj) {
         dropHTML += "<option  name='"
             + options[option].name
             + "'value ='"
-            + options[option].optie
+            + options[option].name
             + "'>"
             + options[option].text
             + "</option>";
