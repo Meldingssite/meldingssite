@@ -1,4 +1,4 @@
-  //  Latest timestamp pulled from DB, used to check if DB has been updated
+//  Latest timestamp pulled from DB, used to check if DB has been updated
 var currentID = 1;
 var dataRetrieve = null;
 
