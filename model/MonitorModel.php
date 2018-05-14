@@ -24,6 +24,6 @@ function retrieveElements()
         echo $JSON;
         return $JSON;
     } else if ($highest_id['MAX(id)'] < $id) {
-        echo "there has been a issue!";
+        return null;
     }
 }

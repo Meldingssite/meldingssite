@@ -60,5 +60,7 @@ function toggleSpace(item) {
 //  Check Database every 0.5 seconds
 function refreshList(school) {
     document.getElementById("Monitor").innerHTML = "";
-    window.setInterval(checkDB(school), 500);
+    window.setInterval(function () {
+        checkDB(school)
+    }, 500);
 }
