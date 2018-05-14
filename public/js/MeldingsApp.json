@@ -4,48 +4,48 @@
       {
         "content": [
           {
+            "text": "Wat wilt u melden?",
             "type": "textbox",
-            "color": "purple",
-            "text": "Wat wilt u melden?"
+            "color": "purple"
           },
           {
-            "type": "button",
             "name": "Ongeval",
+            "type": "button",
             "image_url": "category-FirstAid.png"
           },
           {
-            "type": "button",
             "name": "Vechtpartij",
+            "type": "button",
             "image_url": "category-fight.png"
           },
           {
-            "type": "button",
             "name": "Wapens",
+            "type": "button",
             "image_url": "category-weapons.png"
           },
           {
-            "type": "button",
             "name": "Drugs",
+            "type": "button",
             "image_url": "category-drugs.png"
           },
           {
-            "type": "button",
             "name": "Diefstal",
+            "type": "button",
             "image_url": "category-theft.png"
           },
           {
-            "type": "button",
             "name": "Pesten",
+            "type": "button",
             "image_url": "category-bullying.png"
           },
           {
-            "type": "button",
             "name": "Overlast",
+            "type": "button",
             "image_url": "category-nuisance.png"
           },
           {
-            "type": "button",
             "name": "Overige",
+            "type": "button",
             "image_url": "category-other.png"
           }
         ]
@@ -55,17 +55,17 @@
       {
         "content": [
           {
+            "text": "Ongeval",
             "type": "textbox",
-            "color": "purple",
-            "text": "Page 2"
+            "color": "purple"
           },
           {
             "type": "form",
             "formAction": "formSubmit",
             "content": [
               {
-                "type": "radioButtons",
                 "text": "Is het slachtoffer bewusteloos?",
+                "type": "radioButtons",
                 "name": "unconscious",
                 "options": [
                   {
@@ -79,8 +79,8 @@
                 ]
               },
               {
-                "type": "textInput",
                 "text": "waar is het gebeurd?",
+                "type": "textInput",
                 "options": [
                   {
                     "name": "locatieSpecifiek",
@@ -105,8 +105,8 @@
                 ]
               },
               {
-                "type": "textInput",
                 "text": "contact gegevens",
+                "type": "textInput",
                 "options": [
                   {
                     "name": "naam",
@@ -134,17 +134,17 @@
       {
         "content": [
           {
+            "text": "Gevecht melden",
             "type": "textbox",
-            "color": "purple",
-            "text": "Gevecht melden"
+            "color": "purple"
           },
           {
             "type": "form",
             "formAction": "formSubmit",
             "content": [
               {
-                "type": "textInput",
                 "text": "waar is het gebeurd?",
+                "type": "textInput",
                 "options": [
                   {
                     "name": "locatieSpecifiek",
@@ -154,8 +154,8 @@
                 ]
               },
               {
-                "type": "textInput",
                 "text": "hoeveel personen zijn er aan het vechten",
+                "type": "textInput",
                 "options": [
                   {
                     "name": "vechtNumber",
@@ -165,8 +165,8 @@
                 ]
               },
               {
-                "type": "dropDown",
                 "text": "heeft u een wapen gezien?",
+                "type": "dropDown",
                 "name": "wapen",
                 "options": [
                   {
@@ -180,6 +180,101 @@
                   {
                     "name": "knuppel",
                     "text": "knuppel"
+                  }
+                ]
+              },
+              {
+                "text": "mogen we contact met u opnemen?",
+                "type": "radioButtons",
+
+                "name": "contact",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Wapens": [
+      {
+        "content": [
+          {
+            "text": "Wapens",
+            "type": "textbox",
+            "color": "purple"
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "text": "waar is het gebeurd?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "text": "wat voor een wapen heeft u gezien",
+                "type": "dropDown",
+                "name": "wapen",
+                "options": [
+                  {
+                    "name": "geweer",
+                    "text": "geweer"
+                  },
+                  {
+                    "name": "mes",
+                    "text": "mes"
+                  },
+                  {
+                    "name": "knuppel",
+                    "text": "knuppel"
+                  }
+                ]
+              },
+              {
+                "text": " wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
                   }
                 ]
               },
@@ -199,8 +294,8 @@
                 ]
               },
               {
-                "type": "textInput",
                 "text": "contact gegevens",
+                "type": "textInput",
                 "options": [
                   {
                     "name": "naam",
@@ -216,6 +311,251 @@
                     "name": "telefoon",
                     "inputType": "Tel",
                     "inhoud": "telefoon"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Drugs": [
+      {
+        "content": [
+          {
+            "text": "Drugs",
+            "type": "textbox",
+            "color": "purple"
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "text": "waar is het gebeurd?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "type": "dropDown",
+                "text": "wat heeft u gezien?",
+                "name": "drugsExtra",
+                "options": [
+                  {
+                    "name": "handel",
+                    "text": "handel"
+                  },
+                  {
+                    "name": "gebruik",
+                    "text": "gebruik"
+                  },
+                  {
+                    "name": "anders",
+                    "text": "anders"
+                  }
+                ]
+              },
+              {
+                "text": "wie heeft u gezien?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "p2naam",
+                    "inputType": "text",
+                    "inhoud": "hoe heet hij/zij"
+                  },
+                  {
+                    "name": "p2huidskleur",
+                    "inputType": "text",
+                    "inhoud": "huidskleur persoon"
+                  },
+                  {
+                    "name": "p2geslacht",
+                    "inputType": "text",
+                    "inhoud": "wat is het geslacht van deze persoon"
+                  },
+                  {
+                    "name": "p2leeftijd",
+                    "inputType": "text",
+                    "inhoud": "hoe oud is de persoon"
+                  },
+                  {
+                    "name": "p2kleding",
+                    "inputType": "text",
+                    "inhoud": "wat voor kleding draagt de persoon"
+                  },
+                  {
+                    "name": "p2anders",
+                    "inputType": "text",
+                    "inhoud": "heeft de persoon nog andere opvallende kenmerken"
+                  }
+                ]
+              },
+              {
+                "text": "wat voor een voertuig heeft u gezien",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "voertuigtype",
+                    "inputType": "text",
+                    "inhoud": " wat voor voertuig is het?"
+                  },
+                  {
+                    "name": "voertuigmerk",
+                    "inputType": "text",
+                    "inhoud": " wat is het merk van het voertuig?"
+                  },
+                  {
+                    "name": "voertuigkenteken",
+                    "inputType": "text",
+                    "inhoud": " wat is het kenteken van het voertuig?"
+                  },
+                  {
+                    "name": "voertuigkleur",
+                    "inputType": "text",
+                    "inhoud": " welke kleur heeft het voertuig?"
+                  },
+                  {
+                    "name": "voertuiganders",
+                    "inputType": "text",
+                    "inhoud": "heeft het voertuig nog andere opvallende kenmerken?"
+                  }
+                ]
+              },
+              {
+                "text": " wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Diefstal": [
+      {
+        "content": [
+          {
+            "text": "Diefstal",
+            "type": "textbox",
+            "color": "purple"
+
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "text": "waar is het gebeurd?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "text": "wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Pesten": [
+      {
+        "content": [
+          {
+            "text": "Pesten",
+            "type": "textbox",
+            "color": "purple"
+
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "text": "waar is het gebeurd?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "text": " wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Overlast": [
+      {
+        "content": [
+          {
+            "text": "Overlast",
+            "type": "textbox",
+            "color": "purple"
+
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "text": "waar is het gebeurd?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "text": " wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
                   }
                 ]
               }
