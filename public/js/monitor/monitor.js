@@ -22,17 +22,21 @@ function checkDB() {
 function addElements(dataRetrieve) {
     if (currentID !== dataRetrieve[1]) {
         currentID = dataRetrieve[1];
-
         //delete onnodige null values
-        var keys = Object.keys(dataRetrieve[0]);
-        for (var x = 0; keys.length > x; x++) {
-            if (dataRetrieve[0][keys[x]] == null) {
-                delete dataRetrieve[0][keys[x]];
-            }
-        }
-        // hier renderen, alles staat in array positie[0]
-        console.dir(dataRetrieve);
+        var items = deleteNullProperties(dataRetrieve[0]);
+        // hier renderen, alles is properties in items
+        console.dir(items);
     }
+}
+
+function deleteNullProperties(deleteObject){
+    var keys = Object.keys(deleteObject);
+    for (var x = 0; keys.length > x; x++) {
+        if (deleteObject[keys[x]] == null) {
+            delete deleteObject[keys[x]];
+        }
+    }
+    return deleteObject;
 }
 
 
