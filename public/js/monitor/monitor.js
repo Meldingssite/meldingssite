@@ -1,8 +1,8 @@
-  //  Latest timestamp pulled from DB, used to check if DB has been updated
+//  Latest timestamp pulled from DB, used to check if DB has been updated
 var currentID = 1;
 var dataRetrieve = null;
-function checkDB()
-{
+
+function checkDB() {
     var Data = new FormData();
     Data.append("id", currentID);
     Data.append("school", 'AZZURRO');
@@ -19,11 +19,18 @@ function checkDB()
     console.log("Checking Database");
 }
 
-function addElements(dataRetrieve){
+function addElements(dataRetrieve) {
+    if (currentID !== dataRetrieve[1]) {
+        currentID = dataRetrieve[1];
 
-    if(currentID !== dataRetrieve[1]){
-    currentID = dataRetrieve[1] ;
-    // hier renderen, alles staat in array positie[0]
+        //delete onnodige null values
+        var keys = Object.keys(dataRetrieve[0]);
+        for (var x = 0; keys.length > x; x++) {
+            if (dataRetrieve[0][keys[x]] == null) {
+                delete dataRetrieve[0][keys[x]];
+            }
+        }
+        // hier renderen, alles staat in array positie[0]
         console.dir(dataRetrieve);
     }
 }
