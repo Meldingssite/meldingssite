@@ -2,10 +2,11 @@
 var currentID = 1;
 var dataRetrieve = null;
 
-function checkDB() {
+function checkDB(school) {
+    var schoolNaam = toggleSpace(school);
     var Data = new FormData();
     Data.append("id", currentID);
-    Data.append("school", 'AZZURRO');
+    Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
     xDBhttp.open("POST", "Monitor/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
@@ -29,7 +30,7 @@ function addElements(dataRetrieve) {
     }
 }
 
-function deleteNullProperties(deleteObject){
+function deleteNullProperties(deleteObject) {
     var keys = Object.keys(deleteObject);
     for (var x = 0; keys.length > x; x++) {
         if (deleteObject[keys[x]] == null) {
@@ -39,7 +40,25 @@ function deleteNullProperties(deleteObject){
     return deleteObject;
 }
 
+function toggleSpace(item) {
+    var returnItem = "";
+    if (item.indexOf(' ') > -1) {
+        returnItem = item.replace(new RegExp(" ", "g"), '_');
+    }
+    else if (item.indexOf('_') > -1) {
+        returnItem = item.replace(new RegExp("_", "g"), ' ');
+    }
+    else if (item.indexOf(' ') < 1 && item.indexOf('_') < 1) {
+        return item;
+    }
+    else {
+        console.log("something appears to have gone wrong with" + item + " !");
+    }
+    return returnItem;
+}   // Switches between _ and spaces
 
 //  Check Database every 0.5 seconds
-window.setInterval(checkDB, 500);
-
+function refreshList(school) {
+    document.getElementById("Monitor").innerHTML = "";
+    window.setInterval(checkDB(school), 500);
+}
