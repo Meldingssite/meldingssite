@@ -46,7 +46,7 @@ function addElements(dataRetrieve) {
             updateContent(items);
         }
     }
-    else{
+    else {
         currentID = dataRetrieve[1];
     }
 }
@@ -57,8 +57,15 @@ function updateContent(items) {
     for (var x = 0; keys.length > x; x++) {
         if (items[keys[x]] != null) {
             if (document.getElementById(keys[x] + items['id'])) {
-                if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) != null) {
-                    document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+                if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ":" + items[keys[x]]
+                    && document.getElementById(keys[x] + items['id']) != null) {
+                    if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] != 'locatie') {
+                        document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ":" + items[keys[x]];
+                    }
+                    else {
+                        document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+                    }
+
                 }
             }
             else if (document.getElementById(keys[x] + items['id']) == null) {
