@@ -3,6 +3,7 @@ var currentID = 1;
 var dataRetrieve = null;
 
 function checkDB(school) {
+    console.log(currentID);
     var schoolNaam = toggleSpace(school);
     var Data = new FormData();
     Data.append("id", currentID);
@@ -27,27 +28,31 @@ function checkDB(school) {
 }
 
 function addElements(dataRetrieve) {
-    if (currentID !== dataRetrieve[1] && !document.getElementById(dataRetrieve[1])) {
-        currentID = dataRetrieve[1];
-        //delete onnodige null values
-        var items = deleteNullProperties(dataRetrieve[0]);
-        console.log(items["type"]);
-        console.dir(items);
-        var pageContent = document.getElementById('Monitor');
-        pageContent.innerHTML += constructMelding(items);
+    if (dataRetrieve[0] !== null) {
+        if (currentID !== dataRetrieve[1] && !document.getElementById(dataRetrieve[0]['id'])) {
+            currentID = dataRetrieve[1];
+            //delete onnodige null values
+            var items = deleteNullProperties(dataRetrieve[0]);
+            console.log(items["type"]);
+            console.dir(items);
+            var pageContent = document.getElementById('Monitor');
+            pageContent.innerHTML += constructMelding(items);
 
+        }
+        else {
+            var items = deleteNullProperties(dataRetrieve[0]);
+            console.log(items["type"]);
+            console.dir(items);
+            updateContent(items);
+        }
     }
-    else if (currentID !== dataRetrieve[1]) {
-        var items = deleteNullProperties(dataRetrieve[0]);
-        console.log(items["type"]);
-        console.dir(items);
-        updateContent(items);
-
-
+    else{
+        currentID = dataRetrieve[1];
     }
 }
 
 function updateContent(items) {
+    console.log("Updating content");
     var keys = Object.keys(items);
     for (var x = 0; keys.length > x; x++) {
         if (items[keys[x]] != null) {

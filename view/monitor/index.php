@@ -13,7 +13,7 @@
             . toggleSpace($scholen[$x][0])
             . '")>'
             . toggleSpace($scholen[$x][0])
-            . "</div>  ";
+            . "</div>";
         echo $button;
     }
     function toggleSpace($item)

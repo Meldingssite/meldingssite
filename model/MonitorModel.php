@@ -6,10 +6,11 @@ function retrieveElements()
     $id = $_POST['id'];
     $school = $_POST['school'];
     $dataArray = [];
-    $sql = "select * from $school where id=$id";
+    $sql = "select * from `$school` where id=$id";
+//    echo $sql;
     $result = $conn->query($sql);
     $dataArray[0] = $result->fetch_assoc();
-    $result2 = $conn->query("select MAX(id) from $school");
+    $result2 = $conn->query("select MAX(id) from `$school`");
     $highest_id = $result2->fetch_assoc();
     if ($highest_id['MAX(id)'] == $id) {
         $dataArray[1] = $id;

@@ -13,8 +13,8 @@
 
 
 -- Databasestructuur van meldingssite wordt geschreven
-CREATE DATABASE IF NOT EXISTS `meldingssite` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `meldingssite`;
+CREATE DATABASE IF NOT EXISTS `melding_site` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `melding_site`;
 
 -- Structuur van  tabel meldingssite.AZZURRO wordt geschreven
 CREATE TABLE IF NOT EXISTS `AZZURRO` (
