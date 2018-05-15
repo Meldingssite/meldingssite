@@ -32,7 +32,10 @@
 
     ?>
 
-    
+    <div class="alertItem">
+        <div class="alertType">Je moeder is dik</div>
+
+        <div class="content">
             <div>
                 <div>Azzurrooooooo</div>
                 <div>Lokaal 0.12</div>
