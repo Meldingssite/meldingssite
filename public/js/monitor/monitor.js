@@ -51,10 +51,13 @@ function updateContent(items) {
     var keys = Object.keys(items);
     for (var x = 0; keys.length > x; x++) {
         if (items[keys[x]] != null) {
-            if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) != null) {
-                document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+            if (document.getElementById(keys[x] + items['id'])) {
+                if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) != null) {
+                    document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+                }
             }
             else if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) == null) {
+                console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo');
                 var addItems = "";
                 addItems += "<div id ='" +
@@ -65,6 +68,9 @@ function updateContent(items) {
                     + items[keys[x]]
                     + "</div>";
                 DIV.innerHTML += addItems;
+            }
+            else {
+                console.log(keys[x] + items['id']);
             }
         }
     }
