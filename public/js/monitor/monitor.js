@@ -14,6 +14,7 @@ function checkDB(school) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
+                console.dir(dataRetrieve);
                 addElements(dataRetrieve);
             }
             else {
@@ -30,16 +31,40 @@ function addElements(dataRetrieve) {
         currentID = dataRetrieve[1];
         //delete onnodige null values
         var items = deleteNullProperties(dataRetrieve[0]);
-        var pageContent = document.getElementById('Monitor');
-        pageContent += constructMelding(items);
+        console.log(items["type"]);
         console.dir(items);
+        var pageContent = document.getElementById('Monitor');
+        pageContent.innerHTML += constructMelding(items);
+
     }
 }
 
 function constructMelding(meldingData) {
     var melding = "";
-    melding += ""
-        + "";
+    melding += "<div class='alertItem'>"
+        + "<div class='alertType'>"
+        + meldingData['type']
+        + "</div>"
+        + "<div class='content'>"
+        + "<div>"
+        + "<div>"
+        + toggleSpace(meldingData['locatie'])
+        + "</div>"
+        + "<div>" +
+        meldingData['locatieSpecifiek'] +
+        "</div>"
+        + '</div><div>';
+    var keys = Object.keys(meldingData);
+    for (var x = 0; keys.length > x; x++) {
+        if (meldingData[keys[x]] != null && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
+            melding += "<div>"
+                + keys[x]
+                + ": "
+                + meldingData[keys[x]]
+                + "</div>";
+        }
+    }
+    melding += "</div></div>";
     return melding
 }
 

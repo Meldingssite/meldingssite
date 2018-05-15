@@ -12,7 +12,7 @@ function retrieveElements()
     $result2 = $conn->query("select MAX(id) from $school");
     $highest_id = $result2->fetch_assoc();
     if ($highest_id['MAX(id)'] == $id) {
-        $dataArray[1] = $id;
+        $dataArray[1] = $id + 1;
         $conn->close();
         $JSON = json_encode($dataArray);
         echo $JSON;

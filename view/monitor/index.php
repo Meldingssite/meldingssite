@@ -32,12 +32,6 @@
 
     ?>
 
-    <div class="alertItem">
-        <div class="alertType">
-            <!-- Bijvoorbeeld; Pesten, Brand, Drugs -->
-            Vechtpartij
-        </div>
-        <div class="content">
     
             <div>
                 <div>Azzurrooooooo</div>
