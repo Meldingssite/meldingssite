@@ -27,7 +27,7 @@ function checkDB(school) {
 }
 
 function addElements(dataRetrieve) {
-    if (currentID !== dataRetrieve[1] && dataRetrieve[3] === false) {
+    if (currentID !== dataRetrieve[1] && !document.getElementById(dataRetrieve[1])) {
         currentID = dataRetrieve[1];
         //delete onnodige null values
         var items = deleteNullProperties(dataRetrieve[0]);
@@ -37,7 +37,7 @@ function addElements(dataRetrieve) {
         pageContent.innerHTML += constructMelding(items);
 
     }
-    else if (currentID !== dataRetrieve[1] && dataRetrieve[3] === true) {
+    else if (currentID !== dataRetrieve[1]) {
         var items = deleteNullProperties(dataRetrieve[0]);
         console.log(items["type"]);
         console.dir(items);
@@ -56,12 +56,12 @@ function updateContent(items) {
                     document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
                 }
             }
-            else if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) == null) {
+            else if (document.getElementById(keys[x] + items['id']) == null) {
                 console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo');
                 var addItems = "";
                 addItems += "<div id ='" +
-                    keys[x] + "" + items[id] +
+                    keys[x] + "" + items['id'] +
                     "'>"
                     + keys[x]
                     + ": "

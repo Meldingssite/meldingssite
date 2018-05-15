@@ -13,19 +13,20 @@ function retrieveElements()
     $highest_id = $result2->fetch_assoc();
     if ($highest_id['MAX(id)'] == $id) {
         $dataArray[1] = $id;
-        $dataArray[3] = true;
         $conn->close();
         $JSON = json_encode($dataArray);
         echo $JSON;
         return $JSON;
-    } else if ($highest_id['MAX(id)'] > $id) {
+    }
+    else if ($highest_id['MAX(id)'] > $id) {
         $dataArray[1] = $id + 1;
-        $dataArray[3] = false;
         $conn->close();
         $JSON = json_encode($dataArray);
         echo $JSON;
         return $JSON;
     } else if ($highest_id['MAX(id)'] < $id) {
-        return null;
+        $dataArray[1] = $id - 1;
+        $dataArray[2] = null;
+        return $dataArray;
     }
 }
