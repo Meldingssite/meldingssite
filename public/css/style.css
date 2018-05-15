@@ -335,6 +335,8 @@ input[type=radio]
     border-left: 1px solid rgba(255, 255, 255, 0.27);
         
     padding: 15px;
+
+    font-size: 26px;
 }
 
 .alertItem::before
@@ -349,10 +351,12 @@ input[type=radio]
 }
 
 
-.alertItem .content > div:first-child
+.alertItem .content > div:first-child div
 {
     margin-left: 50px;
     border-left: none;     
+
+    font-size: 40px !important;
 }
 
 .alertItem .content > div:last-child
