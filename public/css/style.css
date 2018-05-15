@@ -297,7 +297,7 @@ input[type=radio]
     display: flex;
     position: relative;
     width: calc(100% - 10px);
-    height: 180px;
+    height: 130px;
     margin: 50px auto;
 
     color: #F5F5F5;
@@ -320,7 +320,7 @@ input[type=radio]
     left:0;
     
     border-radius: 80px 3px 3px 80px;
-    height: 180px;
+    height: 100%;
     width: 100%;
 
 }
@@ -334,6 +334,7 @@ input[type=radio]
     border-left: 1px solid rgba(255, 255, 255, 0.27);
         
     padding: 15px;
+    padding-bottom: 0px !important;
 
     font-size: 26px;
 }
@@ -346,7 +347,7 @@ input[type=radio]
     border-right: 1px solid rgba(255, 255, 255, 0.27);
     border-left: 1px solid rgba(0, 0, 0, 0.20);
     
-    height: 173px;
+    height: 100%;
 }
 
 
@@ -355,9 +356,10 @@ input[type=radio]
     display: block;
     width: 400px;
     margin-left: 50px;
-    border-left: none;     
-
-    font-size: 40px !important;
+    border-left: none;
+    padding-left: 0 !important;
+    padding-top: 20px;
+    font-size: 25px !important;
 }
 
 .alertItem .content > div:last-child
@@ -367,7 +369,7 @@ input[type=radio]
 
 .alertItem .content > div:nth-child(2){
 
-    height: 200px;
+    height: 100%;
     display: flex;
     flex-flow: column;
     flex-wrap: wrap;
@@ -376,13 +378,13 @@ input[type=radio]
 .alertItem .content div div
 {
     border: none;
-
+    font-size: 20px;
     display: block;
     height: initial;
     float: left;
     clear: left;
-
-    padding-bottom: 0px;
+    padding: 0px;
+    /*padding-left: 5px;*/
 
 }
 .content{

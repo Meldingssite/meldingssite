@@ -56,15 +56,16 @@ function updateContent(items) {
     console.log("Updating content");
     var keys = Object.keys(items);
     for (var x = 0; keys.length > x; x++) {
-        if (items[keys[x]] != null) {
+        if (items[keys[x]] != null && items[keys[x]] !== undefined && items[keys[x]] !== "" && keys[x] !== 'id') {
+            console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ":" + items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
-                    if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] != 'locatie') {
+                    if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
                         document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ":" + items[keys[x]];
                     }
                     else {
-                        document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+                        document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
                     }
 
                 }
@@ -78,7 +79,7 @@ function updateContent(items) {
                     "'>"
                     + keys[x]
                     + ": "
-                    + items[keys[x]]
+                    + toggleSpace(items[keys[x]], true)
                     + "</div>";
                 DIV.innerHTML += addItems;
             }
@@ -105,13 +106,19 @@ function constructMelding(meldingData) {
         meldingData['id'] +
         "'>"
         + toggleSpace(meldingData['locatie'])
-        + "</div>"
-        + "<div id='locatieSpecifiek"
-        + meldingData['id']
-        + "'>" +
-        meldingData['locatieSpecifiek'] +
-        "</div>"
-        + '</div><div id="extraInfo' +
+        + "</div>";
+
+
+    if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
+        melding += "<div id='locatieSpecifiek"
+            + meldingData['id']
+            + "'>" +
+            meldingData['locatieSpecifiek'] +
+            "</div>";
+
+    }
+
+    melding += '</div><div id="extraInfo' +
         meldingData['id'] +
         '">';
     var keys = Object.keys(meldingData);
@@ -140,13 +147,13 @@ function deleteNullProperties(deleteObject) {
     return deleteObject;
 }
 
-function toggleSpace(item) {
+function toggleSpace(item, ForceSpace = false) {
     var returnItem = "";
-    if (item.indexOf(' ') > -1) {
-        returnItem = item.replace(new RegExp(" ", "g"), '_');
-    }
-    else if (item.indexOf('_') > -1) {
+    if (item.indexOf('_') > -1 || ForceSpace === true) {
         returnItem = item.replace(new RegExp("_", "g"), ' ');
+    }
+    else if (item.indexOf(' ') > -1) {
+        returnItem = item.replace(new RegExp(" ", "g"), '_');
     }
     else if (item.indexOf(' ') < 1 && item.indexOf('_') < 1) {
         return item;
