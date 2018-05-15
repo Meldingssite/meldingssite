@@ -339,19 +339,37 @@ input[type=radio]
 .alertItem .content div
 {
     float: left;
-    height: 100%;
+    height: calc(100% - 6px);
 
-    border-right: 1px solid black;
+    border-right: 1px solid rgba(0, 0, 0, 0.20);
+    border-left: 1px solid rgba(255, 255, 255, 0.27);
+    
     
     padding: 15px;
 }
 
+.alertItem::before
+{
+    content: "";
+    position: relative;
+    left: 60px;
+    border-right: 1px solid rgba(255, 255, 255, 0.27);
+    border-left: 1px solid rgba(0, 0, 0, 0.20);
+    
+    height: 173px;
+}
+
+
 .alertItem .content > div:first-child
 {
     margin-left: 50px;
-    border-left: 1px solid black;    
+    border-left: none;     
 }
 
+.alertItem .content > div:last-child
+{
+    border-right: none;
+}
 .alertItem .content div div
 {
     border: none;
