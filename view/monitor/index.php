@@ -40,17 +40,16 @@
         </div>
 
         <div class="content">
-        
-            <div class="seperator"></div>
-    
     
             <div>
                 <div>Azzurro</div>
                 <div>Lokaal 0.12</div>
             </div>
     
-            <span class="seperator"></span>
-            
+            <div>
+                <div>Azzurro</div>
+                <div>Lokaal 0.12</div>
+            </div>
         </div>
         
     </div>
