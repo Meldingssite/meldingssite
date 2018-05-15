@@ -37,7 +37,6 @@ body main
     height: 100%;    
 }
 
-
 header
 {
     max-width: 720px;
@@ -87,7 +86,6 @@ main
 
     margin: 11px auto;
     padding: 10px 0;
-
 }
 
 .btn:hover
@@ -107,7 +105,6 @@ main
 
 .textbox
 {
-    -background: #2d2d85;
     color: #fff;
 
     text-align: center;
@@ -158,8 +155,7 @@ main
     margin: 10px 20px;
 
     border-bottom: 1px solid #555;
-    box-shadow: 0px 0px 3px 1px #555;
-    
+    box-shadow: 0px 0px 3px 1px #555;    
 }
 
 #createWindow input[type="text"]:focus
@@ -234,7 +230,6 @@ legend
     height: 2em;    
     
     padding: 10px 20px;
-    
 }
 
 label
@@ -243,7 +238,6 @@ label
     color: #eee;
 
     padding: 10px 20px;
-    
 }
 
 .input
@@ -253,7 +247,6 @@ label
     font-size: 1em;
     padding: 10px 20px;
     /* margin: 7px 0; */
-
 }
 
 legend + input
@@ -313,7 +306,6 @@ input[type=radio]
     background: #7E94DC;
     border: 3px solid #7370D8;
     border-radius: 80px 3px 3px 80px;
-
 }
 
 .alertItem:first-child
@@ -328,12 +320,10 @@ input[type=radio]
     position: absolute;
     left:0;
     
-    -border: 1px solid green;
     border-radius: 80px 3px 3px 80px;
     height: 180px;
     width: 100%;
 
-    -padding-top: 25px;
 }
 
 .alertItem .content div
@@ -343,8 +333,7 @@ input[type=radio]
 
     border-right: 1px solid rgba(0, 0, 0, 0.20);
     border-left: 1px solid rgba(255, 255, 255, 0.27);
-    
-    
+        
     padding: 15px;
 }
 
@@ -392,11 +381,12 @@ input[type=radio]
     background: #DF4F4F;
     border: 2px solid #E92020;
     border-radius: 30px 0px 0px 5px;    
-    width: 250px;
+    min-width: 250px;
     height: 60px;
 
     font-weight: bold;
     font-size: 40px;
     padding-left: 20px;
+    padding-right: 20px;
 
 }
