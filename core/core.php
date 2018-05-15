@@ -2,10 +2,20 @@
 
 function openDatabaseConnection() 
 {
-	$options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
-	
-	$db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
-	return $db;
+	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+	if ($conn->connect_error)
+	{
+		$conn2 = new mysqli(DB_HOST, DB_USER, '', DB_NAME);
+		if ($conn2->connect_error)
+		{
+			die("Connection failed: " . $conn->connect_error . $conn->connect_error);
+		}
+		else
+			$conn = $conn2;
+	}
+
+	return $conn;
 }
 
 function render($filename)

@@ -1,5 +1,4 @@
 <?php
-
 require(ROOT . "model/AdminModel.php");
 
 function index()
@@ -28,5 +27,6 @@ function deletePages()
 {
     deleteJSON();
 
-    header("Location:" . URL . "admin");    
+    header("Location:" . URL . "admin");
 }
+

@@ -4,6 +4,8 @@
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
 var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
+var FormList = [];
+var sendArray = [];
 
 function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
@@ -19,11 +21,11 @@ function clearPageHTML() {
 } // clears HTML
 
 function renderTextbox(textboxObj) {
-    textboxHTML = "";
+    var textboxHTML = "";
 
     // define default colors
     if (textboxObj.color == "purple")
-        var color = "#2d2d85";
+        var color = "#850084";
     else                    //  hex code
         var color = textboxObj.color;
     pageHTML = document.getElementById("page");
@@ -44,7 +46,7 @@ function renderTextbox(textboxObj) {
 } // renders TextBox element
 
 function renderButton(buttonObj) {
-    pageHTML = document.getElementById("page");
+    var pageHTML = document.getElementById("page");
     var buttonHTML = "";
     // Opening tag for .btn
     buttonHTML += "<div class='btn'"
@@ -93,12 +95,14 @@ function renderFormButton(buttonObj) {
     formButtonHTML += "</section></legend></fieldset>"
 
     pageHTML.innerHTML += formButtonHTML;
+    return buttonObj.name;
 }   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
     var pageHTML = document.getElementById("page");
     var options = textInputObj.options;
     var textInputHTML = "";
+    var names = [];
 
     // Opening tag for radiobutton
     textInputHTML += "<fieldset> <legend>"
@@ -114,11 +118,13 @@ function renderTextInput(textInputObj) {
             + "' placeholder='"
             + options[option].inhoud
             + "'>";
+        names.push(options[option].name);
     }
     //closing tags
-    textInputHTML += "</section></legend></fieldset>"
+    textInputHTML += "</section></legend></fieldset>";
 
     pageHTML.innerHTML += textInputHTML;
+    return names;
 }   //  Render a field for inputting text
 
 function renderRadio(radioObj) {
@@ -130,20 +136,21 @@ function renderRadio(radioObj) {
     radioHTML += "<fieldset> <legend>"
         + radioObj.text;
     //section
-    radioHTML += "<section class=input>"
+    radioHTML += "<section class=input>";
     //knop
     for (option in options) {
         radioHTML += "<input type='radio' name='"
-            + options[option].name
+            + radioObj.name
             + "'value ='"
             + options[option].optie
             + "'>"
             + options[option].text;
     }
     //closing tags
-    radioHTML += "</section></legend></fieldset>"
+    radioHTML += "</section></legend></fieldset>";
 
     pageHTML.innerHTML += radioHTML;
+    return radioObj.name;
 }   // Renders radio buttons
 
 function renderDropDown(dropObj) {
@@ -163,63 +170,70 @@ function renderDropDown(dropObj) {
         dropHTML += "<option  name='"
             + options[option].name
             + "'value ='"
-            + options[option].optie
+            + options[option].name
             + "'>"
             + options[option].text
             + "</option>";
     }
     //closing tags
-    dropHTML += "</section></legend></fieldset>"
+    dropHTML += "</section></legend></fieldset>";
     mainHTML.innerHTML += dropHTML;
+    return dropObj.name;
 }   // Renders dropdown buttons
+
 
 function renderForm(form) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
-        + form.formFunctie
+        + form.formAction
         + "'>";
     for (formElement in content)    //  determine pageElement type
     {
-        if (content[formElement].type === "textInput")
-            renderTextInput(content[formElement]);
+        if (content[formElement].type === "textInput") {
+            var textInputList = renderTextInput(content[formElement]);
+            for (var x = 0; x < textInputList.length; x++) {
+                FormList.push(textInputList[x]);
+            }
+        }
         else if (content[formElement].type === "radioButtons")
-            renderRadio(content[formElement]);
+            FormList.push(renderRadio(content[formElement]));
         else if (content[formElement].type === "textMultipleInputs")
-            renderMultipleTextInput(content[formElement]);
+            FormList.push(renderMultipleTextInput(content[formElement]));
         else if (content[formElement].type === "formButton")
-            renderFormButton(content[formElement]);
+            FormList.push(renderFormButton(content[formElement]));
         else if (content[formElement].type === "dropDown")
-            renderDropDown(content[formElement]);
+            FormList.push(renderDropDown(content[formElement]));
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
+    return FormList;
 }      // renders a form and its elements
 
-function renderLocatieForm(Locaties, school = null) {
+function renderLocatieForm(alertType, school = null) {
     clearPageHTML(); // Clear main
     var page = getPage("Locaties");
     var content = page[ID].content;
     if (school === null) {
-        renderLocatieList(Locaties, content);
+        renderLocatieScholen(alertType, content);
 
     }
     else {
-        renderLocatieElements(Locaties, content, school);
+        renderLocatieList(alertType, content, school);
     }
 } //renders form for locaties
 
-function renderLocatieList(Locaties, content) {
+function renderLocatieScholen(alertType, content) {
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     var schoolNaam = "";
     for (var i = 0; i < Object.keys(content).length; i++) {
         // Opening tag for .btn
         var schoolNaam = Object.keys(content)[i];
-        var schoolSplit = schoolNaam.replace(new RegExp(" ", "g"), '_');
+        var schoolSplit = toggleSpace(schoolNaam);
         buttonHTML += "<div class='btn'"
             + "onclick=renderLocatieForm('"
-            + Locaties
+            + alertType
             + "','"
             + schoolSplit
             + "')"
@@ -234,25 +248,21 @@ function renderLocatieList(Locaties, content) {
 
 } //renders first list with schools
 
-function renderLocatieElements(Locaties, content, Parent) {
-    var items = content[Parent.replace(new RegExp("_", "g"), ' ')];
-    renderLocatieButtons(Locaties, items);
-    renderLocatieInput(Locaties);
+function renderLocatieList(alertType, content, school) {
 
-
-} //renders second list with places in the school
-
-function renderLocatieButtons(Locaties, Items) {
+    var Items = content[toggleSpace(school)];
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     buttonHTML += "<section class=input>";
     for (var i = 0; i < Items.length; i++) {
         // Opening tag for .btn
         var Naam = Items[i];
-        var Split = Naam.replace(new RegExp(" ", "g"), '_');
+        var Split = toggleSpace(Naam);
         buttonHTML += "<div class='btn'"
             + "onclick=locatieSend('"
-            + Locaties
+            + alertType
+            + "','"
+            + school
             + "','"
             + Split
             + "')"
@@ -269,19 +279,28 @@ function renderLocatieButtons(Locaties, Items) {
         + ">";
     buttonHTML += '<button  id="lokaalButton" onclick="getLocatiecontent('
         + "'"
-        + Locaties
+        + alertType
+        + "','"
+        + school
         + "'"
         + ')"> Submit </button></section>';
     //closing tags
     pageHTML.innerHTML += buttonHTML;
 }   //renders the buttons for places in the school
 
-function renderSubmit(naam) {
+function renderSubmit(naam, school, id) {
+    console.log(id);
+
     document.getElementById("page").innerHTML += "<div class='btn'"
-        + "onclick=nextPage('"
+        + "onclick=submitContents('"
         + naam
-        + "')>"
-        + "Volgende pagina"
+        + "'"
+        + ',"'
+        + toggleSpace(school)
+        + '","'
+        + id
+        + '")>'
+        + "Submit"
         + "</div>";
 }   //Renders submit button for going to next page
 
@@ -290,7 +309,8 @@ function nextPage(i) {
     renderPage(i);
 }   //Goes to next page
 
-function renderPage(i = "Home") {
+function renderPage(i = "Home", school = null, id = null) {
+    console.log(id);
     clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
@@ -302,13 +322,10 @@ function renderPage(i = "Home") {
                 else if (content[pageElement].type === "button")
                     renderButton(content[pageElement]);
                 else if (content[pageElement].type === "form")
-                    renderForm(content[pageElement]);
+                    renderSubmit(renderForm(content[pageElement]), school, id);
                 // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             }   //  determine pageElement type
-            if (i !== "Home") {
-                renderSubmit(i);
-            }
         }
         else {
             renderLocatieForm(i);
@@ -321,11 +338,84 @@ function renderPage(i = "Home") {
 
 } // Renders a page, which is an array of objects
 
-function locatieSend(Locaties, locatie = null) {
+function locatieSend(alertType, school, locatie = null,) {
+    var id = "";
     locatieSubmit = true;
     if (locatie == null) {
         locatie = document.getElementById('locatieName').value
     }
-    console.log(Locaties + " " + locatie);
-    renderPage(Locaties);
+
+    school = toggleSpace(school);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Home/sendData", true);
+    var Data = new FormData();
+    Data.append("School", school);
+    Data.append("type", alertType);
+    Data.append("locatie", locatie);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            id = xhttp.responseText;
+            console.log(id);
+            renderPage(alertType, school, id);
+        }
+    };
+    xhttp.send(Data);
 } // sends locatie and renders next page
+
+function dataSend(sendArray, school, id) {
+    locatieSubmit = true;
+    var Data = new FormData();
+    school = toggleSpace(school);
+    Data.append("School", school);
+    Data.append("id", id);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "Home/sendData", true);
+    for (var x = 0; x < sendArray[0].length; x++) {
+        Data.append(sendArray[0][x], sendArray[1][x]);
+    }
+    console.dir(Data);
+    xhttp.send(Data);
+}
+
+function submitContents(naam, school, id) {
+    naam = naam.split(",");
+    sendArray = [];
+    var dataArray = [];
+    var nameArray = [];
+    for (var x = 0; x < naam.length; x++) {
+        console.log(naam[x] + " " + document.getElementsByName(naam[x]).length);
+        if (document.getElementsByName(naam[x]).length > 1) {
+            for (var y = 1; document.getElementsByName(naam[x]).length > y; y++) {
+                if (document.getElementsByName(naam[x])[y].checked) {
+                    dataArray[x] = document.getElementsByName(naam[x])[y].value;
+                    nameArray[x] = naam[x];
+                }
+            }
+        }
+        else {
+            dataArray[x] = document.getElementsByName(naam[x])[0].value;
+            nameArray[x] = naam[x];
+        }
+
+    }
+    sendArray = [nameArray, dataArray];
+    console.dir(sendArray);
+    dataSend(sendArray, school, id);
+}
+
+function toggleSpace(item) {
+    var returnItem = "";
+    if (item.indexOf(' ') > -1) {
+        returnItem = item.replace(new RegExp(" ", "g"), '_');
+    }
+    else if (item.indexOf('_') > -1) {
+        returnItem = item.replace(new RegExp("_", "g"), ' ');
+    }
+    else if (item.indexOf(' ') < 1 && item.indexOf('_') < 1) {
+        return item;
+    }
+    else {
+        console.log("something appears to have gone wrong with" + item + " !");
+    }
+    return returnItem;
+}   // Switches between _ and spaces
