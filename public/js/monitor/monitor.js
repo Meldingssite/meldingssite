@@ -12,8 +12,13 @@ function checkDB(school) {
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xDBhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            dataRetrieve = JSON.parse(this.response);
-            addElements(dataRetrieve);
+            if (this.response) {
+                dataRetrieve = JSON.parse(this.response);
+                addElements(dataRetrieve);
+            }
+            else {
+                console.log('Nog geen meldingen!');
+            }
         }
     };
     xDBhttp.send(Data);
@@ -25,9 +30,17 @@ function addElements(dataRetrieve) {
         currentID = dataRetrieve[1];
         //delete onnodige null values
         var items = deleteNullProperties(dataRetrieve[0]);
-        // hier renderen, alles is properties in items
+        var pageContent = document.getElementById('Monitor');
+        pageContent += constructMelding(items);
         console.dir(items);
     }
+}
+
+function constructMelding(meldingData) {
+    var melding = "";
+    melding += ""
+        + "";
+    return melding
 }
 
 function deleteNullProperties(deleteObject) {
