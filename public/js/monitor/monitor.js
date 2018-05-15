@@ -14,6 +14,7 @@ function checkDB(school) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
+                console.dir(dataRetrieve);
                 addElements(dataRetrieve);
             }
             else {
@@ -30,15 +31,31 @@ function addElements(dataRetrieve) {
         currentID = dataRetrieve[1];
         //delete onnodige null values
         var items = deleteNullProperties(dataRetrieve[0]);
-        var pageContent = document.getElementById('Monitor');
-        pageContent += constructMelding(items);
+        console.log(items["type"]);
         console.dir(items);
+        var pageContent = document.getElementById('Monitor');
+        pageContent.innerHTML += constructMelding(items);
+
     }
 }
 
 function constructMelding(meldingData) {
     var melding = "";
-    melding += ""
+    melding += "<div class='alertItem'>"
+        + "<div class='alertType'>"
+        + meldingData['type']
+        + "</div>"
+        + "<div class='content'>"
+        + "<div class='seperator'></div>"
+        + "<div>"
+        + "<div>"
+        + meldingData['locatie']
+        + "</div>"
+        + "<div>Lokaal 0.12</div>"
+        + "</div>"
+        + "<span class='seperator'></span>"
+        + "</div>"
+        + "</div>"
         + "";
     return melding
 }
