@@ -27,7 +27,7 @@ function checkDB(school) {
 }
 
 function addElements(dataRetrieve) {
-    if (currentID !== dataRetrieve[1]) {
+    if (currentID !== dataRetrieve[1] && dataRetrieve[3] === false) {
         currentID = dataRetrieve[1];
         //delete onnodige null values
         var items = deleteNullProperties(dataRetrieve[0]);
@@ -37,27 +37,68 @@ function addElements(dataRetrieve) {
         pageContent.innerHTML += constructMelding(items);
 
     }
+    else if (currentID !== dataRetrieve[1] && dataRetrieve[3] === true) {
+        var items = deleteNullProperties(dataRetrieve[0]);
+        console.log(items["type"]);
+        console.dir(items);
+        updateContent(items);
+
+
+    }
+}
+
+function updateContent(items) {
+    var keys = Object.keys(items);
+    for (var x = 0; keys.length > x; x++) {
+        if (items[keys[x]] != null) {
+            if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) != null) {
+                document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+            }
+            else if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]] && document.getElementById(keys[x] + items['id']) == null) {
+                var DIV = document.getElementById('extraInfo');
+                var addItems = "";
+                addItems += "<div id ='" +
+                    keys[x] + "" + items[id] +
+                    "'>"
+                    + keys[x]
+                    + ": "
+                    + items[keys[x]]
+                    + "</div>";
+                DIV.innerHTML += addItems;
+            }
+        }
+    }
 }
 
 function constructMelding(meldingData) {
     var melding = "";
-    melding += "<div class='alertItem'>"
-        + "<div class='alertType'>"
+    melding += "<div class='alertItem' id=" +
+        meldingData['id'] +
+        ">"
+        + "<div class='alertType' id='type" +
+        meldingData['id'] +
+        "'>"
         + meldingData['type']
         + "</div>"
         + "<div class='content'>"
         + "<div>"
-        + "<div>"
+        + "<div id='locatie" +
+        meldingData['id'] +
+        "'>"
         + toggleSpace(meldingData['locatie'])
         + "</div>"
-        + "<div>" +
+        + "<div id='locatieSpecifiek"
+        + meldingData['id']
+        + "'>" +
         meldingData['locatieSpecifiek'] +
         "</div>"
-        + '</div><div>';
+        + '</div><div id="extraInfo">';
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
         if (meldingData[keys[x]] != null && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
-            melding += "<div>"
+            melding += "<div id ='" +
+                keys[x] + "" + meldingData[id] +
+                "'>"
                 + keys[x]
                 + ": "
                 + meldingData[keys[x]]
