@@ -106,7 +106,7 @@ function constructMelding(meldingData) {
         + '</div><div id="extraInfo">';
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
-        if (meldingData[keys[x]] != null && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
+        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
             melding += "<div id ='" +
                 keys[x] + "" + meldingData['id'] +
                 "'>"
