@@ -46,17 +46,25 @@ function constructMelding(meldingData) {
         + meldingData['type']
         + "</div>"
         + "<div class='content'>"
-        + "<div class='seperator'></div>"
         + "<div>"
         + "<div>"
-        + meldingData['locatie']
+        + toggleSpace(meldingData['locatie'])
         + "</div>"
-        + "<div>Lokaal 0.12</div>"
-        + "</div>"
-        + "<span class='seperator'></span>"
-        + "</div>"
-        + "</div>"
-        + "";
+        + "<div>" +
+        meldingData['locatieSpecifiek'] +
+        "</div>"
+        + '</div><div>';
+    var keys = Object.keys(meldingData);
+    for (var x = 0; keys.length > x; x++) {
+        if (meldingData[keys[x]] != null && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
+            melding += "<div>"
+                + keys[x]
+                + ": "
+                + meldingData[keys[x]]
+                + "</div>";
+        }
+    }
+    melding += "</div></div>";
     return melding
 }
 
