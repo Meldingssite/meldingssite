@@ -36,7 +36,8 @@ function addElements(dataRetrieve) {
             console.log(items["type"]);
             console.dir(items);
             var pageContent = document.getElementById('Monitor');
-            pageContent.innerHTML += constructMelding(items);
+            var content = constructMelding(items) + pageContent.innerHTML;
+            pageContent.innerHTML = content;
 
         }
         else {
@@ -70,7 +71,7 @@ function updateContent(items) {
             }
             else if (document.getElementById(keys[x] + items['id']) == null) {
                 console.log(keys[x] + items['id']);
-                var DIV = document.getElementById('extraInfo');
+                var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
                 addItems += "<div id ='" +
                     keys[x] + "" + items['id'] +
@@ -110,7 +111,9 @@ function constructMelding(meldingData) {
         + "'>" +
         meldingData['locatieSpecifiek'] +
         "</div>"
-        + '</div><div id="extraInfo">';
+        + '</div><div id="extraInfo' +
+        meldingData['id'] +
+        '">';
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
         if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
@@ -123,7 +126,7 @@ function constructMelding(meldingData) {
                 + "</div>";
         }
     }
-    melding += "</div></div>";
+    melding += "</div></div></div>";
     return melding
 }
 
