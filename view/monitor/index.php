@@ -32,30 +32,30 @@
 
     ?>
 
-    <div class="alertItem">
-        <div class="alertType">Je moeder is dik</div>
-
-        <div class="content">
-            <div>
-                <div>Azzurrooooooo</div>
-                <div>Lokaal 0.12</div>
-            </div>
-    
-            <div>
-                <div>Azzurro</div>
-                <div>Lokaal 0.12</div>
-            </div>
-
-            <div>
-                <div>Azzurro</div>
-                <div>Lokaal 0.12</div>
-            </div>
-
-            <div>
-                <div>Azzurro</div>
-                <div>Lokaal 0.12</div>
-            </div>
-        </div>
-    </div>
+<!--    <div class="alertItem">-->
+<!--        <div class="alertType">Je moeder is dik</div>-->
+<!---->
+<!--        <div class="content">-->
+<!--            <div>-->
+<!--                <div>Azzurrooooooo</div>-->
+<!--                <div>Lokaal 0.12</div>-->
+<!--            </div>-->
+<!--    -->
+<!--            <div>-->
+<!--                <div>Azzurro</div>-->
+<!--                <div>Lokaal 0.12</div>-->
+<!--            </div>-->
+<!---->
+<!--            <div>-->
+<!--                <div>Azzurro</div>-->
+<!--                <div>Lokaal 0.12</div>-->
+<!--            </div>-->
+<!---->
+<!--            <div>-->
+<!--                <div>Azzurro</div>-->
+<!--                <div>Lokaal 0.12</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </main>
 
