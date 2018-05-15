@@ -33,17 +33,26 @@
     ?>
 
     <div class="alertItem">
+
         <div class="alertType">
             <!-- Bijvoorbeeld; Pesten, Brand, Drugs -->
-            Drugs
+            Vechtpartij
         </div>
 
-        <div class="alertLocation">
-            <div>Leerpark</div>
-            <div>Kantine</div>
+        <div class="content">
+        
+            <div class="seperator"></div>
+    
+    
+            <div>
+                <div>Azzurro</div>
+                <div>Lokaal 0.12</div>
+            </div>
+    
+            <span class="seperator"></span>
+            
         </div>
-
-
+        
     </div>
 </main>
 

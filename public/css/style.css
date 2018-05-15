@@ -297,50 +297,73 @@ input[type=radio]
 
 #Monitor
 {
-    width: calc(100% - 50px);
+    width: calc(100%);
 }
 
 .alertItem
 {
+    display: flex;
+    position: relative;
     width: calc(100% - 10px);
-    height: 100px;
-    border: 1px solid black;
-    margin: 0 auto;
+    height: 180px;
+    margin: 50px auto;
+
+    color: #F5F5F5;
+    font-size: 40px;    
+    background: #7E94DC;
+    border: 3px solid #7370D8;
+    border-radius: 80px 3px 3px 80px;
+
 }
 
-.alertItem > div
+.alertItem:first-child
+{
+    padding-left: 50px;
+}
+
+.alertItem .content
 {
     float: left;
+    position: absolute;
+    left:0;
 
-    border: 1px solid blue;
+    -border: 1px solid green;
     height: 100%;
-    width: 120px;
-    overflow: hidden;
+    width: 100%;
+
+    padding-top: 25px;
+}
+
+.alertItem .content div
+{
+    float: left;
+}
+
+.alertItem .alertType
+{
+    position: absolute;
+    top: -30px;
+    left: 70px;
+    
+    margin-top: 0;
+
+    background: #DF4F4F;
+    border: 2px solid #E92020;
+    border-radius: 30px 0px 0px 5px;    
+    width: 250px;
+    height: 60px;
+
+    font-weight: bold;
+    font-size: 40px;
+    padding-left: 20px;
 
 }
 
-.alertType
+.seperator
 {
-    /* Center text (Single Line) */
-    text-align: center;
-    height: 100px;
-    line-height: 100px;
-    white-space: nowrap;
-}
+    height: 500px;
+    width: 2px;
 
-.alertLocation
-{
-
-}
-
-.alertLocation div
-{
-    height: 50%;
-
-    /* Center text (Single Line) */
-    text-align: center;
-    height: 50%;
-    line-height: 50%;
-    white-space: nowrap;
+    background: purple;
 }
 
