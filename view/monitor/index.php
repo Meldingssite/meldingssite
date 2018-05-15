@@ -9,11 +9,11 @@
     $conn->close();
     //echo $result;
     for ($x = 0; $x < count($scholen); $x++) {
-        $button = '<button onclick=refreshList("'
+        $button = '<div class = "btn" onclick=refreshList("'
             . toggleSpace($scholen[$x][0])
             . '")>'
             . toggleSpace($scholen[$x][0])
-            . "</button>  ";
+            . "</div>  ";
         echo $button;
     }
     function toggleSpace($item)
@@ -33,26 +33,19 @@
     ?>
 
     <div class="alertItem">
-
         <div class="alertType">
             <!-- Bijvoorbeeld; Pesten, Brand, Drugs -->
             Vechtpartij
         </div>
-
         <div class="content">
-        
             <div class="seperator"></div>
-    
-    
             <div>
                 <div>Azzurro</div>
                 <div>Lokaal 0.12</div>
             </div>
-    
             <span class="seperator"></span>
             
         </div>
-        
     </div>
 </main>
 
