@@ -1,3 +1,8 @@
+
+
+
+
+
 <script src="<?php echo URL . SCRIPT_DIR ?>monitor/monitor.js">
 </script>
 <main id="Monitor">

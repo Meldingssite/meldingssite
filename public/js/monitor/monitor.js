@@ -59,10 +59,10 @@ function updateContent(items) {
         if (items[keys[x]] != null && items[keys[x]] !== undefined && items[keys[x]] !== "" && keys[x] !== 'id') {
             console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
-                if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ":" + items[keys[x]]
+                if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
-                        document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ":" + items[keys[x]];
+                        document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ": " + items[keys[x]];
                     }
                     else {
                         document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
@@ -90,6 +90,7 @@ function updateContent(items) {
     }
 }
 
+    //Constructs a melding
 function constructMelding(meldingData) {
     var melding = "";
     melding += "<div class='alertItem' id=" +
@@ -108,7 +109,7 @@ function constructMelding(meldingData) {
         + toggleSpace(meldingData['locatie'])
         + "</div>";
 
-
+    //Checks for locatieSpecifiek to have data so it doesn't post undefined
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += "<div id='locatieSpecifiek"
             + meldingData['id']
@@ -121,6 +122,7 @@ function constructMelding(meldingData) {
     melding += '</div><div id="extraInfo' +
         meldingData['id'] +
         '">';
+    //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
         if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
@@ -137,6 +139,7 @@ function constructMelding(meldingData) {
     return melding
 }
 
+    //Deletes empty properties in the object
 function deleteNullProperties(deleteObject) {
     var keys = Object.keys(deleteObject);
     for (var x = 0; keys.length > x; x++) {
@@ -147,6 +150,7 @@ function deleteNullProperties(deleteObject) {
     return deleteObject;
 }
 
+    //Switches between _ and spaces for onclick arguments
 function toggleSpace(item, ForceSpace = false) {
     var returnItem = "";
     if (item.indexOf('_') > -1 || ForceSpace === true) {
@@ -164,7 +168,7 @@ function toggleSpace(item, ForceSpace = false) {
     return returnItem;
 }   // Switches between _ and spaces
 
-//  Check Database every 0.5 seconds
+// Active check for Database every 0.5 seconds
 function refreshList(school) {
     document.getElementById("Monitor").innerHTML = "";
     window.setInterval(function () {
