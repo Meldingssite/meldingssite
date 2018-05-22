@@ -74,13 +74,13 @@ function updateContent(items) {
                 console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<div id ='" +
-                    keys[x] + "" + items['id'] +
-                    "'>"
-                    + keys[x]
-                    + ": "
-                    + toggleSpace(items[keys[x]], true)
-                    + "</div>";
+                addItems += "<div id ='"
+                         + keys[x] + "" + items['id']
+                         + "'>"
+                         + keys[x]
+                         + ": "
+                         + toggleSpace(items[keys[x]], true)
+                         + "</div>";
                 DIV.innerHTML += addItems;
             }
             else {
@@ -90,56 +90,56 @@ function updateContent(items) {
     }
 }
 
-    //Constructs a melding
+//Constructs a melding
 function constructMelding(meldingData) {
     var melding = "";
-    melding += "<div class='alertItem' id=" +
-        meldingData['id'] +
-        ">"
-        + "<div class='alertType' id='type" +
-        meldingData['id'] +
-        "'>"
-        + meldingData['type']
-        + "</div>"
-        + "<div class='content'>"
-        + "<div>"
-        + "<div id='locatie" +
-        meldingData['id'] +
-        "'>"
-        + toggleSpace(meldingData['locatie'])
-        + "</div>";
+    melding += "<div class='alertItem' id="
+            + meldingData['id']
+            + ">"
+            + "<div class='alertType' id='type"
+            + meldingData['id']
+            + "'>"
+            + meldingData['type']
+            + "</div>"
+            + "<div class='content'>"
+            + "<div>"
+            + "<div id='locatie"
+            + meldingData['id']
+            + "'>"
+            + toggleSpace(meldingData['locatie'])
+            + "</div>";
 
     //Checks for locatieSpecifiek to have data so it doesn't post undefined
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += "<div id='locatieSpecifiek"
-            + meldingData['id']
-            + "'>" +
-            meldingData['locatieSpecifiek'] +
-            "</div>";
+                + meldingData['id']
+                + "'>"
+                + meldingData['locatieSpecifiek']
+                + "</div>";
 
     }
 
-    melding += '</div><div id="extraInfo' +
-        meldingData['id'] +
-        '">';
+    melding += '</div><div id="extraInfo'
+            + meldingData['id']
+            + '">';
     //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
         if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
             melding += "<div id ='" +
-                keys[x] + "" + meldingData['id'] +
-                "'>"
-                + keys[x]
-                + ": "
-                + meldingData[keys[x]]
-                + "</div>";
+                keys[x] + "" + meldingData['id']
+                        + "'>"
+                        + keys[x]
+                        + ": "
+                        + meldingData[keys[x]]
+                        + "</div>";
         }
     }
     melding += "</div></div></div>";
     return melding
 }
 
-    //Deletes empty properties in the object
+//Deletes empty properties in the object
 function deleteNullProperties(deleteObject) {
     var keys = Object.keys(deleteObject);
     for (var x = 0; keys.length > x; x++) {
@@ -150,7 +150,7 @@ function deleteNullProperties(deleteObject) {
     return deleteObject;
 }
 
-    //Switches between _ and spaces for onclick arguments
+//Switches between _ and spaces for onclick arguments
 function toggleSpace(item, ForceSpace = false) {
     var returnItem = "";
     if (item.indexOf('_') > -1 || ForceSpace === true) {
