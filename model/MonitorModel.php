@@ -7,11 +7,11 @@ function retrieveElements()
     $school = $_POST['school'];
     $dataArray = [];
     $sql = "select * from `$school` where id=$id";
-//    echo $sql;
     $result = $conn->query($sql);
     $dataArray[0] = $result->fetch_assoc();
     $result2 = $conn->query("select MAX(id) from `$school`");
     $highest_id = $result2->fetch_assoc();
+    //Case at the last one to add
     if ($highest_id['MAX(id)'] == $id) {
         $dataArray[1] = $id;
         $conn->close();
@@ -19,13 +19,16 @@ function retrieveElements()
         echo $JSON;
         return $JSON;
     }
+    //Case more to add
     else if ($highest_id['MAX(id)'] > $id) {
         $dataArray[1] = $id + 1;
         $conn->close();
         $JSON = json_encode($dataArray);
         echo $JSON;
         return $JSON;
-    } else if ($highest_id['MAX(id)'] < $id) {
+    }
+    //Case More added then already present
+    else if ($highest_id['MAX(id)'] < $id) {
         $dataArray[1] = $id - 1;
         $dataArray[2] = null;
         return $dataArray;
