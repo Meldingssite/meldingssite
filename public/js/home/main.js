@@ -10,20 +10,3 @@ xmlhttp.onreadystatechange = function () {
 }
 xmlhttp.open("GET", SCRIPT_DIR + "MeldingsApp.json", true);
 xmlhttp.send();
-
-// testing shit
-
-function sendJSON(str_json) {
-    request = new XMLHttpRequest();
-    request.open("POST", "admin/savePage", true);
-    request.setRequestHeader("Content-type", "application/json");
-    request.onreadystatechange = function () {
-        if (request.readyState == 4) {
-            console.log("Data transferred.");
-
-            window.location.replace(window.location.href + "/savePage");
-        }
-    }
-    console.dir(request.send(str_json));
-    console.dir(request);
-}
