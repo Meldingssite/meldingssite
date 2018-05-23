@@ -181,12 +181,31 @@ function renderDropDown(dropObj) {
     return dropObj.name;
 }   // Renders dropdown buttons
 
+function renderFileUpload(uploadObj) {
+    var mainHTML = document.getElementsByTagName("main")[0];
+    var uploadHTML = "";
+
+    // Opening tag for fileupload
+    uploadHTML += "<fieldset><legend>"
+        + uploadObj.text;
+    //section
+    uploadHTML += "<section class=input>"
+        + '<input type="file" name="'
+        + uploadObj.name
+        + '" class="fileUpload">';
+    //knop
+    //closing tags
+    uploadHTML += "</section></legend></fieldset>";
+    mainHTML.innerHTML += uploadHTML;
+    return uploadObj.name;
+}   // Renders FileUpload
+
 
 function renderForm(form) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
         + form.formAction
-        + "'>";
+        + "' enctype='multipart/form-data'>";
     for (formElement in content)    //  determine pageElement type
     {
         if (content[formElement].type === "textInput") {
@@ -384,6 +403,8 @@ function submitContents(naam, school, id) {
     var nameArray = [];
     for (var x = 0; x < naam.length; x++) {
         console.log(naam[x] + " " + document.getElementsByName(naam[x]).length);
+
+
         if (document.getElementsByName(naam[x]).length > 1) {
             for (var y = 1; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
@@ -393,10 +414,18 @@ function submitContents(naam, school, id) {
             }
         }
         else {
-            dataArray[x] = document.getElementsByName(naam[x])[0].value;
+            try {
+                dataArray[x] = document.getElementsByName(naam[x])[0].value;
+            }
+            catch {
+                console.dir(naam);
+                console.log(naam[x]);
+                console.log(x);
+                console.log(document.getElementsByName(naam[x])[0].value);
+            }
+
             nameArray[x] = naam[x];
         }
-
     }
     sendArray = [nameArray, dataArray];
     console.dir(sendArray);
