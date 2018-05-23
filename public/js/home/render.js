@@ -200,7 +200,6 @@ function renderFileUpload(uploadObj) {
     return uploadObj.name;
 }   // Renders FileUpload
 
-
 function renderForm(form) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
@@ -296,7 +295,7 @@ function renderLocatieList(alertType, content, school) {
         + " id='locatieName'"
         + " placeholder='lokaal'"
         + ">";
-    buttonHTML += '<button  id="lokaalButton" onclick="getLocatiecontent('
+    buttonHTML += '<button  id="lokaalButton" onclick="locatieSend('
         + "'"
         + alertType
         + "','"
