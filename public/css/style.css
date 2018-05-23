@@ -28,7 +28,7 @@ body
     height: 100%
 }
 
-body main:not(#monitor)
+body main:not(#dashboard)
 {
     display: block;
     max-width: 720px;
@@ -284,9 +284,9 @@ input[type=radio]
     top:10;
 }
 
-/* Monitor */
+/* Dashboard */
 
-#Monitor
+#Dashboard
 {
     padding-top: 0;
     margin-top:0 ;

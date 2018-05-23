@@ -3,9 +3,9 @@
 
 
 
-<script src="<?php echo URL . SCRIPT_DIR ?>monitor/monitor.js">
+<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboard.js">
 </script>
-<main id="Monitor">
+<main id="Dashboard">
     <?php
     $conn = OpenDatabaseConnection();
     $sql = "SHOW TABLES";

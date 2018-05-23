@@ -9,7 +9,7 @@ function checkDB(school) {
     Data.append("id", currentID);
     Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "Monitor/retrieveElements", true); // adding model function
+    xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xDBhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -35,7 +35,7 @@ function addElements(dataRetrieve) {
             var items = deleteNullProperties(dataRetrieve[0]);
             console.log(items["type"]);
             console.dir(items);
-            var pageContent = document.getElementById('Monitor');
+            var pageContent = document.getElementById('Dashboard');
             var content = constructMelding(items) + pageContent.innerHTML;
             pageContent.innerHTML = content;
 
@@ -170,7 +170,7 @@ function toggleSpace(item, ForceSpace = false) {
 
 // Active check for Database every 0.5 seconds
 function refreshList(school) {
-    document.getElementById("Monitor").innerHTML = "";
+    document.getElementById("Dashboard").innerHTML = "";
     window.setInterval(function () {
         checkDB(school)
     }, 500);
