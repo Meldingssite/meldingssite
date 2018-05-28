@@ -5,7 +5,7 @@ xmlhttp.onreadystatechange = function () {
         this.status == 200 &&
         document.getElementById("page")     // Element with ID page exists
     )
-        renderPage();   // render index page
+    renderPage();   // render index page
 
 }
 xmlhttp.open("GET", SCRIPT_DIR + "MeldingsApp.json", true);
