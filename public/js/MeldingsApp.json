@@ -64,6 +64,11 @@
             "formAction": "formSubmit",
             "content": [
               {
+                "text": "upload een file",
+                "type": "upload",
+                "name": "test"
+              },
+              {
                 "text": "Is het slachtoffer bewusteloos?",
                 "type": "radioButtons",
                 "name": "unconscious",

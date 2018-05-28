@@ -190,14 +190,14 @@ function renderFileUpload(uploadObj) {
         + uploadObj.text;
     //section
     uploadHTML += "<section class=input>"
-        + '<input type="file" name="'
+        + '<input type="file" name="file '
         + uploadObj.name
         + '" class="fileUpload">';
     //knop
     //closing tags
     uploadHTML += "</section></legend></fieldset>";
     mainHTML.innerHTML += uploadHTML;
-    return uploadObj.name;
+    return "file_" + uploadObj.name;
 }   // Renders FileUpload
 
 function renderForm(form) {
@@ -221,6 +221,8 @@ function renderForm(form) {
             FormList.push(renderFormButton(content[formElement]));
         else if (content[formElement].type === "dropDown")
             FormList.push(renderDropDown(content[formElement]));
+        else if (content[formElement].type === "upload")
+            FormList.push(renderFileUpload(content[formElement]));
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
@@ -389,11 +391,28 @@ function dataSend(sendArray, school, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
     for (var x = 0; x < sendArray[0].length; x++) {
-        Data.append(sendArray[0][x], sendArray[1][x]);
+        console.log(sendArray[0][x]);
+        if (sendArray[0][x]) {
+            console.log(x);
+            if (sendArray[0][x].match("file")) {
+                console.log("uploading file");
+                xhttp.upload.onprogress = function (e) {
+                    if (e.lengthComputable) {
+                        var percentComplete = (e.loaded / e.total) * 100;
+                        console.log(percentComplete + '% uploaded');
+                    }
+                };
+            }
+            else {
+                console.log("appending data");
+                Data.append(sendArray[0][x], sendArray[1][x]);
+                console.dir(Data);
+            }
+        }
     }
-    console.dir(Data);
     xhttp.send(Data);
 }
+
 
 function submitContents(naam, school, id) {
     naam = naam.split(",");
@@ -413,19 +432,27 @@ function submitContents(naam, school, id) {
             }
         }
         else {
-            try {
+            if (naam[x].match("file")) {
+                console.log(naam[x] + 'found file!');
+                console.log(toggleSpace(naam[x]));
+                dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files;
+            }
+            else {
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
-            catch {
-                console.dir(naam);
-                console.log(naam[x]);
-                console.log(x);
-                console.log(document.getElementsByName(naam[x])[0].value);
-            }
+
+            // catch
+            //     {
+            //         console.dir(naam);
+            //         console.log(naam[x]);
+            //         console.log(x);
+            //         console.log(document.getElementsByName(naam[x])[0].value);
+            //     }
 
             nameArray[x] = naam[x];
         }
     }
+
     sendArray = [nameArray, dataArray];
     console.dir(sendArray);
     dataSend(sendArray, school, id);
