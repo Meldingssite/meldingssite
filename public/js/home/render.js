@@ -383,6 +383,7 @@ function locatieSend(alertType, school, locatie = null,) {
 } // sends locatie and renders next page
 
 function dataSend(sendArray, school, id) {
+
     locatieSubmit = true;
     var Data = new FormData();
     school = toggleSpace(school);
@@ -390,30 +391,31 @@ function dataSend(sendArray, school, id) {
     Data.append("id", id);
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
+    console.dir(xhttp);
+
     for (var x = 0; x < sendArray[0].length; x++) {
-        console.log(sendArray[0][x]);
+        // console.log(sendArray[0][x]);
         if (sendArray[0][x]) {
-            console.log(x);
             if (sendArray[0][x].match("file")) {
-                Data.append(sendArray[0][x], sendArray[1][x]);
-                console.log("uploading file");
-                xhttp.upload.onprogress = function (e) {
-                    if (e.lengthComputable) {
-                        var percentComplete = (e.loaded / e.total) * 100;
-                        console.log(percentComplete + '% uploaded');
-                    }
-                };
+                // xhttp.file = sendArray[1][x];
+                if (xhttp.upload) {
+                    xhttp.upload.onprogress = function (e) {
+                        if (e.lengthComputable) {
+                            var percentComplete = (e.loaded / e.total) * 100;
+                            console.log(percentComplete + '% uploaded');
+                        }
+                    };
+                }
             }
-            else {
-                console.log("appending data");
-                Data.append(sendArray[0][x], sendArray[1][x]);
-                console.dir(Data);
-            }
+            console.log("appending data");
+            Data.append(sendArray[0][x], sendArray[1][x]);
         }
+    }
+    for (var pair of Data.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
     }
     xhttp.send(Data);
 }
-
 
 function submitContents(naam, school, id) {
     naam = naam.split(",");
@@ -436,7 +438,8 @@ function submitContents(naam, school, id) {
             if (naam[x].match("file")) {
                 console.log(naam[x] + 'found file!');
                 console.log(toggleSpace(naam[x]));
-                dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files;
+                dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
+                // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             else {
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
