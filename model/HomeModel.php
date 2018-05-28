@@ -48,9 +48,6 @@ function sendDataModel()
         for ($x = 0;
              $x < count($keys);
              $x++) {
-            var_dump($keys);
-            var_dump($_POST);
-            var_dump($_FILES);
             if (!preg_match("/(file)/   ", $keys[$x])) {
                 echo $keys[$x];
                 $sql = "UPDATE `$tabel`  SET $keys[$x] = '$data[$x]' WHERE id = '$id'";
@@ -72,10 +69,7 @@ function sendDataModel()
 
             $target_file = $target_dir . basename($filename);
             $imageFileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-//            $check = getimagesize($_FILES[$naam]["tmp_name"]);
             $check = getimagesize($_FILES[$naam]["tmp_name"]);
-//            var_dump($_FILES[$naam]);
-//            var_dump($naam);
 
 //         Check if image file is a actual image or fake image
 
