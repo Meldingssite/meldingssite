@@ -395,6 +395,7 @@ function dataSend(sendArray, school, id) {
         if (sendArray[0][x]) {
             console.log(x);
             if (sendArray[0][x].match("file")) {
+                Data.append(sendArray[0][x], sendArray[1][x]);
                 console.log("uploading file");
                 xhttp.upload.onprogress = function (e) {
                     if (e.lengthComputable) {

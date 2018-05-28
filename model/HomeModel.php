@@ -6,7 +6,7 @@ function sendDataModel()
      *     Sends Data to Database
      ****************************/
 
-    //  Variable Init
+//  Variable Init
     $tabel = $_POST['School'];
     $conn = OpenDatabaseConnection();
     $keys = [];
@@ -19,7 +19,7 @@ function sendDataModel()
         }
     }
 
-    // convert array to comma separated string
+// convert array to comma separated string
     $dataString = implode(", ", $data);
     $keyString = implode(", ", $keys);
 
@@ -38,9 +38,15 @@ function sendDataModel()
             echo mysqli_insert_id($conn);
         else
             echo "Error: " . $sql . "<br>" . $conn->error;
-    } else    // id given
+    } else
+        // id given
     {
-        for ($x = 0; $x < count($keys); $x++) {
+        var_dump($_FILES["file_test"]);
+        var_dump($_POST["file_test"]);
+        print_r($_FILES);
+        for ($x = 0;
+             $x < count($keys);
+             $x++) {
             if (!preg_match("/(file)/   ", $keys[$x])) {
                 echo $keys[$x];
                 $sql = "UPDATE `$tabel`  SET $keys[$x] = '$data[$x]' WHERE id = '$id'";
@@ -48,15 +54,34 @@ function sendDataModel()
                     echo mysqli_insert_id($conn);
                 else
                     echo "Error: " . $sql . "<br>" . $conn->error;
-            } else if (preg_match("file", $keys[$x])) {
-                //Todo add file uploading logic
-                $fileName = $_FILES['afile']['name'];
-                $fileType = $_FILES['afile']['type'];
-                $fileContent = file_get_contents($_FILES['afile']['tmp_name']);
-                $dataUrl = 'data:' . $fileType . ';base64,' . base64_encode($fileContent);
+            } else if (preg_match("/(file)/", $keys[$x])) {
+                var_dump($_FILES);
             }
+//                //Todo add file uploading logic
+//
+//                $target_dir = "uploads/";
+//
+//                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//
+//                $uploadOk = 1;
+//                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+//                // Check if image file is a actual image or fake image
+//                if (isset($_POST["submit"])) {
+//                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+//                    if ($check !== false) {
+//                        echo "File is an image - " . $check["mime"] . ".";
+//                        $uploadOk = 1;
+//                    } else {
+//                        echo "File is not an image.";
+//                        $uploadOk = 0;
+//                    }
+//                }
+//
+//            }
+//        }
         }
     }
+
 
     return mysqli_insert_id($conn);
     $conn->close();
