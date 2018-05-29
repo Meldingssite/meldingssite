@@ -1,5 +1,4 @@
-
-
+<link rel="stylesheet" href="<?php echo URL ?>public/css/dashboard.css">
 
 
 
