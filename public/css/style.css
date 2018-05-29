@@ -172,13 +172,6 @@ input[type=radio] {
     height: 1.5em;
 }
 
-#login input {
-    display: block;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* Debug */
 .debug {
     display: inline-block;
