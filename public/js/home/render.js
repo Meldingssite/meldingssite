@@ -265,23 +265,23 @@ function renderLocatieForm(alertType, school = null) {
 } //renders form for locaties
 
 function renderLocatieScholen(alertType, content) {
-    var buttonHTML = "";
     var pageHTML = document.getElementById("page");
-    var schoolNaam = "";
     
-    for (var i = 0; i < Object.keys(content).length; i++) {
+    renderTextbox(
+        new Textbox("Waar vindt plaats?",
+        "purple"));
+        
+    for (var i = 0; i < Object.keys(content).length; i++) {        
         //  Check if it is a label
         if(content[Object.keys(content)[i]] == "label"){
-            renderLabel("Test");
+            renderLabel(Object.keys(content)[i]);
             continue;
         }
-
-
+        
+        var buttonHTML = "";
         var schoolNaam = Object.keys(content)[i];
         var schoolSplit = toggleSpace(schoolNaam);
-
         
-
         // Opening tag for .btn
         buttonHTML += "<div class='btn'"
             + "onclick=renderLocatieForm('"
@@ -296,8 +296,8 @@ function renderLocatieScholen(alertType, content) {
 
         // Closing tag for .btn
         buttonHTML += "</div>";
+        pageHTML.innerHTML += buttonHTML;
     }
-    pageHTML.innerHTML += buttonHTML;
 
 } //renders first list with schools
 
