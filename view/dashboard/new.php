@@ -44,7 +44,11 @@
 
     <div>
     <p><ion-icon name="alert"></ion-icon> Het slachtoffer is bewusteloos</p>
-        
+    <div class="icon-list">
+            <ion-icon name="close"></ion-icon>
+            <ion-icon name="eye"></ion-icon>
+            <ion-icon name="checkmark"></ion-icon>
+        </div>
     </div>
 </div>
 
