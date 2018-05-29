@@ -45,14 +45,14 @@ function renderTextbox(textboxObj) {
     pageHTML.innerHTML += textboxHTML;
 } // renders TextBox element
 
-function renderLabel(labelObj) {
+function renderLabel(text) {
     var labelHTML = "";
 
     // Opening tag
     labelHTML += "<div class='label'>";
 
     // Content
-    labelHTML += labelObj.text;
+    labelHTML += text;
 
     // Closing tag
     labelHTML += "</div>"
@@ -264,8 +264,17 @@ function renderLocatieScholen(alertType, content) {
     var schoolNaam = "";
     
     for (var i = 0; i < Object.keys(content).length; i++) {
+        //  Check if it is a label
+        if(content[Object.keys(content)[i]] == "label"){
+            renderLabel("Test");
+            continue;
+        }
+
+
         var schoolNaam = Object.keys(content)[i];
         var schoolSplit = toggleSpace(schoolNaam);
+
+        
 
         // Opening tag for .btn
         buttonHTML += "<div class='btn'"
