@@ -11,7 +11,7 @@ function sendDataModel()
     $conn = OpenDatabaseConnection();
     $keys = [];
     $data = [];
-    
+
     foreach ($_POST as $key => $ls_value) {
         if ($key != 'School' && $key != 'id') {
             $keys[] = $key;
@@ -28,13 +28,15 @@ function sendDataModel()
 
     if (!isset($_POST['id'])) {   // No id given
 
-//        var_dump($_FILES); var_dump($_POST);
+        //var_dump($_FILES); var_dump($_POST);
         $sql = "INSERT INTO `$tabel`  ($keyString) VALUES (";
+        
         foreach ($data as $key) {
             $sql .= '"';
             $sql .= $key;
             $sql .= '",';
         }
+
         $sql = substr($sql, 0, -1);
         $sql .= ")";
 
