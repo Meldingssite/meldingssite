@@ -23,6 +23,7 @@
 .alertItem div:nth-child(1) {
     background: #003;
     width: 200px;
+    padding-top: 20px;
 
     color: white;
 }
