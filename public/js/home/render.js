@@ -1,11 +1,10 @@
 /*****************************************************************/
 /*** All Functions used to render elements to the page go here ***/
-
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
 var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
-var FormList = [];
-var sendArray = [];
+var FormList = [];         //list op Inputs rendered on page for retrieving data
+var sendArray = [];        //Array send to DB
 
 function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
@@ -58,7 +57,7 @@ function renderLabel(text) {
     labelHTML += "</div>"
 
     pageHTML.innerHTML += labelHTML;
-}
+} //Renders a label for the location list
 
 function renderButton(buttonObj) {
     var pageHTML = document.getElementById("page");
@@ -495,7 +494,7 @@ function dataSend(sendArray, school, id) {
         }
     };
     xhttp.send(Data);
-}
+} //Sends Data To Database
 
 function submitContents(NaamString, school, id) {
     var naam = NaamString.split("|");
@@ -576,7 +575,7 @@ function submitContents(NaamString, school, id) {
     sendArray = [nameArray, dataArray];
     console.dir(sendArray);
     dataSend(sendArray, school, id);
-}
+} //Executed on pressing submit and prepares data for being send to Database
 
 function extraInfo(element) {
     console.log(element)
@@ -587,7 +586,7 @@ function extraInfo(element) {
     else if (element.value == "Nee" || element.value == "nee") {
         fade(document.getElementById('extraInfo'));
     }
-}
+}   //Executed for radiobuttons used for revealing extra information
 
 function unfade(element) {
     var op = 0.1;  // initial opacity
@@ -601,8 +600,7 @@ function unfade(element) {
         op += op * 0.1;
     }, 10);
     // element.style.opacity = 100;
-}
-
+}   //Makes item reappear
 
 function fade(element) {
     var op = 1;  // initial opacity
@@ -616,7 +614,7 @@ function fade(element) {
         op -= op * 0.2;
     }, 50);
 
-}
+}   //Makes item disappear
 
 function toggleSpace(item) {
     var returnItem = "";
@@ -634,12 +632,3 @@ function toggleSpace(item) {
     }
     return returnItem;
 }   // Switches between _ and spaces
-
-function remove(arr, what) {
-    var found = arr.indexOf(what);
-
-    while (found !== -1) {
-        arr.splice(found, 1);
-        found = arr.indexOf(what);
-    }
-} //Removes item from array
