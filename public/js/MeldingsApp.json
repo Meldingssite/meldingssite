@@ -112,7 +112,7 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "name": "contact",
+                "name": "toggle",
                 "options": [
                   {
                     "name": "naam",
@@ -192,7 +192,6 @@
               {
                 "text": "mogen we contact met u opnemen?",
                 "type": "radioButtons",
-
                 "name": "contact",
                 "options": [
                   {
@@ -208,7 +207,7 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "name": "contact",
+                "name": "toggle",
                 "options": [
                   {
                     "name": "naam",
@@ -303,6 +302,7 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
+                "name": "toggle",
                 "options": [
                   {
                     "name": "naam",
@@ -458,7 +458,6 @@
             "text": "Diefstal",
             "type": "textbox",
             "color": "purple"
-
           },
           {
             "type": "form",
@@ -498,7 +497,6 @@
             "text": "Pesten",
             "type": "textbox",
             "color": "purple"
-
           },
           {
             "type": "form",
@@ -538,7 +536,6 @@
             "text": "Overlast",
             "type": "textbox",
             "color": "purple"
-
           },
           {
             "type": "form",
@@ -640,7 +637,6 @@
           "Parkeerplek Langs N3": [],
           "Parkeerplaats Langs Spoor": [],
           "Openbare Weg": [],
-          
           "Gorinchem": "label",
           "Mollenburgseweg": [
             "De snoekzone"
