@@ -40,6 +40,12 @@ class Textbox {
     }
 }
 
+class Label {
+    constructor(text) {
+        this.text = text;
+    }
+}
+
 class Button {
     constructor(name, image_url) {
         this.type = "button";

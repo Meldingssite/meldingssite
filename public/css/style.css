@@ -1,75 +1,59 @@
-*
-{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Source Sans Pro','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     /* Disables User Highlight */
-    -webkit-touch-callout: none;/* iOS Safari */
-    -webkit-user-select: none;  /* Safari */
-    -khtml-user-select: none;   /* Konqueror HTML */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* Internet Explorer/Edge */
-    user-select: none;          /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+    supported by Chrome and Opera */
 }
 
-html
-{
+html {
     background-color: #ccc;
     overflow-y: scroll;
-    height: 100%;    
-    
 }
 
-body
-{
-    height: 100%
-}
-
-body main
-{
+body main:not(#dashboard) {
     display: block;
-    width: 720px;
-    height: 100%;    
+    max-width: 720px;
+    height: 100%;
     margin: 0 auto;
-    height: 100%;    
 }
 
-header
-{
+header {
     max-width: 720px;
     max-height: 149px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-header h1
-{
+header h1 {
     padding: 20px;
     background: #2d2d85;
     color: #eee;
 }
 
-header img
-{
+header img {
     width: 100%;
 }
 
-main
-{
+main {
     background: #fff;
 
     padding-top: 0px;
     padding-bottom: 1px;
     margin: 0 auto;
     height: 100%;
-
 }
 
-.btn
-{
+.btn {
     position: relative;
     background: #eee;
     color: #333;
@@ -79,7 +63,6 @@ main
     text-align: center;
     vertical-align: middle;
 
-    
     cursor: pointer;
 
     width: calc(100% - 20px);
@@ -88,13 +71,11 @@ main
     padding: 10px 0;
 }
 
-.btn:hover
-{
-    background: #ccc;    
+.btn:hover {
+    background: #ccc;
 }
 
-.btn img
-{
+.btn img {
     position: absolute;
     top: 5px;
     left: 5px;
@@ -103,178 +84,27 @@ main
     max-height: 32px;
 }
 
-.textbox
-{
+.textbox {
     color: #fff;
 
     text-align: center;
     padding: 11px 0;
 }
 
-/* Create Window */
+.label {
+    font-size: 24px;
+    font-weight: bold;
 
-#createWindow
-{
-    overflow: hidden;
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-
-    background: #fff;
-    box-shadow: 5px 15px 50px 4px rgba(0,0,0,0.15);
-    width: 300px;
-    height: 350px;
-
-    -border: 1px solid #555;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
+    padding-left: 10px;
+    margin-top: 10px;
 }
 
-#createWindowHeader
-{
-    background: #2d2d85;
-    color: #fff;
-
-    font-size: 28px;
-    font-weight: bolder;
-    padding: 10px 30px;
+section {
+    background-color: #fff;
 }
-
-#createWindowMain
-{
-    position: relative;
-}
-
-#createWindow input[type="text"]
-{
-    font-size: 23px;
-    width: calc(100% - 40px);
-    margin: 10px 20px;
-
-    border-bottom: 1px solid #555;
-    box-shadow: 0px 0px 3px 1px #555;    
-}
-
-#createWindow input[type="text"]:focus
-{
-    outline: none;
-    border-bottom: 1px solid #a0dcff;
-    box-shadow: 0px 0px 5px 2px #a0dcff;
-    
-}
-
-#createWindowSubmit
-{
-    display: block;
-    
-    width: 150px;
-    height: 30px;
-    
-    margin: 15px auto;
-    padding: 3px 0;
-
-    background: green;
-    color:white;
-}
-
-
-/* Forms Fieldsets Legends & Inputs */
-form, fieldset, legend, input
-{
-    margin: 0;
-    padding: 0;
-    border: none;
-}
-
-form
-{
-    width: calc(100% - 20px);
-    margin: 0 auto;
-    padding: 10px;
-
-    font-size: 1.5em;
-    color: #333;
-
-    -border: 1px solid #0000005b;
-}
-
-form > *
-{
-    display: inline-block;
-    width: 100%; 
-    height: 2em;    
-    
-}
-
-fieldset
-{
-    display: block;
-
-    margin: 0 0 2em;
-}
-
-fieldset > *
-{
-    width: 100%;
-}
-
-legend
-{
-    background: #2d2d85;
-    color: #eee;
-
-    width: 100%;
-    height: 2em;    
-    
-    padding: 10px 20px;
-}
-
-label
-{
-    background: #2d2d85;
-    color: #eee;
-
-    padding: 10px 20px;
-}
-
-.input
-{
-    padding: 0px;
-    color: #171717;
-    font-size: 1em;
-    padding: 10px 20px;
-    /* margin: 7px 0; */
-}
-
-legend + input
-{
-    border-top: none;
-    margin: 0;
-}
-
-input[type=radio]
-{
-    width: 1.5em;  
-    height: 1.5em;  
-}
-
-
-#login input
-{
-    display: block;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;    
-}
-
-
 
 /* Debug */
-.debug
-{
+.debug {
     display: inline-block;
     color: rgba(255, 0, 0, 0.7);
     background: rgba(255, 0, 0, 0.2);
@@ -282,115 +112,4 @@ input[type=radio]
     padding: 10px;
 
     position: fixed;
-    left: 10;
-    top:10;
-}
-
-/* Monitor */
-
-#Monitor
-{
-    width: calc(100%);
-}
-
-.alertItem
-{
-    display: flex;
-    position: relative;
-    width: calc(100% - 10px);
-    height: 180px;
-    margin: 50px auto;
-
-    color: #F5F5F5;
-    font-size: 40px;    
-    background: #7E94DC;
-    border: 3px solid #7370D8;
-    border-radius: 80px 3px 3px 80px;
-}
-
-.alertItem:first-child
-{
-    padding-left: 50px;
-}
-
-.alertItem .content
-{
-    overflow: hidden;
-    float: left;
-    position: absolute;
-    left:0;
-    
-    border-radius: 80px 3px 3px 80px;
-    height: 180px;
-    width: 100%;
-
-}
-
-.alertItem .content div
-{
-    float: left;
-    height: calc(100% - 6px);
-
-    border-right: 1px solid rgba(0, 0, 0, 0.20);
-    border-left: 1px solid rgba(255, 255, 255, 0.27);
-        
-    padding: 15px;
-
-    font-size: 26px;
-}
-
-.alertItem::before
-{
-    content: "";
-    position: relative;
-    left: 60px;
-    border-right: 1px solid rgba(255, 255, 255, 0.27);
-    border-left: 1px solid rgba(0, 0, 0, 0.20);
-    
-    height: 173px;
-}
-
-
-.alertItem .content > div:first-child div
-{
-    margin-left: 50px;
-    border-left: none;     
-
-    font-size: 40px !important;
-}
-
-.alertItem .content > div:last-child
-{
-    border-right: none;
-}
-.alertItem .content div div
-{
-    border: none;
-
-    display: block;
-    height: initial;
-    float: left;
-    clear: left;
-}
-
-.alertItem .alertType
-{
-    position: absolute;
-    top: -30px;
-    left: 70px;
-    z-index: 3;
-    
-    margin-top: 0;
-
-    background: #DF4F4F;
-    border: 2px solid #E92020;
-    border-radius: 30px 0px 0px 5px;    
-    min-width: 250px;
-    height: 60px;
-
-    font-weight: bold;
-    font-size: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-
 }
