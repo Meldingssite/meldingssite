@@ -12,17 +12,15 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
     /* Non-prefixed version, currently
-                            supported by Chrome and Opera */
+    supported by Chrome and Opera */
 }
 
 html {
     background-color: #ccc;
     overflow-y: scroll;
-    height: 100%;        
 }
 
 body {
-    height: 100%
 }
 
 body main:not(#dashboard) {
