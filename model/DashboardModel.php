@@ -5,11 +5,12 @@ function retrieveElements()
     $conn = OpenDatabaseConnection();
     $id = $_POST['id'];
     $school = $_POST['school'];
+    $tabel = "MainTabel";
     $dataArray = [];
-    $sql = "select * from `$school` where id=$id";
+    $sql = "select * from `$tabel` where id=$id";
     $result = $conn->query($sql);
     $dataArray[0] = $result->fetch_assoc();
-    $result2 = $conn->query("select MAX(id) from `$school`");
+    $result2 = $conn->query("select MAX(id) from `$tabel`");
     $highest_id = $result2->fetch_assoc();
     //Case at the last one to add
     if ($highest_id['MAX(id)'] == $id) {

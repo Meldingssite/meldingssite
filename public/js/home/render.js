@@ -121,12 +121,13 @@ function renderTextInput(textInputObj) {
     var names = [];
 
     // Opening tag for radiobutton
-    if (textInputObj.name = 'contact') {
-        textInputHTML += "<fieldset id='extraInfo'> <legend>"
+    console.log(textInputObj.name);
+    if (textInputObj.name == 'contact') {
+        textInputHTML += "<fieldset id='extraInfo'><legend>"
             + textInputObj.text + "</legend>";
     }
     else {
-        textInputHTML += "<fieldset> <legend>"
+        textInputHTML += "<fieldset><legend>"
             + textInputObj.text + "</legend>";
     }
     //section
@@ -178,7 +179,9 @@ function renderRadio(radioObj) {
     pageHTML.innerHTML += radioHTML;
     if (radioObj.name == 'contact') {
         for (option in options) {
-            document.getElementById(options[option].optie + radioObj.name).addEventListener("click", extraInfo(document.getElementById(options[option].optie + radioObj.name)));
+            var element = options[option].optie + radioObj.name;
+            console.log(element);
+            document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo(" + element + ")");
         }
     }
     return radioObj.name;
@@ -241,14 +244,15 @@ function renderForm(form) {
     {
         if (content[formElement].type === "textInput") {
             var textInputList = renderTextInput(content[formElement]);
-            for (var x = 0; x < textInputList.length; x++) {
-                FormList.push(textInputList[x]);
+            if (textInputList.length === 1) {
+                FormList.push(textInputList[0]);
             }
+            else FormList.push(textInputList);
         }
         else if (content[formElement].type === "radioButtons")
             FormList.push(renderRadio(content[formElement]));
-        else if (content[formElement].type === "textMultipleInputs")
-            FormList.push(renderMultipleTextInput(content[formElement]));
+        // else if (content[formElement].type === "textMultipleInputs")
+        //     FormList.push(renderMultipleTextInput(content[formElement]));
         else if (content[formElement].type === "formButton")
             FormList.push(renderFormButton(content[formElement]));
         else if (content[formElement].type === "dropDown")
@@ -259,6 +263,7 @@ function renderForm(form) {
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
+    console.dir(FormList);
     return FormList;
 }      // renders a form and its elements
 
@@ -353,12 +358,35 @@ function renderLocatieList(alertType, content, school) {
 }   //renders the buttons for places in the school
 
 function renderSubmit(naam, school, id) {
-    console.log(id);
+    // var test = "file_test,unconscious,locatieSpecifiek,contact|naam,email,telefoon";
+    // var testArray = test.split("|");
+    // // console.log("|");
+    // console.dir(testArray);
+    // console.log(id);
+    // console.dir(naam);
+    var submitHTML;
+    submitHTML += "<div class='btn'"
+        + "onclick=submitContents('";
+    for (var x = 0; naam.length > x; x++) {
+        if (Array.isArray(naam[x])) {
+            submitHTML = submitHTML.slice(0, -1);
+            submitHTML += "|";
+            submitHTML += naam[x];
 
-    document.getElementById("page").innerHTML += "<div class='btn'"
-        + "onclick=submitContents('"
-        + naam
-        + "'"
+            if (x !== naam.length - 1) {
+                submitHTML += "|";
+                submitHTML += ','
+            }
+        }
+        else {
+            submitHTML += naam[x];
+            if (x !== naam.length - 1) {
+                submitHTML += ','
+            }
+
+        }
+    }
+    submitHTML += "'"
         + ',"'
         + toggleSpace(school)
         + '","'
@@ -366,6 +394,8 @@ function renderSubmit(naam, school, id) {
         + '")>'
         + "Submit"
         + "</div>";
+
+    document.getElementById("page").innerHTML += submitHTML;
 }   //Renders submit button for going to next page
 
 function nextPage(i) {
@@ -466,16 +496,46 @@ function dataSend(sendArray, school, id) {
     xhttp.send(Data);
 }
 
-function submitContents(naam, school, id) {
-    naam = naam.split(",");
+function submitContents(NaamString, school, id) {
+    var naam = NaamString.split("|");
+    var finalArray;
+    finalArray = naam[0].split(',');
+    console.dir(naam);
+    for (x = 1; naam.length > x; x++) {
+        console.dir(finalArray);
+        naam[x] = naam[x].split(',');
+        // for (y = 0; naam[x].length > y; y++) {
+        console.dir(naam[x]);
+        finalArray[finalArray.length] = naam[x];
+        // }
+    }
+    console.dir(finalArray);
+
     sendArray = [];
     var dataArray = [];
     var nameArray = [];
-    for (var x = 0; x < naam.length; x++) {
+    naam = finalArray;
+
+    for (var x = 1; x < naam.length; x++) {
+
         console.log(naam[x] + " " + document.getElementsByName(naam[x]).length);
-
-
-        if (document.getElementsByName(naam[x]).length > 1) {
+        console.dir(naam[x]);
+        if (Array.isArray(naam[x]) === true) {
+            console.dir(naam[x]);
+            var dataElementsArray;
+            for (var y = 1; naam[x].length > y; y++) {
+                console.dir(naam[x]);
+                var name = naam[x][y];
+                if (document.getElementsByName(naam[x][y]).value) {
+                    console.log( document.getElementsByName(naam[x][y]).value);
+                    dataElementsArray += document.getElementsByName(naam[x][y]).value;
+                }
+            }
+            console.dir();
+            dataArray[x] += dataElementsArray;
+            nameArray[x] += naam[x][y];
+        }
+        else if (document.getElementsByName(naam[x]).length > 1) {
             for (var y = 1; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
                     dataArray[x] = document.getElementsByName(naam[x])[y].value;
@@ -491,6 +551,7 @@ function submitContents(naam, school, id) {
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             else {
+                console.log(naam[x]);
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
 
@@ -512,11 +573,13 @@ function submitContents(naam, school, id) {
 }
 
 function extraInfo(element) {
+    console.log(element)
     if (element.value == "Ja" || element.value == "ja") {
-        // unfade(document.getElementById('extraInfo'));
+        console.log("unfading element");
+        unfade(document.getElementById('extraInfo'));
     }
     else if (element.value == "Nee" || element.value == "nee") {
-        // fade(document.getElementById('extraInfo'));
+        fade(document.getElementById('extraInfo'));
     }
 }
 
@@ -531,6 +594,7 @@ function unfade(element) {
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op += op * 0.1;
     }, 10);
+    // element.style.opacity = 100;
 }
 
 
@@ -543,7 +607,7 @@ function fade(element) {
         }
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.1;
+        op -= op * 0.2;
     }, 50);
 
 }
@@ -564,3 +628,12 @@ function toggleSpace(item) {
     }
     return returnItem;
 }   // Switches between _ and spaces
+
+function remove(arr, what) {
+    var found = arr.indexOf(what);
+
+    while (found !== -1) {
+        arr.splice(found, 1);
+        found = arr.indexOf(what);
+    }
+} //Removes item from array
