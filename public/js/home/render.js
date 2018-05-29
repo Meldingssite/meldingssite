@@ -1,11 +1,10 @@
 /*****************************************************************/
 /*** All Functions used to render elements to the page go here ***/
-
 /*****************************************************************/
 var ID = 0;     //ID for remembering which question you're at
 var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
-var FormList = [];
-var sendArray = [];
+var FormList = [];         //list op Inputs rendered on page for retrieving data
+var sendArray = [];        //Array send to DB
 
 function getPages() {
     return JSON.parse(xmlhttp.responseText).pages
@@ -58,7 +57,7 @@ function renderLabel(text) {
     labelHTML += "</div>"
 
     pageHTML.innerHTML += labelHTML;
-}
+} //Renders a label for the location list
 
 function renderButton(buttonObj) {
     var pageHTML = document.getElementById("page");
@@ -121,7 +120,6 @@ function renderTextInput(textInputObj) {
     var names = [];
 
     // Opening tag for radiobutton
-    console.log(textInputObj.name);
     if (textInputObj.name == 'contact') {
         textInputHTML += "<fieldset id='extraInfo'><legend>"
             + textInputObj.text + "</legend>";
@@ -180,7 +178,7 @@ function renderRadio(radioObj) {
     if (radioObj.name == 'contact') {
         for (option in options) {
             var element = options[option].optie + radioObj.name;
-            console.log(element);
+            // console.log(element);
             document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo(" + element + ")");
         }
     }
@@ -263,7 +261,6 @@ function renderForm(form) {
         else console.log("Unknown type: " + content[formElement].type);
     }
     document.getElementById("page").innerHTML += "</form>";
-    console.dir(FormList);
     return FormList;
 }      // renders a form and its elements
 
@@ -358,13 +355,8 @@ function renderLocatieList(alertType, content, school) {
 }   //renders the buttons for places in the school
 
 function renderSubmit(naam, school, id) {
-    // var test = "file_test,unconscious,locatieSpecifiek,contact|naam,email,telefoon";
-    // var testArray = test.split("|");
-    // // console.log("|");
-    // console.dir(testArray);
-    // console.log(id);
-    // console.dir(naam);
-    var submitHTML;
+
+    var submitHTML = "";
     submitHTML += "<div class='btn'"
         + "onclick=submitContents('";
     for (var x = 0; naam.length > x; x++) {
@@ -396,6 +388,7 @@ function renderSubmit(naam, school, id) {
         + "</div>";
 
     document.getElementById("page").innerHTML += submitHTML;
+
 }   //Renders submit button for going to next page
 
 function nextPage(i) {
@@ -404,7 +397,7 @@ function nextPage(i) {
 }   //Goes to next page
 
 function renderPage(i = "Home", school = null, id = null) {
-    console.log(id);
+    // console.log(id);
     clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
@@ -449,7 +442,6 @@ function locatieSend(alertType, school, locatie = null,) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             id = xhttp.responseText;
-            console.log(id);
             renderPage(alertType, school, id);
         }
     };
@@ -465,11 +457,13 @@ function dataSend(sendArray, school, id) {
     Data.append("id", id);
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
-    console.dir(xhttp);
+    // console.dir(xhttp);
+    // console.dir(sendArray);
 
     for (var x = 0; x < sendArray[0].length; x++) {
         // console.log(sendArray[0][x]);
-        if (sendArray[0][x]) {
+        if (sendArray[0][x] && sendArray[0][x] !== undefined && sendArray[0][x] !== null && !Array.isArray(sendArray[0][x])) {
+            // console.log(sendArray[0][x]);
             if (sendArray[0][x].match("file")) {
                 // xhttp.file = sendArray[1][x];
                 if (xhttp.upload) {
@@ -481,12 +475,12 @@ function dataSend(sendArray, school, id) {
                     };
                 }
             }
-            console.log("appending data");
+            // console.log("appending data");
             Data.append(sendArray[0][x], sendArray[1][x]);
         }
     }
     for (var pair of Data.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
+        // console.log(pair[0] + ', ' + pair[1]);
     }
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -494,86 +488,86 @@ function dataSend(sendArray, school, id) {
         }
     };
     xhttp.send(Data);
-}
+} //Sends Data To Database
 
 function submitContents(NaamString, school, id) {
     var naam = NaamString.split("|");
     var finalArray;
     finalArray = naam[0].split(',');
-    console.dir(naam);
+    // console.dir(naam);
     for (x = 1; naam.length > x; x++) {
-        console.dir(finalArray);
+        // console.dir(finalArray);
         naam[x] = naam[x].split(',');
         // for (y = 0; naam[x].length > y; y++) {
-        console.dir(naam[x]);
+        // console.dir(naam[x]);
         finalArray[finalArray.length] = naam[x];
         // }
     }
-    console.dir(finalArray);
+    // console.dir(finalArray);
 
     sendArray = [];
     var dataArray = [];
     var nameArray = [];
     naam = finalArray;
 
-    for (var x = 1; x < naam.length; x++) {
-
-        console.log(naam[x] + " " + document.getElementsByName(naam[x]).length);
-        console.dir(naam[x]);
+    for (var x = 0; x < naam.length; x++) {
+        // console.log(naam[x]);
+        var check = false;
         if (Array.isArray(naam[x]) === true) {
-            console.dir(naam[x]);
-            var dataElementsArray;
-            for (var y = 1; naam[x].length > y; y++) {
-                console.dir(naam[x]);
+            var dataElementsArray = [];
+            var nameElementsArray = [];
+            for (var y = 0; naam[x].length > y; y++) {
                 var name = naam[x][y];
-                if (document.getElementsByName(naam[x][y]).value) {
-                    console.log( document.getElementsByName(naam[x][y]).value);
-                    dataElementsArray += document.getElementsByName(naam[x][y]).value;
+                // console.log("|" + name + "|");
+                if (document.getElementsByName(name)[0].value) {
+                    dataElementsArray[y] = document.getElementsByName(name)[0].value;
+                    nameElementsArray[y] = name;
+                    check = true
                 }
             }
-            console.dir();
-            dataArray[x] += dataElementsArray;
-            nameArray[x] += naam[x][y];
+            if (check == true) {
+                dataArray.push(dataElementsArray);
+                nameArray.push("persoon");
+            }
         }
+
         else if (document.getElementsByName(naam[x]).length > 1) {
-            for (var y = 1; document.getElementsByName(naam[x]).length > y; y++) {
+            for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
                     dataArray[x] = document.getElementsByName(naam[x])[y].value;
                     nameArray[x] = naam[x];
                 }
             }
         }
+
         else {
             if (naam[x].match("file")) {
-                console.log(naam[x] + 'found file!');
-                console.log(toggleSpace(naam[x]));
+                // console.log("files");
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             else {
-                console.log(naam[x]);
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
-
-            // catch
-            //     {
-            //         console.dir(naam);
-            //         console.log(naam[x]);
-            //         console.log(x);
-            //         console.log(document.getElementsByName(naam[x])[0].value);
-            //     }
-
-            nameArray[x] = naam[x];
         }
+
+        // catch
+        //     {
+        //         console.dir(naam);
+        //         console.log(naam[x]);
+        //         console.log(x);
+        //         console.log(document.getElementsByName(naam[x])[0].value);
+        //     }
+
+        nameArray[x] = naam[x];
     }
 
+
     sendArray = [nameArray, dataArray];
-    console.dir(sendArray);
     dataSend(sendArray, school, id);
-}
+} //Executed on pressing submit and prepares data for being send to Database
 
 function extraInfo(element) {
-    console.log(element)
     if (element.value == "Ja" || element.value == "ja") {
         console.log("unfading element");
         unfade(document.getElementById('extraInfo'));
@@ -581,7 +575,7 @@ function extraInfo(element) {
     else if (element.value == "Nee" || element.value == "nee") {
         fade(document.getElementById('extraInfo'));
     }
-}
+}   //Executed for radiobuttons used for revealing extra information
 
 function unfade(element) {
     var op = 0.1;  // initial opacity
@@ -595,8 +589,7 @@ function unfade(element) {
         op += op * 0.1;
     }, 10);
     // element.style.opacity = 100;
-}
-
+}   //Makes item reappear
 
 function fade(element) {
     var op = 1;  // initial opacity
@@ -610,7 +603,7 @@ function fade(element) {
         op -= op * 0.2;
     }, 50);
 
-}
+}   //Makes item disappear
 
 function toggleSpace(item) {
     var returnItem = "";
@@ -628,12 +621,3 @@ function toggleSpace(item) {
     }
     return returnItem;
 }   // Switches between _ and spaces
-
-function remove(arr, what) {
-    var found = arr.indexOf(what);
-
-    while (found !== -1) {
-        arr.splice(found, 1);
-        found = arr.indexOf(what);
-    }
-} //Removes item from array
