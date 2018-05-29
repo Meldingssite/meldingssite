@@ -2,12 +2,13 @@
 
 <div class="alertItem">
     <div>
+        <img    src="<?php echo URL . IMAGE_DIR ?>category-FirstAid.png"
+                alt="alert type">        
         <p class="type">Ongeval</p>
         <p class="time">12:34</p>
     </div>
 
     <div>
-        <img src="" alt="alert type">
         <h1>Azzurro</h1>
         <p>Dit is extra info over de locatie</p>
     </div>
