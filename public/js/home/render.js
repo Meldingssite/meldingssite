@@ -91,7 +91,8 @@ function renderFormButton(buttonObj) {
 
     // Opening tag for formButton
     formButtonHTML += "<fieldset> <legend>"
-        + buttonObj.text;
+        + buttonObj.text
+        + "</legend>";
     //section
     formButtonHTML += "<section class=input>"
     //knop
@@ -107,7 +108,7 @@ function renderFormButton(buttonObj) {
             + "</button>";
     }
     //closing tags
-    formButtonHTML += "</section></legend></fieldset>"
+    formButtonHTML += "</section></fieldset>";
 
     pageHTML.innerHTML += formButtonHTML;
     return buttonObj.name;
@@ -121,7 +122,7 @@ function renderTextInput(textInputObj) {
 
     // Opening tag for radiobutton
     textInputHTML += "<fieldset> <legend>"
-        + textInputObj.text;
+        + textInputObj.text + "</legend>";
     //section
     textInputHTML += "<section class=input>"
     //Inputs
@@ -136,7 +137,7 @@ function renderTextInput(textInputObj) {
         names.push(options[option].name);
     }
     //closing tags
-    textInputHTML += "</section></legend></fieldset>";
+    textInputHTML += "</section></fieldset>";
 
     pageHTML.innerHTML += textInputHTML;
     return names;
@@ -148,8 +149,9 @@ function renderRadio(radioObj) {
     var radioHTML = "";
 
     // Opening tag for radiobutton
-    radioHTML += "<fieldset> <legend>"
-        + radioObj.text;
+    radioHTML += "<fieldset><legend>"
+        + radioObj.text
+        + "</legend>";
     //section
     radioHTML += "<section class=inputGroup>";
     //knop
@@ -168,7 +170,7 @@ function renderRadio(radioObj) {
 
     }
     //closing tags
-    radioHTML += "</section></legend></fieldset>";
+    radioHTML += "</section></fieldset>";
 
     pageHTML.innerHTML += radioHTML;
     return radioObj.name;
@@ -181,7 +183,8 @@ function renderDropDown(dropObj) {
 
     // Opening tag for radiobutton
     dropHTML += "<fieldset><legend>"
-        + dropObj.text;
+        + dropObj.text
+        + "</legend>";
     //section
     dropHTML += "<section class=input><select name='"
         + dropObj.name
@@ -197,7 +200,7 @@ function renderDropDown(dropObj) {
             + "</option>";
     }
     //closing tags
-    dropHTML += "</section></legend></fieldset>";
+    dropHTML += "</section></fieldset>";
     mainHTML.innerHTML += dropHTML;
     return dropObj.name;
 }   // Renders dropdown buttons
@@ -208,7 +211,7 @@ function renderFileUpload(uploadObj) {
 
     // Opening tag for fileupload
     uploadHTML += "<fieldset><legend>"
-        + uploadObj.text;
+        + uploadObj.text + "</legend>";
     //section
     uploadHTML += "<section class=input>"
         + '<input type="file" name="file '
@@ -216,7 +219,7 @@ function renderFileUpload(uploadObj) {
         + '" class="fileUpload">';
     //knop
     //closing tags
-    uploadHTML += "</section></legend></fieldset>";
+    uploadHTML += "</section></fieldset>";
     mainHTML.innerHTML += uploadHTML;
     return "file_" + uploadObj.name;
 }   // Renders FileUpload
@@ -266,22 +269,22 @@ function renderLocatieForm(alertType, school = null) {
 
 function renderLocatieScholen(alertType, content) {
     var pageHTML = document.getElementById("page");
-    
+
     renderTextbox(
         new Textbox("Waar vindt plaats?",
-        "purple"));
-        
-    for (var i = 0; i < Object.keys(content).length; i++) {        
+            "purple"));
+
+    for (var i = 0; i < Object.keys(content).length; i++) {
         //  Check if it is a label
-        if(content[Object.keys(content)[i]] == "label"){
+        if (content[Object.keys(content)[i]] == "label") {
             renderLabel(Object.keys(content)[i]);
             continue;
         }
-        
+
         var buttonHTML = "";
         var schoolNaam = Object.keys(content)[i];
         var schoolSplit = toggleSpace(schoolNaam);
-        
+
         // Opening tag for .btn
         buttonHTML += "<div class='btn'"
             + "onclick=renderLocatieForm('"
