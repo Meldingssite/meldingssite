@@ -575,7 +575,7 @@
         "formAction": "",
         "content": {
           "Dordrecht": "label",
-          "LEERPARKPROMENADE 100": [
+          "Leerparkpromenade 100": [
             "PATERSWEG",
             "TECHNIEK LOKAAL",
             "KANTINE / HAL / TRAPPENHUIS",
@@ -585,7 +585,12 @@
             "GANG EERSTE VERDIEPING LOKALEN",
             "TRAPPENHUIS ACHTER / GANG"
           ],
-          "KLW (KAREL LOTSYWEG)": [
+          "Drechtsteden College": [],
+          "Samenwerkings Gebouw": [],
+          "Wartburgs College": [],
+          "Sport Plein": [],
+          "Schippers Internaat": [],
+          "Karel Lotsyweg": [
             "BEGANE GROND HAL",
             "DERDE VERDIEPING KANTINE",
             "DERDE VERDIEPING BUITEN",
@@ -600,7 +605,7 @@
             "VIERDE VERDIEPING",
             "DAK"
           ],
-          "PATERSWEG": [
+          "Patersweg": [
             "TECHNIEK LOKAAL",
             "KANTINE / HAL / TRAPPENHUIS",
             "LANGE GANG BG",
@@ -609,14 +614,14 @@
             "GANG EERSTE VERDIEPING LOKALEN",
             "TRAPPENHUIS ACHTER / GANG"
           ],
-          "LP5 DUURZAAMHEIDSFABRIEK": [
+          "Duurzaamheidsfabriek": [
             "HAL BEGANE GROND",
             "KANTOREN EERSTE VERDIEPING",
             "HAL TWEEDE VERDIEPING",
             "VIERDE VERDIEPING",
             "DAK"
           ],
-          "AZZURRO": [
+          "Azzurro": [
             "BEGANE GROND AULA",
             "BEGANE GROND GANG KANTOREN",
             "BEGANE GROND PLEIN",
@@ -629,9 +634,13 @@
             "TWEEDE VERDIEPING LINKER ZIJDE",
             "TWEEDE VERDIEPING CENTRALE HAL"
           ],
+          "Betaalde Parkeerplaats": [],
+          "Parkeerplek Langs N3": [],
+          "Parkeerplaats Langs Spoor": [],
+          "Openbare Weg": [],
           
           "Gorinchem": "label",
-          "MBW": [
+          "Mollenburgseweg": [
             "De snoekzone"
           ]
         }
