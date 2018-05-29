@@ -121,8 +121,14 @@ function renderTextInput(textInputObj) {
     var names = [];
 
     // Opening tag for radiobutton
-    textInputHTML += "<fieldset> <legend>"
-        + textInputObj.text + "</legend>";
+    if (textInputObj.name = 'contact') {
+        textInputHTML += "<fieldset id='extraInfo'> <legend>"
+            + textInputObj.text + "</legend>";
+    }
+    else {
+        textInputHTML += "<fieldset> <legend>"
+            + textInputObj.text + "</legend>";
+    }
     //section
     textInputHTML += "<section class=input>";
     //Inputs
@@ -147,7 +153,6 @@ function renderRadio(radioObj) {
     var pageHTML = document.getElementById("page");
     var options = radioObj.options;
     var radioHTML = "";
-
     // Opening tag for radiobutton
     radioHTML += "<fieldset><legend>"
         + radioObj.text
@@ -167,14 +172,15 @@ function renderRadio(radioObj) {
             + "'>"
             + options[option].optie
             + "</label>";
-        document.getElementById(options[option].optie + radioObj.name).addEventListener("click", extraInfo(document.getElementById(options[option].optie + radioObj.name)));
-
     }
-
     //closing tags
     radioHTML += "</section></fieldset>";
-
     pageHTML.innerHTML += radioHTML;
+    if (radioObj.name == 'contact') {
+        for (option in options) {
+            document.getElementById(options[option].optie + radioObj.name).addEventListener("click", extraInfo(document.getElementById(options[option].optie + radioObj.name)));
+        }
+    }
     return radioObj.name;
 }   // Renders radio buttons
 
@@ -505,6 +511,42 @@ function submitContents(naam, school, id) {
     dataSend(sendArray, school, id);
 }
 
+function extraInfo(element) {
+    if (element.value == "Ja" || element.value == "ja") {
+        // unfade(document.getElementById('extraInfo'));
+    }
+    else if (element.value == "Nee" || element.value == "nee") {
+        // fade(document.getElementById('extraInfo'));
+    }
+}
+
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1) {
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+}
+
+
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1) {
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+
+}
 
 function toggleSpace(item) {
     var returnItem = "";
