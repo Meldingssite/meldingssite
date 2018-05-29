@@ -11,7 +11,7 @@ function sendDataModel()
     $conn = OpenDatabaseConnection();
     $keys = [];
     $data = [];
-    // var_dump($_POST);
+    
     foreach ($_POST as $key => $ls_value) {
         if ($key != 'School' && $key != 'id') {
             $keys[] = $key;
@@ -22,7 +22,7 @@ function sendDataModel()
         $Filekeys[] = $Filekey;
 
     }
-// convert array to comma separated string
+    // convert array to comma separated string
     $dataString = implode(", ", $data);
     $keyString = implode(", ", $keys);
 
