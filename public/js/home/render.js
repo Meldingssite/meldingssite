@@ -458,7 +458,7 @@ function dataSend(sendArray, school, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
     // console.dir(xhttp);
-    // console.dir(sendArray);
+    console.dir(sendArray);
 
     for (var x = 0; x < sendArray[0].length; x++) {
         // console.log(sendArray[0][x]);
@@ -546,13 +546,15 @@ function submitContents(NaamString, school, id) {
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
                 dataArray.push(dataArray[x]['name']);
                 nameArray.push(naam[x]);
+                nameArray.push('FILE')
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             else {
+                nameArray[x] = naam[x];
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
         }
-        nameArray[x] = naam[x];
+
     }
 
 
