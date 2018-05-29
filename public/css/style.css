@@ -12,18 +12,12 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
     /* Non-prefixed version, currently
-                            supported by Chrome and Opera */
+    supported by Chrome and Opera */
 }
 
 html {
     background-color: #ccc;
     overflow-y: scroll;
-    height: 100%;
-
-}
-
-body {
-    height: 100%
 }
 
 body main:not(#dashboard) {
@@ -33,7 +27,8 @@ body main:not(#dashboard) {
     margin: 0 auto;
 }
 
-header {
+header
+{
     max-width: 720px;
     max-height: 149px;
     margin: 0 auto;
@@ -110,69 +105,6 @@ section{
     background-color: #fff;
 }
 
-/* Create Window */
-
-#createWindow {
-    overflow: hidden;
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-
-    background: #fff;
-    box-shadow: 5px 15px 50px 4px rgba(0, 0, 0, 0.15);
-    width: 300px;
-    height: 350px;
-
-    -border: 1px solid #555;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-}
-
-#createWindowHeader {
-    background: #2d2d85;
-    color: #fff;
-
-    font-size: 28px;
-    font-weight: bolder;
-    padding: 10px 30px;
-}
-
-#createWindowMain {
-    position: relative;
-}
-
-#createWindow input[type="text"] {
-    font-size: 23px;
-    width: calc(100% - 40px);
-    margin: 10px 20px;
-
-    border-bottom: 1px solid #555;
-    box-shadow: 0px 0px 3px 1px #555;
-}
-
-#createWindow input[type="text"]:focus {
-    outline: none;
-    border-bottom: 1px solid #a0dcff;
-    box-shadow: 0px 0px 5px 2px #a0dcff;
-
-}
-
-#createWindowSubmit {
-    display: block;
-
-    width: 150px;
-    height: 30px;
-
-    margin: 15px auto;
-    padding: 3px 0;
-
-    background: green;
-    color: white;
-}
-
 /* Forms Fieldsets Legends & Inputs */
 form, fieldset, legend, input, .LabelItem {
     margin: 0;
@@ -244,13 +176,6 @@ input[type=radio] {
     height: 1.5em;
 }
 
-#login input {
-    display: block;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* Debug */
 .debug {
     display: inline-block;
@@ -262,127 +187,6 @@ input[type=radio] {
     position: fixed;
     /*left: 10;*/
     /*top: 10;*/
-}
-
-/* Dashboard */
-
-#Dashboard {
-    padding-top: 0;
-    margin-top: 0;
-    max-width: inherit !important;
-    width: 1020px !important;
-    /*height: initial !important;*/
-}
-
-.alertItem {
-    display: flex;
-    position: relative;
-    width: calc(100% - 10px);
-    height: 130px;
-    margin: 50px auto;
-
-    color: #F5F5F5;
-    font-size: 40px;
-    background: #7E94DC;
-    border: 3px solid #7370D8;
-    border-radius: 80px 3px 3px 80px;
-}
-
-.alertItem:first-child {
-    padding-left: 50px;
-}
-
-.alertItem .content {
-    overflow: hidden;
-    float: left;
-    position: absolute;
-    left: 0;
-
-    border-radius: 80px 3px 3px 80px;
-    height: 100%;
-    width: 100%;
-
-}
-
-.alertItem .content div {
-    float: left;
-    height: calc(100% - 6px);
-
-    border-right: 1px solid rgba(0, 0, 0, 0.20);
-    border-left: 1px solid rgba(255, 255, 255, 0.27);
-
-    padding: 15px;
-    padding-bottom: 0px !important;
-
-    font-size: 26px;
-}
-
-.alertItem::before {
-    content: "";
-    position: absolute;
-    left: 60px;
-    border-right: 1px solid rgba(255, 255, 255, 0.27);
-    border-left: 1px solid rgba(0, 0, 0, 0.20);
-
-    height: 100%;
-}
-
-.alertItem .content > div:first-child div {
-    display: block;
-    width: 400px;
-    margin-left: 50px;
-    border-left: none;
-    padding-left: 0 !important;
-    padding-top: 20px;
-    font-size: 25px !important;
-}
-
-.alertItem .content > div:last-child {
-    border-right: none;
-}
-
-.alertItem .content > div:nth-child(2) {
-
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    flex-wrap: wrap;
-}
-
-.alertItem .content div div {
-    border: none;
-    font-size: 20px;
-    display: block;
-    height: initial;
-    float: left;
-    clear: left;
-    padding: 0px;
-    /*padding-left: 5px;*/
-
-}
-
-.content {
-    display: flex;
-}
-
-.alertItem .alertType {
-    position: absolute;
-    top: -30px;
-    left: 70px;
-    z-index: 3;
-
-    margin-top: 0;
-
-    background: #DF4F4F;
-    border: 2px solid #E92020;
-    border-radius: 30px 0px 0px 5px;
-    height: 60px;
-
-    font-weight: bold;
-    font-size: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-
 }
 
 /*Radio buttons*/
