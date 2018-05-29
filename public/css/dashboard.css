@@ -26,6 +26,9 @@
     padding-top: 20px;
 
     color: white;
+
+    z-index: 7;
+    box-shadow: 10px 0px 25px black;
 }
 
 .alertItem .type {
@@ -58,6 +61,10 @@
 
     color: #111;
     text-align: left;
+
+    box-shadow: -10px 0px 25px black;
+    z-index: 7;
+    
 }
 
 ion-icon:not([name="alert"]) {
@@ -76,7 +83,7 @@ ion-icon:not([name="alert"]) {
 ion-icon:not([name="alert"]):hover {
     background: #999;
     color: #222;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
 }
 
 .alertItem > div:nth-child(3) ion-icon[name="alert"] {
