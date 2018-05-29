@@ -544,21 +544,14 @@ function submitContents(NaamString, school, id) {
             if (naam[x].match("file")) {
                 // console.log("files");
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
+                dataArray.push(dataArray[x]['name']);
+                nameArray.push(naam[x]);
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             else {
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
         }
-
-        // catch
-        //     {
-        //         console.dir(naam);
-        //         console.log(naam[x]);
-        //         console.log(x);
-        //         console.log(document.getElementsByName(naam[x])[0].value);
-        //     }
-
         nameArray[x] = naam[x];
     }
 
