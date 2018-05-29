@@ -1,62 +1,56 @@
-*
-{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Source Sans Pro','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     /* Disables User Highlight */
-    -webkit-touch-callout: none;/* iOS Safari */
-    -webkit-user-select: none;  /* Safari */
-    -khtml-user-select: none;   /* Konqueror HTML */
-    -moz-user-select: none;     /* Firefox */
-    -ms-user-select: none;      /* Internet Explorer/Edge */
-    user-select: none;          /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                            supported by Chrome and Opera */
 }
 
-html
-{
+html {
     background-color: #ccc;
     overflow-y: scroll;
-    height: 100%;    
-    
+    height: 100%;
+
 }
 
-body
-{
+body {
     height: 100%
 }
 
-body main:not(#dashboard)
-{
+body main:not(#dashboard) {
     display: block;
     max-width: 720px;
-    height: 100%;    
+    height: 100%;
     margin: 0 auto;
 }
-header
-{
+
+header {
     max-width: 720px;
     max-height: 149px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-header h1
-{
+header h1 {
     padding: 20px;
     background: #2d2d85;
     color: #eee;
 }
 
-header img
-{
+header img {
     width: 100%;
 }
 
-main
-{
+main {
     background: #fff;
 
     padding-top: 0px;
@@ -66,8 +60,7 @@ main
 
 }
 
-.btn
-{
+.btn {
     position: relative;
     background: #eee;
     color: #333;
@@ -77,7 +70,6 @@ main
     text-align: center;
     vertical-align: middle;
 
-    
     cursor: pointer;
 
     width: calc(100% - 20px);
@@ -86,13 +78,11 @@ main
     padding: 10px 0;
 }
 
-.btn:hover
-{
-    background: #ccc;    
+.btn:hover {
+    background: #ccc;
 }
 
-.btn img
-{
+.btn img {
     position: absolute;
     top: 5px;
     left: 5px;
@@ -101,8 +91,7 @@ main
     max-height: 32px;
 }
 
-.textbox
-{
+.textbox {
     color: #fff;
 
     text-align: center;
@@ -111,15 +100,14 @@ main
 
 /* Create Window */
 
-#createWindow
-{
+#createWindow {
     overflow: hidden;
     position: fixed;
     bottom: 30px;
     left: 30px;
 
     background: #fff;
-    box-shadow: 5px 15px 50px 4px rgba(0,0,0,0.15);
+    box-shadow: 5px 15px 50px 4px rgba(0, 0, 0, 0.15);
     width: 300px;
     height: 350px;
 
@@ -128,11 +116,10 @@ main
     border-top-right-radius: 20px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    
+
 }
 
-#createWindowHeader
-{
+#createWindowHeader {
     background: #2d2d85;
     color: #fff;
 
@@ -141,54 +128,47 @@ main
     padding: 10px 30px;
 }
 
-#createWindowMain
-{
+#createWindowMain {
     position: relative;
 }
 
-#createWindow input[type="text"]
-{
+#createWindow input[type="text"] {
     font-size: 23px;
     width: calc(100% - 40px);
     margin: 10px 20px;
 
     border-bottom: 1px solid #555;
-    box-shadow: 0px 0px 3px 1px #555;    
+    box-shadow: 0px 0px 3px 1px #555;
 }
 
-#createWindow input[type="text"]:focus
-{
+#createWindow input[type="text"]:focus {
     outline: none;
     border-bottom: 1px solid #a0dcff;
     box-shadow: 0px 0px 5px 2px #a0dcff;
-    
+
 }
 
-#createWindowSubmit
-{
+#createWindowSubmit {
     display: block;
-    
+
     width: 150px;
     height: 30px;
-    
+
     margin: 15px auto;
     padding: 3px 0;
 
     background: green;
-    color:white;
+    color: white;
 }
 
-
 /* Forms Fieldsets Legends & Inputs */
-form, fieldset, legend, input
-{
+form, fieldset, legend, input {
     margin: 0;
     padding: 0;
     border: none;
 }
 
-form
-{
+form {
     width: calc(100% - 20px);
     margin: 0 auto;
     padding: 10px;
@@ -199,47 +179,41 @@ form
     -border: 1px solid #0000005b;
 }
 
-form > *
-{
+form > * {
     display: inline-block;
-    width: 100%; 
-    height: 2em;    
-    
+    width: 100%;
+    height: 2em;
+
 }
 
-fieldset
-{
+fieldset {
     display: block;
 
     margin: 0 0 2em;
 }
 
-fieldset > *
-{
+fieldset > * {
     width: 100%;
 }
 
-legend
-{
+legend {
     background: #2d2d85;
     color: #eee;
 
     width: 100%;
-    height: 2em;    
-    
+    height: 2em;
+
     padding: 10px 20px;
 }
 
-label
-{
+label {
     background: #2d2d85;
     color: #eee;
 
     padding: 10px 20px;
 }
 
-.input
-{
+.input {
     padding: 0px;
     color: #171717;
     font-size: 1em;
@@ -247,32 +221,25 @@ label
     /* margin: 7px 0; */
 }
 
-legend + input
-{
+legend + input {
     border-top: none;
     margin: 0;
 }
 
-input[type=radio]
-{
-    width: 1.5em;  
-    height: 1.5em;  
+input[type=radio] {
+    width: 1.5em;
+    height: 1.5em;
 }
 
-
-#login input
-{
+#login input {
     display: block;
     width: 50%;
     margin-left: auto;
-    margin-right: auto;    
+    margin-right: auto;
 }
 
-
-
 /* Debug */
-.debug
-{
+.debug {
     display: inline-block;
     color: rgba(255, 0, 0, 0.7);
     background: rgba(255, 0, 0, 0.2);
@@ -280,23 +247,21 @@ input[type=radio]
     padding: 10px;
 
     position: fixed;
-    left: 10;
-    top:10;
+    /*left: 10;*/
+    /*top: 10;*/
 }
 
 /* Dashboard */
 
-#Dashboard
-{
+#Dashboard {
     padding-top: 0;
-    margin-top:0 ;
-    max-width : inherit !important;
+    margin-top: 0;
+    max-width: inherit !important;
     width: 1020px !important;
     /*height: initial !important;*/
 }
 
-.alertItem
-{
+.alertItem {
     display: flex;
     position: relative;
     width: calc(100% - 10px);
@@ -304,58 +269,52 @@ input[type=radio]
     margin: 50px auto;
 
     color: #F5F5F5;
-    font-size: 40px;    
+    font-size: 40px;
     background: #7E94DC;
     border: 3px solid #7370D8;
     border-radius: 80px 3px 3px 80px;
 }
 
-.alertItem:first-child
-{
+.alertItem:first-child {
     padding-left: 50px;
 }
 
-.alertItem .content
-{
+.alertItem .content {
     overflow: hidden;
     float: left;
     position: absolute;
-    left:0;
-    
+    left: 0;
+
     border-radius: 80px 3px 3px 80px;
     height: 100%;
     width: 100%;
 
 }
 
-.alertItem .content div
-{
+.alertItem .content div {
     float: left;
     height: calc(100% - 6px);
 
     border-right: 1px solid rgba(0, 0, 0, 0.20);
     border-left: 1px solid rgba(255, 255, 255, 0.27);
-        
+
     padding: 15px;
     padding-bottom: 0px !important;
 
     font-size: 26px;
 }
 
-.alertItem::before
-{
+.alertItem::before {
     content: "";
     position: absolute;
     left: 60px;
     border-right: 1px solid rgba(255, 255, 255, 0.27);
     border-left: 1px solid rgba(0, 0, 0, 0.20);
-    
+
     height: 100%;
 }
 
-
-.alertItem .content > div:first-child div
-{
+.alertItem .content > div:first-child div {
     display: block;
     width: 400px;
     margin-left: 50px;
@@ -365,12 +324,11 @@ input[type=radio]
     font-size: 25px !important;
 }
 
-.alertItem .content > div:last-child
-{
+.alertItem .content > div:last-child {
     border-right: none;
 }
 
-.alertItem .content > div:nth-child(2){
+.alertItem .content > div:nth-child(2) {
 
     height: 100%;
     display: flex;
@@ -378,8 +336,7 @@ input[type=radio]
     flex-wrap: wrap;
 }
 
-.alertItem .content div div
-{
+.alertItem .content div div {
     border: none;
     font-size: 20px;
     display: block;
@@ -390,17 +347,17 @@ input[type=radio]
     /*padding-left: 5px;*/
 
 }
-.content{
+
+.content {
     display: flex;
 }
 
-.alertItem .alertType
-{
+.alertItem .alertType {
     position: absolute;
     top: -30px;
     left: 70px;
     z-index: 3;
-    
+
     margin-top: 0;
 
     background: #DF4F4F;
@@ -414,3 +371,48 @@ input[type=radio]
     padding-right: 20px;
 
 }
+
+/*Radio buttons*/
+
+@keyframes colorSwap {
+    from {background-color: #fff;}
+    to {background-color: #5562eb;}
+}
+.inputGroup {
+    background-color: #fff !important;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    border: black;
+}
+
+.inputGroup label{
+    background-color: #fff !important;
+    border: black;
+}
+
+.inputGroup input[type="radio"] {
+    opacity: 0;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+}
+
+/*input[type="radio"]:not(:checked) + label{*/
+    /*animation-name: colorSwap;*/
+    /*animation-duration: 2s ;*/
+    /*animation-direction: reverse ;*/
+    /*background-color: pink ;*/
+/*}*/
+
+
+input[type="radio"]:checked + label {
+    animation-name: colorSwap;
+    animation-duration: 1s;
+    background-color: #5562eb !important;
+}
+
+
+

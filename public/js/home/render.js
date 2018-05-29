@@ -136,15 +136,21 @@ function renderRadio(radioObj) {
     radioHTML += "<fieldset> <legend>"
         + radioObj.text;
     //section
-    radioHTML += "<section class=input>";
+    radioHTML += "<section class=inputGroup>";
     //knop
     for (option in options) {
         radioHTML += "<input type='radio' name='"
             + radioObj.name
             + "'value ='"
-            + options[option].optie
+            + options[option].optie + "'id ='" +
+            options[option].optie
             + "'>"
-            + options[option].text;
+            + "  <label for='" +
+            options[option].optie
+            + "'>"
+            + options[option].optie
+            + "</label>";
+
     }
     //closing tags
     radioHTML += "</section></legend></fieldset>";
@@ -414,6 +420,11 @@ function dataSend(sendArray, school, id) {
     for (var pair of Data.entries()) {
         console.log(pair[0] + ', ' + pair[1]);
     }
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            alert('We hebben uw melding ontvangen en wij zijn onderweg')
+        }
+    };
     xhttp.send(Data);
 }
 
