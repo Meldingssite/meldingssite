@@ -1,10 +1,8 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/forms.css">
 
-
 <header>
     <img src="<?php echo IMAGE_DIR ?>banner.jpg" alt="">
 </header>
-
 
 <main id="page">
     <!-- Javascript will render to this based on JSON file -->
