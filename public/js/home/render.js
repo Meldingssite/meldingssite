@@ -458,6 +458,7 @@ function dataSend(sendArray, school, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
     // console.dir(xhttp);
+    // console.dir(sendArray);
 
     for (var x = 0; x < sendArray[0].length; x++) {
         // console.log(sendArray[0][x]);
@@ -509,14 +510,15 @@ function submitContents(NaamString, school, id) {
     var nameArray = [];
     naam = finalArray;
 
-    for (var x = 1; x < naam.length; x++) {
+    for (var x = 0; x < naam.length; x++) {
+        // console.log(naam[x]);
         var check = false;
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
             var nameElementsArray = [];
             for (var y = 0; naam[x].length > y; y++) {
                 var name = naam[x][y];
-                console.log("|" + name + "|");
+                // console.log("|" + name + "|");
                 if (document.getElementsByName(name)[0].value) {
                     dataElementsArray[y] = document.getElementsByName(name)[0].value;
                     nameElementsArray[y] = name;
@@ -528,6 +530,7 @@ function submitContents(NaamString, school, id) {
                 nameArray.push("persoon");
             }
         }
+
         else if (document.getElementsByName(naam[x]).length > 1) {
             for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
@@ -536,26 +539,29 @@ function submitContents(NaamString, school, id) {
                 }
             }
         }
+
         else {
             if (naam[x].match("file")) {
+                // console.log("files");
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             else {
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
-
-            // catch
-            //     {
-            //         console.dir(naam);
-            //         console.log(naam[x]);
-            //         console.log(x);
-            //         console.log(document.getElementsByName(naam[x])[0].value);
-            //     }
-
-            nameArray[x] = naam[x];
         }
+
+        // catch
+        //     {
+        //         console.dir(naam);
+        //         console.log(naam[x]);
+        //         console.log(x);
+        //         console.log(document.getElementsByName(naam[x])[0].value);
+        //     }
+
+        nameArray[x] = naam[x];
     }
+
 
     sendArray = [nameArray, dataArray];
     dataSend(sendArray, school, id);
