@@ -469,7 +469,8 @@ function dataSend(sendArray, school, id) {
 
     for (var x = 0; x < sendArray[0].length; x++) {
         // console.log(sendArray[0][x]);
-        if (sendArray[0][x]) {
+        if (sendArray[0][x] && sendArray[0][x] !== undefined && sendArray[0][x] !== null && !Array.isArray(sendArray[0][x])) {
+            console.log(sendArray[0][x]);
             if (sendArray[0][x].match("file")) {
                 // xhttp.file = sendArray[1][x];
                 if (xhttp.upload) {
@@ -520,23 +521,28 @@ function submitContents(NaamString, school, id) {
 
         console.log(naam[x] + " " + document.getElementsByName(naam[x]).length);
         console.dir(naam[x]);
+        var check = false;
         if (Array.isArray(naam[x]) === true) {
             console.dir(naam[x]);
-            var dataElementsArray;
-            for (var y = 1; naam[x].length > y; y++) {
-                console.dir(naam[x]);
+            var dataElementsArray = [];
+            var nameElementsArray = [];
+            for (var y = 0; naam[x].length > y; y++) {
                 var name = naam[x][y];
-                if (document.getElementsByName(naam[x][y]).value) {
-                    console.log( document.getElementsByName(naam[x][y]).value);
-                    dataElementsArray += document.getElementsByName(naam[x][y]).value;
+                console.log("|" + name + "|");
+                if (document.getElementsByName(name)[0].value) {
+                    dataElementsArray[y] = document.getElementsByName(name)[0].value;
+                    nameElementsArray[y] = name;
+                    check = true
                 }
             }
             console.dir();
-            dataArray[x] += dataElementsArray;
-            nameArray[x] += naam[x][y];
+            if (check == true) {
+                dataArray.push(dataElementsArray);
+                nameArray.push("persoon");
+            }
         }
         else if (document.getElementsByName(naam[x]).length > 1) {
-            for (var y = 1; document.getElementsByName(naam[x]).length > y; y++) {
+            for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
                     dataArray[x] = document.getElementsByName(naam[x])[y].value;
                     nameArray[x] = naam[x];

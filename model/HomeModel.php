@@ -31,7 +31,7 @@ function sendDataModel()
 
         //var_dump($_FILES); var_dump($_POST);
         $sql = "INSERT INTO `$tabel`  ($keyString) VALUES (";
-        
+
         foreach ($data as $key) {
             $sql .= '"';
             $sql .= $key;
@@ -51,9 +51,19 @@ function sendDataModel()
         for ($x = 0;
              $x < count($keys);
              $x++) {
-            if (!preg_match("/(file)/   ", $keys[$x])) {
+            if (!preg_match("/(file)/   ", $keys[$x]) && !preg_match("/(persoon)/   ", $keys[$x])) {
                 echo $keys[$x];
                 $sql = "UPDATE `$tabel`  SET $keys[$x] = '$data[$x]' WHERE id = '$id'";
+                if ($conn->query($sql))
+                    echo mysqli_insert_id($conn);
+                else
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+            } else if (preg_match("/(persoon)/   ",$keys[$x])) {
+                var_dump($data[$x]);
+                echo $keys[$x];
+                $array = $data[$x];
+                $personData = implode("|",(array)$array);
+                $sql = "UPDATE `$tabel`  SET $keys[$x] = '$personData' WHERE id = '$id'";
                 if ($conn->query($sql))
                     echo mysqli_insert_id($conn);
                 else
