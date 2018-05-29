@@ -63,18 +63,20 @@
 ion-icon:not([name="alert"]) {
     cursor: pointer;
     font-size: 32px;
+    padding: 2px;
+    margin: 4px;
     border-radius: 100%;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
 
-    background: #eee;    
-    color: #333;
-    border: 3px solid #333;
+    background: #ccc;    
+    color: #fff;
+    border: 2px solid #999;
 }
 
 ion-icon:not([name="alert"]):hover {
-    background: #ddd;
-    color: #555;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    background: #999;
+    color: #222;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
 }
 
 .alertItem > div:nth-child(3) ion-icon[name="alert"] {
@@ -82,4 +84,11 @@ ion-icon:not([name="alert"]):hover {
     top: 6px;
     color: rgb(235, 0, 0);
     font-size: 24px;
+}
+
+.icon-list {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 15px 12px;
 }
