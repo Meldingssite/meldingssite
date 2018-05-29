@@ -93,8 +93,8 @@ function updateContent(items) {
 //Constructs a melding
 function constructMelding(meldingData) {
     var melding = "";
-    melding += '<div class="alertItem"><div><img src"' + IMAGE_DIR + '/category-FirstAid.png" alt="alert type"><p class="type">Ongeval</p><p class="time">' + meldingData['TimeStamp']
-        + '</p></div><div style="background: url("' + IMAGE_DIR + '/category-FirstAid.png")"><h1>' + meldingData['locatie'] + '</h1><p>' + toggleSpace(meldingData['locatieSpecifiek'])
+    melding += '<div class="alertItem"><div><img src = "' + IMAGE_DIR + '/category-FirstAid.png" alt="alert type"><p class="type">Ongeval</p><p class="time">' + meldingData['TimeStamp']
+        + '</p></div><div style="' + 'background: url("' + IMAGE_DIR + '/category-FirstAid.png"><h1>' + meldingData['locatie'] + '</h1><p>' + toggleSpace(meldingData['locatieSpecifiek'])
         + '</p></div><div><p><ion - icon name = "alert" > < /ion-icon></p>';
 // melding += "<div class='alertItem' id="
 //         + meldingData['id']
