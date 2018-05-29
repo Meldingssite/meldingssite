@@ -75,12 +75,12 @@ function updateContent(items) {
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
                 addItems += "<div id ='"
-                         + keys[x] + "" + items['id']
-                         + "'>"
-                         + keys[x]
-                         + ": "
-                         + toggleSpace(items[keys[x]], true)
-                         + "</div>";
+                    + keys[x] + "" + items['id']
+                    + "'>"
+                    + keys[x]
+                    + ": "
+                    + toggleSpace(items[keys[x]], true)
+                    + "</div>";
                 DIV.innerHTML += addItems;
             }
             else {
@@ -93,46 +93,49 @@ function updateContent(items) {
 //Constructs a melding
 function constructMelding(meldingData) {
     var melding = "";
-    melding += "<div class='alertItem' id="
-            + meldingData['id']
-            + ">"
-            + "<div class='alertType' id='type"
-            + meldingData['id']
-            + "'>"
-            + meldingData['type']
-            + "</div>"
-            + "<div class='content'>"
-            + "<div>"
-            + "<div id='locatie"
-            + meldingData['id']
-            + "'>"
-            + toggleSpace(meldingData['locatie'])
-            + "</div>";
+    melding += '<div class="alertItem"><div><img src"' + IMAGE_DIR + '/category-FirstAid.png" alt="alert type"><p class="type">Ongeval</p><p class="time">' + meldingData['TimeStamp']
+        + '</p></div><div style="background: url("' + IMAGE_DIR + '/category-FirstAid.png")"><h1>' + meldingData['locatie'] + '</h1><p>' + toggleSpace(meldingData['locatieSpecifiek'])
+        + '</p></div><div><p><ion - icon name = "alert" > < /ion-icon></p>';
+// melding += "<div class='alertItem' id="
+//         + meldingData['id']
+//         + ">"
+//         + "<div class='alertType' id='type"
+//         + meldingData['id']
+//         + "'>"
+//         + meldingData['type']
+//         + "</div>"
+//         + "<div class='content'>"
+//         + "<div>"
+//         + "<div id='locatie"
+//         + meldingData['id']
+//         + "'>"
+//         + toggleSpace(meldingData['locatie'])
+//         + "</div>";
 
-    //Checks for locatieSpecifiek to have data so it doesn't post undefined
+//Checks for locatieSpecifiek to have data so it doesn't post undefined
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += "<div id='locatieSpecifiek"
-                + meldingData['id']
-                + "'>"
-                + meldingData['locatieSpecifiek']
-                + "</div>";
+            + meldingData['id']
+            + "'>"
+            + meldingData['locatieSpecifiek']
+            + "</div>";
 
     }
 
     melding += '</div><div id="extraInfo'
-            + meldingData['id']
-            + '">';
-    //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+        + meldingData['id']
+        + '">';
+//Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
         if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
             melding += "<div id ='" +
                 keys[x] + "" + meldingData['id']
-                        + "'>"
-                        + keys[x]
-                        + ": "
-                        + meldingData[keys[x]]
-                        + "</div>";
+                + "'>"
+                + keys[x]
+                + ": "
+                + meldingData[keys[x]]
+                + "</div>";
         }
     }
     melding += "</div></div></div>";

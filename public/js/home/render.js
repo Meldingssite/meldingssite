@@ -120,7 +120,7 @@ function renderTextInput(textInputObj) {
     var names = [];
 
     // Opening tag for radiobutton
-    if (textInputObj.name == 'contact') {
+    if (textInputObj.name == 'toggle') {
         textInputHTML += "<fieldset id='extraInfo'><legend>"
             + textInputObj.text + "</legend>";
     }

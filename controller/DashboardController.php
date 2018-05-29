@@ -3,5 +3,5 @@ require(ROOT . "model/DashboardModel.php");
 
 function index()
 {
-    render("dashboard/new");
+    render("dashboard/index");
 }

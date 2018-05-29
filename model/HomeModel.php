@@ -14,7 +14,7 @@ function sendDataModel()
     $data = [];
 
     foreach ($_POST as $key => $ls_value) {
-        if ($key != 'School' && $key != 'id') {
+        if ($key != 'id') {
             $keys[] = $key;
             $data[] = $ls_value;
         }
