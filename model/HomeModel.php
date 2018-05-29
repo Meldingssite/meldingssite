@@ -105,7 +105,7 @@ function sendDataModel()
                 echo "Sorry, your file was not uploaded.";
                 // if everything is ok, try to upload file
             } else {
-                if (move_uploaded_file($tmpName, $target_file)) {
+                if (move_uploaded_file($tmpName, "uploads/" . basename($filename))) {
                     echo "The file " . basename($filename) . " has been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";
