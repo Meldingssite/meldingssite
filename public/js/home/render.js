@@ -124,7 +124,7 @@ function renderTextInput(textInputObj) {
     textInputHTML += "<fieldset> <legend>"
         + textInputObj.text + "</legend>";
     //section
-    textInputHTML += "<section class=input>"
+    textInputHTML += "<section class=input>";
     //Inputs
     for (option in options) {
         textInputHTML += "<input type='"
@@ -160,15 +160,17 @@ function renderRadio(radioObj) {
             + radioObj.name
             + "'value ='"
             + options[option].optie + "'id ='" +
-            options[option].optie
+            options[option].optie + radioObj.name
             + "'>"
             + "  <label for='" +
             options[option].optie
             + "'>"
             + options[option].optie
             + "</label>";
+        document.getElementById(options[option].optie + radioObj.name).addEventListener("click", extraInfo(document.getElementById(options[option].optie + radioObj.name)));
 
     }
+
     //closing tags
     radioHTML += "</section></fieldset>";
 
@@ -502,6 +504,7 @@ function submitContents(naam, school, id) {
     console.dir(sendArray);
     dataSend(sendArray, school, id);
 }
+
 
 function toggleSpace(item) {
     var returnItem = "";

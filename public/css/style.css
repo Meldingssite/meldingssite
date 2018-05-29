@@ -134,7 +134,7 @@ form > * {
 fieldset {
     display: block;
 
-    margin: 0 0 2em;
+    /*margin: 0 0 2em;*/
 }
 
 fieldset > * {
@@ -200,13 +200,12 @@ input[type=radio] {
     display: block;
     margin: 10px 0;
     border: black;
-    height: 80px;
+
 
 }
 
 .inputGroup label{
     text-align: center;
-    vertical-align: middle;
     line-height: 42px;
     padding: 0;
     margin: 0;
@@ -216,6 +215,7 @@ input[type=radio] {
     display: inline-block;
     background-color: red !important;
     border: black;
+    position: relative;
 }
 
 .inputGroup input[type="radio"] {
@@ -224,7 +224,10 @@ input[type=radio] {
     height: 42px;
     z-index: 2;
     position: absolute;
-    top: 50%;
+}
+input{
+
+    height: 42px;
 }
 
 /*input[type="radio"]:not(:checked) + label{*/
