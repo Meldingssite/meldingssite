@@ -7,7 +7,8 @@ function sendDataModel()
      ****************************/
 
 //  Variable Init
-    $tabel = $_POST['School'];
+    $school = $_POST['School'];
+    $tabel = "MainTabel";
     $conn = OpenDatabaseConnection();
     $keys = [];
     $data = [];
