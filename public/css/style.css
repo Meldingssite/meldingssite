@@ -27,8 +27,7 @@ body main:not(#dashboard) {
     margin: 0 auto;
 }
 
-header
-{
+header {
     max-width: 720px;
     max-height: 149px;
     margin: 0 auto;
@@ -52,7 +51,6 @@ main {
     padding-bottom: 1px;
     margin: 0 auto;
     height: 100%;
-
 }
 
 .btn {
@@ -93,15 +91,15 @@ main {
     padding: 11px 0;
 }
 
-.label
-{
+.label {
     font-size: 24px;
     font-weight: bold;
 
     padding-left: 10px;
     margin-top: 10px;
 }
-section{
+
+section {
     background-color: #fff;
 }
 
@@ -185,8 +183,6 @@ input[type=radio] {
     padding: 10px;
 
     position: fixed;
-    /*left: 10;*/
-    /*top: 10;*/
 }
 
 /*Radio buttons*/

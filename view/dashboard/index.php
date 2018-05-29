@@ -1,9 +1,6 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/dashboard.css">
+<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboard.js"></script>
 
-
-
-<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboard.js">
-</script>
 <main id="Dashboard">
     <?php
     $conn = OpenDatabaseConnection();
@@ -11,7 +8,7 @@
     $result = mysqli_query($conn, $sql);
     $scholen = mysqli_fetch_all($result);
     $conn->close();
-    //echo $result;
+
     for ($x = 0; $x < count($scholen); $x++) {
         $button = '<div class = "btn" onclick=refreshList("'
             . toggleSpace($scholen[$x][0])
@@ -20,6 +17,7 @@
             . "</div>";
         echo $button;
     }
+
     function toggleSpace($item)
     {
         $returnItem = "";
@@ -33,33 +31,6 @@
         }
         return $returnItem;
     }
-
     ?>
-
-<!--    <div class="alertItem">-->
-<!--        <div class="alertType">Je moeder is dik</div>-->
-<!---->
-<!--        <div class="content">-->
-<!--            <div>-->
-<!--                <div>Azzurrooooooo</div>-->
-<!--                <div>Lokaal 0.12</div>-->
-<!--            </div>-->
-<!--    -->
-<!--            <div>-->
-<!--                <div>Azzurro</div>-->
-<!--                <div>Lokaal 0.12</div>-->
-<!--            </div>-->
-<!---->
-<!--            <div>-->
-<!--                <div>Azzurro</div>-->
-<!--                <div>Lokaal 0.12</div>-->
-<!--            </div>-->
-<!---->
-<!--            <div>-->
-<!--                <div>Azzurro</div>-->
-<!--                <div>Lokaal 0.12</div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 </main>
 
