@@ -45,6 +45,21 @@ function renderTextbox(textboxObj) {
     pageHTML.innerHTML += textboxHTML;
 } // renders TextBox element
 
+function renderLabel(labelObj) {
+    var labelHTML = "";
+
+    // Opening tag
+    labelHTML += "<div class='label'>";
+
+    // Content
+    labelHTML += labelObj.text;
+
+    // Closing tag
+    labelHTML += "</div>"
+
+    pageHTML.innerHTML += labelHTML;
+}
+
 function renderButton(buttonObj) {
     var pageHTML = document.getElementById("page");
     var buttonHTML = "";
@@ -247,10 +262,12 @@ function renderLocatieScholen(alertType, content) {
     var buttonHTML = "";
     var pageHTML = document.getElementById("page");
     var schoolNaam = "";
+    
     for (var i = 0; i < Object.keys(content).length; i++) {
-        // Opening tag for .btn
         var schoolNaam = Object.keys(content)[i];
         var schoolSplit = toggleSpace(schoolNaam);
+
+        // Opening tag for .btn
         buttonHTML += "<div class='btn'"
             + "onclick=renderLocatieForm('"
             + alertType
@@ -258,6 +275,7 @@ function renderLocatieScholen(alertType, content) {
             + schoolSplit
             + "')"
             + '>';
+
         // button text
         buttonHTML += Object.keys(content)[i];
 
