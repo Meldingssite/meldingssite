@@ -20,9 +20,6 @@ html {
     overflow-y: scroll;
 }
 
-body {
-}
-
 body main:not(#dashboard) {
     display: block;
     max-width: 720px;
