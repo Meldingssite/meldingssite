@@ -102,3 +102,6 @@ input[type="radio"]:checked + label {
     animation-duration: 1s;
     background-color: #5562eb !important;
 }
+#extraInfo{
+    opacity: 0;
+}
