@@ -5,3 +5,7 @@ function index()
 {
     render("dashboard/index");
 }
+function bugTest()
+{
+    render("dashboard/new");
+}

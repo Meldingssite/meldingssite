@@ -71,7 +71,9 @@ function renderButton(buttonObj) {
     // img tag
     buttonHTML += "<img src='"
         + IMAGE_DIR
-        + buttonObj.image_url
+        + "/Categories/category-"
+        + buttonObj.name
+        + ".png"
         + "'>";
 
     // button text
@@ -513,6 +515,7 @@ function submitContents(NaamString, school, id) {
     for (var x = 0; x < naam.length; x++) {
         // console.log(naam[x]);
         var check = false;
+        //Case Multiple Items in array
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
             var nameElementsArray = [];
@@ -530,7 +533,7 @@ function submitContents(NaamString, school, id) {
                 nameArray.push("persoon");
             }
         }
-
+        //Case Multiple Items
         else if (document.getElementsByName(naam[x]).length > 1) {
             for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
@@ -539,8 +542,9 @@ function submitContents(NaamString, school, id) {
                 }
             }
         }
-
+        //Case single item
         else {
+            //Case file
             if (naam[x].match("file")) {
                 // console.log("files");
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
@@ -549,6 +553,7 @@ function submitContents(NaamString, school, id) {
                 nameArray.push('FILE')
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
+            //Case normal item(default)
             else {
                 nameArray[x] = naam[x];
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
