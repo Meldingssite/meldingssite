@@ -107,7 +107,13 @@ function constructMelding(meldingData) {
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
     }
-    melding += '</div><div><p><ion - icon name = "alert" > </ion-icon></p>';
+    melding += '</div><div><p><ion-icon name = "alert" ></ion-icon>er is iets gebeurt</p>'
+        + '<div class="icon-list">'
+        + '<ion-icon name="close"></ion-icon>'
+        + '<ion-icon name="eye"> </ion-icon>'
+        + '<ion-icon name="checkmark"></ion-icon>'
+        + '</div>'
+        + '</div>';
 
     melding += '</div><div id="extraInfo'
         + meldingData['id']
@@ -164,3 +170,4 @@ function toggleSpace(item, ForceSpace = false) {
 window.setInterval(function () {
     checkDB()
 }, 500);
+
