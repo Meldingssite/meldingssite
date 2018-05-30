@@ -6,7 +6,7 @@ function openDatabaseConnection()
 
 	if ($conn->connect_error)
 	{
-		$conn2 = new mysqli($servername, $username, '', $database);
+		$conn2 = new mysqli(DB_HOST, DB_USER, '', DB_NAME);
 		if ($conn2->connect_error)
 		{
 			die("Connection failed: " . $conn->connect_error . $conn->connect_error);

@@ -1,1 +1,3 @@
-public/js/pages.json
+#  symbolic links
+/js
+/config.php
