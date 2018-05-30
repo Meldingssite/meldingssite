@@ -2,12 +2,12 @@
 var currentID = 1;
 var dataRetrieve = null;
 
-function checkDB(school) {
+function checkDB() {
     // console.log(currentID);
-    var schoolNaam = toggleSpace(school);
+    // var schoolNaam = toggleSpace(school);
     var Data = new FormData();
     Data.append("id", currentID);
-    Data.append("school", schoolNaam);
+    // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
     xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
@@ -159,9 +159,8 @@ function toggleSpace(item, ForceSpace = false) {
 }   // Switches between _ and spaces
 
 // Active check for Database every 0.5 seconds
-function refreshList(school) {
-    document.getElementById("Dashboard").innerHTML = "";
-    window.setInterval(function () {
-        checkDB(school)
-    }, 500);
-}
+
+// document.getElementById("Dashboard").innerHTML = "";
+window.setInterval(function () {
+    checkDB()
+}, 500);
