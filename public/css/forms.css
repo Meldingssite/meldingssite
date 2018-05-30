@@ -104,6 +104,12 @@ input[type="radio"]:checked + label {
 }
 /*hidden extra info*/
 #extraInfo{
+    overflow: hidden;
     display: none;
+    height: 0px;
     opacity: 0;
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
 }

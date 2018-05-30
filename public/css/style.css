@@ -46,7 +46,6 @@ header img {
 
 main {
     background: #fff;
-
     padding-top: 0px;
     padding-bottom: 1px;
     margin: 0 auto;
@@ -100,7 +99,7 @@ main {
 }
 
 section {
-    background-color: #fff;
+    background-color: #fff; /*TODO change back to white*/
 }
 
 /* Debug */
