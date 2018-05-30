@@ -2,12 +2,12 @@
 var currentID = 1;
 var dataRetrieve = null;
 
-function checkDB(school) {
-    console.log(currentID);
-    var schoolNaam = toggleSpace(school);
+function checkDB() {
+    // console.log(currentID);
+    // var schoolNaam = toggleSpace(school);
     var Data = new FormData();
     Data.append("id", currentID);
-    Data.append("school", schoolNaam);
+    // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
     xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
@@ -33,8 +33,8 @@ function addElements(dataRetrieve) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
             var items = deleteNullProperties(dataRetrieve[0]);
-            console.log(items["type"]);
-            console.dir(items);
+            // console.log(items["type"]);
+            // console.dir(items);
             var pageContent = document.getElementById('Dashboard');
             var content = constructMelding(items) + pageContent.innerHTML;
             pageContent.innerHTML = content;
@@ -42,8 +42,8 @@ function addElements(dataRetrieve) {
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
-            console.log(items["type"]);
-            console.dir(items);
+            // console.log(items["type"]);
+            // console.dir(items);
             updateContent(items);
         }
     }
@@ -53,11 +53,11 @@ function addElements(dataRetrieve) {
 }
 
 function updateContent(items) {
-    console.log("Updating content");
+    // console.log("Updating content");
     var keys = Object.keys(items);
     for (var x = 0; keys.length > x; x++) {
         if (items[keys[x]] != null && items[keys[x]] !== undefined && items[keys[x]] !== "" && keys[x] !== 'id') {
-            console.log(items[keys[x]]);
+            // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
@@ -71,16 +71,16 @@ function updateContent(items) {
                 }
             }
             else if (document.getElementById(keys[x] + items['id']) == null) {
-                console.log(keys[x] + items['id']);
+                // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
                 addItems += "<div id ='"
-                         + keys[x] + "" + items['id']
-                         + "'>"
-                         + keys[x]
-                         + ": "
-                         + toggleSpace(items[keys[x]], true)
-                         + "</div>";
+                    + keys[x] + "" + items['id']
+                    + "'>"
+                    + keys[x]
+                    + ": "
+                    + toggleSpace(items[keys[x]], true)
+                    + "</div>";
                 DIV.innerHTML += addItems;
             }
             else {
@@ -92,47 +92,37 @@ function updateContent(items) {
 
 //Constructs a melding
 function constructMelding(meldingData) {
+    // console.dir(meldingData);
     var melding = "";
-    melding += "<div class='alertItem' id="
-            + meldingData['id']
-            + ">"
-            + "<div class='alertType' id='type"
-            + meldingData['id']
-            + "'>"
-            + meldingData['type']
-            + "</div>"
-            + "<div class='content'>"
-            + "<div>"
-            + "<div id='locatie"
-            + meldingData['id']
-            + "'>"
-            + toggleSpace(meldingData['locatie'])
-            + "</div>";
-
-    //Checks for locatieSpecifiek to have data so it doesn't post undefined
+    melding += '<div class="alertItem"><div><img src = "'
+        + IMAGE_DIR
+        + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type"><p class="type">' + meldingData['type'] + '</p><p class="time">'
+        + meldingData['TimeStamp']
+        + "</p></div><div style='"
+        + 'background-image:url("'
+        + IMAGE_DIR
+        + '/DashboardBuildings/building-' + meldingData['school']
+        + '.jpg")' + "'" + '><h1>'
+        + meldingData['school'];
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
-        melding += "<div id='locatieSpecifiek"
-                + meldingData['id']
-                + "'>"
-                + meldingData['locatieSpecifiek']
-                + "</div>";
-
+        melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
     }
+    melding += '</div><div><p><ion - icon name = "alert" > </ion-icon></p>';
 
     melding += '</div><div id="extraInfo'
-            + meldingData['id']
-            + '">';
-    //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+        + meldingData['id']
+        + '">';
+//Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
-        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
+        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
             melding += "<div id ='" +
                 keys[x] + "" + meldingData['id']
-                        + "'>"
-                        + keys[x]
-                        + ": "
-                        + meldingData[keys[x]]
-                        + "</div>";
+                + "'>"
+                + keys[x]
+                + ": "
+                + meldingData[keys[x]]
+                + "</div>";
         }
     }
     melding += "</div></div></div>";
@@ -169,9 +159,8 @@ function toggleSpace(item, ForceSpace = false) {
 }   // Switches between _ and spaces
 
 // Active check for Database every 0.5 seconds
-function refreshList(school) {
-    document.getElementById("Dashboard").innerHTML = "";
-    window.setInterval(function () {
-        checkDB(school)
-    }, 500);
-}
+
+// document.getElementById("Dashboard").innerHTML = "";
+window.setInterval(function () {
+    checkDB()
+}, 500);

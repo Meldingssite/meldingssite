@@ -14,7 +14,7 @@ function sendDataModel()
     $data = [];
 
     foreach ($_POST as $key => $ls_value) {
-        if ($key != 'School' && $key != 'id') {
+        if ($key != 'id') {
             $keys[] = $key;
             $data[] = $ls_value;
         }
@@ -28,7 +28,7 @@ function sendDataModel()
     $keyString = implode(", ", $keys);
 
     if (!isset($_POST['id'])) {   // No id given
-
+//        var_dump($_POST);
         //var_dump($_FILES); var_dump($_POST);
         $sql = "INSERT INTO `$tabel`  ($keyString) VALUES (";
 
@@ -48,6 +48,7 @@ function sendDataModel()
     } else // id given
     {
         $id = $_POST['id'];
+//        var_dump($_POST);
         for ($x = 0;
              $x < count($keys);
              $x++) {
@@ -58,11 +59,11 @@ function sendDataModel()
                     echo mysqli_insert_id($conn);
                 else
                     echo "Error: " . $sql . "<br>" . $conn->error;
-            } else if (preg_match("/(persoon)/   ",$keys[$x])) {
+            } else if (preg_match("/(persoon)/   ", $keys[$x])) {
                 var_dump($data[$x]);
                 echo $keys[$x];
                 $array = $data[$x];
-                $personData = implode("|",(array)$array);
+                $personData = implode("|", (array)$array);
                 $sql = "UPDATE `$tabel`  SET $keys[$x] = '$personData' WHERE id = '$id'";
                 if ($conn->query($sql))
                     echo mysqli_insert_id($conn);
@@ -72,7 +73,7 @@ function sendDataModel()
 
         }
 
-
+//        Fileuploading
         for ($x = 0; $x != count($_FILES); $x++) {
             $naam = $Filekeys[$x];
             $filename = $_FILES[$naam]['name'];
@@ -101,11 +102,11 @@ function sendDataModel()
                 $uploadOk = 0;
             }
 
-            // Check file size
-//            if ($_FILES[$naam]["size"] > 500000) {
-//                echo "Sorry, your file is too large.";
-//                $uploadOk = 0;
-//            }
+//             Check file size
+            if ($_FILES[$naam]["size"] > 500000) {
+                echo "Sorry, your file is too large.";
+                $uploadOk = 0;
+            }
 
             // Allow certain file formats
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -118,7 +119,8 @@ function sendDataModel()
                 echo "Sorry, your file was not uploaded.";
                 // if everything is ok, try to upload file
             } else {
-                if (move_uploaded_file($tmpName, "uploads/" . basename($filename))) {
+                mkdir('uploads/' . $_POST['id'] );
+                if (move_uploaded_file($tmpName, "uploads/" . $_POST['id'] . "/" . basename($filename))) {
                     echo "The file " . basename($filename) . " has been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";

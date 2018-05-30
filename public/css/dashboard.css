@@ -4,6 +4,7 @@
     margin-top: 0;
     max-width: inherit !important;
     width: 1020px !important;
+    background: none !important;
 }
 
 .alertItem {
@@ -20,12 +21,15 @@
     display: inline-block;
 }
 
-.alertItem div:nth-child(1) {
+.alertItem > div:nth-child(1) {
     background: #003;
     width: 200px;
     padding-top: 20px;
 
     color: white;
+
+    z-index: 7;
+    box-shadow: 10px 0px 25px black;
 }
 
 .alertItem .type {
@@ -37,21 +41,62 @@
     font-size: 13px
 }
 
-.alertItem div:nth-child(2) {
+.alertItem > div:nth-child(2) {
     background: #669;
     width: calc(1200px - (400px + 200px));
 
     color: white;
+    text-shadow: 0 0 10px #000;
 }
 
-.alertItem div:nth-child(2) h1{
+.alertItem > div:nth-child(2) h1 {
+    margin-top: 50px;
     font-size: 36px;
+    font-weight: 200;
 }
 
-.alertItem div:nth-child(3) {
+.alertItem > div:nth-child(3) {
     background: #fff;
     width: 400px;
+    padding: 20px 12px;
 
     color: #111;
     text-align: left;
+
+    box-shadow: -10px 0px 25px black;
+    z-index: 7;
+    
+}
+
+ion-icon:not([name="alert"]) {
+    cursor: pointer;
+    font-size: 32px;
+    padding: 2px;
+    margin: 4px;
+    border-radius: 100%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+
+    background: #ccc;    
+    color: #fff;
+    border: 2px solid #999;
+}
+
+ion-icon:not([name="alert"]):hover {
+    background: #999;
+    color: #222;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
+}
+
+.alertItem > div:nth-child(3) ion-icon[name="alert"] {
+    position: relative;
+    top: 6px;
+    color: rgb(235, 0, 0);
+    font-size: 24px;
+}
+
+.icon-list {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 15px 12px;
 }
