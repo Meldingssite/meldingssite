@@ -45,8 +45,7 @@ header img {
 }
 
 main {
-    background: #ff00e1;
-
+    background: #fff;
     padding-top: 0px;
     padding-bottom: 1px;
     margin: 0 auto;
@@ -100,7 +99,7 @@ main {
 }
 
 section {
-    background-color: #ff00ed; /*TODO change back to white*/
+    background-color: #fff; /*TODO change back to white*/
 }
 
 /* Debug */

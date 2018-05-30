@@ -131,7 +131,7 @@ function constructMelding(meldingData) {
                 + "</div>";
         }
     }
-    melding += "</div></div></div>";
+    melding += "</div>";
     return melding
 }
 
