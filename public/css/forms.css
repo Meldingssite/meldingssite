@@ -104,7 +104,7 @@ input[type="radio"]:checked + label {
 }
 /*hidden extra info*/
 #extraInfo{
-    overflow: hidden;
+    /*overflow: hidden;*/
     display: none;
     height: 0px;
     opacity: 0;
