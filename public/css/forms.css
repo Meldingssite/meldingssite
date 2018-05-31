@@ -95,6 +95,8 @@ input[type=radio] {
 }
 input {
     height: 42px;
+    width: 90px;
+    /*TODO Discuss best way to style inputs(small or underneath each other)*/
 }
 
 input[type="radio"]:checked + label {
