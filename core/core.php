@@ -18,7 +18,7 @@ function openDatabaseConnection()
 	return $conn;
 }
 
-function render($filename)
+function render($filename, $data = null)
 {
 
 	if(DEBUG)	//	Is Debugging Enabled?
@@ -28,6 +28,14 @@ function render($filename)
 		echo "<a href='" . URL . "'><div class='debug'>Debug Mode</div></a>";
 		
 		require(ROOT . "core/debug.php");
+	}
+
+	if ($data)
+	{
+		foreach($data as $key => $value)
+		{
+			$$key = $value;
+		}
 	}
 
 	require(ROOT . 'view/templates/header.php');
