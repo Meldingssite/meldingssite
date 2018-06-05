@@ -116,9 +116,37 @@ input[type="radio"]:checked + label {
     transition-delay: 0s;
 }
 
-#login form, #login div {
-    width: 300px; 
-    margin: 0 auto;
+#login {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 400px !important;
+    height: 480px;
+
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+}
+
+/* #container {
+    position: relative;
+    top: -30px;
+} */
+
+#login form, #login div { width: 300px; margin: 0; }
+
+#login img {
+    display: block;
+    margin: 4px auto 16px;
+    width: 200px;
+    height: 200px;
+
+    padding: 25px;
+
+    border-radius: 100%;
+    border: 1px solid rgb(214, 214, 214);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.186);
 }
 
 #login input[type='email'], #login input[type='password'] {
@@ -134,19 +162,32 @@ input[type="radio"]:checked + label {
     box-shadow: 0 0 5px rgb(0, 174, 255);    
 }
 
-#login div {
-    padding: 0 10px;
+#login .buttonContainer {
     height: 46px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.535);
 }
+
 
 #btnForgotLogin, #btnLogin {
     height: 100%;
-    background: rgb(242, 242, 242);
+    width: 50%;
+    float: left;
+    color: white;    
     border: none;
 }
 
+#btnForgotLogin         { background: rgb(255, 44, 44); }
+#btnForgotLogin:hover   { background: rgb(255, 57, 57); }
+
+#btnLogin       { background: rgb(30, 179, 30); box-shadow: -1px 0 3px rgba(0, 0, 0, 0.275); }
+#btnLogin:hover { background: rgb(49, 183, 49); box-shadow: -1px 0 5px rgba(0, 0, 0, 0.275); }
+
 #login p.errorMessage {
-    color: red;
+    color: rgb(255, 36, 36);
+    text-shadow: 1px 0 3px rgba(0, 0, 0, 0.214);
     width: 100%;
     text-align: center;
+    margin: 10px 0;
 }

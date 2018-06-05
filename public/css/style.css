@@ -15,14 +15,9 @@
     supported by Chrome and Opera */
 }
 
-html, body, main {
-    height: 100%;
-    overflow-y: auto;
-}
-
-html {
-    background-color: #ccc;
-}
+html, body, main { height: 100%; overflow-y: auto; }
+html { background-color: #ccc; }
+main { box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); }
 
 body main:not(#dashboard) {
     display: block;
@@ -43,9 +38,7 @@ header h1 {
     color: #eee;
 }
 
-header img {
-    width: 100%;
-}
+header img { width: 100%; }
 
 main {
     background: #fff;
@@ -73,9 +66,7 @@ main {
     padding: 10px 0;
 }
 
-.btn:hover {
-    background: #ccc;
-}
+.btn:hover { background: #ccc; }
 
 .btn img {
     position: absolute;
@@ -101,9 +92,7 @@ main {
     margin-top: 10px;
 }
 
-section {
-    background-color: #fff; /*TODO change back to white*/
-}
+section { background-color: #fff; }
 
 /* Debug */
 .debug {

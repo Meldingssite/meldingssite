@@ -8,6 +8,10 @@
             case 1:
                 return 'Onbekend Email Adres';
                 break;
+
+            case 2:
+                return 'Wachtwoord Onjuist';
+                break;
             
             case 3:
                 return 'Kan niet verbinden met de database';
@@ -20,6 +24,10 @@
 ?>
 
 <main id="login">
+
+<div id="container">
+    
+    <img src="<?php echo URL . IMAGE_DIR ?>Logo.png" alt="">
 
     <form
         action="<?php echo URL ?>dashboard/verifyLogin" 
@@ -46,10 +54,12 @@
             value="password"
         >
     </form>
-    <div>
+    <div class="buttonContainer">
         <a href="<?php echo URL?>dashboard/retrieveLogin"><button id="btnForgotLogin">Login vergeten</button></a>
-        <input id="btnLogin" type="submit" value="Login" form="formLogin" style="float: right;">
+        <input id="btnLogin" type="submit" value="Login" form="formLogin">
     </div>
 
-    <p class="errorMessage"><?php echo getMessage( $data['msg'] ) ?></p>
+    <p class="errorMessage">- <?php echo getMessage( $data['msg'] ) ?></p>
+
+</div>
 </main>
