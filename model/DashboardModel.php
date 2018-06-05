@@ -8,10 +8,12 @@ function retrieveElements()
     $dataArray = [];
     $tabel = "MainTabel";
     $sql = "select * from `$tabel` where id=$id";
+
     $result = $conn->query($sql);
     $dataArray[0] = $result->fetch_assoc();
     $result2 = $conn->query("select MAX(id) from `$tabel`");
     $highest_id = $result2->fetch_assoc();
+
     //Case at the last one to add
     if ($highest_id['MAX(id)'] == $id) {
         $dataArray[1] = $id;
@@ -37,40 +39,39 @@ function retrieveElements()
 function deleteEntry($id)//Todo add to Dashboard page
 {
     $tabel = "MainTabel";
-// Create connection
-    $conn = OpenDatabaseConnection();
-// Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
-// sql to delete a record
+    // Create connection
+    $conn = OpenDatabaseConnection();
+    // Check connection
+    if ($conn->connect_error)
+        die("Connection failed: " . $conn->connect_error);
+
+    // sql to delete a record
     $sql = "DELETE FROM `$tabel` WHERE id=$id";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE)
         echo "Record deleted successfully";
-    } else {
+    else 
         echo "Error deleting record: " . $conn->error;
-    }
     $conn->close();
 }
 
 function setCompleted($id) //Todo add to Dashboard page
 {
     $tabel = "MainTabel";
-// Create connection
+    // Create connection
     $conn = OpenDatabaseConnection();
-// Check connection
-    if ($conn->connect_error) {
+    
+    // Check connection
+    if ($conn->connect_error)
         die("Connection failed: " . $conn->connect_error);
-    }
 
     $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE)
         echo "Record deleted successfully";
-    } else {
+    else
         echo "Error deleting record: " . $conn->error;
-    }
+
     $conn->close();
 }
 

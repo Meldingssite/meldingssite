@@ -115,3 +115,38 @@ input[type="radio"]:checked + label {
     transition-timing-function: linear;
     transition-delay: 0s;
 }
+
+#login form, #login div {
+    width: 300px; 
+    margin: 0 auto;
+}
+
+#login input[type='email'], #login input[type='password'] {
+    width: 100%;
+    border: 1px solid rgb(196, 196, 196);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.303);
+    padding: 5px 20px;
+    margin: 5px 0;
+}
+
+#login input[type='email']:focus, #login input[type='password']:focus {
+    outline: rgb(0, 174, 255) auto 5px;
+    box-shadow: 0 0 5px rgb(0, 174, 255);    
+}
+
+#login div {
+    padding: 0 10px;
+    height: 46px;
+}
+
+#btnForgotLogin, #btnLogin {
+    height: 100%;
+    background: rgb(242, 242, 242);
+    border: none;
+}
+
+#login p.errorMessage {
+    color: red;
+    width: 100%;
+    text-align: center;
+}

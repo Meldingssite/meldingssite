@@ -6,7 +6,7 @@ function sendDataModel()
      *     Sends Data to Database
      ****************************/
 
-//  Variable Init
+    //  Variable Init
     $school = $_POST['School'];
     $tabel = "MainTabel";
     $conn = OpenDatabaseConnection();
@@ -28,8 +28,8 @@ function sendDataModel()
     $keyString = implode(", ", $keys);
 
     if (!isset($_POST['id'])) {   // No id given
-//        var_dump($_POST);
-        //var_dump($_FILES); var_dump($_POST);
+        //  var_dump($_POST);
+        //  var_dump($_FILES); var_dump($_POST);
         $sql = "INSERT INTO `$tabel`  ($keyString) VALUES (";
 
         foreach ($data as $key) {
@@ -48,7 +48,7 @@ function sendDataModel()
     } else // id given
     {
         $id = $_POST['id'];
-//        var_dump($_POST);
+        //  var_dump($_POST);
         for ($x = 0;
              $x < count($keys);
              $x++) {
@@ -73,7 +73,7 @@ function sendDataModel()
 
         }
 
-//        Fileuploading
+        //  Fileuploading
         for ($x = 0; $x != count($_FILES); $x++) {
             $naam = $Filekeys[$x];
             $filename = $_FILES[$naam]['name'];
@@ -85,9 +85,7 @@ function sendDataModel()
             $imageFileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
             $check = getimagesize($_FILES[$naam]["tmp_name"]);
 
-//         Check if image file is a actual image or fake image
-
-
+            //  Check if image file is a actual image or fake image
             if ($check !== false) {
                 echo "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
@@ -102,15 +100,17 @@ function sendDataModel()
                 $uploadOk = 0;
             }
 
-//             Check file size
+            //  Check file size
             if ($_FILES[$naam]["size"] > 500000) {
                 echo "Sorry, your file is too large.";
                 $uploadOk = 0;
             }
 
             // Allow certain file formats
-            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif") {
+            if (    $imageFileType != "jpg"     &&
+                    $imageFileType != "png"     &&
+                    $imageFileType != "jpeg"    && 
+                    $imageFileType != "gif") {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                 $uploadOk = 0;
             }

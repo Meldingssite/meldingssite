@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo URL ?>public/css/forms.css">
+
 <?php
     function getMessage($msg)
     {
@@ -23,7 +25,6 @@
         action="<?php echo URL ?>dashboard/verifyLogin" 
         method="post" 
         id="formLogin" 
-        style="width: 175px; margin: 0 auto;"
     >
 
         <input 
@@ -45,10 +46,10 @@
             value="password"
         >
     </form>
-    <div style="width: 175px; margin: 0 auto;">
-        <a href="<?php echo URL?>dashboard/retrieveLogin"><button>Login vergeten</button></a>
-        <input type="submit" value="Login" form="formLogin" style="float: right;">
+    <div>
+        <a href="<?php echo URL?>dashboard/retrieveLogin"><button id="btnForgotLogin">Login vergeten</button></a>
+        <input id="btnLogin" type="submit" value="Login" form="formLogin" style="float: right;">
     </div>
 
-    <p style="color: red; width: 100%; text-align: center;"><?php echo getMessage( $data['msg'] ) ?></p>
+    <p class="errorMessage"><?php echo getMessage( $data['msg'] ) ?></p>
 </main>
