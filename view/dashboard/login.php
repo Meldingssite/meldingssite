@@ -4,9 +4,13 @@
         switch($msg){
             //  Define Messages here
             case 1:
-                return 'Invalid Email and Password';
+                return 'Onbekend Email Adres';
                 break;
             
+            case 3:
+                return 'Kan niet verbinden met de database';
+                break;
+
             default:
                 return;
         }
@@ -46,5 +50,5 @@
         <input type="submit" value="Login" form="formLogin" style="float: right;">
     </div>
 
-    <p style="color: red; width: 190px; margin: 0 auto;"><?php echo getMessage( $data['msg'] ) ?></p>
+    <p style="color: red; width: 100%; text-align: center;"><?php echo getMessage( $data['msg'] ) ?></p>
 </main>

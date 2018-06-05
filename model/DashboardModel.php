@@ -73,3 +73,48 @@ function setCompleted($id) //Todo add to Dashboard page
     }
     $conn->close();
 }
+
+/*************************************/
+/*************** Login ***************/
+/*************************************/
+
+function loginValid($email, $pass)
+{
+    $table = "users";
+    $sql = "select * from `$table` where email='$email'";
+
+    $conn = OpenDatabaseConnection();
+    if($conn->connect_error)
+    {
+        $out['success'] = FALSE;
+        $out['error'] = '3';
+        return $out;
+    }
+
+    if(!$result = $conn->query($sql))
+    {
+        //  Query failed
+        echo "Error: Our query failed to execute and here is why: \n";
+        echo "Query: " . $sql . "\n";
+        echo "Errno: " . $conn->errno . "\n";
+        echo "Error: " . $conn->error . "\n";
+        
+        $out['success'] = FALSE;
+        $out['error'] = '3';
+        return $out;
+    }
+
+    if($result->num_rows == 0)
+    {
+        //  No matching email found
+        $out['success'] = FALSE;
+        $out['error'] = '1';
+        return $out;
+    }
+
+    //var_dump($result->fetch_assoc());
+
+    $out['success'] = TRUE;
+    $out['error'] = 0;
+    return $out;
+}

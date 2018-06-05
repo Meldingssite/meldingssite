@@ -7,18 +7,15 @@ function index($msg = null)
         'msg' => $msg));
 }
 
+
 function verifyLogin()
 {
-    if( 
-        $_POST['usermail'] === 'admin@mail.com' &&
-        $_POST['userpass'] === 'password'
-    )
-    {
-        echo "Login Valid";
-    }
+    $result = loginValid($_POST['usermail'], $_POST['userpass']);
 
+    if (!$result['success'])
+        header("Location:" . URL . "dashboard/index/" . $result['error']);
     else
-        header("Location:" . URL . "dashboard/index/1");
+        echo "Login Valid";
 }
 
 function retrieveLogin()
