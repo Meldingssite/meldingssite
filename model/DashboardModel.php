@@ -126,14 +126,16 @@ function loginValid($emailTemp, $passTemp)
             if (mysqli_stmt_fetch($stmt)) {
 //                die($pass . $hashed_password);
 //                if (password_verify($pass, $hashed_password)) {
-                if ($pass == $hashed_password) { //TODO hash Password 
+                if ($pass == $hashed_password) { //TODO hash Password
 
                     /* Password is correct, so start a new session and
                     save the username to the session */
                     session_start();
                     $_SESSION['username'] = $username;
+
                     $out['success'] = TRUE;
                     $out['error'] = 0;
+;
                     return $out;
                 } else {
                     // Display an error message if password is not valid
@@ -162,23 +164,7 @@ function loginValid($emailTemp, $passTemp)
 
     }
 
-
-// Close statement
     mysqli_stmt_close($stmt);
-
-
-// Close connection
-
-
-//        if (!$result = $conn->query($sql)) {
-
-//        }
-
-//        if ($result->num_rows == 0) {
-
-//        }
-
-//var_dump($result->fetch_assoc());
 
 
 }

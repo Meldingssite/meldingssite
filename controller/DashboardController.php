@@ -3,20 +3,25 @@ require(ROOT . "model/DashboardModel.php");
 
 function index($msg = null)
 {
-    render("dashboard/login", Array(
-        'msg' => $msg));
+    if ($_SESSION['username']) {
+        render('dashboard/index');
+    } else {
+        render("dashboard/login", Array(
+            'msg' => $msg));
+    }
 }
 
 
 function verifyLogin()
 {
     $result = loginValid($_POST['usermail'], $_POST['userpass']);
-
-    if (!$result['success'])
-        header("Location:" . URL . "dashboard/index/" . $result['error']);
+    if ($result['success'])
+        index();
     else
-        echo "Login Valid";
+        index($result['error']);
+
 }
+
 
 function retrieveLogin()
 {
