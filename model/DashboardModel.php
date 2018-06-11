@@ -104,9 +104,15 @@ function loginValid($emailTemp, $passTemp)
         }
 
         $table = "users";
-        $stmt = $conn->prepare("SELECT * FROM `$table` WHERE email = ?");
-        $stmt->bind_param('s', $email); // 's' specifies the variable type => 'string'
-        $stmt->execute();
+        if (
+        $stmt = $conn->prepare("SELECT * FROM `$table` WHERE email = ?")){
+            $stmt->bind_param('s', $email); // 's' specifies the variable type => 'string'
+            $stmt->execute();
+        }
+        else{
+            $error = $conn->errno . ' ' . $conn->error;
+            die($error);
+        }
         mysqli_stmt_store_result($stmt);
 
         //TODO expand code underneeth
