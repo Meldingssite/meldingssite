@@ -10,7 +10,7 @@ function checkDB() {
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
+    xDBhttp.open("POST", "../Dashboard/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xDBhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
