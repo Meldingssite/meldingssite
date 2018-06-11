@@ -42,7 +42,7 @@
             placeholder="Email" 
             autofocus
             required    
-            value="admin@mail.com"
+
         >
         <input
             type="password" 
@@ -50,7 +50,7 @@
             id="userpass" 
             placeholder="Password"
             required
-            minlength="8"
+            minlength="5"
             value="password"
         >
     </form>
