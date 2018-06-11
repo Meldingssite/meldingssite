@@ -104,12 +104,14 @@ function loginValid($emailTemp, $passTemp)
         }
 
         $table = "users";
+//        die("test");
         if (
-        $stmt = $conn->prepare("SELECT * FROM `$table` WHERE email = ?")){
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?")) {
+
             $stmt->bind_param('s', $email); // 's' specifies the variable type => 'string'
             $stmt->execute();
-        }
-        else{
+//            die(var_dump($stmt));
+        } else {
             $error = $conn->errno . ' ' . $conn->error;
             die($error);
         }
@@ -119,12 +121,13 @@ function loginValid($emailTemp, $passTemp)
         // Check if username exists, if yes then verify password
         if (mysqli_stmt_num_rows($stmt) == 1) {
             // Bind result variables
-            echo "1";
+
             mysqli_stmt_bind_result($stmt, $username, $hashed_password);
             if (mysqli_stmt_fetch($stmt)) {
-                echo "2";
-                if (password_verify($pass, $hashed_password)) {
-                    echo "3";
+//                die($pass . $hashed_password);
+//                if (password_verify($pass, $hashed_password)) {
+                if ($pass == $hashed_password) { //TODO hash Password 
+
                     /* Password is correct, so start a new session and
                     save the username to the session */
                     session_start();
