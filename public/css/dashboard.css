@@ -9,7 +9,7 @@
 
 .alertItem {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     position: relative;
     width: 1200px;
     height: 170px;
@@ -112,7 +112,7 @@
 }
 
 .extraInfo {
-    /*overflow: hidden;*/
+    /* overflow: hidden; */
     display: none;
     height: 0px;
     opacity: 0;
