@@ -43,7 +43,7 @@ function addElements(dataRetrieve) {
             document.getElementById('view' + dataRetrieve[0]['id']).setAttribute("onClick", "extraInfo(" + dataRetrieve[0]['id'] + ")");
             document.getElementById('remove' + dataRetrieve[0]['id']).setAttribute("onClick", "remove(" + dataRetrieve[0]['id'] + ")");
             document.getElementById('finished' + dataRetrieve[0]['id']).setAttribute("onClick", "finished(" + dataRetrieve[0]['id'] + ")");
-            if (dataRetrieve[0]['Completed'] === 'true') document.getElementById('finished' + dataRetrieve[0]['id']).children[0].style.color = 'green';
+            if (dataRetrieve[0]['Completed'] === 'true') document.getElementById('finished' + dataRetrieve[0]['id']).children[0].style.color = '#59ba5d';
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -265,7 +265,7 @@ function finished(item) {
             if (this.response) {
                 if (this.response.includes('true')) {
 
-                    document.getElementById('finished' + item).children[0].style.color = 'green';
+                    document.getElementById('finished' + item).children[0].style.color = '#59ba5d';
                 }
                 else {
                     document.getElementById('finished' + item).children[0].style.color = 'white';
