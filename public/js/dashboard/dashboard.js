@@ -165,9 +165,9 @@ function constructMelding(meldingData) {
         }
     }
     melding += 
+                '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
             "</div>" +
         "</div>";
-    melding += '<div hidden = true id = "height' + meldingData['id'] + '">' + height + "</div>";
     return melding
 }
 
