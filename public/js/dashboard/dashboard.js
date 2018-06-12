@@ -31,7 +31,8 @@ function checkDB() {
 
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
-        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) === undefined) {
+        console.log();
+        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
             var items = deleteNullProperties(dataRetrieve[0]);
