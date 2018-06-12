@@ -250,6 +250,7 @@ function remove(item) {
     };
     Removehttp.send(Data);
     console.log("removing Item");
+    fade(document.getElementById('extraInfo' + item));
     fade(document.getElementById('alertItem' + item));
 }
 
@@ -277,8 +278,4 @@ function finished(item) {
         }
     };
     xFinhttp.send(Data);
-}
-
-Element.prototype.remove = function () {
-    this.parentElement.removeChild(this);
 }
