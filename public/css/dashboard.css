@@ -114,7 +114,7 @@
 .extraInfo {
     /* overflow: hidden; */
     display: none;
-    height: 0px;
+    height: 0;
     opacity: 0;
     transition-property: height;
     transition-duration: 1s;
@@ -131,5 +131,6 @@
     top: -6px;
 
     flex-direction: column;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
 }

@@ -369,6 +369,11 @@
                 ]
               },
               {
+                "text": "foto's",
+                "type": "upload",
+                "name": "test"
+              },
+              {
                 "text": "wie heeft u gezien?",
                 "type": "textInput",
                 "options": [
