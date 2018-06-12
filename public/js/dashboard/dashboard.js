@@ -135,7 +135,8 @@ function constructMelding(meldingData) {
 //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
-        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
+        console.dir(keys);
+        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && meldingData[keys[x]] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
             melding += "<div id ='" +
                 keys[x] + "" + meldingData['id']
                 + "'>"
@@ -143,6 +144,11 @@ function constructMelding(meldingData) {
                 + ": "
                 + meldingData[keys[x]]
                 + "</div>";
+        }
+        else if(keys[x] === 'FILE'){
+            melding += "<img src ='" + IMAGE_DIR + '/' +
+                 + meldingData['id'] + '/' +  meldingData[keys[x]]
+                + "'>";
         }
     }
     melding += "</div>";

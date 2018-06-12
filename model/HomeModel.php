@@ -122,6 +122,11 @@ function sendDataModel()
                 mkdir('uploads/' . $_POST['id'] );
                 if (move_uploaded_file($tmpName, "uploads/" . $_POST['id'] . "/" . basename($filename))) {
                     echo "The file " . basename($filename) . " has been uploaded.";
+                    $sql = "UPDATE `$tabel`  SET FILE = '$filename' WHERE id = '$id'";
+                    if ($conn->query($sql))
+                        echo mysqli_insert_id($conn);
+                    else
+                        echo "Error: " . $sql . "<br>" . $conn->error;
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
