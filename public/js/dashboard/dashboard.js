@@ -228,10 +228,10 @@ function remove(item) {
     var Data = new FormData();
     Data.append("id", item);
     // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
+    var Removehttp = new XMLHttpRequest();
+    Removehttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
+    Removehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 console.log("Item removed!")
@@ -241,7 +241,7 @@ function remove(item) {
             }
         }
     };
-    xDBhttp.send(Data);
+    Removehttp.send(Data);
     console.log("removing Item");
     fade(document.getElementById('alertItem' + item));
 }
@@ -250,23 +250,23 @@ function finished(item) {
     var Data = new FormData();
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
+    var xFinhttp = new XMLHttpRequest();
+    xFinhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
+    xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-                dataRetrieve = JSON.parse(this.response);
-                console.dir(dataRetrieve);
-                addElements(dataRetrieve);
+                // dataRetrieve = JSON.parse(this.response);
+                // console.dir(dataRetrieve);
+                // addElements(dataRetrieve);
             }
             else {
                 console.log('Nog geen meldingen!');
             }
         }
     };
-    xDBhttp.send(Data);
-    console.log("Checking Database");
+    xFinhttp.send(Data);
+    document.getElementById('finished' + item).children.color = 'green';
 }
 
 Element.prototype.remove = function () {

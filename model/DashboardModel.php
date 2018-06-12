@@ -57,6 +57,7 @@ function deleteEntry()//Todo add to Dashboard page
 
 function setCompleted() //Todo add to Dashboard page, Make switch, Send back state of element
 {
+    $dataArray = [];
     $tabel = "MainTabel";
     // Create connection
     $conn = OpenDatabaseConnection();
@@ -66,9 +67,11 @@ function setCompleted() //Todo add to Dashboard page, Make switch, Send back sta
         die("Connection failed: " . $conn->connect_error);
 
     $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE)
-        echo "Record deleted successfully";
-    else
+    if ($conn->query($sql) === TRUE) {
+        $dataArray[0] = true;
+        $conn->close();
+        return json_encode($dataArray);
+    } else
         echo "Error deleting record: " . $conn->error;
 
     $conn->close();
