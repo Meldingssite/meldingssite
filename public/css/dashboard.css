@@ -68,30 +68,39 @@
 
 }
 
-ion-icon:not([name="alert"]) {
-    cursor: pointer;
-    font-size: 32px;
-    padding: 2px;
-    margin: 4px;
-    border-radius: 100%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+.icon-list button {
+    width: 48px;
+    height: 48px;
 
     background: #ccc;
     color: #fff;
     border: 2px solid #999;
+    margin: 4px;
+    cursor: pointer;
+
+    border-radius: 100%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
 }
 
-ion-icon:not([name="alert"]):hover {
+.fa-times,
+.fa-eye,
+.fa-check {
+    font-size: 32px;
+    padding: 2px;
+}
+
+.icon-list button:hover {
     background: #999;
     color: #222;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.9);
 }
 
-.alertItem > div:nth-child(3) ion-icon[name="alert"] {
+.fa-exclamation-circle {
     position: relative;
-    top: 6px;
+    top: 4px;
+    margin-right: 5px;
     color: rgb(235, 0, 0);
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .icon-list {

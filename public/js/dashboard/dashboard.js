@@ -101,26 +101,31 @@ function constructMelding(meldingData) {
     // console.dir(meldingData);
     var melding = "";
     var elementName = 'view' + meldingData['id'];
-    melding += '<div class="alertItem" id =alertItem' + meldingData['id'] + '><div><img src = "'
-        + IMAGE_DIR
-        + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type"><p class="type">' + meldingData['type'] + '</p><p class="time">'
-        + meldingData['TimeStamp']
-        + "</p></div><div style='"
-        + 'background-image:url("'
-        + IMAGE_DIR
-        + '/DashboardBuildings/building-' + meldingData['school']
-        + '.jpg")' + "'" + '><h1>'
-        + meldingData['school'];
+    melding += 
+        '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
+            '<div>' +
+                '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
+                '<p class="type">' + meldingData['type'] + '</p>' +
+                '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
+            "</div>" +
+            "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
+                '<h1>' + meldingData['school'];
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
     }
-    melding += '</div><div><p><ion-icon name = "alert" ></ion-icon>er is iets gebeurt</p>'
-        + '<div class="icon-list">'
-        + '<button id="remove' + meldingData['id'] + '"><ion-icon name="close"></ion-icon></button>'
-        + '<button id="' + elementName + '"><ion-icon name="eye"></ion-icon></button>' //TODO add fadein and FadeOut onclick
-        + '<button id="finished' + meldingData['id'] + '"><ion-icon name="checkmark"></ion-icon></button>'
-        + '</div>'
-        + '</div>';
+    melding += 
+            '</div>' +
+
+            '<div>' +
+                '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+                
+                '<div class="icon-list">' +
+                    '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
+                    '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
+                    '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
 
     console.log();
 
