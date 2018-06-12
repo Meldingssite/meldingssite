@@ -31,7 +31,7 @@ function checkDB() {
 
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
-        if (currentID !== dataRetrieve[1] && !document.getElementById(dataRetrieve[0]['id'])) {
+        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) === undefined) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -43,6 +43,7 @@ function addElements(dataRetrieve) {
             document.getElementById('view' + dataRetrieve[0]['id']).setAttribute("onClick", "extraInfo(" + dataRetrieve[0]['id'] + ")");
             document.getElementById('remove' + dataRetrieve[0]['id']).setAttribute("onClick", "remove(" + dataRetrieve[0]['id'] + ")");
             document.getElementById('finished' + dataRetrieve[0]['id']).setAttribute("onClick", "finished(" + dataRetrieve[0]['id'] + ")");
+            if (dataRetrieve[0]['Completed'] === 'true') document.getElementById('finished' + dataRetrieve[0]['id']).children[0].style.color = 'green';
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -233,10 +234,10 @@ function remove(item) {
     var Data = new FormData();
     Data.append("id", item);
     // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
+    var Removehttp = new XMLHttpRequest();
+    Removehttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
+    Removehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 console.log("Item removed!")
@@ -246,7 +247,7 @@ function remove(item) {
             }
         }
     };
-    xDBhttp.send(Data);
+    Removehttp.send(Data);
     console.log("removing Item");
     fade(document.getElementById('alertItem' + item));
 }
@@ -255,23 +256,27 @@ function finished(item) {
     var Data = new FormData();
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
+    var xFinhttp = new XMLHttpRequest();
+    xFinhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
+    xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-                dataRetrieve = JSON.parse(this.response);
-                console.dir(dataRetrieve);
-                addElements(dataRetrieve);
+                if (this.response.includes('true')) {
+
+                    document.getElementById('finished' + item).children[0].style.color = 'green';
+                }
+                else {
+                    document.getElementById('finished' + item).children[0].style.color = 'white';
+                }
             }
             else {
                 console.log('Nog geen meldingen!');
             }
         }
     };
-    xDBhttp.send(Data);
-    console.log("Checking Database");
+    xFinhttp.send(Data);
+
 }
 
 Element.prototype.remove = function () {
