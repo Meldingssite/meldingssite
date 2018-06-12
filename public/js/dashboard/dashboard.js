@@ -4,6 +4,12 @@ var currentID = 1;
 var dataRetrieve = null;
 var TextHeight = 25;
 var imgHeight = 200;
+var refreshRate = 200;
+
+window.setInterval(function () {
+    checkDB()
+}, refreshRate);
+
 //test
 function checkDB() {
     // console.log(currentID);
@@ -29,6 +35,7 @@ function checkDB() {
     console.log("Checking Database");
 }
 
+//Begin of constructing a element
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
@@ -57,8 +64,6 @@ function addElements(dataRetrieve) {
     }
 
 }
-
-
 
 //Constructs a melding
 function constructMelding(meldingData) {
@@ -92,39 +97,39 @@ function constructMelding(meldingData) {
 
         //  Extra Info    
         '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
-                
-            //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
-            var keys = Object.keys(meldingData);
-            var height = 30;
-            for (var x = 0; keys.length > x; x++) {
-                if (
-                    keys[x] !== "Completed" &&
-                    meldingData[keys[x]] !=  null &&
-                    meldingData[keys[x]] !== "" &&
-                    keys[x] !== 'locatieSpecifiek' &&
-                    keys[x] !== 'locatie' &&
-                    keys[x] !== 'school' &&
-                    keys[x] !== 'type' &&
-                    keys[x] !== 'FILE' &&
-                    keys[x] !== 'id' &&
-                    keys[x] !== 'TimeStamp'
-                ) {
-                    melding += 
-                        "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
-                        keys[x] + ": " + meldingData[keys[x]] +
-                        "</div>";
-                        height += TextHeight;
-                }
 
-                else if (keys[x] === 'FILE') {
-                    melding += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
-                        +meldingData['id'] + '/' + meldingData[keys[x]]
-                        + "'>";
-                    height += imgHeight;
-                }
-            }
-    melding += 
-            '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
+    //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+    var keys = Object.keys(meldingData);
+    var height = 30;
+    for (var x = 0; keys.length > x; x++) {
+        if (
+            keys[x] !== "Completed" &&
+            meldingData[keys[x]] != null &&
+            meldingData[keys[x]] !== "" &&
+            keys[x] !== 'locatieSpecifiek' &&
+            keys[x] !== 'locatie' &&
+            keys[x] !== 'school' &&
+            keys[x] !== 'type' &&
+            keys[x] !== 'FILE' &&
+            keys[x] !== 'id' &&
+            keys[x] !== 'TimeStamp'
+        ) {
+            melding +=
+                "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
+                keys[x] + ": " + meldingData[keys[x]] +
+                "</div>";
+            height += TextHeight;
+        }
+
+        else if (keys[x] === 'FILE') {
+            melding += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
+                +meldingData['id'] + '/' + meldingData[keys[x]]
+                + "'>";
+            height += imgHeight;
+        }
+    }
+    melding +=
+        '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
         "</div>";
 
     return melding;
@@ -206,9 +211,6 @@ function toggleSpace(item, ForceSpace = false) {
 // Active check for Database every 0.5 seconds
 
 // document.getElementById("Dashboard").innerHTML = "";
-window.setInterval(function () {
-    checkDB()
-}, 500);
 
 
 function extraInfo(elementID) {
