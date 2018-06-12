@@ -118,7 +118,7 @@ function constructMelding(meldingData) {
                     melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
                 }
     melding +=
-            '</div>' +
+        '</div>' +
 
             '<div>' +
                 '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
@@ -129,46 +129,44 @@ function constructMelding(meldingData) {
                     '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
                 '</div>' +
             '</div>' +
-            '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+        '</div>' +
+        
+        //  Extra Info    
+        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+                
+            //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+            var keys = Object.keys(meldingData);
+            var height = 0;
+            for (var x = 0; keys.length > x; x++) {
+                if (
+                    meldingData[keys[x]] !== "Completed" &&
+                    meldingData[keys[x]] !=  null &&
+                    meldingData[keys[x]] !== "" &&
+                    keys[x] !== 'locatieSpecifiek' &&
+                    keys[x] !== 'locatie' &&
+                    keys[x] !== 'school' &&
+                    keys[x] !== 'type' &&
+                    keys[x] !== 'FILE' &&
+                    keys[x] !== 'id' 
+                ) {
+                    melding += 
+                        "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
+                        keys[x] + ": " + meldingData[keys[x]] +
+                        "</div>";
+                        height += 25;
+                }
 
-    console.log();
-
-    melding += '</div><div class = "extraInfo" id="extraInfo'
-        + meldingData['id']
-        + '">';
-//Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
-    var keys = Object.keys(meldingData);
-    var height = 0;
-    for (var x = 0; keys.length > x; x++) {
-        if (
-            meldingData[keys[x]] !== "Completed" &&
-            meldingData[keys[x]] !=  null &&
-            meldingData[keys[x]] !== "" &&
-            keys[x] !== 'locatieSpecifiek' &&
-            keys[x] !== 'locatie' &&
-            keys[x] !== 'school' &&
-            keys[x] !== 'type' &&
-            keys[x] !== 'FILE' &&
-            keys[x] !== 'id' 
-        ) {
-            melding += 
-                "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
-                    keys[x] + ": " + meldingData[keys[x]] +
-                "</div>";
-            height += 25;
-        }
-        else if (keys[x] === 'FILE') {
-            melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
-                +meldingData['id'] + '/' + meldingData[keys[x]]
-                + "'>";
-            height += 200;
-        }
-    }
+                else if (keys[x] === 'FILE') {
+                    melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
+                        +meldingData['id'] + '/' + meldingData[keys[x]]
+                        + "'>";
+                    height += 200;
+                }
+            }
     melding += 
                 '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
-            "</div>" +
         "</div>";
-    return melding
+        return melding
 }
 
 //Deletes empty properties in the object
