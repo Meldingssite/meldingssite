@@ -33,7 +33,7 @@ function getMessage($msg)
         <img src="<?php echo URL . IMAGE_DIR ?>Logo.png" alt="">
 
         <form
-                action="<?php echo URL ?>dashboard/verifyLogin"
+                action="<?php echo URL ?>dashboard/Login"
                 method="post"
                 id="formLogin"
         >

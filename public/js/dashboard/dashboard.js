@@ -102,7 +102,6 @@ function updateContent(items) {
 
 //Constructs a melding
 function constructMelding(meldingData) {
-    // console.dir(meldingData);
     var melding = "";
     var elementName = 'view' + meldingData['id'];
     melding +=
@@ -129,46 +128,45 @@ function constructMelding(meldingData) {
                     '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
                 '</div>' +
             '</div>' +
-            '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+        '</div>' +
+        
+        //  Extra Info    
+        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+                
+            //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+            var keys = Object.keys(meldingData);
+            var height = 0;
+            for (var x = 0; keys.length > x; x++) {
+                if (
+                    meldingData[keys[x]] !== "Completed" &&
+                    meldingData[keys[x]] !=  null &&
+                    meldingData[keys[x]] !== "" &&
+                    keys[x] !== 'locatieSpecifiek' &&
+                    keys[x] !== 'locatie' &&
+                    keys[x] !== 'school' &&
+                    keys[x] !== 'type' &&
+                    keys[x] !== 'FILE' &&
+                    keys[x] !== 'id' 
+                ) {
+                    melding += 
+                        "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
+                        keys[x] + ": " + meldingData[keys[x]] +
+                        "</div>";
+                        height += 25;
+                }
 
-    console.log();
-
-    melding += '</div><div class = "extraInfo" id="extraInfo'
-        + meldingData['id']
-        + '">';
-//Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
-    var keys = Object.keys(meldingData);
-    var height = 0;
-    for (var x = 0; keys.length > x; x++) {
-        if (
-            meldingData[keys[x]] !== "Completed" &&
-            meldingData[keys[x]] !=  null &&
-            meldingData[keys[x]] !== "" &&
-            keys[x] !== 'locatieSpecifiek' &&
-            keys[x] !== 'locatie' &&
-            keys[x] !== 'school' &&
-            keys[x] !== 'type' &&
-            keys[x] !== 'FILE' &&
-            keys[x] !== 'id' 
-        ) {
-            melding += 
-                "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
-                    keys[x] + ": " + meldingData[keys[x]] +
-                "</div>";
-            height += 25;
-        }
-        else if (keys[x] === 'FILE') {
-            melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
-                +meldingData['id'] + '/' + meldingData[keys[x]]
-                + "'>";
-            height += 200;
-        }
-    }
+                else if (keys[x] === 'FILE') {
+                    melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
+                        +meldingData['id'] + '/' + meldingData[keys[x]]
+                        + "'>";
+                    height += 200;
+                }
+            }
     melding += 
-                '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
-            "</div>" +
+            '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
         "</div>";
-    return melding
+        
+    return melding;
 }
 
 //Deletes empty properties in the object
@@ -210,19 +208,17 @@ window.setInterval(function () {
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    // console.log(target.style.display);
-    if (target.style.display !== 'block') {
-        console.log("unfading element");
-        unfade(target, elementID);
+    if (target.style.display !== 'flex') {
+        unfade(target, elementID, 'flex');
     }
     else {
         fade(target, elementID);
     }
 }
 
-function unfade(element, elementID = null) {
+function unfade(element, elementID=null, display='block') {
     var op = 0.1;  // initial opacity
-    element.style.display = 'block';
+    element.style.display = display;
     if (elementID != null)
         var height = document.getElementById('height' + elementID).innerHTML;
     // console.log(height);
@@ -252,7 +248,7 @@ function fade(element, elementID = null) {
         }
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.2;
+        op -= op * 0.1;
     }, 50);
 
 }
