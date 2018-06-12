@@ -2,9 +2,9 @@
 #Dashboard {
     padding-top: 0;
     margin-top: 0;
-    max-width: inherit !important;
-    width: 1020px !important;
-    background: none !important;
+    max-width: 1200px !important;
+    width: 100% !important;
+    background: white !important;
 }
 
 .alertItem {
