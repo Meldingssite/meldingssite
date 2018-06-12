@@ -40,7 +40,8 @@ function addElements(dataRetrieve) {
             var pageContent = document.getElementById('Dashboard');
             var content = constructMelding(items) + pageContent.innerHTML;
             pageContent.innerHTML = content;
-
+            document.getElementById('view' + dataRetrieve[0]['id']).setAttribute("onClick", "extraInfo(" + dataRetrieve[0]['id'] + ")");
+1
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -96,6 +97,7 @@ function updateContent(items) {
 function constructMelding(meldingData) {
     // console.dir(meldingData);
     var melding = "";
+    var elementName = 'view' + meldingData['id'];
     melding += '<div class="alertItem"><div><img src = "'
         + IMAGE_DIR
         + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type"><p class="type">' + meldingData['type'] + '</p><p class="time">'
@@ -112,11 +114,13 @@ function constructMelding(meldingData) {
     melding += '</div><div><p><ion-icon name = "alert" ></ion-icon>er is iets gebeurt</p>'
         + '<div class="icon-list">'
         + '<ion-icon name="close"></ion-icon>'
-        + '<button id="view' + meldingData['id'] + '"><ion-icon name="eye"> </ion-icon></button>' //TODO add fadein and FadeOut onclick
+        + '<button id="' + elementName + '"><ion-icon name="eye"></ion-icon></button>' //TODO add fadein and FadeOut onclick
         + '<ion-icon name="checkmark"></ion-icon>'
         + '</div>'
         + '</div>';
-    document.getElementById('view' + meldingData['id']).setAttribute("onClick", "extraInfo(" + meldingData['id'] + ")");
+
+    console.log();
+
     melding += '</div><div class = "extraInfo" id="extraInfo'
         + meldingData['id']
         + '">';
@@ -176,11 +180,12 @@ window.setInterval(function () {
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    if (target.style.display = 'none') {
+    console.log(target.style.display);
+    if (target.style.display !== 'block') {
         console.log("unfading element");
         unfade(target);
     }
-    else if (target.style.display = 'none') {
+    else {
         fade(target);
     }
 }
