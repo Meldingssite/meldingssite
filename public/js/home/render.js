@@ -500,7 +500,6 @@ function submitContents(NaamString, school, id) {
     // console.dir(NaamString);
     var finalArray;
     finalArray = naam[0].split(',');
-    // console.dir(naam);
     for (x = 1; naam.length > x; x++) {
         // console.dir(finalArray);
         naam[x] = naam[x].split(',');
@@ -511,22 +510,6 @@ function submitContents(NaamString, school, id) {
         finalArray[finalArray.length] = naam[x];
         // }
     }
-    console.dir(naam);
-
-    // for (var i = 0; i < finalArray.length; i++) {
-    //             if (finalArray[i] === "") {
-    //                 finalArray.splice(i, 1);
-    //             }
-    //             if(finalArray[i].isArray){
-    //                 for (var y = 0; i < finalArray[i].length; y++) {
-    //                     if (finalArray[i][y] === "") {
-    //                         finalArray.splice(y, 1);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    // console.dir(finalArray);
-    // finalArray.clean("");
     sendArray = [];
     var dataArray = [];
     var nameArray = [];
@@ -555,14 +538,9 @@ function submitContents(NaamString, school, id) {
                 }
             }
             if (check === true) {
-                console.dir(naam);
-                console.log(naam[x][0]);
                 var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id;
-                console.log(naamTemp);
-
                 dataArray.push(dataElementsArray);
                 nameArray.push(naamTemp);
-                console.dir(nameArray);
             }
         }
         //Case Multiple Items
@@ -602,7 +580,7 @@ function submitContents(NaamString, school, id) {
 
     ;
     sendArray = [nameArray, dataArray];
-    console.dir(sendArray);
+
     dataSend(sendArray, school, id);
 } //Executed on pressing submit and prepares data for being send to Database
 
