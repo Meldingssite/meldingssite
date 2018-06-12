@@ -41,7 +41,8 @@ function addElements(dataRetrieve) {
             var content = constructMelding(items) + pageContent.innerHTML;
             pageContent.innerHTML = content;
             document.getElementById('view' + dataRetrieve[0]['id']).setAttribute("onClick", "extraInfo(" + dataRetrieve[0]['id'] + ")");
-1
+            document.getElementById('remove' + dataRetrieve[0]['id']).setAttribute("onClick", "remove(" + dataRetrieve[0]['id'] + ")");
+            document.getElementById('finished' + dataRetrieve[0]['id']).setAttribute("onClick", "finished(" + dataRetrieve[0]['id'] + ")");
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -113,9 +114,9 @@ function constructMelding(meldingData) {
     }
     melding += '</div><div><p><ion-icon name = "alert" ></ion-icon>er is iets gebeurt</p>'
         + '<div class="icon-list">'
-        + '<ion-icon name="close"></ion-icon>'
+        + '<button id="remove' + meldingData['id'] + '"><ion-icon name="close"></ion-icon></button>'
         + '<button id="' + elementName + '"><ion-icon name="eye"></ion-icon></button>' //TODO add fadein and FadeOut onclick
-        + '<ion-icon name="checkmark"></ion-icon>'
+        + '<button id="finished' + meldingData['id'] + '"><ion-icon name="checkmark"></ion-icon></button>'
         + '</div>'
         + '</div>';
 
@@ -223,3 +224,46 @@ function fade(element) {
 
 }
 
+function remove(item) {
+    var Data = new FormData();
+    Data.append("id", item);
+    // Data.append("school", schoolNaam);
+    var xDBhttp = new XMLHttpRequest();
+    xDBhttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
+    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
+    xDBhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.response) {
+               console.log("Item removed!")
+            }
+            else {
+                console.log('There has been an unknown error!');
+            }
+        }
+    };
+    xDBhttp.send(Data);
+    console.log("removing Item");
+}
+
+function finished(item) {
+    var Data = new FormData();
+    Data.append("id", currentID);
+    // Data.append("school", schoolNaam);
+    var xDBhttp = new XMLHttpRequest();
+    xDBhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
+    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
+    xDBhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.response) {
+                dataRetrieve = JSON.parse(this.response);
+                console.dir(dataRetrieve);
+                addElements(dataRetrieve);
+            }
+            else {
+                console.log('Nog geen meldingen!');
+            }
+        }
+    };
+    xDBhttp.send(Data);
+    console.log("Checking Database");
+}

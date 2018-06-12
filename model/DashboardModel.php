@@ -35,10 +35,10 @@ function retrieveElements()
     }
 }
 
-function deleteEntry($id)//Todo add to Dashboard page
+function deleteEntry()//Todo add to Dashboard page
 {
     $tabel = "MainTabel";
-
+    $id = $_POST['id'];
     // Create connection
     $conn = OpenDatabaseConnection();
     // Check connection
@@ -55,12 +55,12 @@ function deleteEntry($id)//Todo add to Dashboard page
     $conn->close();
 }
 
-function setCompleted($id) //Todo add to Dashboard page
+function setCompleted() //Todo add to Dashboard page, Make switch, Send back state of element
 {
     $tabel = "MainTabel";
     // Create connection
     $conn = OpenDatabaseConnection();
-
+    $id = $_POST['id'];
     // Check connection
     if ($conn->connect_error)
         die("Connection failed: " . $conn->connect_error);
@@ -133,8 +133,7 @@ function loginValid($emailTemp, $passTemp)
                     $_SESSION['username'] = $username;
 
                     $out['success'] = TRUE;
-                    $out['error'] = 0;
-;
+                    $out['error'] = 0;;
                     return $out;
                 } else {
                     // Display an error message if password is not valid
