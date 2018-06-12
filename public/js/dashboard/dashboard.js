@@ -150,10 +150,10 @@ function constructMelding(meldingData) {
                 + ": "
                 + meldingData[keys[x]]
                 + "</div>";
-            height += 40;
+            height += 25;
         }
         else if (keys[x] === 'FILE') {
-            melding += "<img src ='" + IMAGE_DIR + '../uploads/' +
+            melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
                 +meldingData['id'] + '/' + meldingData[keys[x]]
                 + "'>";
             height += 200;
