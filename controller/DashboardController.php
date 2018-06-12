@@ -3,7 +3,7 @@ require(ROOT . "model/DashboardModel.php");
 
 function index($msg = null)
 {
-    if ($_SESSION['username']) {
+    if (isset($_SESSION['username'])) {
         render('dashboard/index');
     } else {
         render("dashboard/login", Array(
