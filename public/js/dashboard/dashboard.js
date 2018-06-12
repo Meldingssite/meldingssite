@@ -17,7 +17,6 @@ function checkDB() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
-                console.dir(dataRetrieve);
                 addElements(dataRetrieve);
             }
             else {
@@ -61,8 +60,11 @@ function addElements(dataRetrieve) {
 function updateContent(items) {
     // console.log("Updating content");
     var keys = Object.keys(items);
+    var height = Number(document.getElementById('height' + items['id']).innerHTML);
+
     for (var x = 0; keys.length > x; x++) {
-        if (items[keys[x]] != null && items[keys[x]] !== undefined && items[keys[x]] !== "" && keys[x] !== 'id') {
+        if (items[keys[x]] != null && items[keys[x]] !== "" && items[keys[x]] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
+
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
@@ -88,12 +90,14 @@ function updateContent(items) {
                     + toggleSpace(items[keys[x]], true)
                     + "</div>";
                 DIV.innerHTML += addItems;
+                height += 40;
             }
             else {
                 console.log(keys[x] + items['id']);
             }
         }
     }
+    document.getElementById('height' + items['id']).innerHTML = height.toString();
 }
 
 //Constructs a melding
@@ -103,29 +107,29 @@ function constructMelding(meldingData) {
     var elementName = 'view' + meldingData['id'];
     melding +=
         '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
-        '<div>' +
-        '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
-        '<p class="type">' + meldingData['type'] + '</p>' +
-        '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
-        "</div>" +
-        "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
-        '<h1>' + meldingData['school'];
-    if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
-        melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
-    }
+            '<div>' +
+                '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
+                '<p class="type">' + meldingData['type'] + '</p>' +
+                '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
+            "</div>" +
+            "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
+                '<h1>' + meldingData['school'];
+                if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
+                    melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
+                }
     melding +=
-        '</div>' +
+            '</div>' +
 
-        '<div>' +
-        '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+            '<div>' +
+                '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
 
-        '<div class="icon-list">' +
-        '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
-        '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
-        '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
-        '</div>' +
-        '</div>' +
-        '</div>';
+                '<div class="icon-list">' +
+                    '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
+                    '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
+                    '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
+                '</div>' +
+            '</div>' +
+            '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
 
     console.log();
 
@@ -134,24 +138,36 @@ function constructMelding(meldingData) {
         + '">';
 //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
+    var height = 0;
     for (var x = 0; keys.length > x; x++) {
-        console.dir(keys);
-        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && meldingData[keys[x]] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
-            melding += "<div id ='" +
-                keys[x] + "" + meldingData['id']
-                + "'>"
-                + keys[x]
-                + ": "
-                + meldingData[keys[x]]
-                + "</div>";
+        if (
+            meldingData[keys[x]] !== "Completed" &&
+            meldingData[keys[x]] !=  null &&
+            meldingData[keys[x]] !== "" &&
+            keys[x] !== 'locatieSpecifiek' &&
+            keys[x] !== 'locatie' &&
+            keys[x] !== 'school' &&
+            keys[x] !== 'type' &&
+            keys[x] !== 'FILE' &&
+            keys[x] !== 'id' 
+        ) {
+            melding += 
+                "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
+                    keys[x] + ": " + meldingData[keys[x]] +
+                "</div>";
+            height += 25;
         }
-        else if(keys[x] === 'FILE'){
-            melding += "<img src ='" + IMAGE_DIR + '/' +
-                 + meldingData['id'] + '/' +  meldingData[keys[x]]
+        else if (keys[x] === 'FILE') {
+            melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
+                +meldingData['id'] + '/' + meldingData[keys[x]]
                 + "'>";
+            height += 200;
         }
     }
-    melding += "</div>";
+    melding += 
+                '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
+            "</div>" +
+        "</div>";
     return melding
 }
 
@@ -189,28 +205,31 @@ function toggleSpace(item, ForceSpace = false) {
 // document.getElementById("Dashboard").innerHTML = "";
 window.setInterval(function () {
     checkDB()
-}, 50);
+}, 500);
 
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    console.log(target.style.display);
+    // console.log(target.style.display);
     if (target.style.display !== 'block') {
         console.log("unfading element");
-        unfade(target);
+        unfade(target, elementID);
     }
     else {
-        fade(target);
+        fade(target, elementID);
     }
 }
 
-function unfade(element) {
+function unfade(element, elementID = null) {
     var op = 0.1;  // initial opacity
     element.style.display = 'block';
+    if (elementID != null)
+        var height = document.getElementById('height' + elementID).innerHTML;
+    // console.log(height);
 
     var timer = setInterval(function () {
         if (op >= 1) {
-            element.style.height = '100px';
+            element.style.height = height + 'px';
             clearInterval(timer);
             element.style.opacity = 1;
         }
@@ -221,7 +240,8 @@ function unfade(element) {
 
 }   //Makes item reappear
 
-function fade(element) {
+function fade(element, elementID = null) {
+    document.querySelector('div > input[name="test1"]')
     var op = 1;  // initial opacity
     element.style.height = '0';
     var timer = setInterval(function () {
@@ -261,6 +281,7 @@ function remove(item) {
 }
 
 function finished(item) {
+
     var Data = new FormData();
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
