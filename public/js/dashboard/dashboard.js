@@ -31,7 +31,7 @@ function checkDB() {
 
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
-        if (currentID !== dataRetrieve[1] && !document.getElementById(dataRetrieve[0]['id'])) {
+        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) === undefined) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -256,11 +256,11 @@ function finished(item) {
     xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-                if(this.response.includes('true')){
+                if (this.response.includes('true')) {
 
                     document.getElementById('finished' + item).children[0].style.color = 'green';
                 }
-                else{
+                else {
                     document.getElementById('finished' + item).children[0].style.color = 'white';
                 }
             }
