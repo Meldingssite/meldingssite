@@ -2,6 +2,13 @@
 //Testing commit
 var currentID = 1;
 var dataRetrieve = null;
+var TextHeight = 25;
+var imgHeight = 200;
+var refreshRate = 200;
+
+window.setInterval(function () {
+    checkDB()
+}, refreshRate);
 
 //test
 function checkDB() {
@@ -28,6 +35,7 @@ function checkDB() {
     console.log("Checking Database");
 }
 
+//Begin of constructing a element
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
@@ -57,13 +65,84 @@ function addElements(dataRetrieve) {
 
 }
 
+//Constructs a melding
+function constructMelding(meldingData) {
+    var melding = "";
+    var elementName = 'view' + meldingData['id'];
+    melding +=
+        '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
+        '<div>' +
+        '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
+        '<p class="type">' + meldingData['type'] + '</p>' +
+        '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
+        "</div>" +
+        "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
+        '<h1>' + meldingData['school'];
+    if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
+        melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
+    }
+    melding +=
+        '</div>' +
+
+        '<div>' +
+        '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+
+        '<div class="icon-list">' +
+        '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
+        '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
+        '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        //  Extra Info    
+        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+
+    //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+    var keys = Object.keys(meldingData);
+    var height = 30;
+    for (var x = 0; keys.length > x; x++) {
+        if (
+            keys[x] !== "Completed" &&
+            meldingData[keys[x]] != null &&
+            meldingData[keys[x]] !== "" &&
+            keys[x] !== 'locatieSpecifiek' &&
+            keys[x] !== 'locatie' &&
+            keys[x] !== 'school' &&
+            keys[x] !== 'type' &&
+            keys[x] !== 'FILE' &&
+            keys[x] !== 'id' &&
+            keys[x] !== 'TimeStamp'
+        ) {
+            melding +=
+                "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
+                keys[x] + ": " + meldingData[keys[x]] +
+                "</div>";
+            height += TextHeight;
+        }
+
+        else if (keys[x] === 'FILE') {
+            melding += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
+                +meldingData['id'] + '/' + meldingData[keys[x]]
+                + "'>";
+            height += imgHeight;
+        }
+    }
+    melding +=
+        '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
+        "</div>";
+
+    return melding;
+}
+
+//Updates Content of latest Melding
 function updateContent(items) {
     // console.log("Updating content");
     var keys = Object.keys(items);
     var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
     for (var x = 0; keys.length > x; x++) {
-        if (items[keys[x]] != null && items[keys[x]] !== "" && items[keys[x]] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
+        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
 
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
@@ -90,7 +169,7 @@ function updateContent(items) {
                     + toggleSpace(items[keys[x]], true)
                     + "</div>";
                 DIV.innerHTML += addItems;
-                height += 40;
+                height += TextHeight;
             }
             else {
                 console.log(keys[x] + items['id']);
@@ -98,75 +177,6 @@ function updateContent(items) {
         }
     }
     document.getElementById('height' + items['id']).innerHTML = height.toString();
-}
-
-//Constructs a melding
-function constructMelding(meldingData) {
-    var melding = "";
-    var elementName = 'view' + meldingData['id'];
-    melding +=
-        '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
-            '<div>' +
-                '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
-                '<p class="type">' + meldingData['type'] + '</p>' +
-                '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
-            "</div>" +
-            "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
-                '<h1>' + meldingData['school'];
-                if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
-                    melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
-                }
-    melding +=
-            '</div>' +
-
-            '<div>' +
-                '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
-
-                '<div class="icon-list">' +
-                    '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
-                    '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
-                    '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-        
-        //  Extra Info    
-        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
-                
-            //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
-            var keys = Object.keys(meldingData);
-            var height = 0;
-            for (var x = 0; keys.length > x; x++) {
-                if (
-                    meldingData[keys[x]] !== "Completed" &&
-                    meldingData[keys[x]] !=  null &&
-                    meldingData[keys[x]] !== "" &&
-                    keys[x] !== 'locatieSpecifiek' &&
-                    keys[x] !== 'locatie' &&
-                    keys[x] !== 'school' &&
-                    keys[x] !== 'type' &&
-                    keys[x] !== 'FILE' &&
-                    keys[x] !== 'id' 
-                ) {
-                    melding += 
-                        "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
-                        keys[x] + ": " + meldingData[keys[x]] +
-                        "</div>";
-                        height += 25;
-                }
-
-                else if (keys[x] === 'FILE') {
-                    melding += "<img height = '200px' src ='" + IMAGE_DIR + '../uploads/' +
-                        +meldingData['id'] + '/' + meldingData[keys[x]]
-                        + "'>";
-                    height += 200;
-                }
-            }
-    melding += 
-            '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
-        "</div>";
-        
-    return melding;
 }
 
 //Deletes empty properties in the object
@@ -201,9 +211,6 @@ function toggleSpace(item, ForceSpace = false) {
 // Active check for Database every 0.5 seconds
 
 // document.getElementById("Dashboard").innerHTML = "";
-window.setInterval(function () {
-    checkDB()
-}, 500);
 
 
 function extraInfo(elementID) {
@@ -216,7 +223,7 @@ function extraInfo(elementID) {
     }
 }
 
-function unfade(element, elementID=null, display='block') {
+function unfade(element, elementID = null, display = 'block') {
     var op = 0.1;  // initial opacity
     element.style.display = display;
     if (elementID != null)
