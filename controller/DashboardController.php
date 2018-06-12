@@ -14,21 +14,23 @@ function index($msg = null)
 
 function verifyLogin()
 {
-    $result = loginValid($_POST['usermail'], $_POST['userpass']);
-    if ($result['success'])
-        index();
-    else
-        index($result['error']);
+    if (isset($_POST['usermail'], $_POST['userpass'])) {
+        $result = loginValid($_POST['usermail'], $_POST['userpass']);
+        if ($result['success'])
+            index();
+        else
+            index($result['error']);
+    } else {
+        //TODO damion add hier ff een redirect back
+    }
 
-}
 
+    function retrieveLogin()
+    {
+        echo "retrieve Login";
+    }
 
-function retrieveLogin()
-{
-    echo "retrieve Login";
-}
-
-function bugTest()
-{
-    render("dashboard/new");
-}
+    function bugTest()
+    {
+        render("dashboard/new");
+    }
