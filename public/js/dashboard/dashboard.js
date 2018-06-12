@@ -31,7 +31,7 @@ function checkDB() {
 
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
-        if (currentID !== dataRetrieve[1] && !document.getElementById(dataRetrieve[0]['id'])) {
+        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) === undefined) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -43,6 +43,7 @@ function addElements(dataRetrieve) {
             document.getElementById('view' + dataRetrieve[0]['id']).setAttribute("onClick", "extraInfo(" + dataRetrieve[0]['id'] + ")");
             document.getElementById('remove' + dataRetrieve[0]['id']).setAttribute("onClick", "remove(" + dataRetrieve[0]['id'] + ")");
             document.getElementById('finished' + dataRetrieve[0]['id']).setAttribute("onClick", "finished(" + dataRetrieve[0]['id'] + ")");
+            if (dataRetrieve[0]['Completed'] === 'true') document.getElementById('finished' + dataRetrieve[0]['id']).children[0].style.color = 'green';
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -99,26 +100,31 @@ function constructMelding(meldingData) {
     // console.dir(meldingData);
     var melding = "";
     var elementName = 'view' + meldingData['id'];
-    melding += '<div class="alertItem"><div><img src = "'
-        + IMAGE_DIR
-        + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type"><p class="type">' + meldingData['type'] + '</p><p class="time">'
-        + meldingData['TimeStamp']
-        + "</p></div><div style='"
-        + 'background-image:url("'
-        + IMAGE_DIR
-        + '/DashboardBuildings/building-' + meldingData['school']
-        + '.jpg")' + "'" + '><h1>'
-        + meldingData['school'];
+    melding += 
+        '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
+            '<div>' +
+                '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
+                '<p class="type">' + meldingData['type'] + '</p>' +
+                '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
+            "</div>" +
+            "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
+                '<h1>' + meldingData['school'];
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
     }
-    melding += '</div><div><p><ion-icon name = "alert" ></ion-icon>er is iets gebeurt</p>'
-        + '<div class="icon-list">'
-        + '<button id="remove' + meldingData['id'] + '"><ion-icon name="close"></ion-icon></button>'
-        + '<button id="' + elementName + '"><ion-icon name="eye"></ion-icon></button>' //TODO add fadein and FadeOut onclick
-        + '<button id="finished' + meldingData['id'] + '"><ion-icon name="checkmark"></ion-icon></button>'
-        + '</div>'
-        + '</div>';
+    melding += 
+            '</div>' +
+
+            '<div>' +
+                '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+                
+                '<div class="icon-list">' +
+                    '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
+                    '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
+                    '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
 
     console.log();
 
@@ -228,42 +234,51 @@ function remove(item) {
     var Data = new FormData();
     Data.append("id", item);
     // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
+    var Removehttp = new XMLHttpRequest();
+    Removehttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
+    Removehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-               console.log("Item removed!")
+                console.log("Item removed!")
             }
             else {
                 console.log('There has been an unknown error!');
             }
         }
     };
-    xDBhttp.send(Data);
+    Removehttp.send(Data);
     console.log("removing Item");
+    fade(document.getElementById('alertItem' + item));
 }
 
 function finished(item) {
     var Data = new FormData();
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
+    var xFinhttp = new XMLHttpRequest();
+    xFinhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
+    xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-                dataRetrieve = JSON.parse(this.response);
-                console.dir(dataRetrieve);
-                addElements(dataRetrieve);
+                if (this.response.includes('true')) {
+
+                    document.getElementById('finished' + item).children[0].style.color = 'green';
+                }
+                else {
+                    document.getElementById('finished' + item).children[0].style.color = 'white';
+                }
             }
             else {
                 console.log('Nog geen meldingen!');
             }
         }
     };
-    xDBhttp.send(Data);
-    console.log("Checking Database");
+    xFinhttp.send(Data);
+
+}
+
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
 }
