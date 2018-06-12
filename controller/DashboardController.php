@@ -14,16 +14,11 @@ function index($msg = null)
 
 function verifyLogin()
 {
-    if(isset($_POST['usermail'], $_POST['userpass'])) {
-        $result = loginValid($_POST['usermail'], $_POST['userpass']);
-        if ($result['success'])
-            index();
-        else
-            index($result['error']);
-    }
-    else{
-        //TODO damion add hier ff een redirect back
-    }
+    $result = loginValid($_POST['usermail'], $_POST['userpass']);
+    if ($result['success'])
+        index();
+    else
+        index($result['error']);
 
 }
 
