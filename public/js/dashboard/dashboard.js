@@ -99,7 +99,7 @@ function constructMelding(meldingData) {
     // console.dir(meldingData);
     var melding = "";
     var elementName = 'view' + meldingData['id'];
-    melding += '<div class="alertItem"><div><img src = "'
+    melding += '<div class="alertItem" id =alertItem' + meldingData['id'] + '><div><img src = "'
         + IMAGE_DIR
         + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type"><p class="type">' + meldingData['type'] + '</p><p class="time">'
         + meldingData['TimeStamp']
@@ -234,7 +234,7 @@ function remove(item) {
     xDBhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-               console.log("Item removed!")
+                console.log("Item removed!")
             }
             else {
                 console.log('There has been an unknown error!');
@@ -243,6 +243,7 @@ function remove(item) {
     };
     xDBhttp.send(Data);
     console.log("removing Item");
+    fade(document.getElementById('alertItem' + item));
 }
 
 function finished(item) {
@@ -266,4 +267,8 @@ function finished(item) {
     };
     xDBhttp.send(Data);
     console.log("Checking Database");
+}
+
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
 }
