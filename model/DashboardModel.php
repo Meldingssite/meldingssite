@@ -4,7 +4,6 @@ function retrieveElements()
 {
     $conn = OpenDatabaseConnection();
     $id = $_POST['id'];
-    $school = $_POST['school'];
     $dataArray = [];
     $tabel = "MainTabel";
     $sql = "select * from `$tabel` where id=$id";
