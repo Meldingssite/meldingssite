@@ -183,7 +183,7 @@ function toggleSpace(item, ForceSpace = false) {
 // document.getElementById("Dashboard").innerHTML = "";
 window.setInterval(function () {
     checkDB()
-}, 500);
+}, 50);
 
 
 function extraInfo(elementID) {
@@ -277,4 +277,8 @@ function finished(item) {
         }
     };
     xFinhttp.send(Data);
+}
+
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
 }
