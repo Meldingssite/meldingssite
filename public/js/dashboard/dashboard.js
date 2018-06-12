@@ -1,7 +1,7 @@
 //  Latest timestamp pulled from DB, used to check if DB has been updated
 //Testing commit
 var currentID = 1;
-var dataRetrieve = NULL;
+var dataRetrieve = null;
 
 //test
 function checkDB() {
@@ -30,7 +30,7 @@ function checkDB() {
 }
 
 function addElements(dataRetrieve) {
-    if (dataRetrieve[0] !== NULL) {
+    if (dataRetrieve[0] !== null) {
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) === undefined) {
     if (dataRetrieve[0] !== null) {
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
@@ -63,11 +63,11 @@ function updateContent(items) {
     // console.log("Updating content");
     var keys = Object.keys(items);
     for (var x = 0; keys.length > x; x++) {
-        if (items[keys[x]] != NULL && items[keys[x]] !== undefined && items[keys[x]] !== "" && keys[x] !== 'id') {
+        if (items[keys[x]] != null && items[keys[x]] !== undefined && items[keys[x]] !== "" && keys[x] !== 'id') {
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
-                    && document.getElementById(keys[x] + items['id']) != NULL) {
+                    && document.getElementById(keys[x] + items['id']) != null) {
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
                         document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ": " + items[keys[x]];
                     }
@@ -77,7 +77,7 @@ function updateContent(items) {
 
                 }
             }
-            else if (document.getElementById(keys[x] + items['id']) == NULL) {
+            else if (document.getElementById(keys[x] + items['id']) == null) {
                 // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
@@ -136,7 +136,7 @@ function constructMelding(meldingData) {
 //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
     var keys = Object.keys(meldingData);
     for (var x = 0; keys.length > x; x++) {
-        if (meldingData[keys[x]] != NULL && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
+        if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id') {
             melding += "<div id ='" +
                 keys[x] + "" + meldingData['id']
                 + "'>"
@@ -154,7 +154,7 @@ function constructMelding(meldingData) {
 function deleteNullProperties(deleteObject) {
     var keys = Object.keys(deleteObject);
     for (var x = 0; keys.length > x; x++) {
-        if (deleteObject[keys[x]] == NULL) {
+        if (deleteObject[keys[x]] == null) {
             delete deleteObject[keys[x]];
         }
     }
@@ -283,4 +283,5 @@ function finished(item) {
 
 Element.prototype.remove = function () {
     this.parentElement.removeChild(this);
-}
+};
+    }}
