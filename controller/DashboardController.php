@@ -19,11 +19,12 @@ function verifyLogin()
         if ($result['success'])
             index();
         else
-            index($result['error']);
+            index($result['error']); 
     } else {
-        //TODO damion add hier ff een redirect back
+        header("Location: ../");
+
     }
-}   
+}
 
 function retrieveLogin()
 {
