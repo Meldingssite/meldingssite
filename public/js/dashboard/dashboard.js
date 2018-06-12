@@ -63,7 +63,7 @@ function updateContent(items) {
     var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
     for (var x = 0; keys.length > x; x++) {
-        if (items[keys[x]] != null && items[keys[x]] !== "" && items[keys[x]] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
+        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
 
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
@@ -106,30 +106,30 @@ function constructMelding(meldingData) {
     var elementName = 'view' + meldingData['id'];
     melding +=
         '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
-            '<div>' +
-                '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
-                '<p class="type">' + meldingData['type'] + '</p>' +
-                '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
-            "</div>" +
-            "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
-                '<h1>' + meldingData['school'];
-                if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
-                    melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
-                }
+        '<div>' +
+        '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
+        '<p class="type">' + meldingData['type'] + '</p>' +
+        '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
+        "</div>" +
+        "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
+        '<h1>' + meldingData['school'];
+    if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
+        melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
+    }
     melding +=
-            '</div>' +
-
-            '<div>' +
-                '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
-
-                '<div class="icon-list">' +
-                    '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
-                    '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
-                    '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
-                '</div>' +
-            '</div>' +
         '</div>' +
-        
+
+        '<div>' +
+        '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+
+        '<div class="icon-list">' +
+        '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
+        '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
+        '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
         //  Extra Info    
         '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
                 
@@ -165,7 +165,7 @@ function constructMelding(meldingData) {
     melding += 
             '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
         "</div>";
-        
+
     return melding;
 }
 
@@ -216,7 +216,7 @@ function extraInfo(elementID) {
     }
 }
 
-function unfade(element, elementID=null, display='block') {
+function unfade(element, elementID = null, display = 'block') {
     var op = 0.1;  // initial opacity
     element.style.display = display;
     if (elementID != null)
