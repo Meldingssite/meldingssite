@@ -17,7 +17,6 @@ function checkDB() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
-                console.dir(dataRetrieve);
                 addElements(dataRetrieve);
             }
             else {
@@ -132,7 +131,6 @@ function constructMelding(meldingData) {
         '</div>' +
         '</div>';
 
-    console.log();
 
     melding += '</div><div class = "extraInfo" id="extraInfo'
         + meldingData['id']
@@ -141,7 +139,7 @@ function constructMelding(meldingData) {
     var keys = Object.keys(meldingData);
     var height = 0;
     for (var x = 0; keys.length > x; x++) {
-        console.dir(keys);
+        // console.dir(keys);
         if (meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && meldingData[keys[x]] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
             melding += "<div id ='" +
                 keys[x] + "" + meldingData['id']
@@ -203,7 +201,7 @@ window.setInterval(function () {
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    console.log(target.style.display);
+    // console.log(target.style.display);
     if (target.style.display !== 'block') {
         console.log("unfading element");
         unfade(target, elementID);
@@ -218,7 +216,7 @@ function unfade(element, elementID = null) {
     element.style.display = 'block';
     if (elementID != null)
         var height = document.getElementById('height' + elementID).innerHTML;
-    console.log(height);
+    // console.log(height);
 
     var timer = setInterval(function () {
         if (op >= 1) {
