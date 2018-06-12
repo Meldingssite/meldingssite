@@ -376,6 +376,7 @@
               {
                 "text": "wie heeft u gezien?",
                 "type": "textInput",
+                "name": "extraPersoon",
                 "options": [
                   {
                     "name": "p2naam",
@@ -412,6 +413,7 @@
               {
                 "text": "wat voor een voertuig heeft u gezien",
                 "type": "textInput",
+                "name": "voertuig",
                 "options": [
                   {
                     "name": "voertuigtype",
@@ -441,8 +443,9 @@
                 ]
               },
               {
-                "text": " wat kunt u hier verder over vertellen?",
+                "text": "wat kunt u hier verder over vertellen?",
                 "type": "textInput",
+                "name": "extra",
                 "options": [
                   {
                     "name": "extra",

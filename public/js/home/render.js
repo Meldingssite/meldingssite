@@ -121,13 +121,15 @@ function renderTextInput(textInputObj) {
     var textInputHTML = "";
     var names = [];
 
+
     // Opening tag for radiobutton
     if (textInputObj.name == 'toggle') {
         textInputHTML += "<fieldset id='extraInfo'><legend>"
             + textInputObj.text + "</legend>";
+        names[0] = "persoon";
     }
     else {
-        textInputHTML += "<fieldset><legend>"
+        textInputHTML += "<fieldset id='" + textInputObj.name + "'><legend>"
             + textInputObj.text + "</legend>";
     }
     //section
@@ -147,6 +149,7 @@ function renderTextInput(textInputObj) {
     textInputHTML += "</section></fieldset>";
 
     pageHTML.innerHTML += textInputHTML;
+    console.dir(names);
     return names;
 }   //  Render a field for inputting text
 
@@ -494,19 +497,19 @@ function dataSend(sendArray, school, id) {
 
 function submitContents(NaamString, school, id) {
     var naam = NaamString.split("|");
+    // console.dir(NaamString);
     var finalArray;
     finalArray = naam[0].split(',');
-    // console.dir(naam);
     for (x = 1; naam.length > x; x++) {
         // console.dir(finalArray);
         naam[x] = naam[x].split(',');
         // for (y = 0; naam[x].length > y; y++) {
         // console.dir(naam[x]);
+        if (naam[x] != "" && naam[x] !== undefined && naam[x] != null)
+            if(naam[x][0] == "") naam[x].splice(0, 1);
         finalArray[finalArray.length] = naam[x];
         // }
     }
-    // console.dir(finalArray);
-
     sendArray = [];
     var dataArray = [];
     var nameArray = [];
@@ -522,15 +525,22 @@ function submitContents(NaamString, school, id) {
             for (var y = 0; naam[x].length > y; y++) {
                 var name = naam[x][y];
                 // console.log("|" + name + "|");
-                if (document.getElementsByName(name)[0].value) {
-                    dataElementsArray[y] = document.getElementsByName(name)[0].value;
-                    nameElementsArray[y] = name;
-                    check = true
+                console.log(document.getElementsByName(name)[0]);
+                console.log(name);
+                if (name) {
+                    if (document.getElementsByName(name)[0].value) {
+                        dataElementsArray[y] = document.getElementsByName(name)[0].value;
+                        nameElementsArray[y] = name;
+                        check = true;
+
+                        // console.log("_______" + naam);
+                    }
                 }
             }
-            if (check == true) {
+            if (check === true) {
+                var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id;
                 dataArray.push(dataElementsArray);
-                nameArray.push("persoon");
+                nameArray.push(naamTemp);
             }
         }
         //Case Multiple Items
@@ -543,9 +553,14 @@ function submitContents(NaamString, school, id) {
             }
         }
         //Case single item
+
         else {
             //Case file
-            if (naam[x].match("file")) {
+            // console.dir(naam);
+            // console.log(x);
+            // console.log(naam[x]);
+
+            if (naam[x].match("file") && document.getElementsByName(toggleSpace(naam[x]))[0].files.length !== 0) {
                 // console.log("files");
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
                 dataArray.push(dataArray[x]['name']);
@@ -554,16 +569,18 @@ function submitContents(NaamString, school, id) {
                 // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
             //Case normal item(default)
-            else {
+            else if (!naam[x].match("file")) {
                 nameArray[x] = naam[x];
                 dataArray[x] = document.getElementsByName(naam[x])[0].value;
             }
         }
 
+
     }
 
-
+    ;
     sendArray = [nameArray, dataArray];
+
     dataSend(sendArray, school, id);
 } //Executed on pressing submit and prepares data for being send to Database
 
@@ -626,3 +643,16 @@ function toggleSpace(item) {
     }
     return returnItem;
 }   // Switches between _ and spaces
+
+
+//
+// Array.prototype.clean = function (deleteValue) {
+//     for (var i = 0; i < this.length; i++) {
+//         if (this[i] == deleteValue) {
+//             this.splice(i, 1);
+//             i--;
+//         }
+//     }
+//     return this;
+// };
+

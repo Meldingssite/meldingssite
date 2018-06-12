@@ -21,7 +21,7 @@ function Login()
         else
             index($result['error']);
     } else {
-        header("Location: ../");
+        header("Location: ../dashboard");
 
     }
 }

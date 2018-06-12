@@ -117,7 +117,7 @@
     height: 0;
     opacity: 0;
     transition-property: height;
-    transition-duration: 1s;
+    transition-duration: 0.3s;
     transition-timing-function: linear;
     transition-delay: 0s;
 
@@ -128,9 +128,21 @@
     text-shadow: 0 0 5px black;
 
     position: relative;
-    top: -6px;
+    top: -15px;
 
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    align-items: flex-end;
+}
+
+.extraInfo:not(img){
+    margin: 15px 0;
+}
+
+.extraInfo img {
+    order: 99;
+    height: 100%;
+    max-width: 500px;
+    align-content: space-between;
+    float: right;
 }
