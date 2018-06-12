@@ -31,8 +31,6 @@ function checkDB() {
 
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
-        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) === undefined) {
-    if (dataRetrieve[0] !== null) {
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
@@ -57,6 +55,7 @@ function addElements(dataRetrieve) {
     else {
         currentID = dataRetrieve[1];
     }
+
 }
 
 function updateContent(items) {
@@ -102,30 +101,30 @@ function constructMelding(meldingData) {
     // console.dir(meldingData);
     var melding = "";
     var elementName = 'view' + meldingData['id'];
-    melding += 
+    melding +=
         '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' +
-            '<div>' +
-                '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
-                '<p class="type">' + meldingData['type'] + '</p>' +
-                '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
-            "</div>" +
-            "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
-                '<h1>' + meldingData['school'];
+        '<div>' +
+        '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' +
+        '<p class="type">' + meldingData['type'] + '</p>' +
+        '<p class="time">' + meldingData['TimeStamp'] + "</p>" +
+        "</div>" +
+        "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
+        '<h1>' + meldingData['school'];
     if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
         melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
     }
-    melding += 
-            '</div>' +
+    melding +=
+        '</div>' +
 
-            '<div>' +
-                '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
-                
-                '<div class="icon-list">' +
-                    '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
-                    '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
-                    '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
-                '</div>' +
-            '</div>' +
+        '<div>' +
+        '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+
+        '<div class="icon-list">' +
+        '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' +
+        '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' +  //TODO add fadein and FadeOut onclick
+        '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' +
+        '</div>' +
+        '</div>' +
         '</div>';
 
     console.log();
@@ -278,10 +277,4 @@ function finished(item) {
         }
     };
     xFinhttp.send(Data);
-
 }
-
-Element.prototype.remove = function () {
-    this.parentElement.removeChild(this);
-};
-    }}
