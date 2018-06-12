@@ -23,14 +23,14 @@ function verifyLogin()
     } else {
         //TODO damion add hier ff een redirect back
     }
+}   
 
+function retrieveLogin()
+{
+    echo "retrieve Login";
+}
 
-    function retrieveLogin()
-    {
-        echo "retrieve Login";
-    }
-
-    function bugTest()
-    {
-        render("dashboard/new");
-    }
+function bugTest()
+{
+    render("dashboard/new");
+}
