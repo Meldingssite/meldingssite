@@ -135,10 +135,10 @@ function constructMelding(meldingData) {
                 
             //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
             var keys = Object.keys(meldingData);
-            var height = 0;
+            var height = 30;
             for (var x = 0; keys.length > x; x++) {
                 if (
-                    meldingData[keys[x]] !== "Completed" &&
+                    keys[x] !== "Completed" &&
                     meldingData[keys[x]] !=  null &&
                     meldingData[keys[x]] !== "" &&
                     keys[x] !== 'locatieSpecifiek' &&
@@ -146,13 +146,14 @@ function constructMelding(meldingData) {
                     keys[x] !== 'school' &&
                     keys[x] !== 'type' &&
                     keys[x] !== 'FILE' &&
-                    keys[x] !== 'id' 
+                    keys[x] !== 'id' &&
+                    keys[x] !== 'TimeStamp'
                 ) {
                     melding += 
                         "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
                         keys[x] + ": " + meldingData[keys[x]] +
                         "</div>";
-                        height += 40;
+                        height += 25;
                 }
 
                 else if (keys[x] === 'FILE') {
