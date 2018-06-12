@@ -65,15 +65,27 @@ function setCompleted() //Todo add to Dashboard page, Make switch, Send back sta
     // Check connection
     if ($conn->connect_error)
         die("Connection failed: " . $conn->connect_error);
-
-    $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
-    if ($conn->query($sql) === TRUE) {
-        $dataArray[0] = true;
-        $conn->close();
-        return json_encode($dataArray);
-    } else
-        echo "Error deleting record: " . $conn->error;
-
+    $current = $conn->query("select Completed from `$tabel` where id = '$id'");
+    $currentValue = $current->fetch_assoc();
+    if ($currentValue['Completed'] == 'true') {
+        $sql = "UPDATE `$tabel`  SET Completed = 'false' WHERE id = '$id'";
+        if ($conn->query($sql) === TRUE) {
+            $dataArray[0] = false;
+            $conn->close();
+            echo 'false';
+            return json_encode($dataArray);
+        } else
+            echo "Error deleting record: " . $conn->error;
+    } else {
+        $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
+        if ($conn->query($sql) === TRUE) {
+            $dataArray[0] = true;
+            $conn->close();
+            echo 'true';
+            return json_encode($dataArray);
+        } else
+            echo "Error deleting record: " . $conn->error;
+    }
     $conn->close();
 }
 

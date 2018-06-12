@@ -256,9 +256,13 @@ function finished(item) {
     xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-                // dataRetrieve = JSON.parse(this.response);
-                // console.dir(dataRetrieve);
-                // addElements(dataRetrieve);
+                if(this.response.includes('true')){
+
+                    document.getElementById('finished' + item).children[0].style.color = 'green';
+                }
+                else{
+                    document.getElementById('finished' + item).children[0].style.color = 'white';
+                }
             }
             else {
                 console.log('Nog geen meldingen!');
@@ -266,7 +270,7 @@ function finished(item) {
         }
     };
     xFinhttp.send(Data);
-    document.getElementById('finished' + item).children.color = 'green';
+
 }
 
 Element.prototype.remove = function () {
