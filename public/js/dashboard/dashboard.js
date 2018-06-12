@@ -102,7 +102,6 @@ function updateContent(items) {
 
 //Constructs a melding
 function constructMelding(meldingData) {
-    // console.dir(meldingData);
     var melding = "";
     var elementName = 'view' + meldingData['id'];
     melding +=
@@ -118,7 +117,7 @@ function constructMelding(meldingData) {
                     melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
                 }
     melding +=
-        '</div>' +
+            '</div>' +
 
             '<div>' +
                 '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
@@ -164,9 +163,10 @@ function constructMelding(meldingData) {
                 }
             }
     melding += 
-                '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
+            '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" +
         "</div>";
-        return melding
+        
+    return melding;
 }
 
 //Deletes empty properties in the object
@@ -208,19 +208,17 @@ window.setInterval(function () {
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    // console.log(target.style.display);
-    if (target.style.display !== 'block') {
-        console.log("unfading element");
-        unfade(target, elementID);
+    if (target.style.display !== 'flex') {
+        unfade(target, elementID, 'flex');
     }
     else {
         fade(target, elementID);
     }
 }
 
-function unfade(element, elementID = null) {
+function unfade(element, elementID=null, display='block') {
     var op = 0.1;  // initial opacity
-    element.style.display = 'block';
+    element.style.display = display;
     if (elementID != null)
         var height = document.getElementById('height' + elementID).innerHTML;
     // console.log(height);
