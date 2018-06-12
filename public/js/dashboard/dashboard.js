@@ -2,7 +2,8 @@
 //Testing commit
 var currentID = 1;
 var dataRetrieve = null;
-
+var TextHeight = 25;
+var imgHeight = 200;
 //test
 function checkDB() {
     // console.log(currentID);
@@ -57,48 +58,7 @@ function addElements(dataRetrieve) {
 
 }
 
-function updateContent(items) {
-    // console.log("Updating content");
-    var keys = Object.keys(items);
-    var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
-    for (var x = 0; keys.length > x; x++) {
-        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
-
-            // console.log(items[keys[x]]);
-            if (document.getElementById(keys[x] + items['id'])) {
-                if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
-                    && document.getElementById(keys[x] + items['id']) != null) {
-                    if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
-                        document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ": " + items[keys[x]];
-                    }
-                    else {
-                        document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
-                    }
-
-                }
-            }
-            else if (document.getElementById(keys[x] + items['id']) == null) {
-                // console.log(keys[x] + items['id']);
-                var DIV = document.getElementById('extraInfo' + items['id']);
-                var addItems = "";
-                addItems += "<div id ='"
-                    + keys[x] + "" + items['id']
-                    + "'>"
-                    + keys[x]
-                    + ": "
-                    + toggleSpace(items[keys[x]], true)
-                    + "</div>";
-                DIV.innerHTML += addItems;
-                height += 40;
-            }
-            else {
-                console.log(keys[x] + items['id']);
-            }
-        }
-    }
-    document.getElementById('height' + items['id']).innerHTML = height.toString();
-}
 
 //Constructs a melding
 function constructMelding(meldingData) {
@@ -153,14 +113,14 @@ function constructMelding(meldingData) {
                         "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
                         keys[x] + ": " + meldingData[keys[x]] +
                         "</div>";
-                        height += 25;
+                        height += TextHeight;
                 }
 
                 else if (keys[x] === 'FILE') {
-                    melding += "<img height='200px' src='" + IMAGE_DIR + '../uploads/' +
+                    melding += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
                         +meldingData['id'] + '/' + meldingData[keys[x]]
                         + "'>";
-                    height += 200;
+                    height += imgHeight;
                 }
             }
     melding += 
@@ -168,6 +128,50 @@ function constructMelding(meldingData) {
         "</div>";
 
     return melding;
+}
+
+//Updates Content of latest Melding
+function updateContent(items) {
+    // console.log("Updating content");
+    var keys = Object.keys(items);
+    var height = Number(document.getElementById('height' + items['id']).innerHTML);
+
+    for (var x = 0; keys.length > x; x++) {
+        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
+
+            // console.log(items[keys[x]]);
+            if (document.getElementById(keys[x] + items['id'])) {
+                if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
+                    && document.getElementById(keys[x] + items['id']) != null) {
+                    if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
+                        document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ": " + items[keys[x]];
+                    }
+                    else {
+                        document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
+                    }
+
+                }
+            }
+            else if (document.getElementById(keys[x] + items['id']) == null) {
+                // console.log(keys[x] + items['id']);
+                var DIV = document.getElementById('extraInfo' + items['id']);
+                var addItems = "";
+                addItems += "<div id ='"
+                    + keys[x] + "" + items['id']
+                    + "'>"
+                    + keys[x]
+                    + ": "
+                    + toggleSpace(items[keys[x]], true)
+                    + "</div>";
+                DIV.innerHTML += addItems;
+                height += TextHeight;
+            }
+            else {
+                console.log(keys[x] + items['id']);
+            }
+        }
+    }
+    document.getElementById('height' + items['id']).innerHTML = height.toString();
 }
 
 //Deletes empty properties in the object
