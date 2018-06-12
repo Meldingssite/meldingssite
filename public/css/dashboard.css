@@ -132,5 +132,13 @@
 
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.extraInfo img {
+    order: 99;
+    height: 100%;
+    max-width: 500px;
+    align-content: space-between;
+    float: right;
 }
