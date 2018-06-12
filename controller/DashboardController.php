@@ -12,14 +12,14 @@ function index($msg = null)
 }
 
 
-function verifyLogin()
+function Login()
 {
     if (isset($_POST['usermail'], $_POST['userpass'])) {
         $result = loginValid($_POST['usermail'], $_POST['userpass']);
         if ($result['success'])
             index();
         else
-            index($result['error']); 
+            index($result['error']);
     } else {
         header("Location: ../");
 
