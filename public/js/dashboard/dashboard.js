@@ -2,6 +2,7 @@
 //Testing commit
 var currentID = 1;
 var dataRetrieve = null;
+
 //test
 function checkDB() {
     // console.log(currentID);
@@ -39,7 +40,8 @@ function addElements(dataRetrieve) {
             var pageContent = document.getElementById('Dashboard');
             var content = constructMelding(items) + pageContent.innerHTML;
             pageContent.innerHTML = content;
-
+            document.getElementById('view' + dataRetrieve[0]['id']).setAttribute("onClick", "extraInfo(" + dataRetrieve[0]['id'] + ")");
+1
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -95,6 +97,7 @@ function updateContent(items) {
 function constructMelding(meldingData) {
     // console.dir(meldingData);
     var melding = "";
+    var elementName = 'view' + meldingData['id'];
     melding += '<div class="alertItem"><div><img src = "'
         + IMAGE_DIR
         + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type"><p class="type">' + meldingData['type'] + '</p><p class="time">'
@@ -111,12 +114,14 @@ function constructMelding(meldingData) {
     melding += '</div><div><p><ion-icon name = "alert" ></ion-icon>er is iets gebeurt</p>'
         + '<div class="icon-list">'
         + '<ion-icon name="close"></ion-icon>'
-        + '<ion-icon name="eye"> </ion-icon>'
+        + '<button id="' + elementName + '"><ion-icon name="eye"></ion-icon></button>' //TODO add fadein and FadeOut onclick
         + '<ion-icon name="checkmark"></ion-icon>'
         + '</div>'
         + '</div>';
 
-    melding += '</div><div id="extraInfo'
+    console.log();
+
+    melding += '</div><div class = "extraInfo" id="extraInfo'
         + meldingData['id']
         + '">';
 //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
@@ -171,4 +176,50 @@ function toggleSpace(item, ForceSpace = false) {
 window.setInterval(function () {
     checkDB()
 }, 500);
+
+
+function extraInfo(elementID) {
+    var target = document.getElementById('extraInfo' + elementID);
+    console.log(target.style.display);
+    if (target.style.display !== 'block') {
+        console.log("unfading element");
+        unfade(target);
+    }
+    else {
+        fade(target);
+    }
+}
+
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+
+    var timer = setInterval(function () {
+        if (op >= 1) {
+            element.style.height = '100px';
+            clearInterval(timer);
+            element.style.opacity = 1;
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+
+}   //Makes item reappear
+
+function fade(element) {
+    var op = 1;  // initial opacity
+    element.style.height = '0';
+    var timer = setInterval(function () {
+        if (op <= 0.1) {
+            clearInterval(timer);
+            element.style.display = 'none';
+
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.2;
+    }, 50);
+
+}
 

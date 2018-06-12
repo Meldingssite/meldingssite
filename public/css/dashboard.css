@@ -2,9 +2,9 @@
 #Dashboard {
     padding-top: 0;
     margin-top: 0;
-    max-width: inherit !important;
-    width: 1020px !important;
-    background: none !important;
+    max-width: 1200px !important;
+    width: 100% !important;
+    background: white !important;
 }
 
 .alertItem {
@@ -65,7 +65,7 @@
 
     box-shadow: -10px 0px 25px black;
     z-index: 7;
-    
+
 }
 
 ion-icon:not([name="alert"]) {
@@ -76,7 +76,7 @@ ion-icon:not([name="alert"]) {
     border-radius: 100%;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
 
-    background: #ccc;    
+    background: #ccc;
     color: #fff;
     border: 2px solid #999;
 }
@@ -99,4 +99,15 @@ ion-icon:not([name="alert"]):hover {
     bottom: 0;
     right: 0;
     margin: 15px 12px;
+}
+
+.extraInfo {
+    /*overflow: hidden;*/
+    display: none;
+    height: 0px;
+    opacity: 0;
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
 }
