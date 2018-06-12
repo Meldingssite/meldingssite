@@ -2,7 +2,7 @@
 //Testing commit
 var currentID = 1;
 var dataRetrieve = null;
-
+//test
 function checkDB() {
     // console.log(currentID);
     // var schoolNaam = toggleSpace(school);
