@@ -123,13 +123,16 @@ function renderTextInput(textInputObj) {
 
 
     // Opening tag for radiobutton
-    if (textInputObj.name == 'toggle') {
-        textInputHTML += "<fieldset id='extraInfo'><legend>"
+    if (textInputObj.toggle === 'true') {
+        textInputHTML += "<fieldset class='extraInfo' id='extraInfo" + textInputObj.name + "'><legend>"
             + textInputObj.text + "</legend>";
-        names[0] = "persoon";
     }
-    else {
+    else if (textInputObj.name) {
         textInputHTML += "<fieldset id='" + textInputObj.name + "'><legend>"
+            + textInputObj.text + "</legend>";
+    }
+    else if (options.length = 1) {
+        textInputHTML += "<fieldset id='" + options[0].name + "'><legend>"
             + textInputObj.text + "</legend>";
     }
     //section
@@ -150,6 +153,9 @@ function renderTextInput(textInputObj) {
 
     pageHTML.innerHTML += textInputHTML;
     console.dir(names);
+    // if (textInputObj.name === 'toggle') {
+    //     names.push("persoon");
+    // }
     return names;
 }   //  Render a field for inputting text
 
@@ -180,11 +186,11 @@ function renderRadio(radioObj) {
     //closing tags
     radioHTML += "</section></fieldset>";
     pageHTML.innerHTML += radioHTML;
-    if (radioObj.name == 'contact') {
+    if (radioObj.toggle == 'true') {
         for (option in options) {
-            var element = options[option].optie + radioObj.name;
+            var element = "extraInfo" + radioObj.target;
             // console.log(element);
-            document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo(" + element + ")");
+            document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo('" + element + "','" + options[option].optie + "')");
         }
     }
     return radioObj.name;
@@ -506,7 +512,7 @@ function submitContents(NaamString, school, id) {
         // for (y = 0; naam[x].length > y; y++) {
         // console.dir(naam[x]);
         if (naam[x] != "" && naam[x] !== undefined && naam[x] != null)
-            if(naam[x][0] == "") naam[x].splice(0, 1);
+            if (naam[x][0] == "") naam[x].splice(0, 1);
         finalArray[finalArray.length] = naam[x];
         // }
     }
@@ -527,8 +533,14 @@ function submitContents(NaamString, school, id) {
                 // console.log("|" + name + "|");
                 console.log(document.getElementsByName(name)[0]);
                 console.log(name);
+                console.dir(naam);
                 if (name) {
-                    if (document.getElementsByName(name)[0].value) {
+                    if (document.getElementsByName(name)[0].parentElement.parentElement.id.includes("extraInfo")) {
+                        dataElementsArray[y] = document.getElementsByName(name)[0].value;
+                        nameElementsArray[y] = name;
+                        check = true;
+                    }
+                    else if (document.getElementsByName(name)[0].value) {
                         dataElementsArray[y] = document.getElementsByName(name)[0].value;
                         nameElementsArray[y] = name;
                         check = true;
@@ -538,7 +550,11 @@ function submitContents(NaamString, school, id) {
                 }
             }
             if (check === true) {
-                var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id;
+                if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.includes("extraInfo"))
+                    var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.replace("extraInfo", "");
+                else
+                    var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id;
+
                 dataArray.push(dataElementsArray);
                 nameArray.push(naamTemp);
             }
@@ -584,13 +600,13 @@ function submitContents(NaamString, school, id) {
     dataSend(sendArray, school, id);
 } //Executed on pressing submit and prepares data for being send to Database
 
-function extraInfo(element) {
-    if (element.value == "Ja" || element.value == "ja") {
+function extraInfo(element, value) {
+    if (value == "Ja" || value == "ja") {
         console.log("unfading element");
-        unfade(document.getElementById('extraInfo'));
+        unfade(document.getElementById(element));
     }
-    else if (element.value == "Nee" || element.value == "nee") {
-        fade(document.getElementById('extraInfo'));
+    else if (value == "Nee" || value == "nee") {
+        fade(document.getElementById(element));
     }
 }   //Executed for radiobuttons used for revealing extra information
 
