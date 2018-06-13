@@ -35,7 +35,7 @@ function retrieveElements()
     }
 }
 
-function deleteEntry()//Todo add to Dashboard page
+function deleteEntry()//Todo delete Files
 {
     $tabel = "MainTabel";
     $id = $_POST['id'];
@@ -55,7 +55,7 @@ function deleteEntry()//Todo add to Dashboard page
     $conn->close();
 }
 
-function setCompleted() //Todo add to Dashboard page, Make switch, Send back state of element
+function setCompleted()
 {
     $dataArray = [];
     $tabel = "MainTabel";
