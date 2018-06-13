@@ -30,25 +30,16 @@ CREATE TABLE IF NOT EXISTS `MainTabel` (
   `naam` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `telefoon` varchar(50) DEFAULT NULL,
-  `p2naam` varchar(50) DEFAULT NULL,
-  `p2huidskleur` varchar(50) DEFAULT NULL,
-  `p2geslacht` varchar(50) DEFAULT NULL,
-  `p2leeftijd` varchar(50) DEFAULT NULL,
-  `voertuigtype` varchar(50) DEFAULT NULL,
-  `voertuigmerk` varchar(50) DEFAULT NULL,
-  `voertuigkenteken` varchar(50) DEFAULT NULL,
-  `voertuigkleur` varchar(50) DEFAULT NULL,
-  `voertuiganders` varchar(50) DEFAULT NULL,
-  `p2kleding` varchar(50) DEFAULT NULL,
-  `p2anders` varchar(50) DEFAULT NULL,
   `extra` varchar(50) DEFAULT NULL,
+  `extraPersoon` varchar(50) DEFAULT NULL,
+  `voertuig` varchar(50) DEFAULT NULL,
   `drugsExtra` varchar(50) DEFAULT NULL,
   `persoon` varchar(50) DEFAULT NULL,
   `Completed` varchar(50) DEFAULT 'false',
   `FILE` varchar(50) DEFAULT NULL,
   `school` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- Data exporteren was gedeselecteerd
 -- Structuur van  tabel melding_site.users wordt geschreven

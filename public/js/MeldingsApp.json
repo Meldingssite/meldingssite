@@ -98,6 +98,8 @@
                 "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
                 "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -112,7 +114,8 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "name": "toggle",
+                "name": "persoon",
+                "toggle": "true",
                 "options": [
                   {
                     "name": "naam",
@@ -443,7 +446,7 @@
                 ]
               },
               {
-                "text": "wat kunt u hier verder over vertellen?",
+                "text": " wat kunt u hier verder over vertellen?",
                 "type": "textInput",
                 "name": "extra",
                 "options": [
