@@ -101,7 +101,7 @@ function sendDataModel()
             }
 
             //  Check file size
-            if ($_FILES[$naam]["size"] > 500000) {
+            if ($_FILES[$naam]["size"] > 50000000) {
                 echo "Sorry, your file is too large.";
                 $uploadOk = 0;
             }
