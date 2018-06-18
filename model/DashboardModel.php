@@ -192,3 +192,9 @@ function loginValid($emailTemp, $passTemp)
 
 
 }
+
+function logOut(){
+    session_destroy();
+    $_SESSION = array();
+
+}

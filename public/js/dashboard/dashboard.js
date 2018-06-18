@@ -142,6 +142,7 @@ function updateContent(items) {
     var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
     for (var x = 0; keys.length > x; x++) {
+
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
 
             // console.log(items[keys[x]]);
@@ -175,6 +176,7 @@ function updateContent(items) {
                 console.log(keys[x] + items['id']);
             }
         }
+
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] === 'FILE') {
             if (document.getElementById(keys[x] + items['id'])) {
                 if (document.getElementById(keys[x] + items['id']).src !== "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]]
@@ -196,6 +198,7 @@ function updateContent(items) {
                 console.log(keys[x] + items['id']);
             }
         }
+
     }
     document.getElementById('height' + items['id']).innerHTML = height.toString();
 }
