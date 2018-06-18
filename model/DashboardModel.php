@@ -45,6 +45,17 @@ function deleteEntry()//Todo delete Files
     if ($conn->connect_error)
         die("Connection failed: " . $conn->connect_error);
 
+    $sql = "select * from `$tabel` where id=$id";
+    $result = $conn->query($sql);
+    $data = $result->fetch_assoc();
+//    var_dump($data);
+    if ($data['FILE'] != null && $data['FILE'] != '' && $data['FILE'] != 'undefined') {
+        $file = 'uploads/' . $data['id'] . '/' . $data['FILE'];
+        unlink($file);
+        rmdir('uploads/' . $data['id']);
+        echo "file deleted successfully!";
+
+    }
     // sql to delete a record
     $sql = "DELETE FROM `$tabel` WHERE id=$id";
 
