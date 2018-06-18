@@ -124,7 +124,7 @@ function constructMelding(meldingData) {
         else if (keys[x] === 'FILE') {
             melding += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
                 +meldingData['id'] + '/' + meldingData[keys[x]]
-                + "'>";
+                + "' id='" + keys[x] + meldingData['id'] + "'>";
             height += imgHeight;
         }
     }
@@ -170,6 +170,27 @@ function updateContent(items) {
                     + "</div>";
                 DIV.innerHTML += addItems;
                 height += TextHeight;
+            }
+            else {
+                console.log(keys[x] + items['id']);
+            }
+        }
+        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] === 'FILE') {
+            if (document.getElementById(keys[x] + items['id'])) {
+                if (document.getElementById(keys[x] + items['id']).src !== "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]]
+                    && document.getElementById(keys[x] + items['id']) != null) {
+                    document.getElementById(keys[x] + items['id']).src = "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]];
+                }
+            }
+            else if (document.getElementById(keys[x] + items['id']) == null) {
+                // console.log(keys[x] + items['id']);
+                var DIV = document.getElementById('extraInfo' + items['id']);
+                var addItems = "";
+                addItems += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
+                    +items['id'] + '/' + items[keys[x]]
+                    + "' id='" + keys[x] + items['id'] + "'>";
+                height += imgHeight;
+                DIV.innerHTML += addItems;
             }
             else {
                 console.log(keys[x] + items['id']);
