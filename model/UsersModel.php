@@ -10,7 +10,7 @@ function getUsers()
         $conn = openDatabaseConnection();
         $sql = "select * from `$tabel`";
         $result = $conn->query($sql);
-        $data = $result->fetch_all();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
         return $data;
     }
 }

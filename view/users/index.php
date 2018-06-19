@@ -1,12 +1,11 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
-<?php var_dump($data)?>
-<main>
-    <header>
-        <h1>Gebruikers<h1>
-    </header>
-
+<?php var_dump($data) ?>
+</header>
+<?php foreach ($data as $users): ?>
     <div class="user">
         <i class="fas fa-user-edit editEmail"></i>
-        <p>Barry@Barrymail.com</p>
+        <p><?php echo $users['email'] ?></p>
+        <p><?php echo $users['password'] ?></p>
     </div>
+<?php endforeach; ?>
 </main>
