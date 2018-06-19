@@ -1,5 +1,5 @@
 <?php
-var_dump($data);
+//var_dump($data);
 
 ?>
 <form action="../../users/editUser/<?php echo $data['email'] ?>" method="post">
