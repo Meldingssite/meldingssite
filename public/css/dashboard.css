@@ -135,7 +135,7 @@
     align-items: flex-end;
 }
 
-.extraInfo:not(img){
+.extraInfo:not(img) {
     margin: 15px 0;
 }
 
@@ -152,9 +152,13 @@
     position: fixed;
     top: 10px;
     right: 10px;
-
-    width: 200px;
+    /*width: 200px;*/
     text-align: center;
+    /*display: inline-block;*/
+}
+
+.clearfix {
+    clear: both;
 }
 
 #Menu a {
@@ -163,12 +167,14 @@
     text-decoration: none;
     cursor: pointer;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-    left: 186px;
+
+    float: right;
     width: 14px;
     height: 32px;
     margin: 2px 0;
-
     background: #336;
     color: #fff;
     border: none;
@@ -177,19 +183,18 @@
 
     font-size: 16px;
 
-    transition: 
-        width 0.4s ease-in, 
-        left 0.4s ease-in,
-        color 0.2s ease-out 0.4s,
-        text-shadow 0.2s ease-out 0.4s;
+    transition: width 0.4s ease-in,
+    left 0.4s ease-in,
+    color 0.2s ease-out 0.4s,
+    text-shadow 0.2s ease-out 0.4s;
 }
 
 #Menu a:hover {
     background: #558;
-
     clear: both;
-    width: 100%;
-    left: 0px;  
+    width: 200px;
+    left: 0px;
+
 }
 
 #Menu .collapsed:hover {
@@ -203,7 +208,7 @@
     padding: 5px;
     overflow: hidden;
     visibility: hidden;
-    transition: visibility 0.2s ;
+    transition: visibility 0.2s;
 }
 
 #Menu a:hover p {
