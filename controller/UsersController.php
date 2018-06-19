@@ -60,3 +60,18 @@ function create()
         header("Location: ./dashboard");
     }
 }
+
+function delete($identifier)
+{
+    $url = $_SERVER['REQUEST_URI'];
+    if (substr($url, -1) == "/") {
+        $url = substr_replace($url, "", -1);
+        header("Location: $url");
+    }
+    if (isset($_SESSION['username'])) {
+        removeUser($identifier);
+        render('users/remove', array('user' => $identifier));
+    } else {
+        header("Location: ./dashboard");
+    }
+}

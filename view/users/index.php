@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
 <header>
     <h1>Gebruikers<h1>
-</header>        
-        
+</header>
+
 <main>
     <div style='float:right'>
         <a href="users/create">
@@ -14,12 +14,12 @@
             <a href="users/edit/<?php echo $users['email'] ?> ">
                 <i class=" fas fa-user-edit editEmail"></i>
             </a>
-    
+
             <p class='email'><?php echo $users['email'] ?></p>
 
-            <a  href="users/delete/<?php echo $users['email'] ?>"
-                class="deleteMail">
-                <i class="fas fa-eraser"></i>    
+            <a href="users/delete/<?php echo $users['email'] ?>"
+               class="deleteMail">
+                <i class="fas fa-eraser"></i>
             </a>
         </div>
     <?php endforeach ?>
