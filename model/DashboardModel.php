@@ -165,11 +165,8 @@ function loginValid($emailTemp, $passTemp)
 
             mysqli_stmt_bind_result($stmt, $username, $hashed_password);
             if (mysqli_stmt_fetch($stmt)) {
-                $passwordOptions = [
-                    'cost' => passwordCost,
-                    'salt' => salt,
-                ];
-                $pass = password_hash($pass, algo, $passwordOptions);
+//                die($pass . $hashed_password);
+//                if (password_verify($pass, $hashed_password)) {
                 if ($pass == $hashed_password) { //TODO hash Password
 
                     /* Password is correct, so start a new session and

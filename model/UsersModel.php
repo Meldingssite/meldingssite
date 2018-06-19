@@ -66,12 +66,11 @@ function addUser()
     $password = $_POST['password'];
     $tabel = userTable;
     $newMail = $_POST['email'];
-    $newPass = password_hash($password, algo, $passwordOptions);
+    $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
     $conn = openDatabaseConnection();
     $sql = "INSERT INTO `$tabel` (email, password) VALUES('$newMail', '$newPass')";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
-        header("Location: ../users");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
