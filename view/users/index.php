@@ -10,7 +10,7 @@
             </i></a>
 
         <p><?php echo $users['email'] ?></p>
-        <p><?php echo $users['password'] ?></p>
+<!--        <p>--><?php //echo $users['password'] ?><!--</p>-->
     </div>
 <?php endforeach; ?>
 </main>
