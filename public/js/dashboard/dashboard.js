@@ -5,9 +5,9 @@ var dataRetrieve = null;
 var TextHeight = 25;
 var imgHeight = 200;
 var refreshRate = 200;
-window.onload = start();
 
-function start() {
+
+function startbasic() {
     var IDhttp = new XMLHttpRequest();
     IDhttp.open("POST", "../Dashboard/startID", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
@@ -42,6 +42,12 @@ function start() {
     console.log("Checking Database");
     IDhttp.send();
 
+}
+
+function archief(){
+    window.setInterval(function () {
+        checkDB()
+    }, refreshRate);
 }
 
 //test

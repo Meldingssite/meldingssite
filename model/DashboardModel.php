@@ -166,7 +166,8 @@ function loginValid($emailTemp, $passTemp)
                     $_SESSION['username'] = $username;
 
                     $out['success'] = TRUE;
-                    $out['error'] = 0;;
+                    $out['error'] = 0;
+                    $out['username'] = $username;
                     return $out;
                 } else {
                     // Display an error message if password is not valid
@@ -200,9 +201,11 @@ function loginValid($emailTemp, $passTemp)
 
 }
 
+
 function logOut()
 {
     session_destroy();
     $_SESSION = array();
+    header("Location: ../dashboard");
 
 }
