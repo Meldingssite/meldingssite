@@ -10,12 +10,5 @@
             <i class="fas fa-user-edit editEmail"></i>
             <p>Barry@Barrymail.com</p>
         </div>
-        
-        <div class=password>
-            <p>Change Password</p>
-        </div>
-
-
-    
     </div>
 </main>
