@@ -2,109 +2,118 @@
 
 function retrieveElements()
 {
-    $conn = OpenDatabaseConnection();
-    $id = $_POST['id'];
-    $dataArray = [];
-    $tabel = "MainTabel";
-    $sql = "select * from `$tabel` where id=$id";
-    $result = $conn->query($sql);
-    $dataArray[0] = $result->fetch_assoc();
-    $result2 = $conn->query("select MAX(id) from `$tabel`");
-    $highest_id = $result2->fetch_assoc();
+    if (isset($_SESSION['username'])) {
 
-    //Case at the last one to add
-    if ($highest_id['MAX(id)'] == $id) {
-        $dataArray[1] = $id + 1;
-        $conn->close();
-        $JSON = json_encode($dataArray);
-        echo $JSON;
-        return $JSON;
-    } //Case more to add
-    else if ($highest_id['MAX(id)'] > $id) {
-        $dataArray[1] = $id + 1;
-        $conn->close();
-        $JSON = json_encode($dataArray);
-        echo $JSON;
-        return $JSON;
-    } //Case More added then already present
-    else if ($highest_id['MAX(id)'] < $id) {
-        $dataArray[1] = $id;
-        $dataArray[2] = null;
-        return $dataArray;
+        $conn = OpenDatabaseConnection();
+        $id = $_POST['id'];
+        $dataArray = [];
+        $tabel = "MainTabel";
+        $sql = "select * from `$tabel` where id=$id";
+        $result = $conn->query($sql);
+        $dataArray[0] = $result->fetch_assoc();
+        $result2 = $conn->query("select MAX(id) from `$tabel`");
+        $highest_id = $result2->fetch_assoc();
+
+        //Case at the last one to add
+        if ($highest_id['MAX(id)'] == $id) {
+            $dataArray[1] = $id + 1;
+            $conn->close();
+            $JSON = json_encode($dataArray);
+            echo $JSON;
+            return $JSON;
+        } //Case more to add
+        else if ($highest_id['MAX(id)'] > $id) {
+            $dataArray[1] = $id + 1;
+            $conn->close();
+            $JSON = json_encode($dataArray);
+            echo $JSON;
+            return $JSON;
+        } //Case More added then already present
+        else if ($highest_id['MAX(id)'] < $id) {
+            $dataArray[1] = $id;
+            $dataArray[2] = null;
+            return $dataArray;
+        }
     }
 }
 
 function startID()
 {
-    $conn = OpenDatabaseConnection();
-    $tabel = "MainTabel";
-    $result2 = $conn->query("select MAX(id) from `$tabel`");
-    echo $result2->fetch_assoc()['MAX(id)'];
+    if (isset($_SESSION['username'])) {
+        $conn = OpenDatabaseConnection();
+        $tabel = "MainTabel";
+        $result2 = $conn->query("select MAX(id) from `$tabel`");
+        echo $result2->fetch_assoc()['MAX(id)'];
+    }
 }
 
-function deleteEntry()//Todo delete Files
+function deleteEntry()
 {
-    $tabel = "MainTabel";
-    $id = $_POST['id'];
-    // Create connection
-    $conn = OpenDatabaseConnection();
-    // Check connection
-    if ($conn->connect_error)
-        die("Connection failed: " . $conn->connect_error);
+    if (isset($_SESSION['username'])) {
+        $tabel = "MainTabel";
+        $id = $_POST['id'];
+        // Create connection
+        $conn = OpenDatabaseConnection();
+        // Check connection
+        if ($conn->connect_error)
+            die("Connection failed: " . $conn->connect_error);
 
-    $sql = "select * from `$tabel` where id=$id";
-    $result = $conn->query($sql);
-    $data = $result->fetch_assoc();
+        $sql = "select * from `$tabel` where id=$id";
+        $result = $conn->query($sql);
+        $data = $result->fetch_assoc();
 //    var_dump($data);
-    if ($data['FILE'] != null && $data['FILE'] != '' && $data['FILE'] != 'undefined') {
-        $file = 'uploads/' . $data['id'] . '/' . $data['FILE'];
-        unlink($file);
-        rmdir('uploads/' . $data['id']);
-        echo "file deleted successfully!";
+        if ($data['FILE'] != null && $data['FILE'] != '' && $data['FILE'] != 'undefined') {
+            $file = 'uploads/' . $data['id'] . '/' . $data['FILE'];
+            unlink($file);
+            rmdir('uploads/' . $data['id']);
+            echo "file deleted successfully!";
 
+        }
+        // sql to delete a record
+        $sql = "DELETE FROM `$tabel` WHERE id=$id";
+
+        if ($conn->query($sql) === TRUE)
+            echo "Record deleted successfully";
+        else
+            echo "Error deleting record: " . $conn->error;
+        $conn->close();
     }
-    // sql to delete a record
-    $sql = "DELETE FROM `$tabel` WHERE id=$id";
-
-    if ($conn->query($sql) === TRUE)
-        echo "Record deleted successfully";
-    else
-        echo "Error deleting record: " . $conn->error;
-    $conn->close();
 }
 
 function setCompleted()
 {
-    $dataArray = [];
-    $tabel = "MainTabel";
-    // Create connection
-    $conn = OpenDatabaseConnection();
-    $id = $_POST['id'];
-    // Check connection
-    if ($conn->connect_error)
-        die("Connection failed: " . $conn->connect_error);
-    $current = $conn->query("select Completed from `$tabel` where id = '$id'");
-    $currentValue = $current->fetch_assoc();
-    if ($currentValue['Completed'] == 'true') {
-        $sql = "UPDATE `$tabel`  SET Completed = 'false' WHERE id = '$id'";
-        if ($conn->query($sql) === TRUE) {
-            $dataArray[0] = false;
-            $conn->close();
-            echo 'false';
-            return json_encode($dataArray);
-        } else
-            echo "Error updating record: " . $conn->error;
-    } else {
-        $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
-        if ($conn->query($sql) === TRUE) {
-            $dataArray[0] = true;
-            $conn->close();
-            echo 'true';
-            return json_encode($dataArray);
-        } else
-            echo "Error updating record: " . $conn->error;
+    if (isset($_SESSION['username'])) {
+        $dataArray = [];
+        $tabel = "MainTabel";
+        // Create connection
+        $conn = OpenDatabaseConnection();
+        $id = $_POST['id'];
+        // Check connection
+        if ($conn->connect_error)
+            die("Connection failed: " . $conn->connect_error);
+        $current = $conn->query("select Completed from `$tabel` where id = '$id'");
+        $currentValue = $current->fetch_assoc();
+        if ($currentValue['Completed'] == 'true') {
+            $sql = "UPDATE `$tabel`  SET Completed = 'false' WHERE id = '$id'";
+            if ($conn->query($sql) === TRUE) {
+                $dataArray[0] = false;
+                $conn->close();
+                echo 'false';
+                return json_encode($dataArray);
+            } else
+                echo "Error updating record: " . $conn->error;
+        } else {
+            $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
+            if ($conn->query($sql) === TRUE) {
+                $dataArray[0] = true;
+                $conn->close();
+                echo 'true';
+                return json_encode($dataArray);
+            } else
+                echo "Error updating record: " . $conn->error;
+        }
+        $conn->close();
     }
-    $conn->close();
 }
 
 /*************************************/
@@ -201,11 +210,26 @@ function loginValid($emailTemp, $passTemp)
 
 }
 
-
 function logOut()
 {
     session_destroy();
     $_SESSION = array();
     header("Location: ../dashboard");
 
+}
+
+/*************************************/
+/*************** Users ***************/
+/*************************************/
+
+function getUsers()
+{
+    if (isset($_SESSION['username'])) {
+        $conn = openDatabaseConnection();
+        $tabel = "users";
+        $sql = "select * from `$tabel`";
+        $result = $conn->query($sql);
+        $data = $result->fetch_all();
+        return $data;
+    }
 }
