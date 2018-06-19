@@ -6,7 +6,9 @@
     <!--    TODO logout Button (logOut function PHP)-->
     <div id="Menu">
         <a id="btnArchive" onclick="archief()"><p>Naar Archief</p></a>
+        <div class="clearfix"></div>
         <a id="btnChangePasswords" href="dashboard/users"><p>Wachtwoorden Wijzigen</p></a>
+        <div class="clearfix"></div>
         <a id="btnLogout" href="dashboard/logOut"><p>Uitloggen</p></a>
     </div>
 </header>
