@@ -5,10 +5,44 @@ var dataRetrieve = null;
 var TextHeight = 25;
 var imgHeight = 200;
 var refreshRate = 200;
+window.onload = start();
 
-window.setInterval(function () {
-    checkDB()
-}, refreshRate);
+function start() {
+    var IDhttp = new XMLHttpRequest();
+    IDhttp.open("POST", "../Dashboard/startID", true); // adding model function
+    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
+
+    IDhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.response) {
+
+
+                var highestId = this.response;
+                if (highestId > 10) {
+                    currentID = highestId - 10;
+                }
+                else {
+                    currentID = highestId - 1;
+                }
+
+                window.setInterval(function () {
+                    checkDB()
+                }, refreshRate);
+
+            }
+            else {
+                currentID = 0;
+                window.setInterval(function () {
+                    checkDB()
+                }, refreshRate);
+
+            }
+        }
+    };
+    console.log("Checking Database");
+    IDhttp.send();
+
+}
 
 //test
 function checkDB() {
@@ -24,6 +58,7 @@ function checkDB() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
+                // console.log('adding Elements');
                 addElements(dataRetrieve);
             }
             else {
@@ -38,6 +73,7 @@ function checkDB() {
 //Begin of constructing a element
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
+        console.log(dataRetrieve[1] + " " + currentID);
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1];
             //delete onnodige null values

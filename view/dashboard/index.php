@@ -4,6 +4,6 @@
     <img src="<?php echo IMAGE_DIR ?>banner.jpg" alt="">
 <!--    TODO logout Button (logOut function PHP)-->
 </header>
-<main id="Dashboard">
+<main id="Dashboard" onload = "start()">
 
 </main>

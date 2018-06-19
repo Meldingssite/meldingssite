@@ -7,7 +7,6 @@ function retrieveElements()
     $dataArray = [];
     $tabel = "MainTabel";
     $sql = "select * from `$tabel` where id=$id";
-
     $result = $conn->query($sql);
     $dataArray[0] = $result->fetch_assoc();
     $result2 = $conn->query("select MAX(id) from `$tabel`");
@@ -15,7 +14,7 @@ function retrieveElements()
 
     //Case at the last one to add
     if ($highest_id['MAX(id)'] == $id) {
-        $dataArray[1] = $id;
+        $dataArray[1] = $id + 1;
         $conn->close();
         $JSON = json_encode($dataArray);
         echo $JSON;
@@ -29,10 +28,18 @@ function retrieveElements()
         return $JSON;
     } //Case More added then already present
     else if ($highest_id['MAX(id)'] < $id) {
-        $dataArray[1] = $id - 1;
+        $dataArray[1] = $id;
         $dataArray[2] = null;
         return $dataArray;
     }
+}
+
+function startID()
+{
+    $conn = OpenDatabaseConnection();
+    $tabel = "MainTabel";
+    $result2 = $conn->query("select MAX(id) from `$tabel`");
+    echo $result2->fetch_assoc()['MAX(id)'];
 }
 
 function deleteEntry()//Todo delete Files
@@ -193,7 +200,8 @@ function loginValid($emailTemp, $passTemp)
 
 }
 
-function logOut(){
+function logOut()
+{
     session_destroy();
     $_SESSION = array();
 
