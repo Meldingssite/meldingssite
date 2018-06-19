@@ -7,7 +7,6 @@ function retrieveElements()
     $dataArray = [];
     $tabel = "MainTabel";
     $sql = "select * from `$tabel` where id=$id";
-
     $result = $conn->query($sql);
     $dataArray[0] = $result->fetch_assoc();
     $result2 = $conn->query("select MAX(id) from `$tabel`");
@@ -15,7 +14,7 @@ function retrieveElements()
 
     //Case at the last one to add
     if ($highest_id['MAX(id)'] == $id) {
-        $dataArray[1] = $id;
+        $dataArray[1] = $id + 1;
         $conn->close();
         $JSON = json_encode($dataArray);
         echo $JSON;
@@ -29,10 +28,18 @@ function retrieveElements()
         return $JSON;
     } //Case More added then already present
     else if ($highest_id['MAX(id)'] < $id) {
-        $dataArray[1] = $id - 1;
+        $dataArray[1] = $id;
         $dataArray[2] = null;
         return $dataArray;
     }
+}
+
+function startID()
+{
+    $conn = OpenDatabaseConnection();
+    $tabel = "MainTabel";
+    $result2 = $conn->query("select MAX(id) from `$tabel`");
+    echo $result2->fetch_assoc()['MAX(id)'];
 }
 
 function deleteEntry()//Todo delete Files
@@ -86,7 +93,7 @@ function setCompleted()
             echo 'false';
             return json_encode($dataArray);
         } else
-            echo "Error deleting record: " . $conn->error;
+            echo "Error updating record: " . $conn->error;
     } else {
         $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
         if ($conn->query($sql) === TRUE) {
@@ -95,7 +102,7 @@ function setCompleted()
             echo 'true';
             return json_encode($dataArray);
         } else
-            echo "Error deleting record: " . $conn->error;
+            echo "Error updating record: " . $conn->error;
     }
     $conn->close();
 }
@@ -159,7 +166,8 @@ function loginValid($emailTemp, $passTemp)
                     $_SESSION['username'] = $username;
 
                     $out['success'] = TRUE;
-                    $out['error'] = 0;;
+                    $out['error'] = 0;
+                    $out['username'] = $username;
                     return $out;
                 } else {
                     // Display an error message if password is not valid
@@ -193,8 +201,11 @@ function loginValid($emailTemp, $passTemp)
 
 }
 
-function logOut(){
+
+function logOut()
+{
     session_destroy();
     $_SESSION = array();
+    header("Location: ../dashboard");
 
 }

@@ -146,3 +146,77 @@
     align-content: space-between;
     float: right;
 }
+
+#Menu {
+    z-index: 99;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+
+    width: 200px;
+}
+
+#Menu button {
+    display: block;
+    position: relative;
+    left: 186px;
+    width: 14px;
+    height: 32px;
+    margin: 2px 0;
+
+    background: #336;
+    color: #fff;
+    border: none;
+
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.289);
+
+    font-size: 16px;
+
+    transition: 
+        width 0.5s, 
+        left 0.5s,
+        color 0.2s ease-out 0.4s,
+        text-shadow 0.2s ease-out 0.4s;
+}
+
+#Menu button:hover {
+    background: #669;
+
+    overflow: hidden;
+    background: #336;
+    /* float: right; */
+    clear: both;
+    width: 100%;
+    left: 0px;
+    
+}
+
+/* #Menu .collapsed {
+    overflow: hidden;
+    background: #336;
+    color: #336;
+    float: right;
+    clear: both;
+    width: 14px;
+    
+    left: 186px;
+} */
+
+#Menu .collapsed:hover {
+    background: #669;
+    color: #669;
+    text-shadow: none;
+}
+
+#Menu button p {
+    width: 185px;
+    overflow: hidden;
+    visibility: hidden;
+    transition: visibility 0.2s;
+}
+
+#Menu button:hover p {
+    visibility: visible;
+    color: #fff;
+    text-shadow: 0 0 4px black;
+}
