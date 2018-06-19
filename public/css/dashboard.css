@@ -161,6 +161,15 @@
     clear: both;
 }
 
+#Menu:hover a {
+    width: 100px;
+}
+
+#Menu:hover a p {
+    visibility: visible;
+
+}
+
 #Menu a {
     display: block;
     position: relative;

@@ -5,7 +5,7 @@
         
 <main>
     <div style='float:right'>
-        <a href="">
+        <a href="users/create">
             <i id="addUser" class="fas fa-user-plus"></i>
         </a>
     </div>
