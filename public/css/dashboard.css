@@ -154,11 +154,16 @@
     right: 10px;
 
     width: 200px;
+    text-align: center;
 }
 
-#Menu button {
+#Menu a {
     display: block;
     position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+
     left: 186px;
     width: 14px;
     height: 32px;
@@ -173,34 +178,20 @@
     font-size: 16px;
 
     transition: 
-        width 0.5s, 
-        left 0.5s,
+        width 0.4s ease-in, 
+        left 0.4s ease-in,
         color 0.2s ease-out 0.4s,
         text-shadow 0.2s ease-out 0.4s;
 }
 
-#Menu button:hover {
-    background: #669;
+#Menu a:hover {
+    background: #558;
 
-    overflow: hidden;
-    background: #336;
-    /* float: right; */
     clear: both;
     width: 100%;
     left: 0px;
     
 }
-
-/* #Menu .collapsed {
-    overflow: hidden;
-    background: #336;
-    color: #336;
-    float: right;
-    clear: both;
-    width: 14px;
-    
-    left: 186px;
-} */
 
 #Menu .collapsed:hover {
     background: #669;
@@ -208,14 +199,15 @@
     text-shadow: none;
 }
 
-#Menu button p {
-    width: 185px;
+#Menu a p {
+    width: 100%;
+    padding: 5px;
     overflow: hidden;
     visibility: hidden;
-    transition: visibility 0.2s;
+    transition: visibility 0.2s ;
 }
 
-#Menu button:hover p {
+#Menu a:hover p {
     visibility: visible;
     color: #fff;
     text-shadow: 0 0 4px black;
