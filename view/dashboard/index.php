@@ -9,7 +9,7 @@
 </main>
 
 <div id="Menu">
-    <button id="btnArchive">Naar Archief</button>
-    <button id="btnChangePasswords">Wachtwoorden Wijzigen</button>
-    <button id="btnLogout">Uitloggen</button>
+    <button id="btnArchive"><p>Naar Archief</p></button>
+    <button id="btnChangePasswords"><p>Wachtwoorden Wijzigen</p></button>
+    <button id="btnLogout"><p>Uitloggen</p></button>
 </div>
