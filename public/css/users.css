@@ -3,6 +3,7 @@ main {
 }
 
 .user {
+    position: relative;
     display: flex;
     padding: 15px 0;
 
@@ -52,4 +53,17 @@ main {
     padding: 6px 10px 6px 20px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.deleteMail {
+    position: absolute;
+    right: 20px;
+    color: #888;
+
+    transition:
+        color 0.3s ease-out;
+}
+
+.deleteMail:hover {
+    color: rgb(233, 38, 38);
 }

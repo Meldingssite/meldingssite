@@ -5,11 +5,21 @@
     <img src="<?php echo IMAGE_DIR ?>banner.jpg" alt="">
     <!--    TODO logout Button (logOut function PHP)-->
     <div id="Menu">
-        <a id="btnArchive" onclick="archief()"><p>Naar Archief</p></a>
+        <a id="btnArchive" onclick="archief()">
+            <i class="fas fa-archive fa-lg"></i>
+            <p>Naar Archief</p>
+        </a>
         <div class="clearfix"></div>
-        <a id="btnChangePasswords" href="dashboard/users"><p>Wachtwoorden Wijzigen</p></a>
+        <a id="btnChangePasswords" href="users">
+            <i class="fas fa-users fa-lg"></i>
+            <p>Wachtwoorden Wijzigen</p>
+        </a>
+
         <div class="clearfix"></div>
-        <a id="btnLogout" href="dashboard/logOut"><p>Uitloggen</p></a>
+        <a id="btnLogout" href="dashboard/logOut">
+            <i class="fas fa-sign-out-alt fa-lg"></i>
+            <p>Uitloggen</p>
+        </a>
     </div>
 </header>
 <main id="Dashboard">
