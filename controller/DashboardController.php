@@ -1,6 +1,5 @@
 <?php
 require(ROOT . "model/DashboardModel.php");
-//var_dump($_SESSION);
 session_start();
 function index($msg = null)
 {
@@ -19,7 +18,6 @@ function Login()
     if (isset($_POST['usermail'], $_POST['userpass'])) {
         $result = loginValid($_POST['usermail'], $_POST['userpass']);
         if ($result['success']) {
-//            $_SESSION['username'] = $result['username'];
             header("Location: ../dashboard");
         } else
             index($result['error']);

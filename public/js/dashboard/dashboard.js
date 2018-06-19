@@ -4,7 +4,7 @@ var currentID = 1;
 var dataRetrieve = null;
 var TextHeight = 25;
 var imgHeight = 200;
-var refreshRate = 200;
+var refreshRate = 500;
 
 
 function startbasic() {
@@ -362,7 +362,8 @@ function remove(item) {
 function finished(item) {
 
     var Data = new FormData();
-    Data.append("id", currentID);
+    // console.log(currentID);
+    Data.append("id", item);
     // Data.append("school", schoolNaam);
     var xFinhttp = new XMLHttpRequest();
     xFinhttp.open("POST", "Dashboard/setCompleted", true); // adding model function

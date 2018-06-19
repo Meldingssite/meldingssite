@@ -5,12 +5,12 @@
     <img src="<?php echo IMAGE_DIR ?>banner.jpg" alt="">
     <!--    TODO logout Button (logOut function PHP)-->
     <div id="Menu">
-        <button id="btnArchive" onclick="archief()">Naar Archief</button>
+        <button id="btnArchive" onclick="archief()"><p>Naar Archief</p></button>
         <a href="dashboard/users">
-            <button id="btnChangePasswords">Wachtwoorden Wijzigen</button>
+            <button id="btnChangePasswords"><p>Wachtwoorden Wijzigen</p></button>
         </a>
         <a href="dashboard/logOut">
-            <button id="btnLogout">Uitloggen</button>
+            <button id="btnLogout"><p>Uitloggen</p></button>
         </a>
     </div>
 </header>

@@ -93,7 +93,7 @@ function setCompleted()
             echo 'false';
             return json_encode($dataArray);
         } else
-            echo "Error deleting record: " . $conn->error;
+            echo "Error updating record: " . $conn->error;
     } else {
         $sql = "UPDATE `$tabel`  SET Completed = 'true' WHERE id = '$id'";
         if ($conn->query($sql) === TRUE) {
@@ -102,7 +102,7 @@ function setCompleted()
             echo 'true';
             return json_encode($dataArray);
         } else
-            echo "Error deleting record: " . $conn->error;
+            echo "Error updating record: " . $conn->error;
     }
     $conn->close();
 }
