@@ -57,5 +57,13 @@ main {
 
 .deleteMail {
     position: absolute;
-    right: 0;
+    right: 20px;
+    color: #888;
+
+    transition:
+        color 0.3s ease-out;
+}
+
+.deleteMail:hover {
+    color: rgb(233, 38, 38);
 }
