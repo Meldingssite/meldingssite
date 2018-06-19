@@ -41,3 +41,15 @@ main {
     color: rgb(33, 33, 33);
     border: 1px solid rgb(33, 33, 33);
 }
+
+#addUser {
+    position: fixed;
+    height: 48px;
+    width: 60px !important;
+
+    background: #336;
+    color: white;
+    padding: 6px 10px 6px 20px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
