@@ -20,22 +20,30 @@ function Login()
         $result = loginValid($_POST['usermail'], $_POST['userpass']);
         if ($result['success']) {
 //            $_SESSION['username'] = $result['username'];
-            index();
+            header("Location: ../dashboard");
         } else
             index($result['error']);
     } else {
         header("Location: ../dashboard");
-
     }
 }
 
-function archief()
+//function archief()
+//{
+//    if (isset($_SESSION['username'])) {
+//        render('dashboard/index', Array(
+//            'mode' => 'archief'));
+//    } else {
+//        header("Location: ../dashboard");
+//    }
+//}
+
+function users()
 {
     if (isset($_SESSION['username'])) {
-        render('dashboard/index', Array(
-            'mode' => 'archief'));
+        render('dashboard/users');
     } else {
-//        header("Location: ../dashboard");
+        header("Location: ../dashboard");
     }
 }
 
@@ -44,7 +52,7 @@ function retrieveLogin()
     echo "retrieve Login";
 }
 
-function bugTest()
-{
-    render("dashboard/new");
-}
+//function bugTest()
+//{
+//    render("dashboard/new");
+//}

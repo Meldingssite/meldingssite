@@ -8,8 +8,14 @@ var refreshRate = 200;
 
 
 function startbasic() {
+    if (document.getElementById('Dashboard') != null) {
+        document.getElementById('Dashboard').innerHTML = "";
+        document.getElementById('btnArchive').innerHTML = "Archief";
+        document.getElementById('btnArchive').onclick = archief;
+    }
+    
     var IDhttp = new XMLHttpRequest();
-    IDhttp.open("POST", "../Dashboard/startID", true); // adding model function
+    IDhttp.open("POST", "Dashboard/startID", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
 
     IDhttp.onreadystatechange = function () {
@@ -31,7 +37,7 @@ function startbasic() {
 
             }
             else {
-                currentID = 0;
+                currentID = 1;
                 window.setInterval(function () {
                     checkDB()
                 }, refreshRate);
@@ -44,7 +50,11 @@ function startbasic() {
 
 }
 
-function archief(){
+function archief() {
+    document.getElementById('Dashboard').innerHTML = "";
+    document.getElementById('btnArchive').innerHTML = "Terug naar meldingssite";
+    document.getElementById('btnArchive').onclick = startbasic;
+    currentID = 1;
     window.setInterval(function () {
         checkDB()
     }, refreshRate);
@@ -58,7 +68,7 @@ function checkDB() {
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/retrieveElements", true); // adding model function
+    xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xDBhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -331,7 +341,7 @@ function remove(item) {
     Data.append("id", item);
     // Data.append("school", schoolNaam);
     var Removehttp = new XMLHttpRequest();
-    Removehttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
+    Removehttp.open("POST", "Dashboard/deleteEntry", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     Removehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -355,7 +365,7 @@ function finished(item) {
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
     var xFinhttp = new XMLHttpRequest();
-    xFinhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
+    xFinhttp.open("POST", "Dashboard/setCompleted", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
