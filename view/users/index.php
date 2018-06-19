@@ -1,11 +1,14 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
 <header>
     <h1>Gebruikers<h1>
-</header>
-
-
-
+</header>        
+        
 <main>
+    <div style='float:right'>
+        <a href="">
+            <i id="addUser" class="fas fa-user-plus"></i>
+        </a>
+    </div>
     <?php foreach ($data as $users): ?>
         <div class="user">
             <a href="users/edit/<?php echo $users['email'] ?> ">
