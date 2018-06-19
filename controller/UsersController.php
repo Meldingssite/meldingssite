@@ -10,7 +10,8 @@ function index()
         header("Location: $url");
     }
     if (isset($_SESSION['username'])) {
-        render('users/index', $data = getUsers());
+        render('users/index', Array(
+            'data' => getUsers()));
     } else {
         header("Location: ./dashboard");
     }
@@ -24,7 +25,8 @@ function edit($identifier)
         header("Location: $url");
     }
     if (isset($_SESSION['username'])) {
-        render('users/edit', $data = getUser($identifier));
+        render('users/edit', Array(
+            'data' => getUser($identifier)));
     } else {
         header("Location: ./dashboard");
     }
@@ -38,7 +40,8 @@ function remove($identifier)
         header("Location: $url");
     }
     if (isset($_SESSION['username'])) {
-        render('users/remove', $data = getUser($identifier));
+        render('users/remove', Array(
+            'data' => getUser($identifier)));
     } else {
         header("Location: ./dashboard");
     }

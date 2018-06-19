@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
-
+<?php var_dump($data)?>
 <main>
     <header>
         <h1>Gebruikers<h1>
