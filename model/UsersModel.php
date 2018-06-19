@@ -15,6 +15,18 @@ function getUsers()
     }
 }
 
+function getUser($identifier)
+{
+    $tabel = userTable;
+    if (isset($_SESSION['username'])) {
+        $conn = openDatabaseConnection();
+        $sql = "select * from `$tabel` WHERE email = '$identifier'";
+        $result = $conn->query($sql);
+        $data = $result->fetch_assoc();
+        return $data;
+    }
+}
+
 function editUser($identifier)
 {
     $tabel = userTable;
