@@ -196,6 +196,8 @@
                 "text": "mogen we contact met u opnemen?",
                 "type": "radioButtons",
                 "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -210,7 +212,8 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "name": "toggle",
+                "toggle": "true",
+                "name": "persoon",
                 "options": [
                   {
                     "name": "naam",
@@ -291,6 +294,8 @@
                 "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
                 "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -305,7 +310,8 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "name": "toggle",
+                "toggle": "true",
+                "name": "persoon",
                 "options": [
                   {
                     "name": "naam",

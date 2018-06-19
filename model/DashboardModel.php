@@ -7,7 +7,7 @@ function retrieveElements()
         $conn = OpenDatabaseConnection();
         $id = $_POST['id'];
         $dataArray = [];
-        $tabel = "MainTabel";
+        $tabel = mainTable;
         $sql = "select * from `$tabel` where id=$id";
         $result = $conn->query($sql);
         $dataArray[0] = $result->fetch_assoc();
@@ -41,7 +41,7 @@ function startID()
 {
     if (isset($_SESSION['username'])) {
         $conn = OpenDatabaseConnection();
-        $tabel = "MainTabel";
+        $tabel = mainTable;
         $result2 = $conn->query("select MAX(id) from `$tabel`");
         echo $result2->fetch_assoc()['MAX(id)'];
     }
@@ -50,7 +50,7 @@ function startID()
 function deleteEntry()
 {
     if (isset($_SESSION['username'])) {
-        $tabel = "MainTabel";
+        $tabel = mainTable;
         $id = $_POST['id'];
         // Create connection
         $conn = OpenDatabaseConnection();
@@ -84,7 +84,7 @@ function setCompleted()
 {
     if (isset($_SESSION['username'])) {
         $dataArray = [];
-        $tabel = "MainTabel";
+        $tabel = mainTable;
         // Create connection
         $conn = OpenDatabaseConnection();
         $id = $_POST['id'];
@@ -144,10 +144,10 @@ function loginValid($emailTemp, $passTemp)
             return $out;
         }
 
-        $table = "users";
+        $table = userTable;
 //        die("test");
         if (
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?")) {
+        $stmt = $conn->prepare("SELECT * FROM `$table` WHERE email = ?")) {
 
             $stmt->bind_param('s', $email); // 's' specifies the variable type => 'string'
             $stmt->execute();
@@ -218,18 +218,3 @@ function logOut()
 
 }
 
-/*************************************/
-/*************** Users ***************/
-/*************************************/
-
-function getUsers()
-{
-    if (isset($_SESSION['username'])) {
-        $conn = openDatabaseConnection();
-        $tabel = "users";
-        $sql = "select * from `$tabel`";
-        $result = $conn->query($sql);
-        $data = $result->fetch_all();
-        return $data;
-    }
-}

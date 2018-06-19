@@ -62,9 +62,14 @@ input[type=radio] {
 
 /*Radio buttons*/
 @keyframes colorSwap {
-    from {background-color: #fff;}
-    to {background-color: #5562eb;}
+    from {
+        background-color: #b4c9ea;
+    }
+    to {
+        background-color: green;
+    }
 }
+
 .inputGroup {
     background-color: #fff !important;
     display: block;
@@ -81,7 +86,7 @@ input[type=radio] {
     width: 42px;
     height: 42px;
     display: inline-block;
-    background-color: red !important;
+    background-color: #b4c9ea !important;
     border: black;
     position: relative;
 }
@@ -93,19 +98,21 @@ input[type=radio] {
     z-index: 2;
     position: absolute;
 }
+
 input {
     height: 42px;
-    width: 90px;
+    /*width: 90px;*/
     /*TODO Discuss best way to style inputs(small or underneath each other)*/
 }
 
 input[type="radio"]:checked + label {
     animation-name: colorSwap;
     animation-duration: 1s;
-    background-color: #5562eb !important;
+    background-color: green !important;
 }
+
 /*hidden extra info*/
-.extraInfo{
+.extraInfo {
     /*overflow: hidden;*/
     display: none;
     height: 0px;
@@ -134,7 +141,10 @@ input[type="radio"]:checked + label {
     top: -30px;
 } */
 
-#login form, #login div { width: 300px; margin: 0; }
+#login form, #login div {
+    width: 300px;
+    margin: 0;
+}
 
 #login img {
     display: block;
@@ -159,7 +169,7 @@ input[type="radio"]:checked + label {
 
 #login input[type='email']:focus, #login input[type='password']:focus {
     outline: rgb(0, 174, 255) auto 5px;
-    box-shadow: 0 0 5px rgb(0, 174, 255);    
+    box-shadow: 0 0 5px rgb(0, 174, 255);
 }
 
 #login .buttonContainer {
@@ -169,25 +179,35 @@ input[type="radio"]:checked + label {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.535);
 }
 
-
 #btnForgotLogin, #btnLogin {
     height: 100%;
     width: 50%;
     float: left;
-    color: white;    
+    color: white;
     border: none;
 }
-
 
 /*#Menu:hover{width: 100%;}*/
 /*#Menu:not(:hover){width: 10px;}*/
 /*#Menu{position: fixed;}*/
 
-#btnForgotLogin         { background: rgb(255, 44, 44); }
-#btnForgotLogin:hover   { background: rgb(255, 57, 57); }
+#btnForgotLogin {
+    background: rgb(255, 44, 44);
+}
 
-#btnLogin       { background: rgb(30, 179, 30); box-shadow: -1px 0 3px rgba(0, 0, 0, 0.275); }
-#btnLogin:hover { background: rgb(49, 183, 49); box-shadow: -1px 0 5px rgba(0, 0, 0, 0.275); }
+#btnForgotLogin:hover {
+    background: rgb(255, 57, 57);
+}
+
+#btnLogin {
+    background: rgb(30, 179, 30);
+    box-shadow: -1px 0 3px rgba(0, 0, 0, 0.275);
+}
+
+#btnLogin:hover {
+    background: rgb(49, 183, 49);
+    box-shadow: -1px 0 5px rgba(0, 0, 0, 0.275);
+}
 
 #login p.errorMessage {
     color: rgb(255, 36, 36);
@@ -195,4 +215,8 @@ input[type="radio"]:checked + label {
     width: 100%;
     text-align: center;
     margin: 10px 0;
+}
+
+.inputGroup {
+    padding-left: 30px;
 }

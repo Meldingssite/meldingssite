@@ -38,20 +38,6 @@ function Login()
     }
 }
 
-function users()
-{
-    $url = $_SERVER['REQUEST_URI'];
-    if (substr($url, -1) == "/") {
-        $url = substr_replace($url, "", -1);
-        header("Location: $url");
-    }
-    if (isset($_SESSION['username'])) {
-        render('dashboard/users');
-    } else {
-        header("Location: ../dashboard");
-    }
-}
-
 function retrieveLogin()
 {
     echo "Neem contact op met piet";
