@@ -6,9 +6,59 @@ var TextHeight = 25;
 var imgHeight = 200;
 var refreshRate = 200;
 
-window.setInterval(function () {
-    checkDB()
-}, refreshRate);
+
+function startbasic() {
+    if (document.getElementById('Dashboard') != null) {
+        document.getElementById('Dashboard').innerHTML = "";
+        document.getElementById('btnArchive').innerHTML = "Archief";
+        document.getElementById('btnArchive').onclick = archief;
+    }
+
+    var IDhttp = new XMLHttpRequest();
+    IDhttp.open("POST", "Dashboard/startID", true); // adding model function
+    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
+
+    IDhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.response) {
+
+
+                var highestId = this.response;
+                if (highestId > 10) {
+                    currentID = highestId - 10;
+                }
+                else {
+                    currentID = highestId - 1;
+                }
+
+                window.setInterval(function () {
+                    checkDB()
+                }, refreshRate);
+
+            }
+            else {
+                currentID = 1;
+                window.setInterval(function () {
+                    checkDB()
+                }, refreshRate);
+
+            }
+        }
+    };
+    console.log("Checking Database");
+    IDhttp.send();
+
+}
+
+function archief() {
+    document.getElementById('Dashboard').innerHTML = "";
+    document.getElementById('btnArchive').innerHTML = "Terug naar meldingssite";
+    document.getElementById('btnArchive').onclick = startbasic;
+    currentID = 1;
+    window.setInterval(function () {
+        checkDB()
+    }, refreshRate);
+}
 
 //test
 function checkDB() {
@@ -18,12 +68,13 @@ function checkDB() {
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "../Dashboard/retrieveElements", true); // adding model function
+    xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xDBhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
+                // console.log('adding Elements');
                 addElements(dataRetrieve);
             }
             else {
@@ -38,6 +89,7 @@ function checkDB() {
 //Begin of constructing a element
 function addElements(dataRetrieve) {
     if (dataRetrieve[0] !== null) {
+        console.log(dataRetrieve[1] + " " + currentID);
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
@@ -289,7 +341,7 @@ function remove(item) {
     Data.append("id", item);
     // Data.append("school", schoolNaam);
     var Removehttp = new XMLHttpRequest();
-    Removehttp.open("POST", "../Dashboard/deleteEntry", true); // adding model function
+    Removehttp.open("POST", "Dashboard/deleteEntry", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     Removehttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -313,7 +365,7 @@ function finished(item) {
     Data.append("id", currentID);
     // Data.append("school", schoolNaam);
     var xFinhttp = new XMLHttpRequest();
-    xFinhttp.open("POST", "../Dashboard/setCompleted", true); // adding model function
+    xFinhttp.open("POST", "Dashboard/setCompleted", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
