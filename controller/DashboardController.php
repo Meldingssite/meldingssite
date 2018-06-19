@@ -28,16 +28,6 @@ function Login()
     }
 }
 
-//function archief()
-//{
-//    if (isset($_SESSION['username'])) {
-//        render('dashboard/index', Array(
-//            'mode' => 'archief'));
-//    } else {
-//        header("Location: ../dashboard");
-//    }
-//}
-
 function users()
 {
     if (isset($_SESSION['username'])) {

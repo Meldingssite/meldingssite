@@ -13,7 +13,7 @@ function startbasic() {
         document.getElementById('btnArchive').innerHTML = "Archief";
         document.getElementById('btnArchive').onclick = archief;
     }
-    
+
     var IDhttp = new XMLHttpRequest();
     IDhttp.open("POST", "Dashboard/startID", true); // adding model function
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
