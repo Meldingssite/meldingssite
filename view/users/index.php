@@ -16,6 +16,11 @@
             </a>
     
             <p class='email'><?php echo $users['email'] ?></p>
+
+            <a  href="users/delete/<?php echo $users['email'] ?>"
+                class="deleteMail">
+                <i class="fas fa-eraser"></i>    
+            </a>
         </div>
     <?php endforeach ?>
 </main>
