@@ -29,9 +29,16 @@ function getUser($identifier)
 
 function editUser($identifier)
 {
+    $passwordOptions = [
+        'cost' => passwordCost,
+        'salt' => salt,
+    ];
     $tabel = userTable;
-    $newMail = $_POST['newMail'];
-    $newPass = crypt(password_hash($_POST['newPass'], algo), salt);
+    $newMail = $_POST['email'];
+    echo $newMail;
+    var_dump($_POST);
+    $password = $_POST['password'];
+    $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
     $conn = openDatabaseConnection();
     $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass' WHERE email = '$identifier'";
     if ($conn->query($sql) === TRUE) {
@@ -51,12 +58,21 @@ function removeUser($identifier)
 
 function addUser()
 {
+    echo 'test';
+    $passwordOptions = [
+        'cost' => passwordCost,
+        'salt' => salt,
+    ];
+    $password = $_POST['password'];
     $tabel = userTable;
-    $newMail = $_POST['newMail'];
-    $newPass = crypt(password_hash($_POST['newPass'], algo), salt);
+    $newMail = $_POST['email'];
+    $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
     $conn = openDatabaseConnection();
-    $sql = "INSERT INTO `$tabel` SET email = '$newMail', password= '$newPass'";
+    $sql = "INSERT INTO `$tabel` (email, password) VALUES('$newMail', '$newPass')";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
 }
