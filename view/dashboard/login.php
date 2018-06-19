@@ -23,7 +23,6 @@ function getMessage($msg)
 
 }
 
-//var_dump($_SESSION);
 ?>
 
 <main id="login">

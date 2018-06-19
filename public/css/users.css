@@ -1,0 +1,19 @@
+.user {
+    display: flex;
+
+    width: 80%;
+    height: 60px;
+    
+    margin: 10px auto;
+
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+
+    font-size: 22px;
+    vertical-align: center;
+}
+
+.user > div {
+    border: 1px solid #669;
+    flex-grow: 1;
+}
