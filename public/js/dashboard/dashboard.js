@@ -10,7 +10,7 @@ var refreshRate = 500;
 function startbasic() {
     if (document.getElementById('Dashboard') != null) {
         document.getElementById('Dashboard').innerHTML = "";
-        document.getElementById('btnArchive').innerHTML = "Archief";
+        document.getElementById('btnArchive').innerHTML = "<p>Archief</p>";
         document.getElementById('btnArchive').onclick = archief;
     }
 
@@ -52,7 +52,7 @@ function startbasic() {
 
 function archief() {
     document.getElementById('Dashboard').innerHTML = "";
-    document.getElementById('btnArchive').innerHTML = "Terug naar meldingssite";
+    document.getElementById('btnArchive').innerHTML = "<p>Terug naar meldingssite</p>";
     document.getElementById('btnArchive').onclick = startbasic;
     currentID = 1;
     window.setInterval(function () {
