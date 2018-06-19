@@ -1,3 +1,7 @@
+main {
+    padding-top: 20px;
+}
+
 .user {
     display: flex;
     padding: 15px 0;
@@ -12,6 +16,16 @@
 
     font-size: 22px;
     vertical-align: center;
+    background: none;
+
+    transition: 
+        box-shadow 0.15s ease-out,
+        border-color 0.15s ease-out;
+}
+
+.user:hover{
+    box-shadow: 0px 1px 5px #888, 0px -1px 5px #888;
+    border-color: white;
 }
 
 .editEmail {
@@ -21,7 +35,9 @@
     height: 35px;
     width: 35px !important;
     padding: 7px 5px 7px 8px;
-    margin-right: 1em;
-    border: 1px solid black;
+    margin: 0 1em;
     border-radius: 100%;
+
+    color: rgb(33, 33, 33);
+    border: 1px solid rgb(33, 33, 33);
 }
