@@ -1,5 +1,6 @@
 .user {
     display: flex;
+    padding: 15px 0;
 
     width: 80%;
     height: 60px;
@@ -11,13 +12,6 @@
 
     font-size: 22px;
     vertical-align: center;
-}
-
-.user > div {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
 }
 
 .editEmail {

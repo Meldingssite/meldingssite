@@ -6,16 +6,7 @@
     </header>
 
     <div class="user">
-        <div class=email>
-            <i class="fas fa-user-edit editEmail"></i>
-            <p>Barry@Barrymail.com</p>
-        </div>
-        
-        <div class=password>
-            <p>Change Password</p>
-        </div>
-
-
-    
+        <i class="fas fa-user-edit editEmail"></i>
+        <p>Barry@Barrymail.com</p>
     </div>
 </main>
