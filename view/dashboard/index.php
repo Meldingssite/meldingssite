@@ -2,7 +2,7 @@
 <script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboard.js"></script>
 <script>window.onload = startbasic();</script>
 <header>
-    <img src="<?php echo IMAGE_DIR ?>banner.jpg" alt="">
+<!--    <img src="--><?php //echo IMAGE_DIR ?><!--banner.jpg" alt="">-->
     <!--    TODO logout Button (logOut function PHP)-->
     <div id="Menu">
         <a id="btnArchive" onclick="archief()">
