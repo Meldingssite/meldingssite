@@ -50,9 +50,11 @@ function removeUser($identifier)
 {
     $tabel = userTable;;
     $conn = openDatabaseConnection();
-    $sql = "DELETE FROM `$tabel` WHERE email=$identifier";
+    $sql = "DELETE FROM `$tabel` WHERE email='$identifier'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 

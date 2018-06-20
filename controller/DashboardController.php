@@ -43,6 +43,7 @@ function retrieveLogin()
     echo "Neem contact op met piet";
 }
 
+
 //function bugTest()
 //{
 //    render("dashboard/new");
