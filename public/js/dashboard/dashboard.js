@@ -2,8 +2,8 @@
 //Testing commit
 var currentID = 1;
 var dataRetrieve = null;
-var TextHeight = 25;
-var imgHeight = 200;
+var TextHeight = 19;
+var imgHeight = 150;
 var refreshRate = 500;
 
 
@@ -167,17 +167,17 @@ function constructMelding(meldingData) {
             keys[x] !== 'TimeStamp'
         ) {
             melding +=
-                "<div id ='" + keys[x] + "" + meldingData['id'] + "'>" +
+                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" +
                 keys[x] + ": " + meldingData[keys[x]] +
-                "</div>";
+                "</p>";
             height += TextHeight;
         }
 
         else if (keys[x] === 'FILE') {
-            melding += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
+            melding += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
                 +meldingData['id'] + '/' + meldingData[keys[x]]
                 + "' id='" + keys[x] + meldingData['id'] + "'>";
-            height += imgHeight;
+            height += imgHeight + TextHeight;
         }
     }
     melding +=
@@ -214,15 +214,15 @@ function updateContent(items) {
                 // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<div id ='"
+                addItems += "<p id ='"
                     + keys[x] + "" + items['id']
                     + "'>"
                     + keys[x]
                     + ": "
                     + toggleSpace(items[keys[x]], true)
-                    + "</div>";
+                    + "</p>";
                 DIV.innerHTML += addItems;
-                height += TextHeight;
+                height += imgHeight + TextHeight;
             }
             else {
                 console.log(keys[x] + items['id']);
@@ -240,7 +240,7 @@ function updateContent(items) {
                 // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
+                addItems += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
                     +items['id'] + '/' + items[keys[x]]
                     + "' id='" + keys[x] + items['id'] + "'>";
                 height += imgHeight;
@@ -291,8 +291,8 @@ function toggleSpace(item, ForceSpace = false) {
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    if (target.style.display !== 'flex') {
-        unfade(target, elementID, 'flex');
+    if (target.style.display !== 'block') {
+        unfade(target, elementID, 'block');
     }
     else {
         fade(target, elementID);
