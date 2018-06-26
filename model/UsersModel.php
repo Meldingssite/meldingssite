@@ -53,6 +53,8 @@ function removeUser($identifier)
     $sql = "DELETE FROM `$tabel` WHERE email='$identifier'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
+//        sleep(1);
+//        header("Location: ./dashboard");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
