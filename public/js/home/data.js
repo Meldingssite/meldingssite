@@ -31,7 +31,7 @@ function dataSend(sendArray, school, id) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
     // console.dir(xhttp);
-    console.dir(sendArray);
+    // console.dir(sendArray);
 
     for (var x = 0; x < sendArray[0].length; x++) {
         // console.log(sendArray[0][x]);
@@ -92,17 +92,20 @@ function submitContents(NaamString, school, id) {
             var nameElementsArray = [];
             for (var y = 0; naam[x].length > y; y++) {
                 var name = naam[x][y];
-                // console.log("|" + name + "|");
-                console.log(document.getElementsByName(name)[0]);
-                console.log(name);
-                console.dir(naam);
+                // // console.log("|" + name + "|");
+                // console.log(document.getElementsByName(name)[0]);
+                // console.log(name);
+                // console.dir(naam);
                 if (name) {
                     if (document.getElementsByName(name)[0].parentElement.parentElement.id.includes("extraInfo")) {
-                        dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
-                        nameElementsArray[y] = name;
-                        check = true;
+                        if (document.getElementsByName(name)[0].value) {
+                            dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
+                            nameElementsArray[y] = name;
+                            check = true;
+                        }
                     }
                     else if (document.getElementsByName(name)[0].value) {
+                        console.log(name);
                         dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                         nameElementsArray[y] = name;
                         check = true;
@@ -123,17 +126,21 @@ function submitContents(NaamString, school, id) {
         }
         //Case Multiple Items
         else if (document.getElementsByName(naam[x]).length > 1) {
+            console.log(naam[x]);
+
             for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
+                    // if (document.getElementsByName(naam[x])[y].value) {
+                    console.log(naam[x]);
                     dataArray[x] = document.getElementsByName(naam[x])[y].placeholder + ": " + document.getElementsByName(naam[x])[y].value;
                     nameArray[x] = naam[x];
+                    // }
                 }
             }
         }
-        //Case single item
-
+        //Case file or single item
         else {
-            //Case file
+
             // console.dir(naam);
             // console.log(x);
             // console.log(naam[x]);
@@ -148,8 +155,19 @@ function submitContents(NaamString, school, id) {
             }
             //Case normal item(default)
             else if (!naam[x].match("file")) {
-                dataArray[x] = document.getElementsByName(naam[x])[0].placeholder +
-                    ": " + document.getElementsByName(naam[x])[0].value;
+                if (document.getElementsByName(naam[x])[0].tagName === "SELECT") {
+                    dataArray[x] = document.getElementsByName(naam[x])[0].parentElement.title +
+                        ": " + document.getElementsByName(naam[x])[0].value;
+                    nameArray[x] = naam[x];
+                }
+                // console.log(naam[x] + "value:" + document.getElementsByName(naam[x])[0].value);
+                else if(document.getElementsByName(naam[x])[0].value)
+                {
+                    dataArray[x] = document.getElementsByName(naam[x])[0].placeholder +
+                        ": " + document.getElementsByName(naam[x])[0].value;
+                    nameArray[x] = naam[x];
+                }
+
             }
         }
 

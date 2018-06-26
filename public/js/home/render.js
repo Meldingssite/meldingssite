@@ -206,7 +206,7 @@ function renderDropDown(dropObj) {
         + dropObj.text
         + "</legend>";
     //section
-    dropHTML += "<section class=input><select placeholder = '" + dropObj.text + "' name='"
+    dropHTML += "<section class=input title = '" + dropObj.text + "'><select name='"
         + dropObj.name
         + "'>";
     //knop
