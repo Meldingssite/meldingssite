@@ -8,6 +8,6 @@
     <form action="addUser" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Wachtwoord" required>
-        <input type="submit">
+        <input type="submit" value="Gebruiker Aanmaken">
     </form>
 </main>
