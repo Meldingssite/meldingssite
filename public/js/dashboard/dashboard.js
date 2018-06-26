@@ -338,26 +338,28 @@ function fade(element, elementID = null) {
 }
 
 function remove(item) {
-    var Data = new FormData();
-    Data.append("id", item);
-    // Data.append("school", schoolNaam);
-    var Removehttp = new XMLHttpRequest();
-    Removehttp.open("POST", "Dashboard/deleteEntry", true); // adding model function
-    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    Removehttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.response) {
-                console.log("Item removed!")
+    if (confirm("weet u zeker dat u deze melding wilt verwijderen?") === true) {
+        var Data = new FormData();
+        Data.append("id", item);
+        // Data.append("school", schoolNaam);
+        var Removehttp = new XMLHttpRequest();
+        Removehttp.open("POST", "Dashboard/deleteEntry", true); // adding model function
+        // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
+        Removehttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.response) {
+                    console.log("Item removed!")
+                }
+                else {
+                    console.log('There has been an unknown error!');
+                }
             }
-            else {
-                console.log('There has been an unknown error!');
-            }
-        }
-    };
-    Removehttp.send(Data);
-    console.log("removing Item");
-    fade(document.getElementById('extraInfo' + item));
-    fade(document.getElementById('alertItem' + item));
+        };
+        Removehttp.send(Data);
+        console.log("removing Item");
+        fade(document.getElementById('extraInfo' + item));
+        fade(document.getElementById('alertItem' + item));
+    }
 }
 
 function finished(item) {
