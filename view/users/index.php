@@ -11,13 +11,13 @@
     </div>
     <?php foreach ($data as $users): ?>
         <div class="user">
-            <a href="users/edit/<?php echo $users['email'] ?> ">
+            <a href="users/edit/<?php echo htmlspecialchars($users['email']) ?> ">
                 <i class=" fas fa-user-edit editEmail"></i>
             </a>
 
-            <p class='email'><?php echo $users['email'] ?></p>
+            <p class='email'><?php echo htmlspecialchars($users['email']) ?></p>
 
-            <a href="users/delete/<?php echo $users['email'] ?>"
+            <a href="users/delete/<?php echo htmlspecialchars($users['email']) ?>"
                class="deleteMail" onclick="return confirm('weet u zeker dat u deze gebruiker wilt verwijderen?')">
                 <i class="fas fa-eraser"></i>
             </a>
