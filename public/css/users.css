@@ -77,6 +77,8 @@ main {
     color: rgb(233, 38, 38);
 }
 
-input[type='email'], input[type='password'] {
+input {
     padding: 10px 5px;
+    font-size: 1em;
+    margin: 5px 0;
 }

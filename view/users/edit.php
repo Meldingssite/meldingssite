@@ -9,6 +9,6 @@
     <form action="../../users/editUser/<?php echo $data['email'] ?>" method="post">
         <input type="email" name="email" value="<?php echo $data['email'] ?>" required>
         <input type="password" name="password" value="" placeholder="Wijzig Wachtwoord" required>
-        <input type="submit">
+        <input type="submit" value='Gebruiker Aanpassen'>
     </form>
 </main>
