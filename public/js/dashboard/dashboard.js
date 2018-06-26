@@ -311,6 +311,7 @@ function unfade(element, elementID = null, display = 'block') {
             element.style.height = height + 'px';
             clearInterval(timer);
             element.style.opacity = 1;
+            // element.style.padding = 0;
         }
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
@@ -327,6 +328,7 @@ function fade(element, elementID = null) {
         if (op <= 0.1) {
             clearInterval(timer);
             element.style.display = 'none';
+            // element.style.padding = 0;
 
         }
         element.style.opacity = op;
