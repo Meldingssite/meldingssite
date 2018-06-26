@@ -10,4 +10,5 @@
 
 <script src="<?php echo URL . SCRIPT_DIR?>home/classes.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR?>home/render.js"></script>
+<script src="<?php echo URL . SCRIPT_DIR?>home/data.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR?>home/main.js"></script>
