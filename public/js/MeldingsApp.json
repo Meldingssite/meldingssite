@@ -585,6 +585,45 @@
         ]
       }
     ],
+    "Overige": [
+      {
+        "content": [
+          {
+            "text": "Overige",
+            "type": "textbox",
+            "color": "purple"
+          },
+          {
+            "type": "form",
+            "formAction": "formSubmit",
+            "content": [
+              {
+                "text": "waar is het gebeurd?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "locatieSpecifiek",
+                    "inputType": "text",
+                    "inhoud": "waar is het gebeurd?"
+                  }
+                ]
+              },
+              {
+                "text": "wat is het probleem?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     "Locaties": [
       {
         "type": "locatieForm",
