@@ -30,15 +30,13 @@ function dataSend(sendArray, school, id) {
     Data.append("id", id);
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "Home/sendData", true);
-    // console.dir(xhttp);
-    // console.dir(sendArray);
 
     for (var x = 0; x < sendArray[0].length; x++) {
-        // console.log(sendArray[0][x]);
+
         if (sendArray[0][x] && sendArray[0][x] !== undefined && sendArray[0][x] !== null && !Array.isArray(sendArray[0][x])) {
-            // console.log(sendArray[0][x]);
+
             if (sendArray[0][x].match("file")) {
-                // xhttp.file = sendArray[1][x];
+
                 if (xhttp.upload) {
                     xhttp.upload.onprogress = function (e) {
                         if (e.lengthComputable) {
@@ -48,12 +46,8 @@ function dataSend(sendArray, school, id) {
                     };
                 }
             }
-            // console.log("appending data");
             Data.append(sendArray[0][x], sendArray[1][x]);
         }
-    }
-    for (var pair of Data.entries()) {
-        // console.log(pair[0] + ', ' + pair[1]);
     }
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -65,14 +59,10 @@ function dataSend(sendArray, school, id) {
 
 function submitContents(NaamString, school, id) {
     var naam = NaamString.split("|");
-    // console.dir(NaamString);
     var finalArray;
     finalArray = naam[0].split(',');
     for (x = 1; naam.length > x; x++) {
-        // console.dir(finalArray);
         naam[x] = naam[x].split(',');
-        // for (y = 0; naam[x].length > y; y++) {
-        // console.dir(naam[x]);
         if (naam[x] != "" && naam[x] !== undefined && naam[x] != null)
             if (naam[x][0] == "") naam[x].splice(0, 1);
         finalArray[finalArray.length] = naam[x];
@@ -84,33 +74,30 @@ function submitContents(NaamString, school, id) {
     naam = finalArray;
 
     for (var x = 0; x < naam.length; x++) {
-        // console.log(naam[x]);
         var check = false;
+
         //Case Multiple Items in array
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
             var nameElementsArray = [];
             for (var y = 0; naam[x].length > y; y++) {
+
                 var name = naam[x][y];
-                // // console.log("|" + name + "|");
-                // console.log(document.getElementsByName(name)[0]);
-                // console.log(name);
-                // console.dir(naam);
                 if (name) {
+
                     if (document.getElementsByName(name)[0].parentElement.parentElement.id.includes("extraInfo")) {
+
                         if (document.getElementsByName(name)[0].value) {
                             dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                             nameElementsArray[y] = name;
                             check = true;
                         }
                     }
+
                     else if (document.getElementsByName(name)[0].value) {
-                        console.log(name);
                         dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                         nameElementsArray[y] = name;
                         check = true;
-
-                        // console.log("_______" + naam);
                     }
                 }
             }
@@ -141,28 +128,24 @@ function submitContents(NaamString, school, id) {
         //Case file or single item
         else {
 
-            // console.dir(naam);
-            // console.log(x);
-            // console.log(naam[x]);
 
             if (naam[x].match("file") && document.getElementsByName(toggleSpace(naam[x]))[0].files.length !== 0) {
-                // console.log("files");
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
                 dataArray.push(dataArray[x]['name']);
                 nameArray.push(naam[x]);
                 nameArray.push('FILE')
-                // console.log(document.getElementsByName(toggleSpace(naam[x]))[0].files);
             }
+
             //Case normal item(default)
             else if (!naam[x].match("file")) {
+
                 if (document.getElementsByName(naam[x])[0].tagName === "SELECT") {
                     dataArray[x] = document.getElementsByName(naam[x])[0].parentElement.title +
                         ": " + document.getElementsByName(naam[x])[0].value;
                     nameArray[x] = naam[x];
                 }
-                // console.log(naam[x] + "value:" + document.getElementsByName(naam[x])[0].value);
-                else if(document.getElementsByName(naam[x])[0].value)
-                {
+
+                else if (document.getElementsByName(naam[x])[0].value) {
                     dataArray[x] = document.getElementsByName(naam[x])[0].placeholder +
                         ": " + document.getElementsByName(naam[x])[0].value;
                     nameArray[x] = naam[x];
