@@ -52,7 +52,7 @@ function getMessage($msg)
                     id="userpass"
                     placeholder="Password"
                     required
-                    minlength="5"
+                    minlength="4"
                     value="password"
             >
         </form>

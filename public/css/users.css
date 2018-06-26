@@ -39,8 +39,17 @@ main {
     margin: 0 1em;
     border-radius: 100%;
 
-    color: rgb(33, 33, 33);
-    border: 1px solid rgb(33, 33, 33);
+    color: #888;
+    border: 1px solid #888;
+}
+
+.editEmail:hover {
+    color: rgb(91, 146, 230);
+    border-color: rgb(91, 146, 230);
+
+    transition: 
+        color 0.3s,
+        border-color 0.3s;
 }
 
 #addUser {
@@ -66,4 +75,8 @@ main {
 
 .deleteMail:hover {
     color: rgb(233, 38, 38);
+}
+
+input[type='email'], input[type='password'] {
+    padding: 10px 5px;
 }
