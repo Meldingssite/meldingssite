@@ -18,7 +18,7 @@
             <p class='email'><?php echo $users['email'] ?></p>
 
             <a href="users/delete/<?php echo $users['email'] ?>"
-               class="deleteMail">
+               class="deleteMail" onclick="return confirm('weet u zeker dat u deze gebruiker wilt verwijderen?')">
                 <i class="fas fa-eraser"></i>
             </a>
         </div>

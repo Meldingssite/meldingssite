@@ -16,7 +16,7 @@
         </a>
 
         <div class="clearfix"></div>
-        <a id="btnLogout" href="dashboard/logOut">
+        <a id="btnLogout" href="dashboard/logOut" onclick="return confirm('weet u zeker dat u wilt uitloggen?')">
             <i class="fas fa-sign-out-alt fa-lg"></i>
             <p>Uitloggen</p>
         </a>
