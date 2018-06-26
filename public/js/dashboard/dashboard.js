@@ -52,7 +52,7 @@ function startbasic() {
 
 function archief() {
     document.getElementById('Dashboard').innerHTML = "";
-    document.getElementById('btnArchive').innerHTML = "<i class='fas fa-archive fa-lg'></i><p>Terug naar meldingssite</p>";
+    document.getElementById('btnArchive').innerHTML = "<i class='fas fa-archive fa-lg'></i><p>Actueel</p>";
     document.getElementById('btnArchive').onclick = startbasic;
     currentID = 1;
     window.setInterval(function () {

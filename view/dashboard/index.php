@@ -7,7 +7,7 @@
     <div id="Menu">
         <a id="btnArchive" onclick="archief()">
             <i class="fas fa-archive fa-lg"></i>
-            <p>Naar Archief</p>
+            <p>Archief</p>
         </a>
         <div class="clearfix"></div>
         <a id="btnChangePasswords" href="users">
