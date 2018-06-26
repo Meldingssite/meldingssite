@@ -112,8 +112,8 @@
 }
 
 .extraInfo {
-    /* overflow: hidden; */
-    display: none;
+     overflow: hidden;
+    display: block;
     height: 0;
     opacity: 0;
     transition-property: height;
@@ -122,14 +122,14 @@
     transition-delay: 0s;
 
     padding-left:65px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 
     background: #669;
     color: white;
     text-shadow: 0 0 5px black;
 
     position: relative;
-    top: -15px;
+    top: -5px;
 
     flex-direction: column;
     flex-wrap: wrap;

@@ -16,7 +16,7 @@ function retrieveElements()
 
         //Case at the last one to add
         if ($highest_id['MAX(id)'] == $id) {
-            $dataArray[1] = $id + 1;
+            $dataArray[1] = $id;
             $conn->close();
             $JSON = json_encode($dataArray);
             echo $JSON;
@@ -31,7 +31,7 @@ function retrieveElements()
         } //Case More added then already present
         else if ($highest_id['MAX(id)'] < $id) {
             $dataArray[1] = $id;
-            $dataArray[2] = null;
+            $dataArray[2];
             return $dataArray;
         }
     }

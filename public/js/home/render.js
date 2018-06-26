@@ -171,7 +171,7 @@ function renderRadio(radioObj) {
     radioHTML += "<section class=inputGroup>";
     //knop
     for (option in options) {
-        radioHTML += "<input type='radio' name='"
+        radioHTML += "<input placeholder='" + radioObj.text + "' type='radio' name='"
             + radioObj.name
             + "'value ='"
             + options[option].optie + "'id ='" +
@@ -206,7 +206,7 @@ function renderDropDown(dropObj) {
         + dropObj.text
         + "</legend>";
     //section
-    dropHTML += "<section class=input><select name='"
+    dropHTML += "<section class=input><select placeholder = '" + dropObj.text + "' name='"
         + dropObj.name
         + "'>";
     //knop
@@ -352,7 +352,7 @@ function renderLocatieList(alertType, content, school) {
     }
     buttonHTML += "<input class='btn'"
         + " id='locatieName'"
-        + " placeholder='lokaal'"
+        + " placeholder='Geef meer informatie over de lokatie'"
         + ">";
     buttonHTML += '<button  id="lokaalButton" onclick="locatieSend('
         + "'"
@@ -536,12 +536,12 @@ function submitContents(NaamString, school, id) {
                 console.dir(naam);
                 if (name) {
                     if (document.getElementsByName(name)[0].parentElement.parentElement.id.includes("extraInfo")) {
-                        dataElementsArray[y] = document.getElementsByName(name)[0].value;
+                        dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                         nameElementsArray[y] = name;
                         check = true;
                     }
                     else if (document.getElementsByName(name)[0].value) {
-                        dataElementsArray[y] = document.getElementsByName(name)[0].value;
+                        dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                         nameElementsArray[y] = name;
                         check = true;
 
@@ -563,7 +563,7 @@ function submitContents(NaamString, school, id) {
         else if (document.getElementsByName(naam[x]).length > 1) {
             for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
                 if (document.getElementsByName(naam[x])[y].checked) {
-                    dataArray[x] = document.getElementsByName(naam[x])[y].value;
+                    dataArray[x] = document.getElementsByName(naam[x])[y].placeholder + ": " + document.getElementsByName(naam[x])[y].value;
                     nameArray[x] = naam[x];
                 }
             }
@@ -586,8 +586,8 @@ function submitContents(NaamString, school, id) {
             }
             //Case normal item(default)
             else if (!naam[x].match("file")) {
-                nameArray[x] = naam[x];
-                dataArray[x] = document.getElementsByName(naam[x])[0].value;
+                dataArray[x] = document.getElementsByName(naam[x])[0].placeholder +
+                    ": " + document.getElementsByName(naam[x])[0].value;
             }
         }
 
