@@ -34,12 +34,13 @@ function editUser($identifier)
         'salt' => salt,
     ];
     $tabel = userTable;
-    $newMail = $_POST['email'];
-    echo $newMail;
-    var_dump($_POST);
-    $password = $_POST['password'];
-    $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
+
+//    echo $newMail;
+//    var_dump($_POST);
     $conn = openDatabaseConnection();
+    $password = $conn->mysqli_real_escape_string($_POST['password']);
+    $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
+    $newMail = $conn->mysqli_real_escape_string($_POST['email']);
     $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass' WHERE email = '$identifier'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
@@ -50,7 +51,8 @@ function removeUser($identifier)
 {
     $tabel = userTable;;
     $conn = openDatabaseConnection();
-    $sql = "DELETE FROM `$tabel` WHERE email='$identifier'";
+    $email = $conn->mysqli_real_escape_string($identifier);
+    $sql = "DELETE FROM `$tabel` WHERE email='$email'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
 //        sleep(1);
@@ -62,16 +64,17 @@ function removeUser($identifier)
 
 function addUser()
 {
+    $conn = openDatabaseConnection();
     echo 'test';
     $passwordOptions = [
         'cost' => passwordCost,
         'salt' => salt,
     ];
-    $password = $_POST['password'];
+    $password = $conn->mysqli_real_escape_string($_POST['password']);
     $tabel = userTable;
-    $newMail = $_POST['email'];
+    $newMail = $conn->mysqli_real_escape_string($_POST['email']);
     $newPass = password_hash($password, algo, $passwordOptions);
-    $conn = openDatabaseConnection();
+
     $sql = "INSERT INTO `$tabel` (email, password) VALUES('$newMail', '$newPass')";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
