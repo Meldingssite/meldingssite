@@ -352,7 +352,7 @@ function renderLocatieList(alertType, content, school) {
     }
     buttonHTML += "<input class='btn'"
         + " id='locatieName'"
-        + " placeholder='lokaal'"
+        + " placeholder='Geef meer informatie over de lokatie'"
         + ">";
     buttonHTML += '<button  id="lokaalButton" onclick="locatieSend('
         + "'"

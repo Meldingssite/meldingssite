@@ -12,7 +12,7 @@
         <div class="clearfix"></div>
         <a id="btnChangePasswords" href="users">
             <i class="fas fa-users fa-lg"></i>
-            <p>Wachtwoorden Wijzigen</p>
+            <p>Account Beheer</p>
         </a>
 
         <div class="clearfix"></div>

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
 <link rel="stylesheet" href="<?php echo URL ?>public/css/forms.css">
 <header>
-    <h1>Nieuwe Gebruiker<h1>
+    <h1><a href="<?php echo URL?>users"><i id='btnBack' class="fas fa-arrow-circle-left"></i><a>Nieuwe Gebruiker<h1>
 </header>
 
 <main>

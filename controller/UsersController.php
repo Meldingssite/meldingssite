@@ -32,21 +32,6 @@ function edit($identifier)
     }
 }
 
-//function remove($identifier)
-//{
-//    $url = $_SERVER['REQUEST_URI'];
-//    if (substr($url, -1) == "/") {
-//        $url = substr_replace($url, "", -1);
-//        header("Location: $url");
-//    }
-//    if (isset($_SESSION['username'])) {
-//        render('users/remove', Array(
-//            'data' => getUser($identifier)));
-//    } else {
-//        header("Location: ./dashboard");
-//    }
-//}
-
 function create()
 {
     $url = $_SERVER['REQUEST_URI'];
