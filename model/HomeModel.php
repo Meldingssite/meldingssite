@@ -16,11 +16,11 @@ function sendDataModel()
     foreach ($_POST as $key => $ls_value) {
         if ($key != 'id') {
             $keys[] = $key;
-            $data[] = $ls_value;
+            $data[] = $conn->mysqli_real_escape_string($ls_value);
         }
     }
     foreach ($_FILES as $Filekey => $ls_value) {
-        $Filekeys[] = $Filekey;
+        $Filekeys[] = $conn->mysqli_real_escape_string($Filekey);
 
     }
     // convert array to comma separated string
@@ -47,7 +47,7 @@ function sendDataModel()
             echo "Error: " . $sql . "<br>" . $conn->error;
     } else // id given
     {
-        $id = $_POST['id'];
+        $id = $conn->mysqli_real_escape_string($_POST['id']);
         //  var_dump($_POST);
         for ($x = 0;
              $x < count($keys);
