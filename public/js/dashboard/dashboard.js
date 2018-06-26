@@ -66,6 +66,7 @@ function checkDB() {
     // var schoolNaam = toggleSpace(school);
     var Data = new FormData();
     Data.append("id", currentID);
+    console.log(currentID);
     // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
     xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
@@ -88,6 +89,7 @@ function checkDB() {
 
 //Begin of constructing a element
 function addElements(dataRetrieve) {
+    console.dir(dataRetrieve);
     if (dataRetrieve[0] !== null) {
         console.log(dataRetrieve[1] + " " + currentID);
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
@@ -106,9 +108,10 @@ function addElements(dataRetrieve) {
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
-            // console.log(items["type"]);
-            // console.dir(items);
+            console.log(items["type"]);
+            console.dir(items);
             updateContent(items);
+            currentID = dataRetrieve[1];
         }
     }
     else {
@@ -167,8 +170,7 @@ function constructMelding(meldingData) {
             keys[x] !== 'TimeStamp'
         ) {
             melding +=
-                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" +
-                keys[x] + ": " + meldingData[keys[x]] +
+                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + meldingData[keys[x]] +
                 "</p>";
             height += TextHeight;
         }
@@ -199,10 +201,10 @@ function updateContent(items) {
 
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
-                if (document.getElementById(keys[x] + items['id']).innerHTML !== keys[x] + ": " + items[keys[x]]
+                if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
-                        document.getElementById(keys[x] + items['id']).innerHTML = keys[x] + ": " + items[keys[x]];
+                        document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
                     }
                     else {
                         document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
@@ -217,8 +219,6 @@ function updateContent(items) {
                 addItems += "<p id ='"
                     + keys[x] + "" + items['id']
                     + "'>"
-                    + keys[x]
-                    + ": "
                     + toggleSpace(items[keys[x]], true)
                     + "</p>";
                 DIV.innerHTML += addItems;
@@ -291,7 +291,7 @@ function toggleSpace(item, ForceSpace = false) {
 
 function extraInfo(elementID) {
     var target = document.getElementById('extraInfo' + elementID);
-    if (target.style.display !== 'block') {
+    if (target.style.height == 0 || target.style.height < "10px") {
         unfade(target, elementID, 'block');
     }
     else {
@@ -327,7 +327,7 @@ function fade(element, elementID = null) {
     var timer = setInterval(function () {
         if (op <= 0.1) {
             clearInterval(timer);
-            element.style.display = 'none';
+            // element.style.display = 'none';
             // element.style.padding = 0;
 
         }
