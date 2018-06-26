@@ -133,8 +133,8 @@ function constructMelding(meldingData) {
         "</div>" +
         "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" +
         '<h1>' + meldingData['school'];
-    if (meldingData['locatieSpecifiek'] && meldingData['locatieSpecifiek'] !== undefined) {
-        melding += '</h1>+' + '<p>' + meldingData['locatieSpecifiek'] + '</p>';
+    if (meldingData['locatie'] && meldingData['locatie'] !== undefined) {
+        melding += '</h1>+' + '<p>' + meldingData['locatie'] + '</p>';
     }
     melding +=
         '</div>' +
@@ -161,7 +161,6 @@ function constructMelding(meldingData) {
             keys[x] !== "Completed" &&
             meldingData[keys[x]] != null &&
             meldingData[keys[x]] !== "" &&
-            keys[x] !== 'locatieSpecifiek' &&
             keys[x] !== 'locatie' &&
             keys[x] !== 'school' &&
             keys[x] !== 'type' &&
