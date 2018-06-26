@@ -70,8 +70,8 @@ function delete($identifier)
     }
     if (isset($_SESSION['username'])) {
         removeUser($identifier);
-        render('users/remove', array('user' => $identifier));
+        header("Location: " . URL . "users");
     } else {
-        header("Location: ./dashboard");
+        header("Location: " . URL . "/dashboard");
     }
 }
