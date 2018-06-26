@@ -76,3 +76,7 @@ main {
 .deleteMail:hover {
     color: rgb(233, 38, 38);
 }
+
+input[type='email'], input[type='password'] {
+    padding: 10px 5px;
+}
