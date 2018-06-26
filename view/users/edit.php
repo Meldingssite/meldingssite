@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/forms.css">
 
 <header>
-    <h1>edit User</h1>
+    <h1><a href="<?php echo URL?>users"><i id='btnBack' class="fas fa-arrow-circle-left"></i><a>edit User</h1>
 </header>
 
 <main>

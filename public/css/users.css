@@ -82,3 +82,15 @@ input {
     font-size: 1em;
     margin: 5px 0;
 }
+
+#btnBack {
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+    color: white;
+    transition: color .2s ease-out;
+}
+
+#btnBack:hover {
+    color: #bbb;
+}
