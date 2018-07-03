@@ -453,39 +453,6 @@
                 ]
               },
               {
-                "text": "wat voor een voertuig heeft u gezien (DEPRECATED)",
-                "type": "textInput",
-                "name": "voertuig",
-                "options": [
-                  {
-                    "name": "voertuigtype",
-                    "inputType": "text",
-                    "inhoud": "wat voor voertuig is het?"
-                  },
-                  {
-                    "name": "voertuigmerk",
-                    "inputType": "text",
-                    "inhoud": "wat is het merk van het voertuig?"
-                  },
-                  {
-                    "name": "voertuigkenteken",
-                    "inputType": "text",
-                    "inhoud": "wat is het kenteken van het voertuig?"
-                  },
-                  {
-                    "name": "voertuigkleur",
-                    "inputType": "text",
-                    "inhoud": "welke kleur heeft het voertuig?"
-                  },
-                  {
-                    "name": "voertuiganders",
-                    "inputType": "text",
-                    "inhoud": "heeft het voertuig nog andere opvallende kenmerken?"
-                  }
-                ]
-              },
-
-              {
                 "type": "radioButtons",
                 "text": "Is er een voertuig betrokken?",
                 "name": "voertuigToggle",
