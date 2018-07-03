@@ -27,7 +27,7 @@ function unfade(element) {  //  So dirty
 
     var timer = setInterval(function () {
         if (op >= 1) {
-            element.style.height = '100px';
+            element.style.height = 'initial';
             clearInterval(timer);
             element.style.opacity = 1;
         }

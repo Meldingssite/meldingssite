@@ -60,6 +60,10 @@ input[type=radio] {
     height: 1.5em;
 }
 
+section.input input[type='text'] {
+    width: 100%;
+}
+
 /*Radio buttons*/
 @keyframes colorSwap {
     from {
