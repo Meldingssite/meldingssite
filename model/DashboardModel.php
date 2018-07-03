@@ -5,7 +5,7 @@ function retrieveElements()
     if (isset($_SESSION['username'])) {
 
         $conn = OpenDatabaseConnection();
-        $id = mysqli_escape_string($conn,$_POST['id']);
+        $id = $_POST['id'];
         $dataArray = [];
         $tabel = mainTable;
         $sql = "select * from `$tabel` where id=$id";
@@ -51,14 +51,13 @@ function deleteEntry()
 {
     if (isset($_SESSION['username'])) {
         $tabel = mainTable;
-
+        $id = $_POST['id'];
         // Create connection
         $conn = OpenDatabaseConnection();
         // Check connection
         if ($conn->connect_error)
             die("Connection failed: " . $conn->connect_error);
 
-        $id = mysqli_escape_string($conn,$_POST['id']);
         $sql = "select * from `$tabel` where id=$id";
         $result = $conn->query($sql);
         $data = $result->fetch_assoc();
@@ -88,7 +87,7 @@ function setCompleted()
         $tabel = mainTable;
         // Create connection
         $conn = OpenDatabaseConnection();
-        $id = mysqli_escape_string($conn,$_POST['id']);
+        $id = $_POST['id'];
         // Check connection
         if ($conn->connect_error)
             die("Connection failed: " . $conn->connect_error);
