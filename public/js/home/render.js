@@ -120,12 +120,13 @@ function renderTextInput(textInputObj) {
     var options = textInputObj.options;
     var textInputHTML = "";
     var names = [];
-
+    var height = 0;
 
     // Opening tag for radiobutton
     if (textInputObj.toggle === 'true') {
         textInputHTML += "<fieldset class='extraInfo' id='extraInfo" + textInputObj.name + "'><legend>"
             + textInputObj.text + "</legend>";
+        height += 60;
     }
     else if (textInputObj.name) {
         textInputHTML += "<fieldset id='" + textInputObj.name + "'><legend>"
@@ -139,6 +140,9 @@ function renderTextInput(textInputObj) {
     textInputHTML += "<section class=input>";
     //Inputs
     for (option in options) {
+        if (textInputObj.toggle === 'true') {
+            height += 40;
+        }
         textInputHTML += "<input";
         if (options[option].required) {
             textInputHTML += "required"
@@ -152,6 +156,9 @@ function renderTextInput(textInputObj) {
             + "'>";
         names.push(options[option].name);
     }
+    textInputHTML +=
+        '<div hidden=true id="height' + textInputObj.name + '">' + height + "</div>" +
+        "</div>";
     //closing tags
     textInputHTML += "</section></fieldset>";
 
@@ -192,9 +199,8 @@ function renderRadio(radioObj) {
     pageHTML.innerHTML += radioHTML;
     if (radioObj.toggle == 'true') {
         for (option in options) {
-            var element = "extraInfo" + radioObj.target;
             // console.log(element);
-            document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo('" + element + "','" + options[option].optie + "')");
+            document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo('" + radioObj.target + "','" + options[option].optie + "')");
         }
     }
     return radioObj.name;

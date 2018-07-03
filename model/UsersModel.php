@@ -38,25 +38,33 @@ function editUser($identifier)
 //    echo $newMail;
 //    var_dump($_POST);
     $conn = openDatabaseConnection();
-    $password = mysqli_escape_string($conn,$_POST['password']);
+    $password = mysqli_escape_string($conn, $_POST['password']);
+    $rights = mysqli_escape_string($conn, $_POST['rights']);
     $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
-    $newMail = mysqli_escape_string($conn,$_POST['email']);
-    $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass' WHERE email = '$identifier'";
+    $newMail = mysqli_escape_string($conn, $_POST['email']);
+    if ($password != null || $password != "" || $password != 'undefined')
+        $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass', rights = '$rights' WHERE email = '$identifier'";
+    else
+        $sql = "UPDATE `$tabel` SET email = '$newMail', rights = '$rights' WHERE email = '$identifier'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
+        header("Location: ../../users");
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
 }
 
 function removeUser($identifier)
 {
     $tabel = userTable;;
     $conn = openDatabaseConnection();
-    $email = mysqli_escape_string($conn,$identifier);
+    $email = mysqli_escape_string($conn, $identifier);
     $sql = "DELETE FROM `$tabel` WHERE email='$email'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
 //        sleep(1);
-//        header("Location: ./dashboard");
+        header("Location: ../users");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -69,9 +77,9 @@ function addUser()
         'cost' => passwordCost,
         'salt' => salt,
     ];
-    $password = mysqli_escape_string($conn,$_POST['password']);
+    $password = mysqli_escape_string($conn, $_POST['password']);
     $tabel = userTable;
-    $newMail = mysqli_escape_string($conn,$_POST['email']);
+    $newMail = mysqli_escape_string($conn, $_POST['email']);
     $newPass = password_hash($password, algo, $passwordOptions);
     $conn = openDatabaseConnection();
     $sql = "INSERT INTO `$tabel` (email, password) VALUES('$newMail', '$newPass')";
