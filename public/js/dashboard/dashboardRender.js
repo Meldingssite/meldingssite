@@ -152,8 +152,7 @@ function constructMelding(meldingData) {
         }
 
         else if (keys[x] === 'FILE') {
-            melding += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
-                +meldingData['id'] + '/' + meldingData[keys[x]]
+            melding += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[x]]
                 + "' id='" + keys[x] + meldingData['id'] + "'>";
             height += imgHeight + TextHeight;
         }
