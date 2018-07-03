@@ -205,25 +205,6 @@
                 ]
               },
               {
-                "text": "heeft u een wapen gezien?",
-                "type": "dropDown",
-                "name": "wapen",
-                "options": [
-                  {
-                    "name": "geweer",
-                    "text": "geweer"
-                  },
-                  {
-                    "name": "mes",
-                    "text": "mes"
-                  },
-                  {
-                    "name": "knuppel",
-                    "text": "knuppel"
-                  }
-                ]
-              },
-              {
                 "type": "radioButtons",
                 "text": "heeft u een wapen gezien?",
                 "name": "wapenToggle",
@@ -596,6 +577,97 @@
             "formAction": "formSubmit",
             "content": [
               {
+                "text": "Wat is er gestolen?",
+                "type": "textInput",
+                "name": "voorwerp",
+                "options": [
+                  {
+                    "name": "voorwerpDescription",
+                    "inputType": "text",
+                    "inhoud": "Beschrijf het voorwerp"
+                  },
+                  {
+                    "name": "voorwerpKleur",
+                    "inputType": "text",
+                    "inhoud": "Kleur van het gestolen voorwerp"
+                  },
+                  
+                  {
+                    "name": "voorwerpMerk",
+                    "inputType": "text",
+                    "inhoud": "Merk"
+                  },
+                  {
+                    "name": "voorwerpInhoud",
+                    "inputType": "text",
+                    "inhoud": "Inhoud van voorwerp"
+                  },
+                  {
+                    "name": "voorwerpAnders",
+                    "inputType": "text",
+                    "inhoud": "Andere kenmerken (bijv. achtergond van smartphone)"
+                  }
+                ]
+              },
+              {
+                "type": "radioButtons",
+                "text": "Is er een verdachte?",
+                "name": "persoonToggle",
+                "toggle": "true",
+                "target": "verdachte",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Beschrijf de verdachte",
+                "type": "textInput",
+                "name": "verdachte",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "p2naam",
+                    "inputType": "text",
+                    "inhoud": "Naam"
+                  },
+                  {
+                    "name": "p2huidskleur",
+                    "inputType": "text",
+                    "inhoud": "Huidskleur"
+                  },
+                  {
+                    "name": "p2geslacht",
+                    "inputType": "text",
+                    "inhoud": "Geslacht"
+                  },
+                  {
+                    "name": "p2leeftijd",
+                    "inputType": "text",
+                    "inhoud": "Leeftijd"
+                  },
+                  {
+                    "name": "p2kleding",
+                    "inputType": "text",
+                    "inhoud": "Kleding"
+                  },
+                  {
+                    "name": "p2anders",
+                    "inputType": "text",
+                    "inhoud": "Opvallende kenmerken aan persoon"
+                  }
+                ]
+              },
+
+              
+
+              {
                 "text": "wat kunt u hier verder over vertellen?",
                 "type": "textInput",
                 "options": [
@@ -606,6 +678,7 @@
                   }
                 ]
               },
+
 
               {
                 "type": "radioButtons",
@@ -734,6 +807,57 @@
             "formAction": "formSubmit",
             "content": [
               {
+                "type": "radioButtons",
+                "text": "Is er een voertuig bij betrokken?",
+                "name": "voertuigToggle",
+                "toggle": "true",
+                "target": "voertuig",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Voertuig",
+                "type": "textInput",
+                "name": "voertuig",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "voertuigtype",
+                    "inputType": "text",
+                    "inhoud": "Wat voor voertuig is het?"
+                  },
+                  {
+                    "name": "voertuigmerk",
+                    "inputType": "text",
+                    "inhoud": "Voertuig merk"
+                  },
+                  {
+                    "name": "voertuigkenteken",
+                    "inputType": "text",
+                    "inhoud": "Kenteken"
+                  },
+                  {
+                    "name": "voertuigkleur",
+                    "inputType": "text",
+                    "inhoud": "Kleur van het voertuig"
+                  },
+                  {
+                    "name": "voertuiganders",
+                    "inputType": "text",
+                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                  }
+                ]
+              },
+              
+              {
                 "text": " wat kunt u hier verder over vertellen?",
                 "type": "textInput",
                 "options": [
@@ -793,10 +917,118 @@
                   {
                     "name": "extra",
                     "inputType": "text",
-                    "inhoud": "extra informatie"
+                    "inhoud": "Beschrijf het probleem"
                   }
                 ]
               },
+
+              {
+                "type": "radioButtons",
+                "text": "Moet er een persoon gemeldt worden?",
+                "name": "persoonToggle",
+                "toggle": "true",
+                "target": "verdachte",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Beschrijf de persoon",
+                "type": "textInput",
+                "name": "verdachte",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "p2naam",
+                    "inputType": "text",
+                    "inhoud": "Naam"
+                  },
+                  {
+                    "name": "p2huidskleur",
+                    "inputType": "text",
+                    "inhoud": "Huidskleur"
+                  },
+                  {
+                    "name": "p2geslacht",
+                    "inputType": "text",
+                    "inhoud": "Geslacht"
+                  },
+                  {
+                    "name": "p2leeftijd",
+                    "inputType": "text",
+                    "inhoud": "Leeftijd"
+                  },
+                  {
+                    "name": "p2kleding",
+                    "inputType": "text",
+                    "inhoud": "Kleding"
+                  },
+                  {
+                    "name": "p2anders",
+                    "inputType": "text",
+                    "inhoud": "Opvallende kenmerken aan persoon"
+                  }
+                ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "Moet er een voertuig gemeldt worden?",
+                "name": "voertuigToggle",
+                "toggle": "true",
+                "target": "voertuig",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Voertuig",
+                "type": "textInput",
+                "name": "voertuig",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "voertuigtype",
+                    "inputType": "text",
+                    "inhoud": "Wat voor voertuig is het?"
+                  },
+                  {
+                    "name": "voertuigmerk",
+                    "inputType": "text",
+                    "inhoud": "Voertuig merk"
+                  },
+                  {
+                    "name": "voertuigkenteken",
+                    "inputType": "text",
+                    "inhoud": "Kenteken"
+                  },
+                  {
+                    "name": "voertuigkleur",
+                    "inputType": "text",
+                    "inhoud": "Kleur van het voertuig"
+                  },
+                  {
+                    "name": "voertuiganders",
+                    "inputType": "text",
+                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                  }
+                ]
+              },
+
               {
                 "text": "contact gegevens",
                 "type": "textInput",
