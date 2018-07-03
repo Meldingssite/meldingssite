@@ -14,10 +14,12 @@
     /* Non-prefixed version, currently
     supported by Chrome and Opera */
 }
-button:focus {outline:0;}
 
+button:focus {
+    outline: 0;
+}
 
-body, main {
+body, main, #FORM {
     height: 100%;
 }
 
@@ -25,11 +27,11 @@ html {
     background-color: #ccc;
 }
 
-main {
+main, #FORM {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
 }
 
-body main:not(#dashboard) {
+body main:not(#dashboard), #FORM {
     display: block;
     max-width: 720px;
     margin: 0 auto;
@@ -52,7 +54,7 @@ header img {
     width: 100%;
 }
 
-main {
+main, #FORM {
     background: #fff;
     padding-top: 0px;
     padding-bottom: 1px;
