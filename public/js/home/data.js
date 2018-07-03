@@ -58,6 +58,7 @@ function dataSend(sendArray, school, id) {
 } //Sends Data To Database
 
 function submitContents(NaamString, school, id) {
+    document.getElementById('submit').innerHTML = 'Aanpassing verzenden';
     var naam = NaamString.split("|");
     var finalArray;
     finalArray = naam[0].split(',');

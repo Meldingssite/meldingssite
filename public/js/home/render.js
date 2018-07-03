@@ -360,7 +360,7 @@ function renderLocatieList(alertType, content, school) {
         + "','"
         + school
         + "'"
-        + ')"> Submit </button></section>';
+        + ')"> Verzenden </button></section>';
     //closing tags
     pageHTML.innerHTML += buttonHTML;
 }   //renders the buttons for places in the school
@@ -368,7 +368,7 @@ function renderLocatieList(alertType, content, school) {
 function renderSubmit(naam, school, id) {
 
     var submitHTML = "";
-    submitHTML += "<div class='btn'"
+    submitHTML += "<div id = 'submit' class='btn'"
         + "onclick=submitContents('";
     for (var x = 0; naam.length > x; x++) {
         if (Array.isArray(naam[x])) {
@@ -395,7 +395,7 @@ function renderSubmit(naam, school, id) {
         + '","'
         + id
         + '")>'
-        + "Submit"
+        + "Verzenden"
         + "</div>";
 
     document.getElementById("page").innerHTML += submitHTML;
