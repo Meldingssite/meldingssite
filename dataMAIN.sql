@@ -39,13 +39,14 @@ CREATE TABLE IF NOT EXISTS `MainTabel` (
   `FILE` varchar(50) DEFAULT NULL,
   `school` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- Data exporteren was gedeselecteerd
 -- Structuur van  tabel melding_site.users wordt geschreven
 CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `rights` int(11) DEFAULT NULL,
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
