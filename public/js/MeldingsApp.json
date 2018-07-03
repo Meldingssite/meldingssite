@@ -346,26 +346,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "type": "dropDown",
-                "text": "wat heeft u gezien?",
-                "name": "drugsExtra",
-                "options": [
-                  {
-                    "name": "handel",
-                    "text": "handel"
-                  },
-                  {
-                    "name": "gebruik",
-                    "text": "gebruik"
-                  },
-                  {
-                    "name": "anders",
-                    "text": "anders"
-                  }
-                ]
-              },
-
-              {
                 "type": "radioButtons",
                 "text": "Wat heeft u gezien?",
                 "name": "drugsToggle",
@@ -393,19 +373,9 @@
                 "toggle": "true",
                 "options": [
                   {
-                    "name": "naam",
+                    "name": "drugsAnders",
                     "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "inhoud": "Wat is er aan de hand?"
                   }
                 ]
               },

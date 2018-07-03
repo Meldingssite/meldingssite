@@ -21,7 +21,7 @@ function extraInfo(element, value) {
     }
 }   //Executed for radiobuttons used for revealing extra information
 
-function unfade(element) {
+function unfade(element) {  //  So dirty
     var op = 0.1;  // initial opacity
     element.style.display = 'block';
 
@@ -38,7 +38,7 @@ function unfade(element) {
 
 }   //Makes item reappear
 
-function fade(element) {
+function fade(element) {  //  Oh so dirty
     var op = 1;  // initial opacity
     element.style.height = '0';
     var timer = setInterval(function () {
