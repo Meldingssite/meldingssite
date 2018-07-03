@@ -50,6 +50,10 @@ label {
     padding: 10px 20px;
 }
 
+input {
+    padding-left: 5px;
+}
+
 legend + input {
     border-top: none;
     margin: 0;
