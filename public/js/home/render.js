@@ -88,7 +88,7 @@ function renderButton(buttonObj) {
 }   // Render Button Element
 
 function renderFormButton(buttonObj) {
-    var pageHTML = document.getElementById("page");
+    var pageHTML = document.getElementById('FORM');
     var options = buttonObj.options;
     var formButtonHTML = "";
 
@@ -118,7 +118,7 @@ function renderFormButton(buttonObj) {
 }   //  Render a button in a form
 
 function renderTextInput(textInputObj) {
-    var pageHTML = document.getElementById("page");
+    var pageHTML = document.getElementById('FORM');
     var options = textInputObj.options;
     var textInputHTML = "";
     var names = [];
@@ -173,7 +173,7 @@ function renderTextInput(textInputObj) {
 }   //  Render a field for inputting text
 
 function renderRadio(radioObj) {
-    var pageHTML = document.getElementById("page");
+    var pageHTML = document.getElementById('FORM');
     var options = radioObj.options;
     var radioHTML = "";
     // Opening tag for radiobutton
@@ -209,7 +209,7 @@ function renderRadio(radioObj) {
 }   // Renders radio buttons
 
 function renderDropDown(dropObj) {
-    var mainHTML = document.getElementsByTagName("main")[0];
+    var mainHTML = document.getElementById('FORM');
     var options = dropObj.options;
     var dropHTML = "";
 
@@ -238,7 +238,7 @@ function renderDropDown(dropObj) {
 }   // Renders dropdown buttons
 
 function renderFileUpload(uploadObj) {
-    var mainHTML = document.getElementsByTagName("main")[0];
+    var mainHTML = document.getElementById('FORM');
     var uploadHTML = "";
 
     // Opening tag for fileupload
@@ -256,11 +256,11 @@ function renderFileUpload(uploadObj) {
     return "file_" + uploadObj.name;
 }   // Renders FileUpload
 
-function renderForm(form) {
+function renderForm(form, school, id) {
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
         + form.formAction
-        + "' enctype='multipart/form-data'>";
+        + "' enctype='multipart/form-data' id='FORM'>";
     for (formElement in content)    //  determine pageElement type
     {
         if (content[formElement].type === "textInput") {
@@ -283,8 +283,9 @@ function renderForm(form) {
         // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
-    document.getElementById("page").innerHTML += "</form>";
-    return FormList;
+    renderSubmit(FormList, school, id);
+    
+    return;
 }      // renders a form and its elements
 
 function renderLocatieForm(alertType, school = null) {
@@ -410,7 +411,7 @@ function renderSubmit(naam, school, id) {
         + "Verzenden"
         + "</div>";
 
-    document.getElementById("page").innerHTML += submitHTML;
+    document.getElementById("FORM").innerHTML += submitHTML;
 
 }   //Renders submit button for going to next page
 
@@ -432,7 +433,7 @@ function renderPage(i = "Home", school = null, id = null) {
                 else if (content[pageElement].type === "button")
                     renderButton(content[pageElement]);
                 else if (content[pageElement].type === "form")
-                    renderSubmit(renderForm(content[pageElement]), school, id);
+                    renderForm(content[pageElement], school, id);
                 // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             }   //  determine pageElement type

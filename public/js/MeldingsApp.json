@@ -929,7 +929,6 @@
                 "text": "contact gegevens",
                 "type": "textInput",
                 "name": "persoon",
-                "toggle": "true",
                 "options": [
                   {
                     "required": "true",
