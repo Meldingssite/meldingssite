@@ -33,6 +33,7 @@ function toggleSpace(item, ForceSpace = false) {
 
 
 function extraInfo(elementID) {
+    document.getElementById('view' + elementID).style.color = "white";
     var target = document.getElementById('extraInfo' + elementID);
     if (target.style.height == 0 || target.style.height < "10px") {
         unfade(target, elementID, 'block');
@@ -79,4 +80,13 @@ function fade(element, elementID = null) {
         op -= op * 0.1;
     }, 30);
 
+}
+
+function updateNotify(element){
+    document.getElementById('view' + element['id']).style.color = "yellow";
+    alertSound("Alert");
+}
+function alertSound(audioName){
+    var audio = new Audio(IMAGE_DIR + '../audio/' + audioName);
+    audio.play();
 }

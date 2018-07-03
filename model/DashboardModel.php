@@ -168,7 +168,7 @@ function loginValid($emailTemp, $passTemp)
         if (mysqli_stmt_num_rows($stmt) == 1) {
             // Bind result variables
 
-            mysqli_stmt_bind_result($stmt, $username, $hashed_password);
+            mysqli_stmt_bind_result($stmt, $username, $hashed_password, $rights);
             if (mysqli_stmt_fetch($stmt)) {
                 $passwordOptions = [
                     'cost' => passwordCost,
@@ -181,6 +181,7 @@ function loginValid($emailTemp, $passTemp)
                     save the username to the session */
                     session_start();
                     $_SESSION['username'] = $username;
+                    $_SESSION['rights'] = $rights;
 
                     $out['success'] = TRUE;
                     $out['error'] = 0;

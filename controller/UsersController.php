@@ -9,7 +9,7 @@ function index()
         $url = substr_replace($url, "", -1);
         header("Location: $url");
     }
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['username']) && $_SESSION['rights'] > 1) {
         render('users/index', Array(
             'data' => getUsers()));
     } else {
@@ -24,7 +24,7 @@ function edit($identifier)
         $url = substr_replace($url, "", -1);
         header("Location: $url");
     }
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['username']) && $_SESSION['rights'] > 1) {
         render('users/edit', Array(
             'data' => getUser($identifier)));
     } else {
@@ -39,7 +39,7 @@ function create()
         $url = substr_replace($url, "", -1);
         header("Location: $url");
     }
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['username']) && $_SESSION['rights'] > 1) {
         render('users/create');
     } else {
         header("Location: ./dashboard");
@@ -53,7 +53,7 @@ function delete($identifier)
         $url = substr_replace($url, "", -1);
         header("Location: $url");
     }
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['username']) && $_SESSION['rights'] > 1) {
         removeUser($identifier);
         header("Location: " . URL . "users");
     } else {

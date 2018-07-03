@@ -12,24 +12,29 @@ xmlhttp.open("GET", SCRIPT_DIR + "MeldingsApp.json", true);
 xmlhttp.send();
 
 function extraInfo(element, value) {
+    var target = "extraInfo" + element;
     if (value == "Ja" || value == "ja") {
         console.log("unfading element");
-        unfade(document.getElementById(element));
+        unfade(document.getElementById(target), element);
     }
     else {
-        fade(document.getElementById(element));
+        fade(document.getElementById(target));
     }
 }   //Executed for radiobuttons used for revealing extra information
 
-function unfade(element) {
+function unfade(element, elementID = null, display = 'block') {
     var op = 0.1;  // initial opacity
-    element.style.display = 'block';
+    element.style.display = display;
+    // if (elementID != null)
+    var height = document.getElementById('height' + elementID).innerHTML;
+    // console.log(height);
 
     var timer = setInterval(function () {
         if (op >= 1) {
-            element.style.height = '100px';
+            element.style.height = height + 'px';
             clearInterval(timer);
             element.style.opacity = 1;
+            // element.style.padding = 0;
         }
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
@@ -38,21 +43,23 @@ function unfade(element) {
 
 }   //Makes item reappear
 
-function fade(element) {
+function fade(element, elementID = null) {
+    document.querySelector('div > input[name="test1"]')
     var op = 1;  // initial opacity
     element.style.height = '0';
     var timer = setInterval(function () {
         if (op <= 0.1) {
             clearInterval(timer);
-            element.style.display = 'none';
+            // element.style.display = 'none';
+            // element.style.padding = 0;
 
         }
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.2;
-    }, 50);
+        op -= op * 0.1;
+    }, 30);
 
-}   //Makes item disappear
+}
 
 function toggleSpace(item) {
     var returnItem = "";

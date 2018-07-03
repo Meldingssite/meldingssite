@@ -36,14 +36,14 @@ function route()
 				
 			}
 		} else {
-			require(ROOT . 'controller/ErrorController.php');
+			require(ROOT . 'controller/GONEErrorController.php');
 			call_user_func('index');
 		}
     }
     
     else {
 	
-		require(ROOT . 'controller/ErrorController.php');
+		require(ROOT . 'controller/GONEErrorController.php');
 		call_user_func('index');
 	
 	}
