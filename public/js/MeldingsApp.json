@@ -64,7 +64,7 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "upload een file",
+                "text": "Foto toevoegen",
                 "type": "upload",
                 "name": "test"
               },
@@ -364,6 +364,52 @@
                   }
                 ]
               },
+
+              {
+                "type": "radioButtons",
+                "text": "Wat heeft u gezien?",
+                "name": "drugsToggle",
+                "toggle": "true",
+                "target": "drugs",
+                "options": [
+                  {
+                    "optie": "handel",
+                    "text": "handel"
+                  },
+                  {
+                    "optie": "gebruik",
+                    "text": "gebruik"
+                  },
+                  {
+                    "optie": "ja",
+                    "text": "anders"
+                  }
+                ]
+              },
+              {
+                "text": "Anders",
+                "type": "textInput",
+                "name": "drugs",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
+              },
+
               {
                 "text": "foto's",
                 "type": "upload",
@@ -406,39 +452,6 @@
                   }
                 ]
               },
-              {
-                "text": "wat voor een voertuig heeft u gezien (DEPRECATED)",
-                "type": "textInput",
-                "name": "voertuig",
-                "options": [
-                  {
-                    "name": "voertuigtype",
-                    "inputType": "text",
-                    "inhoud": "wat voor voertuig is het?"
-                  },
-                  {
-                    "name": "voertuigmerk",
-                    "inputType": "text",
-                    "inhoud": "wat is het merk van het voertuig?"
-                  },
-                  {
-                    "name": "voertuigkenteken",
-                    "inputType": "text",
-                    "inhoud": "wat is het kenteken van het voertuig?"
-                  },
-                  {
-                    "name": "voertuigkleur",
-                    "inputType": "text",
-                    "inhoud": "welke kleur heeft het voertuig?"
-                  },
-                  {
-                    "name": "voertuiganders",
-                    "inputType": "text",
-                    "inhoud": "heeft het voertuig nog andere opvallende kenmerken?"
-                  }
-                ]
-              },
-
               {
                 "type": "radioButtons",
                 "text": "Is er een voertuig betrokken?",
