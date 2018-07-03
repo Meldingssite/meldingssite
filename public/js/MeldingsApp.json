@@ -393,38 +393,38 @@
                   {
                     "name": "p2naam",
                     "inputType": "text",
-                    "inhoud": "hoe heet hij/zij"
+                    "inhoud": "Naam"
                   },
                   {
                     "name": "p2huidskleur",
                     "inputType": "text",
-                    "inhoud": "huidskleur persoon"
+                    "inhoud": "Huidskleur"
                   },
                   {
                     "name": "p2geslacht",
                     "inputType": "text",
-                    "inhoud": "wat is het geslacht van deze persoon"
+                    "inhoud": "Geslacht"
                   },
                   {
                     "name": "p2leeftijd",
                     "inputType": "text",
-                    "inhoud": "hoe oud is de persoon"
+                    "inhoud": "Leeftijd"
                   },
                   {
                     "name": "p2kleding",
                     "inputType": "text",
-                    "inhoud": "wat voor kleding draagt de persoon"
+                    "inhoud": "Kleding"
                   },
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "heeft de persoon nog andere opvallende kenmerken"
+                    "inhoud": "Opvallende kenmerken aan persoon"
                   }
                 ]
               },
               {
                 "type": "radioButtons",
-                "text": "Is er een voertuig betrokken?",
+                "text": "Is er een voertuig bij betrokken?",
                 "name": "voertuigToggle",
                 "toggle": "true",
                 "target": "voertuig",
@@ -448,27 +448,27 @@
                   {
                     "name": "voertuigtype",
                     "inputType": "text",
-                    "inhoud": "wat voor voertuig is het?"
+                    "inhoud": "Wat voor voertuig is het?"
                   },
                   {
                     "name": "voertuigmerk",
                     "inputType": "text",
-                    "inhoud": "wat is het merk van het voertuig?"
+                    "inhoud": "Voertuig merk"
                   },
                   {
                     "name": "voertuigkenteken",
                     "inputType": "text",
-                    "inhoud": "wat is het kenteken van het voertuig?"
+                    "inhoud": "Kenteken"
                   },
                   {
                     "name": "voertuigkleur",
                     "inputType": "text",
-                    "inhoud": "welke kleur heeft het voertuig?"
+                    "inhoud": "Kleur van het voertuig"
                   },
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "heeft het voertuig nog andere opvallende kenmerken?"
+                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -482,6 +482,47 @@
                     "name": "extra",
                     "inputType": "text",
                     "inhoud": "extra informatie"
+                  }
+                ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
                   }
                 ]
               }
@@ -512,6 +553,47 @@
                     "inhoud": "extra informatie"
                   }
                 ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
               }
             ]
           }
@@ -538,6 +620,47 @@
                     "name": "extra",
                     "inputType": "text",
                     "inhoud": "extra informatie"
+                  }
+                ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
                   }
                 ]
               }
@@ -568,6 +691,47 @@
                     "inhoud": "extra informatie"
                   }
                 ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
               }
             ]
           }
@@ -594,6 +758,47 @@
                     "name": "extra",
                     "inputType": "text",
                     "inhoud": "extra informatie"
+                  }
+                ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
                   }
                 ]
               }
