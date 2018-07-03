@@ -1,6 +1,8 @@
 /*****************************************************************/
 /*** All Functions used to render elements to the page go here ***/
 /*****************************************************************/
+var legendHeight = 40;
+var textHeight = 45;
 var ID = 0;     //ID for remembering which question you're at
 var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
 var FormList = [];         //list op Inputs rendered on page for retrieving data
@@ -126,7 +128,7 @@ function renderTextInput(textInputObj) {
     if (textInputObj.toggle === 'true') {
         textInputHTML += "<fieldset class='extraInfo' id='extraInfo" + textInputObj.name + "'><legend>"
             + textInputObj.text + "</legend>";
-        height += 60;
+        height += legendHeight;
     }
     else if (textInputObj.name) {
         textInputHTML += "<fieldset id='" + textInputObj.name + "'><legend>"
@@ -141,7 +143,7 @@ function renderTextInput(textInputObj) {
     //Inputs
     for (option in options) {
         if (textInputObj.toggle === 'true') {
-            height += 40;
+            height += textHeight;
         }
         textInputHTML += "<input";
         if (options[option].required) {
