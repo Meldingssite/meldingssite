@@ -484,6 +484,47 @@
                     "inhoud": "extra informatie"
                   }
                 ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
               }
             ]
           }
@@ -510,6 +551,47 @@
                     "name": "extra",
                     "inputType": "text",
                     "inhoud": "extra informatie"
+                  }
+                ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
                   }
                 ]
               }
@@ -540,6 +622,47 @@
                     "inhoud": "extra informatie"
                   }
                 ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
               }
             ]
           }
@@ -568,6 +691,47 @@
                     "inhoud": "extra informatie"
                   }
                 ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
               }
             ]
           }
@@ -594,6 +758,47 @@
                     "name": "extra",
                     "inputType": "text",
                     "inhoud": "extra informatie"
+                  }
+                ]
+              },
+
+              {
+                "type": "radioButtons",
+                "text": "mogen we contact met u opnemen?",
+                "name": "contact",
+                "toggle": "true",
+                "target": "persoon",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "contact gegevens",
+                "type": "textInput",
+                "name": "persoon",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
                   }
                 ]
               }
