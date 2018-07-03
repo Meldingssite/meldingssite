@@ -209,10 +209,11 @@ function updateContent(items) {
 
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] === 'FILE') {
             if (document.getElementById(keys[x] + items['id'])) {
-                updated = true;
-                if (document.getElementById(keys[x] + items['id']).src !== "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]]
+
+                if (document.getElementById(keys[x] + items['id']).src !== document.location.origin + "/public/uploads/" + items['id'] + "/" + items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
-                    document.getElementById(keys[x] + items['id']).src = "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]];
+                    document.getElementById(keys[x] + items['id']).src = document.location.origin + "/public/uploads/" + items['id'] + "/" + items[keys[x]];
+                    updated = true;
                 }
             }
             else if (document.getElementById(keys[x] + items['id']) == null) {
@@ -234,7 +235,7 @@ function updateContent(items) {
 
     }
     document.getElementById('height' + items['id']).innerHTML = height.toString();
-    if(updated === true){
+    if (updated === true) {
         updateNotify(items);
     }
 }
