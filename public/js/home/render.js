@@ -139,7 +139,11 @@ function renderTextInput(textInputObj) {
     textInputHTML += "<section class=input>";
     //Inputs
     for (option in options) {
-        textInputHTML += "<input type='"
+        textInputHTML += "<input";
+        if (options[option].required) {
+            textInputHTML += "required"
+        }
+        textInputHTML += " type='"
             + options[option].inputType
             + "' name='"
             + options[option].name
