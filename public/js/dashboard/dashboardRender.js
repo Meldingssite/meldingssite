@@ -4,7 +4,7 @@ var currentID = 1;
 var dataRetrieve = null;
 var TextHeight = 19;
 var imgHeight = 150;
-var refreshRate = 500;
+var refreshRate = 50;
 
 
 function startbasic() {
@@ -165,7 +165,7 @@ function constructMelding(meldingData) {
 //Updates Content of latest Melding
 function updateContent(items) {
     // console.log("Updating content");
-    updateNotify(items);
+    var updated = false;
     var keys = Object.keys(items);
     var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
@@ -179,9 +179,11 @@ function updateContent(items) {
                     && document.getElementById(keys[x] + items['id']) != null) {
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
                         document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+                        updated = true;
                     }
                     else {
                         document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
+                        updated = true;
                     }
 
                 }
@@ -197,20 +199,24 @@ function updateContent(items) {
                     + "</p>";
                 DIV.innerHTML += addItems;
                 height += imgHeight + TextHeight;
+                updated = true;
             }
             else {
                 console.log(keys[x] + items['id']);
+                updated = true;
             }
         }
 
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] === 'FILE') {
             if (document.getElementById(keys[x] + items['id'])) {
+                updated = true;
                 if (document.getElementById(keys[x] + items['id']).src !== "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
                     document.getElementById(keys[x] + items['id']).src = "http://localhost/meldingssite/public/uploads/" + items['id'] + "/" + items[keys[x]];
                 }
             }
             else if (document.getElementById(keys[x] + items['id']) == null) {
+                updated = true;
                 // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
@@ -225,7 +231,11 @@ function updateContent(items) {
             }
         }
 
+
     }
     document.getElementById('height' + items['id']).innerHTML = height.toString();
+    if(updated === true){
+        updateNotify(items);
+    }
 }
 
