@@ -33,6 +33,7 @@ function toggleSpace(item, ForceSpace = false) {
 
 
 function extraInfo(elementID) {
+    document.getElementById('view' + elementID).style.color = "white";
     var target = document.getElementById('extraInfo' + elementID);
     if (target.style.height == 0 || target.style.height < "10px") {
         unfade(target, elementID, 'block');
