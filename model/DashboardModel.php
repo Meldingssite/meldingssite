@@ -1,6 +1,6 @@
 <?php
 
-function retrieveElements()
+function retrieveElements($mode = null)
 {
     if (isset($_SESSION['username'])) {
 
@@ -8,7 +8,12 @@ function retrieveElements()
         $id = $_POST['id'];
         $dataArray = [];
         $tabel = mainTable;
-        $sql = "select * from `$tabel` where id=$id";
+        if($mode !== null){ // Get all uncompleted
+        $sql = "select * from `$tabel` where id=$id AND Completed = 'false'";
+        }
+        else{
+            $sql = "select * from `$tabel` where id=$id";
+        }
         $result = $conn->query($sql);
         $dataArray[0] = $result->fetch_assoc();
         $result2 = $conn->query("select MAX(id) from `$tabel`");

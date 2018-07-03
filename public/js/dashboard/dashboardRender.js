@@ -32,14 +32,14 @@ function startbasic() {
                 }
 
                 window.setInterval(function () {
-                    checkDB()
+                    checkDB('normal')
                 }, refreshRate);
 
             }
             else {
                 currentID = 1;
                 window.setInterval(function () {
-                    checkDB()
+                    checkDB('normal')
                 }, refreshRate);
 
             }
@@ -56,35 +56,8 @@ function archief() {
     document.getElementById('btnArchive').onclick = startbasic;
     currentID = 1;
     window.setInterval(function () {
-        checkDB()
+        checkDB('archief')
     }, refreshRate);
-}
-
-//test
-function checkDB() {
-    // console.log(currentID);
-    // var schoolNaam = toggleSpace(school);
-    var Data = new FormData();
-    Data.append("id", currentID);
-    console.log(currentID);
-    // Data.append("school", schoolNaam);
-    var xDBhttp = new XMLHttpRequest();
-    xDBhttp.open("POST", "Dashboard/retrieveElements", true); // adding model function
-    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xDBhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.response) {
-                dataRetrieve = JSON.parse(this.response);
-                // console.log('adding Elements');
-                addElements(dataRetrieve);
-            }
-            else {
-                console.log('Nog geen meldingen!');
-            }
-        }
-    };
-    xDBhttp.send(Data);
-    console.log("Checking Database");
 }
 
 //Begin of constructing a element
@@ -254,138 +227,3 @@ function updateContent(items) {
     document.getElementById('height' + items['id']).innerHTML = height.toString();
 }
 
-//Deletes empty properties in the object
-function deleteNullProperties(deleteObject) {
-    var keys = Object.keys(deleteObject);
-    for (var x = 0; keys.length > x; x++) {
-        if (deleteObject[keys[x]] == null) {
-            delete deleteObject[keys[x]];
-        }
-    }
-    return deleteObject;
-}
-
-//Switches between _ and spaces for onclick arguments
-function toggleSpace(item, ForceSpace = false) {
-    var returnItem = "";
-    if (item.indexOf('_') > -1 || ForceSpace === true) {
-        returnItem = item.replace(new RegExp("_", "g"), ' ');
-    }
-    else if (item.indexOf(' ') > -1) {
-        returnItem = item.replace(new RegExp(" ", "g"), '_');
-    }
-    else if (item.indexOf(' ') < 1 && item.indexOf('_') < 1) {
-        return item;
-    }
-    else {
-        console.log("something appears to have gone wrong with" + item + " !");
-    }
-    return returnItem;
-}   // Switches between _ and spaces
-
-// Active check for Database every 0.5 seconds
-
-// document.getElementById("Dashboard").innerHTML = "";
-
-
-function extraInfo(elementID) {
-    var target = document.getElementById('extraInfo' + elementID);
-    if (target.style.height == 0 || target.style.height < "10px") {
-        unfade(target, elementID, 'block');
-    }
-    else {
-        fade(target, elementID);
-    }
-}
-
-function unfade(element, elementID = null, display = 'block') {
-    var op = 0.1;  // initial opacity
-    element.style.display = display;
-    if (elementID != null)
-        var height = document.getElementById('height' + elementID).innerHTML;
-    // console.log(height);
-
-    var timer = setInterval(function () {
-        if (op >= 1) {
-            element.style.height = height + 'px';
-            clearInterval(timer);
-            element.style.opacity = 1;
-            // element.style.padding = 0;
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, 10);
-
-}   //Makes item reappear
-
-function fade(element, elementID = null) {
-    document.querySelector('div > input[name="test1"]')
-    var op = 1;  // initial opacity
-    element.style.height = '0';
-    var timer = setInterval(function () {
-        if (op <= 0.1) {
-            clearInterval(timer);
-            // element.style.display = 'none';
-            // element.style.padding = 0;
-
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.1;
-    }, 30);
-
-}
-
-function remove(item) {
-    if (confirm("weet u zeker dat u deze melding wilt verwijderen?") === true) {
-        var Data = new FormData();
-        Data.append("id", item);
-        // Data.append("school", schoolNaam);
-        var Removehttp = new XMLHttpRequest();
-        Removehttp.open("POST", "Dashboard/deleteEntry", true); // adding model function
-        // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-        Removehttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.response) {
-                    console.log("Item removed!")
-                }
-                else {
-                    console.log('There has been an unknown error!');
-                }
-            }
-        };
-        Removehttp.send(Data);
-        console.log("removing Item");
-        fade(document.getElementById('extraInfo' + item));
-        fade(document.getElementById('alertItem' + item));
-    }
-}
-
-function finished(item) {
-
-    var Data = new FormData();
-    // console.log(currentID);
-    Data.append("id", item);
-    // Data.append("school", schoolNaam);
-    var xFinhttp = new XMLHttpRequest();
-    xFinhttp.open("POST", "Dashboard/setCompleted", true); // adding model function
-    // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
-    xFinhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.response) {
-                if (this.response.includes('true')) {
-
-                    document.getElementById('finished' + item).children[0].style.color = '#59ba5d';
-                }
-                else {
-                    document.getElementById('finished' + item).children[0].style.color = 'white';
-                }
-            }
-            else {
-                console.log('Nog geen meldingen!');
-            }
-        }
-    };
-    xFinhttp.send(Data);
-}

@@ -139,7 +139,11 @@ function renderTextInput(textInputObj) {
     textInputHTML += "<section class=input>";
     //Inputs
     for (option in options) {
-        textInputHTML += "<input type='"
+        textInputHTML += "<input";
+        if (options[option].required) {
+            textInputHTML += "required"
+        }
+        textInputHTML += " type='"
             + options[option].inputType
             + "' name='"
             + options[option].name
@@ -180,7 +184,7 @@ function renderRadio(radioObj) {
             + "  <label for='" +
             options[option].optie
             + "'>"
-            + options[option].optie
+            + options[option].text
             + "</label>";
     }
     //closing tags
@@ -352,7 +356,7 @@ function renderLocatieList(alertType, content, school) {
     }
     buttonHTML += "<input class='btn'"
         + " id='locatieName'"
-        + " placeholder='Geef meer informatie over de lokatie'"
+        + " placeholder='Waar is het precies gebeurt?'"
         + ">";
     buttonHTML += '<button  id="lokaalButton" onclick="locatieSend('
         + "'"
@@ -360,7 +364,7 @@ function renderLocatieList(alertType, content, school) {
         + "','"
         + school
         + "'"
-        + ')"> Submit </button></section>';
+        + ')"> Verzenden </button></section>';
     //closing tags
     pageHTML.innerHTML += buttonHTML;
 }   //renders the buttons for places in the school
@@ -368,7 +372,7 @@ function renderLocatieList(alertType, content, school) {
 function renderSubmit(naam, school, id) {
 
     var submitHTML = "";
-    submitHTML += "<div class='btn'"
+    submitHTML += "<div id = 'submit' class='btn'"
         + "onclick=submitContents('";
     for (var x = 0; naam.length > x; x++) {
         if (Array.isArray(naam[x])) {
@@ -395,7 +399,7 @@ function renderSubmit(naam, school, id) {
         + '","'
         + id
         + '")>'
-        + "Submit"
+        + "Verzenden"
         + "</div>";
 
     document.getElementById("page").innerHTML += submitHTML;
@@ -435,17 +439,4 @@ function renderPage(i = "Home", school = null, id = null) {
     }
 
 } // Renders a page, which is an array of objects
-
-
-
-//
-// Array.prototype.clean = function (deleteValue) {
-//     for (var i = 0; i < this.length; i++) {
-//         if (this[i] == deleteValue) {
-//             this.splice(i, 1);
-//             i--;
-//         }
-//     }
-//     return this;
-// };
 

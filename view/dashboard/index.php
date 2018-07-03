@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/dashboard.css">
-<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboard.js"></script>
+<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardRender.js"></script>
+<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardData.js"></script>
+<script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardMain.js"></script>
 <script>window.onload = startbasic();</script>
 <header>
 <!--    <img src="--><?php //echo IMAGE_DIR ?><!--banner.jpg" alt="">-->

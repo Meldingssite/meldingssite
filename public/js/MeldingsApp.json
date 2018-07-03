@@ -64,7 +64,7 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "upload een file",
+                "text": "Foto toevoegen",
                 "type": "upload",
                 "name": "test"
               },
@@ -80,17 +80,6 @@
                   {
                     "optie": "Nee",
                     "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
                   }
                 ]
               },
@@ -151,17 +140,7 @@
             "type": "form",
             "formAction": "formSubmit",
             "content": [
-              {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
+              
               {
                 "text": "hoeveel personen zijn er aan het vechten",
                 "type": "textInput",
@@ -189,6 +168,36 @@
                   {
                     "name": "knuppel",
                     "text": "knuppel"
+                  }
+                ]
+              },
+              {
+                "type": "radioButtons",
+                "text": "heeft u een wapen gezien?",
+                "name": "wapenToggle",
+                "toggle": "true",
+                "target": "wapen",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Wapens",
+                "type": "textInput",
+                "name": "wapen",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "weaponDescription",
+                    "inputType": "text",
+                    "inhoud": "Beschrijf de waargenomen wapens"
                   }
                 ]
               },
@@ -249,17 +258,6 @@
             "type": "form",
             "formAction": "formSubmit",
             "content": [
-              {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
               {
                 "text": "wat voor een wapen heeft u gezien",
                 "type": "dropDown",
@@ -348,17 +346,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
-              {
                 "type": "dropDown",
                 "text": "wat heeft u gezien?",
                 "name": "drugsExtra",
@@ -377,6 +364,52 @@
                   }
                 ]
               },
+
+              {
+                "type": "radioButtons",
+                "text": "Wat heeft u gezien?",
+                "name": "drugsToggle",
+                "toggle": "true",
+                "target": "drugs",
+                "options": [
+                  {
+                    "optie": "handel",
+                    "text": "handel"
+                  },
+                  {
+                    "optie": "gebruik",
+                    "text": "gebruik"
+                  },
+                  {
+                    "optie": "ja",
+                    "text": "anders"
+                  }
+                ]
+              },
+              {
+                "text": "Anders",
+                "type": "textInput",
+                "name": "drugs",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "naam",
+                    "inputType": "text",
+                    "inhoud": "naam"
+                  },
+                  {
+                    "name": "email",
+                    "inputType": "email",
+                    "inhoud": "email"
+                  },
+                  {
+                    "name": "telefoon",
+                    "inputType": "Tel",
+                    "inhoud": "telefoon"
+                  }
+                ]
+              },
+
               {
                 "text": "foto's",
                 "type": "upload",
@@ -420,9 +453,27 @@
                 ]
               },
               {
-                "text": "wat voor een voertuig heeft u gezien",
+                "type": "radioButtons",
+                "text": "Is er een voertuig betrokken?",
+                "name": "voertuigToggle",
+                "toggle": "true",
+                "target": "voertuig",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Voertuig",
                 "type": "textInput",
                 "name": "voertuig",
+                "toggle": "true",
                 "options": [
                   {
                     "name": "voertuigtype",
@@ -451,6 +502,7 @@
                   }
                 ]
               },
+
               {
                 "text": "wat kunt u hier verder over vertellen?",
                 "type": "textInput",
@@ -481,17 +533,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
-              {
                 "text": "wat kunt u hier verder over vertellen?",
                 "type": "textInput",
                 "options": [
@@ -519,17 +560,6 @@
             "type": "form",
             "formAction": "formSubmit",
             "content": [
-              {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
               {
                 "text": "wat kunt u hier verder over vertellen?",
                 "type": "textInput",
@@ -559,17 +589,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
-              {
                 "text": " wat kunt u hier verder over vertellen?",
                 "type": "textInput",
                 "options": [
@@ -597,17 +616,6 @@
             "type": "form",
             "formAction": "formSubmit",
             "content": [
-              {
-                "text": "kunt u nog meer zeggen over de locatie",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "locatieSpecifiek",
-                    "inputType": "text",
-                    "inhoud": "kunt u nog meer zeggen over de locatie"
-                  }
-                ]
-              },
               {
                 "text": "wat is het probleem?",
                 "type": "textInput",
