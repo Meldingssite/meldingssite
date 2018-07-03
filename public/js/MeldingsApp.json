@@ -310,6 +310,63 @@
                   }
                 ]
               },
+
+              {
+                "type": "radioButtons",
+                "text": "Moet er een persoon gemeldt worden?",
+                "name": "persoonToggle",
+                "toggle": "true",
+                "target": "verdachte",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Beschrijf de persoon",
+                "type": "textInput",
+                "name": "verdachte",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "p2naam",
+                    "inputType": "text",
+                    "inhoud": "Naam"
+                  },
+                  {
+                    "name": "p2huidskleur",
+                    "inputType": "text",
+                    "inhoud": "Huidskleur"
+                  },
+                  {
+                    "name": "p2geslacht",
+                    "inputType": "text",
+                    "inhoud": "Geslacht"
+                  },
+                  {
+                    "name": "p2leeftijd",
+                    "inputType": "text",
+                    "inhoud": "Leeftijd"
+                  },
+                  {
+                    "name": "p2kleding",
+                    "inputType": "text",
+                    "inhoud": "Kleding"
+                  },
+                  {
+                    "name": "p2anders",
+                    "inputType": "text",
+                    "inhoud": "Opvallende kenmerken aan persoon"
+                  }
+                ]
+              },
+
               {
                 "text": " wat kunt u hier verder over vertellen?",
                 "type": "textInput",
