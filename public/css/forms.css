@@ -15,9 +15,9 @@ form {
 }
 
 /*form > * {*/
-    /*display: inline-block;*/
-    /*width: 100%;*/
-    /*height: 2em;*/
+/*display: inline-block;*/
+/*width: 100%;*/
+/*height: 2em;*/
 /*}*/
 
 fieldset {
@@ -60,7 +60,7 @@ input[type=radio] {
     height: 1.5em;
 }
 
-section.input input[type='email'], input[type='Tel'], input[type='text'] {
+section.input > input[type='email'], section.input > input[type='Tel'], section.input > input[type='text'] {
     width: 100%;
     font-size: 1em;
 }
