@@ -5,7 +5,10 @@ var dataRetrieve = null;
 var TextHeight = 19;
 var imgHeight = 150;
 var refreshRate = 50;
-
+var imageURL = imageURL = document.location.origin + "/public/uploads/";
+if (document.location.origin.includes('localhost')) {
+    imageURL = document.location.origin + "/meldingssite/public/uploads/"
+}
 
 function startbasic() {
     if (document.getElementById('Dashboard') != null) {
@@ -210,9 +213,9 @@ function updateContent(items) {
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] === 'FILE') {
             if (document.getElementById(keys[x] + items['id'])) {
 
-                if (document.getElementById(keys[x] + items['id']).src !== document.location.origin + "/public/uploads/" + items['id'] + "/" + items[keys[x]]
+                if (document.getElementById(keys[x] + items['id']).src !== imageURL + "/" + items['id'] + "/" + items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
-                    document.getElementById(keys[x] + items['id']).src = document.location.origin + "/public/uploads/" + items['id'] + "/" + items[keys[x]];
+                    document.getElementById(keys[x] + items['id']).src = imageURL + "/" + items['id'] + "/" + items[keys[x]];
                     updated = true;
                 }
             }
