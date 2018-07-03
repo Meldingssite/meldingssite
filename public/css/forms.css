@@ -51,7 +51,7 @@ label {
 }
 
 input {
-    padding-left: 5px;
+    padding-left: 5px !important;
 }
 
 legend + input {
