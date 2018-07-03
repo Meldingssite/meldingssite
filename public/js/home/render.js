@@ -180,7 +180,7 @@ function renderRadio(radioObj) {
             + "  <label for='" +
             options[option].optie
             + "'>"
-            + options[option].optie
+            + options[option].text
             + "</label>";
     }
     //closing tags
@@ -352,7 +352,7 @@ function renderLocatieList(alertType, content, school) {
     }
     buttonHTML += "<input class='btn'"
         + " id='locatieName'"
-        + " placeholder='Geef meer informatie over de lokatie'"
+        + " placeholder='Waar is het precies gebeurt?'"
         + ">";
     buttonHTML += '<button  id="lokaalButton" onclick="locatieSend('
         + "'"

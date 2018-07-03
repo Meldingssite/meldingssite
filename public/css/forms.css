@@ -80,10 +80,10 @@ input[type=radio] {
 .inputGroup label {
     text-align: center;
     line-height: 42px;
-    padding: 0;
+    padding: 0 8px;
     margin: 0;
-    border-radius: 50%;
-    width: 42px;
+    border-radius: 50px;
+    min-width: 42px;
     height: 42px;
     display: inline-block;
     background-color: #b4c9ea !important;
@@ -93,7 +93,7 @@ input[type=radio] {
 
 .inputGroup input[type="radio"] {
     opacity: 0;
-    width: 42px;
+    min-width: 42px;
     height: 42px;
     z-index: 2;
     position: absolute;
