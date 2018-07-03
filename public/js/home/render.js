@@ -147,7 +147,7 @@ function renderTextInput(textInputObj) {
         }
         textInputHTML += "<input";
         if (options[option].required) {
-            textInputHTML += "required"
+            textInputHTML += " required"
         }
         textInputHTML += " type='"
             + options[option].inputType

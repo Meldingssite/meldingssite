@@ -42,7 +42,8 @@ function editUser($identifier)
     $rights = mysqli_escape_string($conn, $_POST['rights']);
     $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
     $newMail = mysqli_escape_string($conn, $_POST['email']);
-    if ($password != null || $password != "" || $password != 'undefined')
+//    die(var_dump($password));
+    if ($password != null && $password != '' && $password != 'undefined')
         $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass', rights = '$rights' WHERE email = '$identifier'";
     else
         $sql = "UPDATE `$tabel` SET email = '$newMail', rights = '$rights' WHERE email = '$identifier'";
