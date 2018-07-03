@@ -80,3 +80,12 @@ function fade(element, elementID = null) {
     }, 30);
 
 }
+
+function updateNotify(element){
+    document.getElementById('view' + element['id']).style.color = "yellow";
+    alertSound("Alert");
+}
+function alertSound(audioName){
+    var audio = new Audio(IMAGE_DIR + '../audio/' + audioName);
+    audio.play();
+}

@@ -95,6 +95,7 @@ function addElements(dataRetrieve) {
 
 //Constructs a melding
 function constructMelding(meldingData) {
+    alertSound("Alert");
     var melding = "";
     var elementName = 'view' + meldingData['id'];
     melding +=
@@ -164,6 +165,7 @@ function constructMelding(meldingData) {
 //Updates Content of latest Melding
 function updateContent(items) {
     // console.log("Updating content");
+    updateNotify(items);
     var keys = Object.keys(items);
     var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
