@@ -85,6 +85,58 @@
               },
               {
                 "type": "radioButtons",
+                "text": "Is er een voertuig bij betrokken?",
+                "name": "voertuigToggle",
+                "toggle": "true",
+                "target": "voertuig",
+                "options": [
+                  {
+                    "optie": "Ja",
+                    "text": "ja"
+                  },
+                  {
+                    "optie": "Nee",
+                    "text": "nee"
+                  }
+                ]
+              },
+              {
+                "text": "Voertuig",
+                "type": "textInput",
+                "name": "voertuig",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "voertuigtype",
+                    "inputType": "text",
+                    "inhoud": "Wat voor voertuig is het?"
+                  },
+                  {
+                    "name": "voertuigmerk",
+                    "inputType": "text",
+                    "inhoud": "Voertuig merk"
+                  },
+                  {
+                    "name": "voertuigkenteken",
+                    "inputType": "text",
+                    "inhoud": "Kenteken"
+                  },
+                  {
+                    "name": "voertuigkleur",
+                    "inputType": "text",
+                    "inhoud": "Kleur van het voertuig"
+                  },
+                  {
+                    "name": "voertuiganders",
+                    "inputType": "text",
+                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                  }
+                ]
+              },
+
+
+              {
+                "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
                 "name": "contact",
                 "toggle": "true",
