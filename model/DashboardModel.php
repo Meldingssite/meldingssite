@@ -183,7 +183,9 @@ function loginValid($emailTemp, $passTemp)
                     return $out;
                 } else {
                     // Display an error message if password is not valid
-                    $password_err = 'The password you entered was not valid.';
+                    $out['success'] = FALSE;
+                    $out['error'] = 2;
+                    return $out;
                 }
             }
         } else {
@@ -202,7 +204,7 @@ function loginValid($emailTemp, $passTemp)
         echo "Error: " . $conn->error . "\n";
 
         $out['success'] = FALSE;
-        $out['error'] = '3';
+        $out['error'] = 3;
         return $out;
 //        echo "Oops! Something went wrong. Please try again later.";
 
