@@ -112,7 +112,7 @@
 }
 
 .extraInfo {
-     overflow: hidden;
+    overflow: hidden;
     display: block;
     height: 0;
     opacity: 0;
@@ -121,7 +121,7 @@
     transition-timing-function: linear;
     transition-delay: 0s;
 
-    padding-left:65px;
+    padding-left: 65px;
     /*margin-top: 15px;*/
 
     background: #669;
@@ -135,10 +135,12 @@
     flex-wrap: wrap;
     align-items: flex-end;
 }
-.extraInfo p{
-    display:block;
+
+.extraInfo p {
+    display: block;
 
 }
+
 .extraInfo:not(img) {
     /*margin: 15px 0;*/
 }
