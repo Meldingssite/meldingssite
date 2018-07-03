@@ -64,7 +64,6 @@ function removeUser($identifier)
 
 function addUser()
 {
-    $conn = openDatabaseConnection();
     echo 'test';
     $passwordOptions = [
         'cost' => passwordCost,
@@ -74,7 +73,7 @@ function addUser()
     $tabel = userTable;
     $newMail = mysqli_escape_string($conn,$_POST['email']);
     $newPass = password_hash($password, algo, $passwordOptions);
-
+    $conn = openDatabaseConnection();
     $sql = "INSERT INTO `$tabel` (email, password) VALUES('$newMail', '$newPass')";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
