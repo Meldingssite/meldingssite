@@ -87,6 +87,6 @@ function updateNotify(element){
     alertSound("Alert");
 }
 function alertSound(audioName){
-    var audio = new Audio(IMAGE_DIR + '../audio/' + audioName);
+    var audio = new Audio(IMAGE_DIR + '../audio/' + audioName + ".mp3");
     audio.play();
 }
