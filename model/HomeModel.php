@@ -2,9 +2,11 @@
 
 function sendDataModel()
 {
-    /****************************
-     *     Sends Data to Database
-     ****************************/
+    /**************************
+     * sendDataModel
+     **************************
+     * Sends Data to Database
+     */
 
     //  Variable Init
     $school = $_POST['School'];

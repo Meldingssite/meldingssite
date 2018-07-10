@@ -2,6 +2,11 @@
 
 function retrieveElements($mode = null)
 {
+    /**************************
+     * retrieveElements()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
 
         $conn = OpenDatabaseConnection();
@@ -44,6 +49,11 @@ function retrieveElements($mode = null)
 
 function startID()
 {
+    /**************************
+     * startID()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
         $conn = OpenDatabaseConnection();
         $tabel = mainTable;
@@ -54,6 +64,11 @@ function startID()
 
 function deleteEntry()
 {
+    /**************************
+     * deleteEntry()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
         $tabel = mainTable;
         $id = $_POST['id'];
@@ -87,6 +102,11 @@ function deleteEntry()
 
 function setCompleted()
 {
+    /**************************
+     * setCompleted()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
         $dataArray = [];
         $tabel = mainTable;
@@ -127,6 +147,11 @@ function setCompleted()
 
 function loginValid($emailTemp, $passTemp)
 {
+    /**************************
+     * loginValid()
+     **************************
+     * DESCRIPTION HERE
+     */
     $conn = OpenDatabaseConnection();
     // Check if username is empty
     if (empty(trim($emailTemp))) {
@@ -222,6 +247,13 @@ function loginValid($emailTemp, $passTemp)
 
 function logOut()
 {
+    /**************************
+     * logOut()
+     **************************
+     * Ends current session and returns to dashboard
+     * 
+     * ToDo: This shouldn't be in the model
+     */
     session_destroy();
     $_SESSION = array();
     header("Location: ../dashboard");

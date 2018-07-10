@@ -5,6 +5,11 @@
 
 function getUsers()
 {
+    /**************************
+     * getUsers()
+     **************************
+     * Returns all users from the database.
+     */
     $tabel = userTable;
     if (isset($_SESSION['username'])) {
         $conn = openDatabaseConnection();
@@ -17,6 +22,11 @@ function getUsers()
 
 function getUser($identifier)
 {
+    /**************************
+     * getUser()
+     **************************
+     * Returns a single user from the database.
+     */
     $tabel = userTable;
     if (isset($_SESSION['username'])) {
         $conn = openDatabaseConnection();
@@ -29,6 +39,11 @@ function getUser($identifier)
 
 function editUser($identifier)
 {
+    /**************************
+     * editUser()
+     **************************
+     * Edit a users name, address and/or rights in the database
+     */
     $passwordOptions = [
         'cost' => passwordCost,
     ];
@@ -54,6 +69,11 @@ function editUser($identifier)
 
 function removeUser($identifier)
 {
+    /**************************
+     * removeUser()
+     **************************
+     * Delete user from the database
+     */
     $tabel = userTable;;
     $conn = openDatabaseConnection();
     $email = mysqli_escape_string($conn, $identifier);
@@ -68,6 +88,11 @@ function removeUser($identifier)
 
 function addUser()
 {
+    /**************************
+     * addUser()
+     **************************
+     * Creates a new user in the database
+     */
     $conn = openDatabaseConnection();
     echo 'test';
     $passwordOptions = [
