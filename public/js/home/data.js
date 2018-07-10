@@ -60,10 +60,8 @@ function dataSend(sendArray, school, id) {
 function submitContents(NaamString, school, id) {
     document.getElementById('submit').innerHTML = 'Aanpassing verzenden';
     var naam = NaamString.split("|");
-    console.log(naam);
     var finalArray;
     finalArray = naam[0].split(',');
-    console.log(finalArray);
     for (x = 1; naam.length > x; x++) {
         naam[x] = naam[x].split(',');
         if (naam[x] != "" && naam[x] !== undefined && naam[x] != null)
@@ -75,11 +73,10 @@ function submitContents(NaamString, school, id) {
     var dataArray = [];
     var nameArray = [];
     naam = finalArray;
-    console.dir(finalArray);
 
     for (var x = 0; x < naam.length; x++) {
         var check = false;
-        console.dir(naam);
+
         //Case Multiple Items in array
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
@@ -88,9 +85,9 @@ function submitContents(NaamString, school, id) {
 
                 var name = naam[x][y];
                 if (name) {
-                    console.log(name);
 
                     if (document.getElementsByName(name)[0].parentElement.parentElement.id.includes("extraInfo")) {
+
                         if (document.getElementsByName(name)[0].value) {
                             dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                             nameElementsArray[y] = name;
@@ -99,27 +96,20 @@ function submitContents(NaamString, school, id) {
                     }
 
                     else if (document.getElementsByName(name)[0].value) {
-                        console.log("Hij doet hier:" + name);
                         dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
                         nameElementsArray[y] = name;
-                        console.log(name);
-                        console.log(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
                         check = true;
                     }
                 }
             }
             if (check === true) {
-                var naamTemp;
-                if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.includes("extraInfo")) {
-                    naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.replace("extraInfo", "");
-                }
-                else {
-                    console.log(naam[x][0]);
-                    naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id;
-                }
+                if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.includes("extraInfo"))
+                    var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.replace("extraInfo", "");
+                else
+                    var naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id;
+
                 dataArray.push(dataElementsArray);
                 nameArray.push(naamTemp);
-                // console.log(naamTemp);
             }
         }
         //Case Multiple Items
@@ -168,9 +158,9 @@ function submitContents(NaamString, school, id) {
 
     }
 
+    ;
+    sendArray = [nameArray, dataArray];
 
-    var sendArray = [nameArray, dataArray];
-    console.dir(sendArray);
     dataSend(sendArray, school, id);
 } //Executed on pressing submit and prepares data for being send to Database
 

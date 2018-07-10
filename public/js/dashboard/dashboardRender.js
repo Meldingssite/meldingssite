@@ -67,8 +67,8 @@ function archief() {
 function addElements(dataRetrieve) {
     console.dir(dataRetrieve);
     if (dataRetrieve[0] !== null) {
-        console.log(currentID);
-        if (currentID !== dataRetrieve[1]  && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
+        console.log(dataRetrieve[1] + " " + currentID);
+        if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
             var items = deleteNullProperties(dataRetrieve[0]);
@@ -84,6 +84,8 @@ function addElements(dataRetrieve) {
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
+            console.log(items["type"]);
+            console.dir(items);
             updateContent(items);
             currentID = dataRetrieve[1];
         }
@@ -143,7 +145,6 @@ function constructMelding(meldingData) {
             keys[x] !== 'id' &&
             keys[x] !== 'TimeStamp'
         ) {
-            console.log(meldingData[keys[x]].match(/','/g).length);
             melding +=
                 "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + meldingData[keys[x]] +
                 "</p>";
@@ -168,15 +169,14 @@ function updateContent(items) {
     // console.log("Updating content");
     var updated = false;
     var keys = Object.keys(items);
-    var height;
+    var height = Number(document.getElementById('height' + items['id']).innerHTML);
+
     for (var x = 0; keys.length > x; x++) {
 
-        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'id' && keys[x] !== 'FILE') {
+        if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
 
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
-                height = Number(document.getElementById('height' + items['id']).innerHTML);
-
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]]
                     && document.getElementById(keys[x] + items['id']) != null) {
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
@@ -191,8 +191,7 @@ function updateContent(items) {
                 }
             }
             else if (document.getElementById(keys[x] + items['id']) == null) {
-
-                console.log(keys[x] + items['id']);
+                // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
                 addItems += "<p id ='"
@@ -201,7 +200,7 @@ function updateContent(items) {
                     + toggleSpace(items[keys[x]], true)
                     + "</p>";
                 DIV.innerHTML += addItems;
-                height += TextHeight;
+                height += imgHeight + TextHeight;
                 updated = true;
             }
             else {
@@ -237,17 +236,7 @@ function updateContent(items) {
 
 
     }
-
-    if (document.getElementById('height' + items['id']) == null) {
-
-        // console.log(keys[x] + items['id']);
-        var DIV = document.getElementById('extraInfo' + items['id']);
-        var addItems = '<div hidden=true id="height' + items['id'] + '">' + height + "</div>" +
-            "</div>";
-        DIV.innerHTML += addItems;
-    }
-    else
-        document.getElementById('height' + items['id']).innerHTML = height.toString();
+    document.getElementById('height' + items['id']).innerHTML = height.toString();
     if (updated === true) {
         updateNotify(items);
     }
