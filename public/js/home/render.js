@@ -367,7 +367,7 @@ function renderLocatieList(alertType, content, school) {
         + " id='locatieName'"
         + " placeholder='Waar is het precies gebeurt?'"
         + ">";
-    buttonHTML += '<button  id="lokaalButton" onclick="locatieSend('
+    buttonHTML += '<button  id="lokaalButton" class="btn" onclick="locatieSend('
         + "'"
         + alertType
         + "','"
