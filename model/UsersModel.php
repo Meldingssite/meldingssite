@@ -31,6 +31,7 @@ function editUser($identifier)
 {
     $passwordOptions = [
         'cost' => passwordCost,
+        'salt' => salt,
     ];
     $tabel = userTable;
 
@@ -76,6 +77,7 @@ function addUser()
     echo 'test';
     $passwordOptions = [
         'cost' => passwordCost,
+        'salt' => salt,
     ];
 
     $password = mysqli_escape_string($conn, $_POST['password']);
