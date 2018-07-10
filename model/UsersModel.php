@@ -34,14 +34,11 @@ function editUser($identifier)
     ];
     $tabel = userTable;
 
-//    echo $newMail;
-//    var_dump($_POST);
     $conn = openDatabaseConnection();
     $password = mysqli_escape_string($conn, $_POST['password']);
     $rights = mysqli_escape_string($conn, $_POST['rights']);
     $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
     $newMail = mysqli_escape_string($conn, $_POST['email']);
-//    die(var_dump($password));
     if ($password != null && $password != '' && $password != 'undefined')
         $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass', rights = '$rights' WHERE email = '$identifier'";
     else
@@ -63,7 +60,6 @@ function removeUser($identifier)
     $sql = "DELETE FROM `$tabel` WHERE email='$email'";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
-//        sleep(1);
         header("Location: ../users");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
