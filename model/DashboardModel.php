@@ -172,6 +172,7 @@ function loginValid($emailTemp, $passTemp)
             if (mysqli_stmt_fetch($stmt)) {
                 $passwordOptions = [
                     'cost' => passwordCost,
+                    'salt' => salt,
                 ];
                 $pass = password_hash($pass, algo, $passwordOptions);
                 if ($pass == $hashed_password) { //TODO hash Password
