@@ -98,7 +98,7 @@ function addElements(dataRetrieve) {
 
 //Constructs a melding
 function constructMelding(meldingData) {
-    alertSound("Alert");
+    // alertSound("Alert");
     var melding = "";
     var elementName = 'view' + meldingData['id'];
     melding +=
@@ -136,10 +136,13 @@ function constructMelding(meldingData) {
     for (var x = 0; keys.length > x; x++) {
         var Inhoud = meldingData[keys[x]];
         var comma = Inhoud.match(/,/g || []);
+        var content = meldingData[keys[x]];
         if (comma != null) {
-            height += TextHeight * comma.length - 1;
-            meldingData[keys[x]] = meldingData[keys[x]].replace(new RegExp(",", "g"), '<br>');
+            var calculation = TextHeight * comma.length - 1;
+            height += calculation;
+            content = meldingData[keys[x]].replace(new RegExp(",", "g"), '<br>');
         }
+
         if (
             keys[x] !== "Completed" &&
             meldingData[keys[x]] != null &&
@@ -153,7 +156,7 @@ function constructMelding(meldingData) {
         ) {
 
             melding +=
-                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + meldingData[keys[x]] +
+                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + content +
                 "</p>";
             height += TextHeight;
         }
@@ -182,14 +185,14 @@ function updateContent(items) {
         var Inhoud = items[keys[x]];
         var comma = Inhoud.match(/,/g || []);
         var content = '';
+        content = items[keys[x]];
+
         if (comma != null && keys[x] !== 'FILE') {
-            // height += TextHeight * comma.length - 1;
+            console.log(comma.length);
+            var calculation = TextHeight * (comma.length - 1);
+            height += calculation;
             content = items[keys[x]].replace(new RegExp(",", "g"), '<br>');
         }
-        else{
-            content = items[keys[x]]
-        }
-
 
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
 
@@ -198,6 +201,7 @@ function updateContent(items) {
 
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== content
                     && document.getElementById(keys[x] + items['id']) != null) {
+
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
                         document.getElementById(keys[x] + items['id']).innerHTML = content;
                         console.log(content);
@@ -256,9 +260,10 @@ function updateContent(items) {
 
 
     }
-    document.getElementById('height' + items['id']).innerHTML = height.toString();
+    // updated = true;
     if (updated === true) {
         updateNotify(items);
+        document.getElementById('height' + items['id']).innerHTML = height.toString();
     }
 }
 
