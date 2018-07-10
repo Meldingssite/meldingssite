@@ -4,6 +4,11 @@ session_start();
 
 function index()
 {
+    /**************************
+     * index()
+     **************************
+     * DESCRIPTION HERE
+     */
     $url = $_SERVER['REQUEST_URI'];
     if (substr($url, -1) == "/") {
         $url = substr_replace($url, "", -1);
@@ -19,6 +24,11 @@ function index()
 
 function edit($identifier)
 {
+    /**************************
+     * edit()
+     **************************
+     * DESCRIPTION HERE
+     */
     $url = $_SERVER['REQUEST_URI'];
     if (substr($url, -1) == "/") {
         $url = substr_replace($url, "", -1);
@@ -34,6 +44,11 @@ function edit($identifier)
 
 function create()
 {
+    /**************************
+     * create()
+     **************************
+     * DESCRIPTION HERE
+     */
     $url = $_SERVER['REQUEST_URI'];
     if (substr($url, -1) == "/") {
         $url = substr_replace($url, "", -1);
@@ -48,6 +63,11 @@ function create()
 
 function delete($identifier)
 {
+    /**************************
+     * delete()
+     **************************
+     * DESCRIPTION HERE
+     */
     $url = $_SERVER['REQUEST_URI'];
     if (substr($url, -1) == "/") {
         $url = substr_replace($url, "", -1);

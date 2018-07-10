@@ -133,8 +133,6 @@
                   }
                 ]
               },
-
-
               {
                 "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
@@ -192,7 +190,6 @@
             "type": "form",
             "formAction": "formSubmit",
             "content": [
-              
               {
                 "text": "hoeveel personen zijn er aan het vechten",
                 "type": "textInput",
@@ -207,9 +204,9 @@
               {
                 "type": "radioButtons",
                 "text": "heeft u een wapen gezien?",
-                "name": "wapenToggle",
+                "name": "wapen",
                 "toggle": "true",
-                "target": "wapen",
+                "target": "wapentype",
                 "options": [
                   {
                     "optie": "Ja",
@@ -224,11 +221,11 @@
               {
                 "text": "Wapens",
                 "type": "textInput",
-                "name": "wapen",
+                "name": "wapentype",
                 "toggle": "true",
                 "options": [
                   {
-                    "name": "weaponDescription",
+                    "name": "wapentype",
                     "inputType": "text",
                     "inhoud": "Beschrijf de waargenomen wapens"
                   }
@@ -310,13 +307,12 @@
                   }
                 ]
               },
-
               {
                 "type": "radioButtons",
                 "text": "Moet er een persoon gemeldt worden?",
                 "name": "persoonToggle",
                 "toggle": "true",
-                "target": "verdachte",
+                "target": "extraPersoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -331,7 +327,7 @@
               {
                 "text": "Beschrijf de persoon",
                 "type": "textInput",
-                "name": "verdachte",
+                "name": "extraPersoon",
                 "toggle": "true",
                 "options": [
                   {
@@ -366,7 +362,6 @@
                   }
                 ]
               },
-
               {
                 "text": " wat kunt u hier verder over vertellen?",
                 "type": "textInput",
@@ -469,7 +464,18 @@
                   }
                 ]
               },
-
+              {
+                "text": "wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "name": "extra",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
+                  }
+                ]
+              },
               {
                 "text": "Foto toevoegen",
                 "type": "upload",
@@ -562,20 +568,6 @@
                   }
                 ]
               },
-
-              {
-                "text": "wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "name": "extra",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
-              },
-
               {
                 "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
@@ -634,6 +626,17 @@
             "formAction": "formSubmit",
             "content": [
               {
+                "text": "wat kunt u hier verder over vertellen?",
+                "type": "textInput",
+                "options": [
+                  {
+                    "name": "extra",
+                    "inputType": "text",
+                    "inhoud": "extra informatie"
+                  }
+                ]
+              },
+              {
                 "text": "Wat is er gestolen?",
                 "type": "textInput",
                 "name": "voorwerp",
@@ -648,7 +651,6 @@
                     "inputType": "text",
                     "inhoud": "Kleur van het gestolen voorwerp"
                   },
-                  
                   {
                     "name": "voorwerpMerk",
                     "inputType": "text",
@@ -671,7 +673,7 @@
                 "text": "Is er een verdachte?",
                 "name": "persoonToggle",
                 "toggle": "true",
-                "target": "verdachte",
+                "target": "extraPersoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -686,7 +688,7 @@
               {
                 "text": "Beschrijf de verdachte",
                 "type": "textInput",
-                "name": "verdachte",
+                "name": "extraPersoon",
                 "toggle": "true",
                 "options": [
                   {
@@ -721,22 +723,6 @@
                   }
                 ]
               },
-
-              
-
-              {
-                "text": "wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
-              },
-
-
               {
                 "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
@@ -799,7 +785,7 @@
                 "text": "Moet er een persoon gemeldt worden?",
                 "name": "persoonToggle",
                 "toggle": "true",
-                "target": "verdachte",
+                "target": "extraPersoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -814,7 +800,7 @@
               {
                 "text": "Beschrijf de persoon",
                 "type": "textInput",
-                "name": "verdachte",
+                "name": "extraPersoon",
                 "toggle": "true",
                 "options": [
                   {
@@ -860,7 +846,6 @@
                   }
                 ]
               },
-
               {
                 "type": "radioButtons",
                 "text": "mogen we contact met u opnemen?",
@@ -968,7 +953,6 @@
                   }
                 ]
               },
-              
               {
                 "text": " wat kunt u hier verder over vertellen?",
                 "type": "textInput",
@@ -1033,13 +1017,12 @@
                   }
                 ]
               },
-
               {
                 "type": "radioButtons",
                 "text": "Moet er een persoon gemeldt worden?",
                 "name": "persoonToggle",
                 "toggle": "true",
-                "target": "verdachte",
+                "target": "extraPersoon",
                 "options": [
                   {
                     "optie": "Ja",
@@ -1054,7 +1037,7 @@
               {
                 "text": "Beschrijf de persoon",
                 "type": "textInput",
-                "name": "verdachte",
+                "name": "extraPersoon",
                 "toggle": "true",
                 "options": [
                   {
@@ -1089,7 +1072,6 @@
                   }
                 ]
               },
-
               {
                 "type": "radioButtons",
                 "text": "Moet er een voertuig gemeldt worden?",
@@ -1140,7 +1122,6 @@
                   }
                 ]
               },
-
               {
                 "text": "contact gegevens",
                 "type": "textInput",

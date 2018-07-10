@@ -2,16 +2,20 @@
 
 function retrieveElements($mode = null)
 {
+    /**************************
+     * retrieveElements()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
 
         $conn = OpenDatabaseConnection();
         $id = $_POST['id'];
         $dataArray = [];
         $tabel = mainTable;
-        if($mode !== null){ // Get all uncompleted
-        $sql = "select * from `$tabel` where id=$id AND Completed = 'false'";
-        }
-        else{
+        if ($mode !== null) { // Get all uncompleted
+            $sql = "select * from `$tabel` where id=$id AND Completed = 'false'";
+        } else {
             $sql = "select * from `$tabel` where id=$id";
         }
         $result = $conn->query($sql);
@@ -44,6 +48,11 @@ function retrieveElements($mode = null)
 
 function startID()
 {
+    /**************************
+     * startID()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
         $conn = OpenDatabaseConnection();
         $tabel = mainTable;
@@ -54,6 +63,11 @@ function startID()
 
 function deleteEntry()
 {
+    /**************************
+     * deleteEntry()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
         $tabel = mainTable;
         $id = $_POST['id'];
@@ -87,6 +101,11 @@ function deleteEntry()
 
 function setCompleted()
 {
+    /**************************
+     * setCompleted()
+     **************************
+     * DESCRIPTION HERE
+     */
     if (isset($_SESSION['username'])) {
         $dataArray = [];
         $tabel = mainTable;
@@ -127,6 +146,11 @@ function setCompleted()
 
 function loginValid($emailTemp, $passTemp)
 {
+    /**************************
+     * loginValid()
+     **************************
+     * DESCRIPTION HERE
+     */
     $conn = OpenDatabaseConnection();
     // Check if username is empty
     if (empty(trim($emailTemp))) {
@@ -170,12 +194,8 @@ function loginValid($emailTemp, $passTemp)
 
             mysqli_stmt_bind_result($stmt, $username, $hashed_password, $rights);
             if (mysqli_stmt_fetch($stmt)) {
-                $passwordOptions = [
-                    'cost' => passwordCost,
-                    'salt' => salt,
-                ];
-                $pass = password_hash($pass, algo, $passwordOptions);
-                if ($pass == $hashed_password) { //TODO hash Password
+
+                if (password_verify($passTemp, $hashed_password)) { //TODO hash Password
 
                     /* Password is correct, so start a new session and
                     save the username to the session */
@@ -223,6 +243,13 @@ function loginValid($emailTemp, $passTemp)
 
 function logOut()
 {
+    /**************************
+     * logOut()
+     **************************
+     * Ends current session and returns to dashboard
+     *
+     * ToDo: This shouldn't be in the model
+     */
     session_destroy();
     $_SESSION = array();
     header("Location: ../dashboard");
