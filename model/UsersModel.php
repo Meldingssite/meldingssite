@@ -82,8 +82,9 @@ function addUser()
     $tabel = userTable;
     $newMail = mysqli_escape_string($conn, $_POST['email']);
     $newPass = password_hash($password, algo, $passwordOptions);
+    $rights = mysqli_escape_string($conn, $_POST['rights']);
 
-    $sql = "INSERT INTO `$tabel` (email, password) VALUES('$newMail', '$newPass')";
+    $sql = "INSERT INTO `$tabel` (email, password, rights) VALUES('$newMail', '$newPass', '$rights')";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
         header("Location: ../users");
