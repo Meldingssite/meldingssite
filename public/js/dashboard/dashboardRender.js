@@ -157,6 +157,15 @@ function constructMelding(meldingData) {
     var keys = Object.keys(meldingData);
     var height = 30;
     for (var x = 0; keys.length > x; x++) {
+        var Inhoud = meldingData[keys[x]];
+        var comma = Inhoud.match(/,/g || []);
+        var content = meldingData[keys[x]];
+        if (comma != null) {
+            var calculation = TextHeight * comma.length - 1;
+            height += calculation;
+            content = meldingData[keys[x]].replace(new RegExp(",", "g"), '<br>');
+        }
+
         if (
             keys[x] !== "Completed" &&
             meldingData[keys[x]] != null &&
@@ -168,8 +177,9 @@ function constructMelding(meldingData) {
             keys[x] !== 'id' &&
             keys[x] !== 'TimeStamp'
         ) {
+
             melding +=
-                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + meldingData[keys[x]] +
+                "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + content +
                 "</p>";
             height += TextHeight;
         }
@@ -200,15 +210,29 @@ function updateContent(items) {
     var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
     for (var x = 0; keys.length > x; x++) {
+        var Inhoud = items[keys[x]];
+        var comma = Inhoud.match(/,/g || []);
+        var content = '';
+        content = items[keys[x]];
+
+        if (comma != null && keys[x] !== 'FILE') {
+            console.log(comma.length);
+            var calculation = TextHeight * (comma.length - 1);
+            height += calculation;
+            content = items[keys[x]].replace(new RegExp(",", "g"), '<br>');
+        }
 
         if (items[keys[x]] != null && items[keys[x]] !== "" && keys[x] !== 'TimeStamp' && keys[x] !== "Completed" && keys[x] !== 'type' && keys[x] !== 'school' && keys[x] !== 'locatie' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'id' && keys[x] !== 'FILE') {
 
             // console.log(items[keys[x]]);
             if (document.getElementById(keys[x] + items['id'])) {
-                if (document.getElementById(keys[x] + items['id']).innerHTML !== items[keys[x]]
+
+                if (document.getElementById(keys[x] + items['id']).innerHTML !== content
                     && document.getElementById(keys[x] + items['id']) != null) {
+
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
-                        document.getElementById(keys[x] + items['id']).innerHTML = items[keys[x]];
+                        document.getElementById(keys[x] + items['id']).innerHTML = content;
+                        console.log(content);
                         updated = true;
                     }
                     else {
@@ -225,10 +249,10 @@ function updateContent(items) {
                 addItems += "<p id ='"
                     + keys[x] + "" + items['id']
                     + "'>"
-                    + toggleSpace(items[keys[x]], true)
+                    + content
                     + "</p>";
                 DIV.innerHTML += addItems;
-                height += imgHeight + TextHeight;
+                height += TextHeight;
                 updated = true;
             }
             else {
@@ -252,7 +276,7 @@ function updateContent(items) {
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
                 addItems += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' +
-                    +items['id'] + '/' + items[keys[x]]
+                    +items['id'] + '/' + content
                     + "' id='" + keys[x] + items['id'] + "'>";
                 height += imgHeight;
                 DIV.innerHTML += addItems;
@@ -264,8 +288,9 @@ function updateContent(items) {
 
 
     }
-    document.getElementById('height' + items['id']).innerHTML = height.toString();
+    // updated = true;
     if (updated === true) {
         updateNotify(items);
+        document.getElementById('height' + items['id']).innerHTML = height.toString();
     }
 }

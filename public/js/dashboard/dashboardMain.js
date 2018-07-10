@@ -123,5 +123,6 @@ function alertSound(audioName){
      */
 
     var audio = new Audio(IMAGE_DIR + '../audio/' + audioName + ".mp3");
+    audio.loop = false;
     audio.play();
 }

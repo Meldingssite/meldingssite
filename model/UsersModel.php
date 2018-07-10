@@ -54,6 +54,7 @@ function editUser($identifier)
     $rights = mysqli_escape_string($conn, $_POST['rights']);
     $newPass = password_hash($password, PASSWORD_BCRYPT, $passwordOptions);
     $newMail = mysqli_escape_string($conn, $_POST['email']);
+
     if ($password != null && $password != '' && $password != 'undefined')
         $sql = "UPDATE `$tabel` SET email = '$newMail', password= '$newPass', rights = '$rights' WHERE email = '$identifier'";
     else
@@ -95,14 +96,12 @@ function addUser()
      */
     $conn = openDatabaseConnection();
     echo 'test';
-    $passwordOptions = [
-        'cost' => passwordCost,
-    ];
+   
 
     $password = mysqli_escape_string($conn, $_POST['password']);
     $tabel = userTable;
     $newMail = mysqli_escape_string($conn, $_POST['email']);
-    $newPass = password_hash($password, algo, $passwordOptions);
+    $newPass = password_hash($password, algo);
     $rights = mysqli_escape_string($conn, $_POST['rights']);
 
     $sql = "INSERT INTO `$tabel` (email, password, rights) VALUES('$newMail', '$newPass', '$rights')";

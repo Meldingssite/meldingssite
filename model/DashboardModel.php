@@ -13,10 +13,9 @@ function retrieveElements($mode = null)
         $id = $_POST['id'];
         $dataArray = [];
         $tabel = mainTable;
-        if($mode !== null){ // Get all uncompleted
-        $sql = "select * from `$tabel` where id=$id AND Completed = 'false'";
-        }
-        else{
+        if ($mode !== null) { // Get all uncompleted
+            $sql = "select * from `$tabel` where id=$id AND Completed = 'false'";
+        } else {
             $sql = "select * from `$tabel` where id=$id";
         }
         $result = $conn->query($sql);
@@ -195,11 +194,8 @@ function loginValid($emailTemp, $passTemp)
 
             mysqli_stmt_bind_result($stmt, $username, $hashed_password, $rights);
             if (mysqli_stmt_fetch($stmt)) {
-                $passwordOptions = [
-                    'cost' => passwordCost,
-                ];
-                $pass = password_hash($pass, algo, $passwordOptions);
-                if ($pass == $hashed_password) { //TODO hash Password
+
+                if (password_verify($passTemp, $hashed_password)) { //TODO hash Password
 
                     /* Password is correct, so start a new session and
                     save the username to the session */
@@ -251,7 +247,7 @@ function logOut()
      * logOut()
      **************************
      * Ends current session and returns to dashboard
-     * 
+     *
      * ToDo: This shouldn't be in the model
      */
     session_destroy();
