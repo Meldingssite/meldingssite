@@ -1,9 +1,18 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
+<link rel="stylesheet" href="<?php echo URL ?>public/css/menu.css">
 <header>
     <h1>Gebruikers<h1>
 </header>
 
 <main>
+    <div id="Menu">
+        <div class="clearfix"></div>
+        <a id="btnLogout" href="dashboard/">
+            <i id='btnBack' class="fas fa-arrow-circle-left"></i>
+            <p>Terug naar Dashboard</p>
+        </a>
+    </div>
+
     <div style='float:right'>
         <a href="users/create">
             <i id="addUser" class="fas fa-user-plus"></i>

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo URL ?>public/css/dashboard.css">
+<link rel="stylesheet" href="<?php echo URL ?>public/css/users.css">
 <script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardRender.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardData.js"></script>
 <script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardMain.js"></script>
