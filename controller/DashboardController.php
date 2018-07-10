@@ -12,6 +12,11 @@ if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
 
 function index($msg = null)
 {
+    /**************************
+     * index()
+     **************************
+     * Renders either login or dashboard
+     */
     $url = $_SERVER['REQUEST_URI'];
     if (substr($url, -1) == "/") {
         $url = substr_replace($url, "", -1);
@@ -29,6 +34,11 @@ function index($msg = null)
 
 function Login()
 {
+    /**************************
+     * Login()
+     **************************
+     * DESCRIPTION HERE
+     */
     $url = $_SERVER['REQUEST_URI'];
     if (substr($url, -1) == "/") {
         $url = substr_replace($url, "", -1);
@@ -47,11 +57,10 @@ function Login()
 
 function retrieveLogin()
 {
+    /**************************
+     * retrieveLogin()
+     **************************
+     * DESCRIPTION HERE
+     */
     echo "Neem contact op met piet";
 }
-
-
-//function bugTest()
-//{
-//    render("dashboard/new");
-//}
