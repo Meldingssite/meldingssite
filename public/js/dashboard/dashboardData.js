@@ -1,5 +1,10 @@
-//test
 function checkDB(mode) {
+    /**************************
+     * checkDB()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     // console.log(currentID);
     // var schoolNaam = toggleSpace(school);
     var Data = new FormData();
@@ -31,6 +36,12 @@ function checkDB(mode) {
 }
 
 function remove(item) {
+    /**************************
+     * remove()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     if (confirm("weet u zeker dat u deze melding wilt verwijderen?") === true) {
         var Data = new FormData();
         Data.append("id", item);
@@ -56,7 +67,12 @@ function remove(item) {
 }
 
 function finished(item) {
-
+    /**************************
+     * finished()
+     **************************
+     * DESCRIPTION HERE
+     */
+    
     var Data = new FormData();
     // console.log(currentID);
     Data.append("id", item);
