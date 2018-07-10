@@ -4,7 +4,7 @@ function checkDB(mode) {
     // var schoolNaam = toggleSpace(school);
     var Data = new FormData();
     Data.append("id", currentID);
-    // console.log(currentID);
+    console.log(currentID);
     // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
     if (mode == 'archief') {
