@@ -65,9 +65,9 @@ function archief() {
 
 //Begin of constructing a element
 function addElements(dataRetrieve) {
-    console.dir(dataRetrieve);
+    // console.dir(dataRetrieve);
     if (dataRetrieve[0] !== null) {
-        console.log(dataRetrieve[1] + " " + currentID);
+        // console.log(dataRetrieve[1] + " " + currentID);
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1];
             //delete onnodige null values
@@ -84,8 +84,8 @@ function addElements(dataRetrieve) {
         }
         else {
             var items = deleteNullProperties(dataRetrieve[0]);
-            console.log(items["type"]);
-            console.dir(items);
+            // console.log(items["type"]);
+            // console.dir(items);
             updateContent(items);
             currentID = dataRetrieve[1];
         }
@@ -204,7 +204,7 @@ function updateContent(items) {
                 updated = true;
             }
             else {
-                console.log(keys[x] + items['id']);
+                // console.log(keys[x] + items['id']);
                 updated = true;
             }
         }
@@ -230,7 +230,7 @@ function updateContent(items) {
                 DIV.innerHTML += addItems;
             }
             else {
-                console.log(keys[x] + items['id']);
+                // console.log(keys[x] + items['id']);
             }
         }
 
