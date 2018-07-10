@@ -38,8 +38,10 @@ CREATE TABLE IF NOT EXISTS `MainTabel` (
   `Completed` varchar(500) DEFAULT 'false',
   `FILE` varchar(500) DEFAULT NULL,
   `school` varchar(500) DEFAULT NULL,
+  `wapentype` varchar(500) DEFAULT NULL,
+  `voorwerp` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- Data exporteren was gedeselecteerd
 -- Structuur van  tabel melding_site.users wordt geschreven
