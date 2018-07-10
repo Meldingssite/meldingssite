@@ -64,7 +64,11 @@ input[type=radio] {
     height: 1.5em;
 }
 
-section.input > input[type='email'], section.input > input[type='Tel'], section.input > input[type='text'], select {
+section.input > input[type='email'],
+section.input > input[type='Tel'],
+section.input > input[type='text'],
+section.input > input[type='number'],
+select {
     width: 100%;
     font-size: 1em;
     padding-left: 5px;
