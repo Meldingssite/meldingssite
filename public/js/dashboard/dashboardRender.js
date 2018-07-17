@@ -189,7 +189,7 @@ function updateContent(items) {
 
         if (comma != null && keys[x] !== 'FILE') {
             console.log(comma.length);
-            var calculation = TextHeight * (comma.length - 1);
+            var calculation = TextHeight * comma.length - 1;
             height += calculation;
             content = items[keys[x]].replace(new RegExp(",", "g"), '<br>');
         }
