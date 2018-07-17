@@ -525,7 +525,6 @@ function renderPage(i = "Home", school = null, id = null) {
      * Renders a page
      */
 
-    // console.log(id);
     clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
