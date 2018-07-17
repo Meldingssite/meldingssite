@@ -2,7 +2,12 @@
 
 function splitUrl()
 {
-    //  Split The Url And Place In Array
+	/**************************
+     * splitUrl()
+     **************************
+     * Split the URL and place it in an array
+     */
+    
     if (isset($_GET['url'])) {
         $tmp_url = trim($_GET['url'], "/");
         $tmp_url = filter_var($tmp_url, FILTER_SANITIZE_URL);
@@ -17,6 +22,11 @@ function splitUrl()
 
 function route()
 {
+	/**************************
+     * route()
+     **************************
+     * Gets the controller and function from the URL and calls the according functions
+     */
 	$url = splitUrl();
 	if (!$url['controller']) {
 		//  No Controller Given, Result To Default
@@ -36,14 +46,14 @@ function route()
 				
 			}
 		} else {
-			require(ROOT . 'controller/GONEErrorController.php');
+			require(ROOT . 'controller/ErrorController.php');
 			call_user_func('index');
 		}
     }
     
     else {
 	
-		require(ROOT . 'controller/GONEErrorController.php');
+		require(ROOT . 'controller/ErrorController.php');
 		call_user_func('index');
 	
 	}

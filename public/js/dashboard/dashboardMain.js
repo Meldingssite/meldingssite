@@ -1,5 +1,10 @@
-//Deletes empty properties in the object
 function deleteNullProperties(deleteObject) {
+    /**************************
+     * deleteNullProperties()
+     **************************
+     * Deletes empty properties in the object
+     */
+
     var keys = Object.keys(deleteObject);
     for (var x = 0; keys.length > x; x++) {
         if (deleteObject[keys[x]] == null) {
@@ -9,8 +14,13 @@ function deleteNullProperties(deleteObject) {
     return deleteObject;
 }
 
-//Switches between _ and spaces for onclick arguments
 function toggleSpace(item, ForceSpace = false) {
+    /**************************
+     * toggleSpace()
+     **************************
+     * Switches between _ and spaces for onclick arguments
+     */
+
     var returnItem = "";
     if (item.indexOf('_') > -1 || ForceSpace === true) {
         returnItem = item.replace(new RegExp("_", "g"), ' ');
@@ -25,14 +35,15 @@ function toggleSpace(item, ForceSpace = false) {
         console.log("something appears to have gone wrong with" + item + " !");
     }
     return returnItem;
-}   // Switches between _ and spaces
-
-// Active check for Database every 0.5 seconds
-
-// document.getElementById("Dashboard").innerHTML = "";
-
+}
 
 function extraInfo(elementID) {
+    /**************************
+     * extraInfo()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     document.getElementById('view' + elementID).style.color = "white";
     var target = document.getElementById('extraInfo' + elementID);
     if (target.style.height == 0 || target.style.height < "10px") {
@@ -44,6 +55,12 @@ function extraInfo(elementID) {
 }
 
 function unfade(element, elementID = null, display = 'block') {
+    /**************************
+     * unfade()
+     **************************
+     * Makes item reappear
+     */
+
     var op = 0.1;  // initial opacity
     element.style.display = display;
     if (elementID != null)
@@ -62,9 +79,15 @@ function unfade(element, elementID = null, display = 'block') {
         op += op * 0.1;
     }, 10);
 
-}   //Makes item reappear
+}
 
 function fade(element, elementID = null) {
+    /**************************
+     * fade()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     document.querySelector('div > input[name="test1"]')
     var op = 1;  // initial opacity
     element.style.height = '0';
@@ -83,10 +106,22 @@ function fade(element, elementID = null) {
 }
 
 function updateNotify(element){
+    /**************************
+     * updateNotify()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     document.getElementById('view' + element['id']).style.color = "yellow";
     alertSound("Alert");
 }
 function alertSound(audioName){
+    /**************************
+     * alertSound()
+     **************************
+     * Plays an alert sound
+     */
+
     var audio = new Audio(IMAGE_DIR + '../audio/' + audioName + ".mp3");
     audio.loop = false;
     audio.play();
