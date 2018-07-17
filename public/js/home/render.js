@@ -9,19 +9,43 @@ var FormList = [];         //list op Inputs rendered on page for retrieving data
 var sendArray = [];        //Array send to DB
 
 function getPages() {
+    /**************************
+     * getPages()
+     **************************
+     * Returns every page
+     */
+
     return JSON.parse(xmlhttp.responseText).pages
-}     // returns all pages
+}
 
 function getPage(i) {
+    /**************************
+     * getPage()
+     **************************
+     * Returns a single page
+     */
+
     return JSON.parse(xmlhttp.responseText).pages[i];
 
-}     // returns single page
+}
 
 function clearPageHTML() {
+    /**************************
+     * clearPageHTML()
+     **************************
+     * Clears the HTML of the page
+     */
+
     document.getElementById("page").innerHTML = "";
-} // clears HTML
+}
 
 function renderTextbox(textboxObj) {
+    /**************************
+     * renderTextbox()
+     **************************
+     * Renders a textbox element
+     */
+
     var textboxHTML = "";
 
     // define default colors
@@ -44,9 +68,15 @@ function renderTextbox(textboxObj) {
     textboxHTML += "</div>";
 
     pageHTML.innerHTML += textboxHTML;
-} // renders TextBox element
+}
 
 function renderLabel(text) {
+    /**************************
+     * renderLabel()
+     **************************
+     * renders a label for the location list
+     */
+
     var labelHTML = "";
 
     // Opening tag
@@ -59,9 +89,15 @@ function renderLabel(text) {
     labelHTML += "</div>"
 
     pageHTML.innerHTML += labelHTML;
-} //Renders a label for the location list
+}
 
 function renderButton(buttonObj) {
+    /**************************
+     * renderButton
+     **************************
+     * Render Button Element
+     */
+
     var pageHTML = document.getElementById("page");
     var buttonHTML = "";
     // Opening tag for .btn
@@ -85,9 +121,15 @@ function renderButton(buttonObj) {
     buttonHTML += "</div>";
 
     pageHTML.innerHTML += buttonHTML;
-}   // Render Button Element
+}
 
 function renderFormButton(buttonObj) {
+    /**************************
+     * renderFormButton()
+     **************************
+     * Render a button in a form
+     */
+
     var pageHTML = document.getElementById('FORM');
     var options = buttonObj.options;
     var formButtonHTML = "";
@@ -115,9 +157,14 @@ function renderFormButton(buttonObj) {
 
     pageHTML.innerHTML += formButtonHTML;
     return buttonObj.name;
-}   //  Render a button in a form
+}
 
 function renderTextInput(textInputObj) {
+    /**************************
+     * renderTextInput()
+     **************************
+     * Renders a field for inputting text
+     */
     var pageHTML = document.getElementById('FORM');
     var options = textInputObj.options;
     var textInputHTML = "";
@@ -170,9 +217,15 @@ function renderTextInput(textInputObj) {
     //     names.push("persoon");
     // }
     return names;
-}   //  Render a field for inputting text
+}
 
 function renderRadio(radioObj) {
+    /**************************
+     * renderRadio()
+     **************************
+     * Renders radio buttons
+     */
+
     var pageHTML = document.getElementById('FORM');
     var options = radioObj.options;
     var radioHTML = "";
@@ -206,9 +259,15 @@ function renderRadio(radioObj) {
         }
     }
     return radioObj.name;
-}   // Renders radio buttons
+}
 
 function renderDropDown(dropObj) {
+    /**************************
+     * renderDropDown()
+     **************************
+     * Renders a dropdown element
+     */
+
     var mainHTML = document.getElementById('FORM');
     var options = dropObj.options;
     var dropHTML = "";
@@ -235,9 +294,15 @@ function renderDropDown(dropObj) {
     dropHTML += "</section></fieldset>";
     mainHTML.innerHTML += dropHTML;
     return dropObj.name;
-}   // Renders dropdown buttons
+}
 
 function renderFileUpload(uploadObj) {
+    /**************************
+     * renderFileUpload()
+     **************************
+     * Renders FileUpload
+     */
+
     var mainHTML = document.getElementById('FORM');
     var uploadHTML = "";
 
@@ -254,9 +319,15 @@ function renderFileUpload(uploadObj) {
     uploadHTML += "</section></fieldset>";
     mainHTML.innerHTML += uploadHTML;
     return "file_" + uploadObj.name;
-}   // Renders FileUpload
+}
 
 function renderForm(form, school, id) {
+    /**************************
+     * renderForm()
+     **************************
+     * Renders a Form and it's elements
+     */
+
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='"
         + form.formAction
@@ -286,9 +357,15 @@ function renderForm(form, school, id) {
     renderSubmit(FormList, school, id);
     
     return;
-}      // renders a form and its elements
+}
 
 function renderLocatieForm(alertType, school = null) {
+    /**************************
+     * renderLocatieForm()
+     **************************
+     * renders form for locaties
+     */
+
     clearPageHTML(); // Clear main
     var page = getPage("Locaties");
     var content = page[ID].content;
@@ -299,9 +376,14 @@ function renderLocatieForm(alertType, school = null) {
     else {
         renderLocatieList(alertType, content, school);
     }
-} //renders form for locaties
+}
 
 function renderLocatieScholen(alertType, content) {
+    /**************************
+     * renderLocatieScholen()
+     **************************
+     * Renders a list with locations 
+     */
     var pageHTML = document.getElementById("page");
 
     renderTextbox(
@@ -336,9 +418,14 @@ function renderLocatieScholen(alertType, content) {
         pageHTML.innerHTML += buttonHTML;
     }
 
-} //renders first list with schools
+}
 
 function renderLocatieList(alertType, content, school) {
+    /**************************
+     * renderLocatieList()
+     **************************
+     * renders the buttons for locations
+     */
 
     var Items = content[toggleSpace(school)];
     var buttonHTML = "";
@@ -376,9 +463,14 @@ function renderLocatieList(alertType, content, school) {
         + ')"> Verzenden </button></section>';
     //closing tags
     pageHTML.innerHTML += buttonHTML;
-}   //renders the buttons for places in the school
+}
 
 function renderSubmit(naam, school, id) {
+    /**************************
+     * renderSubmit()
+     **************************
+     * Renders a submit button which advances to the next page
+     */
 
     var submitHTML = "";
     submitHTML += "<div id = 'submit' class='btn'"
@@ -413,15 +505,26 @@ function renderSubmit(naam, school, id) {
 
     document.getElementById("FORM").innerHTML += submitHTML;
 
-}   //Renders submit button for going to next page
+}
 
 function nextPage(i) {
+    /**************************
+     * nextPage()
+     **************************
+     * Renders next page
+     */
+
     ID++;
     renderPage(i);
-}   //Goes to next page
+}
 
 function renderPage(i = "Home", school = null, id = null) {
-    // console.log(id);
+    /**************************
+     * renderPage()
+     **************************
+     * Renders a page
+     */
+
     clearPageHTML(); // Clear main
     var page = getPage(i);
     if (page) {
@@ -447,5 +550,4 @@ function renderPage(i = "Home", school = null, id = null) {
         console.log('page does not exist yet!');
     }
 
-} // Renders a page, which is an array of objects
-
+}

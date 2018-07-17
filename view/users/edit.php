@@ -7,7 +7,7 @@
 
 <main>
     <form action="../../users/editUser/<?php echo $data['email'] ?>" method="post">
-        <input type="email" name="email" value="<?php echo $data['email'] ?>" required>
+        <input  name="email" value="<?php echo $data['email'] ?>" required>
         <input type="password" name="password" value="" placeholder="Wijzig Wachtwoord(leeg laten om huidig behouden)">
         <select name="rights">
             <option value = 0 <?php if($data['rights'] == 0) echo 'selected' ?>>Alleen dashboard</option>

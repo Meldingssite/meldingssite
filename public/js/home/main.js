@@ -12,6 +12,12 @@ xmlhttp.open("GET", SCRIPT_DIR + "MeldingsApp.json", true);
 xmlhttp.send();
 
 function extraInfo(element, value) {
+    /**************************
+     * extraInfo()
+     **************************
+     * reveals extra info based on radiobutton value
+     */
+
     var target = "extraInfo" + element;
     if (value == "Ja" || value == "ja") {
         console.log("unfading element");
@@ -20,9 +26,15 @@ function extraInfo(element, value) {
     else {
         fade(document.getElementById(target));
     }
-}   //Executed for radiobuttons used for revealing extra information
+}
 
 function unfade(element, elementID = null, display = 'block') {
+    /**************************
+     * unfade
+     **************************
+     * Makes item reappear
+     */
+
     var op = 0.1;  // initial opacity
     element.style.display = display;
     // if (elementID != null)
@@ -41,9 +53,15 @@ function unfade(element, elementID = null, display = 'block') {
         op += op * 0.1;
     }, 10);
 
-}   //Makes item reappear
+}
 
 function fade(element, elementID = null) {
+    /**************************
+     * fade()
+     **************************
+     * Makes item dissappear
+     */
+
     document.querySelector('div > input[name="test1"]')
     var op = 1;  // initial opacity
     element.style.height = '0';
@@ -62,6 +80,14 @@ function fade(element, elementID = null) {
 }
 
 function toggleSpace(item) {
+    /**************************
+     * toggleSpace()
+     **************************
+     * Switches between _ and spaces
+     * 
+     * Todo:
+     *  Duplicate code? If so DRY
+     */
     var returnItem = "";
     if (item.indexOf(' ') > -1) {
         returnItem = item.replace(new RegExp(" ", "g"), '_');
@@ -76,4 +102,4 @@ function toggleSpace(item) {
         console.log("something appears to have gone wrong with" + item + " !");
     }
     return returnItem;
-}   // Switches between _ and spaces
+}

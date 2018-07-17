@@ -6,7 +6,7 @@
 
 <main>
     <form action="addUser" method="post">
-        <input type="email" name="email" placeholder="Email" required>
+        <input name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Wachtwoord" required>
         <select name="rights">
             <option value=2>

@@ -4,13 +4,19 @@ var currentID = 1;
 var dataRetrieve = null;
 const TextHeight = 19;
 const imgHeight = 150;
-const refreshRate = 50;
+const refreshRate = 250;
 var imageURL = imageURL = document.location.origin + "/public/uploads/";
 if (document.location.origin.includes('localhost')) {
     imageURL = document.location.origin + "/meldingssite/public/uploads/"
 }
 
 function startbasic() {
+    /**************************
+     * startbasic()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     if (document.getElementById('Dashboard') != null) {
         document.getElementById('Dashboard').innerHTML = "";
         document.getElementById('btnArchive').innerHTML = "<i class='fas fa-archive fa-lg'></i><p>Archief</p>";
@@ -54,6 +60,12 @@ function startbasic() {
 }
 
 function archief() {
+    /**************************
+     * archief()
+     **************************
+     * DESCRIPTION HERE
+     */
+
     document.getElementById('Dashboard').innerHTML = "";
     document.getElementById('btnArchive').innerHTML = "<i class='fas fa-archive fa-lg'></i><p>Actueel</p>";
     document.getElementById('btnArchive').onclick = startbasic;
@@ -63,8 +75,13 @@ function archief() {
     }, refreshRate);
 }
 
-//Begin of constructing a element
 function addElements(dataRetrieve) {
+    /**************************
+     * addElements()
+     **************************
+     * Begin of constructing a element
+     */
+
     // console.dir(dataRetrieve);
     if (dataRetrieve[0] !== null) {
         // console.log(dataRetrieve[1] + " " + currentID);
@@ -98,7 +115,13 @@ function addElements(dataRetrieve) {
 
 //Constructs a melding
 function constructMelding(meldingData) {
-    // alertSound("Alert");
+    /**************************
+     * constructMelding()
+     **************************
+     * Constructs a melding
+     */
+
+    alertSound("Alert");
     var melding = "";
     var elementName = 'view' + meldingData['id'];
     melding +=
@@ -174,8 +197,13 @@ function constructMelding(meldingData) {
     return melding;
 }
 
-//Updates Content of latest Melding
 function updateContent(items) {
+    /**************************
+     * updateContent()
+     **************************
+     * Updates content of latest melding
+     */
+
     // console.log("Updating content");
     var updated = false;
     var keys = Object.keys(items);
@@ -189,7 +217,7 @@ function updateContent(items) {
 
         if (comma != null && keys[x] !== 'FILE') {
             console.log(comma.length);
-            var calculation = TextHeight * (comma.length - 1);
+            var calculation = TextHeight * comma.length - 1;
             height += calculation;
             content = items[keys[x]].replace(new RegExp(",", "g"), '<br>');
         }
@@ -266,4 +294,3 @@ function updateContent(items) {
         document.getElementById('height' + items['id']).innerHTML = height.toString();
     }
 }
-

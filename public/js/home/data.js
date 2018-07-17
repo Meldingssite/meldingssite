@@ -1,4 +1,10 @@
 function locatieSend(alertType, school, locatie = null,) {
+    /**************************
+     * locatieSend()
+     **************************
+     * Sends location and renders next page
+     */
+
     var id = "";
     locatieSubmit = true;
     if (locatie == null) {
@@ -19,9 +25,14 @@ function locatieSend(alertType, school, locatie = null,) {
         }
     };
     xhttp.send(Data);
-} // sends locatie and renders next page
+}
 
 function dataSend(sendArray, school, id) {
+    /**************************
+     * dataSend()
+     **************************
+     * Sends data to database
+     */
 
     locatieSubmit = true;
     var Data = new FormData();
@@ -55,9 +66,15 @@ function dataSend(sendArray, school, id) {
         }
     };
     xhttp.send(Data);
-} //Sends Data To Database
+}
 
 function submitContents(NaamString, school, id) {
+    /**************************
+     * submitContents()
+     **************************
+     * Prepares data to be send to database
+     */
+
     document.getElementById('submit').innerHTML = 'Aanpassing verzenden';
     var naam = NaamString.split("|");
     console.log(naam);
@@ -138,7 +155,6 @@ function submitContents(NaamString, school, id) {
         //Case file or single item
         else {
 
-
             if (naam[x].match("file") && document.getElementsByName(toggleSpace(naam[x]))[0].files.length !== 0) {
                 dataArray[x] = document.getElementsByName(toggleSpace(naam[x]))[0].files[0];
                 dataArray.push(dataArray[x]['name']);
@@ -163,13 +179,11 @@ function submitContents(NaamString, school, id) {
 
             }
         }
-
-
     }
 
 
     var sendArray = [nameArray, dataArray];
     // console.dir(sendArray);
     dataSend(sendArray, school, id);
-} //Executed on pressing submit and prepares data for being send to Database
+}
 
