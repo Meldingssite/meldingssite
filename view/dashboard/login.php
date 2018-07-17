@@ -40,7 +40,7 @@ function getMessage($msg)
             <input
                     name="usermail"
                     id="usermail"
-                    placeholder="Email"
+                    placeholder="Gebruikersnaam"
                     autofocus
                     required
 
@@ -49,10 +49,8 @@ function getMessage($msg)
                     type="password"
                     name="userpass"
                     id="userpass"
-                    placeholder="Password"
+                    placeholder="Wachtwoord"
                     required
-                    minlength="4"
-                    value="password"
             >
         </form>
         <div class="buttonContainer">
