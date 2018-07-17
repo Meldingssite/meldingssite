@@ -38,7 +38,6 @@ function getMessage($msg)
         >
 
             <input
-                    type="email"
                     name="usermail"
                     id="usermail"
                     placeholder="Email"
