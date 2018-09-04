@@ -9,7 +9,7 @@
             "color": "purple"
           },
           {
-            "name": "Ongeval",
+            "name": "Ongeval(EHBO)",
             "type": "button",
             "image_url": "category-FirstAid.png"
           },
@@ -129,7 +129,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -564,7 +564,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -949,7 +949,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -1118,7 +1118,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "Heeft het voertuig nog andere opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -1160,16 +1160,16 @@
           "Dordrecht": "label",
           "Leerparkpromenade 100": [],
           "Drechtsteden College": [],
-          "Samenwerkings Gebouw": [],
-          "Wartburgs College": [],
-          "Sport Plus": [],
+          "SamenwerkingsGebouw": [],
+          "Wartburg College": [],
+          "Sport Plein": [],
           "Schippers Internaat": [],
           "Karel Lotsyweg": [],
           "Patersweg": [],
           "Duurzaamheidsfabriek": [],
           "Azzurro": [],
           "Betaalde Parkeerplaats": [],
-          "Parkeerplek Langs N3": [],
+          "Parkeerplaats langs de N3": [],
           "Parkeerplaats Langs Spoor": [],
           "Openbare Weg": [],
           "Gorinchem": "label",
