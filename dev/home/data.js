@@ -111,7 +111,7 @@ function submitContents(NaamString, school, id) {
 
                 if (name) {
                     // console.log(name);
-                    if (document.getElementsByName(name)[0].parentElement.parentElement.id)
+
                         if (document.getElementsByName(name)[0].parentElement.parentElement.id.indexOf("extraInfo")) {
                             if (document.getElementsByName(name)[0].value) {
                                 dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
