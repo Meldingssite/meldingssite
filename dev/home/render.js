@@ -1,10 +1,10 @@
 "use strict";
+
 /*****************************************************************/
 
 /*** All Functions used to render elements to the page go here ***/
 
 /*****************************************************************/
-
 var legendHeight = 40;
 var textHeight = 45;
 var ID = 0; //ID for remembering which question you're at
@@ -69,8 +69,8 @@ function renderLabel(text) {
    * renders a label for the location list
    */
   var labelHTML = ""; // Opening tag
-
   var pageHTML = document.getElementById("page");
+
   labelHTML += "<div class='label'>"; // Content
 
   labelHTML += text; // Closing tag
@@ -146,7 +146,7 @@ function renderTextInput(textInputObj) {
 
   textInputHTML += "<section class=input>"; //Inputs
 
-  for (var option in options) {
+  for ( var option in options) {
     if (textInputObj.toggle === 'true') {
       height += textHeight;
     }
@@ -276,12 +276,12 @@ function renderForm(form, school, id) {
 
 function renderLocatieForm(alertType) {
   var school = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
   /**************************
    * renderLocatieForm()
    **************************
    * renders form for locaties
    */
-
   clearPageHTML(); // Clear main
 
   var page = getPage("Locaties");
@@ -397,12 +397,12 @@ function renderPage() {
   var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Home";
   var school = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
   /**************************
    * renderPage()
    **************************
    * Renders a page
    */
-
   clearPageHTML(); // Clear main
 
   var page = getPage(i);

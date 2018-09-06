@@ -19,12 +19,12 @@ function deleteNullProperties(deleteObject) {
 
 function toggleSpace(item) {
   var ForceSpace = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
   /**************************
    * toggleSpace()
    **************************
    * Switches between _ and spaces for onclick arguments
    */
-
   var returnItem = "";
 
   if (item.indexOf('_') > -1 || ForceSpace === true) {
@@ -59,12 +59,12 @@ function extraInfo(elementID) {
 function unfade(element) {
   var elementID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var display = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'block';
+
   /**************************
    * unfade()
    **************************
    * Makes item reappear
    */
-
   var op = 0.1; // initial opacity
 
   element.style.display = display;
@@ -85,12 +85,12 @@ function unfade(element) {
 
 function fade(element) {
   var elementID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
   /**************************
    * fade()
    **************************
    * DESCRIPTION HERE
    */
-
   document.querySelector('div > input[name="test1"]');
   var op = 1; // initial opacity
 

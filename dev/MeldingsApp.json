@@ -51,11 +51,11 @@
         ]
       }
     ],
-    "Ongeval(EHBO)": [
+    "Ongeval": [
       {
         "content": [
           {
-            "text": "Ongeval(EHBO)",
+            "text": "Ongeval",
             "type": "textbox",
             "color": "purple"
           },
@@ -67,17 +67,6 @@
                 "text": "Foto toevoegen",
                 "type": "upload",
                 "name": "test"
-              },
-              {
-                "text": "Wat is er precies gebeurt?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "Wat is er gebeurt?"
-                  }
-                ]
               },
               {
                 "text": "Is het slachtoffer bewusteloos?",
@@ -442,11 +431,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
                 "type": "radioButtons",
                 "text": "Wat heeft u gezien?",
                 "name": "drugsToggle",
@@ -491,6 +475,11 @@
                     "inhoud": "extra informatie"
                   }
                 ]
+              },
+              {
+                "text": "Foto toevoegen",
+                "type": "upload",
+                "name": "test"
               },
               {
                 "text": "wie heeft u gezien?",
