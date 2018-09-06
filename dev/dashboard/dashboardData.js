@@ -87,7 +87,7 @@ function finished(item) {
     xFinhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
-                if (this.response.includes('true')) {
+                if (this.response.indexOf('true')) {
 
                     document.getElementById('finished' + item).children[0].style.color = '#59ba5d';
                 }
