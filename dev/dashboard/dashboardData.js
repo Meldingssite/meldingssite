@@ -61,8 +61,12 @@ function remove(item) {
         };
         Removehttp.send(Data);
         console.log("removing Item");
-        fade(document.getElementById('extraInfo' + item));
-        fade(document.getElementById('alertItem' + item));
+        if(fade(document.getElementById('extraInfo' + item)))
+        if(fade(document.getElementById('alertItem' + item)))
+        document.getElementById('extraInfo' + item).removeItem();
+        document.getElementById('alertItem' + item).removeItem();
+
+
     }
 }
 
@@ -97,4 +101,15 @@ function finished(item) {
         }
     };
     xFinhttp.send(Data);
+}
+
+Element.prototype.removeItem = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.removeItem = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
 }

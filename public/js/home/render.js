@@ -1,10 +1,10 @@
 "use strict";
-
 /*****************************************************************/
 
 /*** All Functions used to render elements to the page go here ***/
 
 /*****************************************************************/
+
 var legendHeight = 40;
 var textHeight = 45;
 var ID = 0; //ID for remembering which question you're at
@@ -70,6 +70,7 @@ function renderLabel(text) {
    */
   var labelHTML = ""; // Opening tag
 
+  var pageHTML = document.getElementById("page");
   labelHTML += "<div class='label'>"; // Content
 
   labelHTML += text; // Closing tag
@@ -111,7 +112,7 @@ function renderFormButton(buttonObj) {
 
   formButtonHTML += "<section class=input>"; //knop
 
-  for (option in options) {
+  for (var option in options) {
     formButtonHTML += "<button name='" + options[option].name + "' value ='" + options[option].optie + "' onclick='" + options[option].function + "'>" + options[option].text + "</button>";
   } //closing tags
 
@@ -145,7 +146,7 @@ function renderTextInput(textInputObj) {
 
   textInputHTML += "<section class=input>"; //Inputs
 
-  for (option in options) {
+  for (var option in options) {
     if (textInputObj.toggle === 'true') {
       height += textHeight;
     }
@@ -185,7 +186,7 @@ function renderRadio(radioObj) {
 
   radioHTML += "<section class=inputGroup>"; //knop
 
-  for (option in options) {
+  for (var option in options) {
     radioHTML += "<input placeholder='" + radioObj.text + "' type='radio' name='" + radioObj.name + "'value ='" + options[option].optie + "'id ='" + options[option].optie + radioObj.name + "'>" + "  <label for='" + options[option].optie + "'>" + options[option].text + "</label>";
   } //closing tags
 
@@ -194,7 +195,7 @@ function renderRadio(radioObj) {
   pageHTML.innerHTML += radioHTML;
 
   if (radioObj.toggle == 'true') {
-    for (option in options) {
+    for (var option in options) {
       // console.log(element);
       document.getElementById(options[option].optie + radioObj.name).setAttribute("onClick", "extraInfo('" + radioObj.target + "','" + options[option].optie + "')");
     }
@@ -217,7 +218,7 @@ function renderDropDown(dropObj) {
 
   dropHTML += "<section class=input title = '" + dropObj.text + "'><select name='" + dropObj.name + "'>"; //knop
 
-  for (option in options) {
+  for (var option in options) {
     dropHTML += "<option  name='" + options[option].name + "'value ='" + options[option].name + "'>" + options[option].text + "</option>";
   } //closing tags
 
@@ -255,7 +256,7 @@ function renderForm(form, school, id) {
   var content = form.content;
   document.getElementById("page").innerHTML += "<form action='" + form.formAction + "' enctype='multipart/form-data' id='FORM'>";
 
-  for (formElement in content) //  determine pageElement type
+  for (var formElement in content) //  determine pageElement type
   {
     if (content[formElement].type === "textInput") {
       var textInputList = renderTextInput(content[formElement]);
@@ -275,12 +276,12 @@ function renderForm(form, school, id) {
 
 function renderLocatieForm(alertType) {
   var school = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
   /**************************
    * renderLocatieForm()
    **************************
    * renders form for locaties
    */
+
   clearPageHTML(); // Clear main
 
   var page = getPage("Locaties");
@@ -396,12 +397,12 @@ function renderPage() {
   var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Home";
   var school = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
   /**************************
    * renderPage()
    **************************
    * Renders a page
    */
+
   clearPageHTML(); // Clear main
 
   var page = getPage(i);

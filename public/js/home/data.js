@@ -2,12 +2,12 @@
 
 function locatieSend(alertType, school) {
   var locatie = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
   /**************************
    * locatieSend()
    **************************
    * Sends location and renders next page
    */
+
   var id = "";
   locatieSubmit = true;
 
@@ -86,7 +86,7 @@ function submitContents(NaamString, school, id) {
   finalArray = naam[0].split(',');
   console.log(finalArray);
 
-  for (x = 1; naam.length > x; x++) {
+  for (var x = 1; naam.length > x; x++) {
     naam[x] = naam[x].split(',');
     if (naam[x] != "" && naam[x] !== undefined && naam[x] != null) if (naam[x][0] == "") naam[x].splice(0, 1);
     finalArray[finalArray.length] = naam[x]; // }

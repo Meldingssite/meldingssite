@@ -29,12 +29,12 @@ function extraInfo(element, value) {
 function unfade(element) {
   var elementID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var display = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'block';
-
   /**************************
    * unfade
    **************************
    * Makes item reappear
    */
+
   var op = 0.1; // initial opacity
 
   element.style.display = display; // if (elementID != null)
@@ -56,12 +56,12 @@ function unfade(element) {
 
 function fade(element) {
   var elementID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
   /**************************
    * fade()
    **************************
    * Makes item dissappear
    */
+
   document.querySelector('div > input[name="test1"]');
   var op = 1; // initial opacity
 

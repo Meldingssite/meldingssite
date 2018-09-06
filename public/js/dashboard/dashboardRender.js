@@ -1,7 +1,6 @@
-"use strict";
-
-//  Latest timestamp pulled from DB, used to check if DB has been updated
+"use strict"; //  Latest timestamp pulled from DB, used to check if DB has been updated
 //Testing commit
+
 var currentID = 1;
 var dataRetrieve = null;
 var TextHeight = 19;
