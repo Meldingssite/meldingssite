@@ -143,7 +143,7 @@ function constructMelding(meldingData) {
             melding += "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + content + "</p>";
             height += TextHeight;
         } else if (keys[x] === 'FILE') {
-            melding += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[x]] + "' id='" + keys[x] + meldingData['id'] + "'>";
+            melding += "<p>Foto:</p><a href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[x]] + "' target='_blank' ><img height='" + imgHeight + "px' src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[x]] + "' id='" + keys[x] + meldingData['id'] + "'></a>";
             height += imgHeight + TextHeight;
         }
     }
@@ -214,7 +214,7 @@ function updateContent(items) {
 
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<p>Foto:</p><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' id='" + keys[x] + items['id'] + "'>";
+                addItems += "<p>Foto:</p><a href=''" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' target='_blank' ><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' id='" + keys[x] + items['id'] + "'>";
                 height += imgHeight;
                 DIV.innerHTML += addItems;
             } else {// console.log(keys[x] + items['id']);
