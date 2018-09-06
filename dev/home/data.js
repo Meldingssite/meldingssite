@@ -2,12 +2,12 @@
 
 function locatieSend(alertType, school) {
   var locatie = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
   /**************************
    * locatieSend()
    **************************
    * Sends location and renders next page
    */
-
   var id = "";
   locatieSubmit = true;
 
