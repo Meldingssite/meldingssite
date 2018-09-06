@@ -1,5 +1,5 @@
-#  symbolic links
-/js
-/config.php
-/public/uploads
 /node_modules
+/public/uploads
+/public/js/dashboard
+/public/js/home
+core/config\.php
