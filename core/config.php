@@ -7,7 +7,7 @@ define('DB_TYPE', 'mysql');
 define('DB_HOST', '127.0.0.1');
 define('DB_USER', 'melding_site');
 define('DB_PASS', 'mysql');
-define('DB_NAME', 'melding_site');
+define('DB_NAME', 'meldendvc_nl_meldingsite');
 define('salt', 'csgodevonREEEEEEEEEEEEEEE');
 define('passwordCost', 10);
 define('algo', PASSWORD_BCRYPT );
