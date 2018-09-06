@@ -525,7 +525,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -575,7 +575,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
+                    "inhoud": "opvallende kenmerken?"
                   }
                 ]
               },
@@ -675,7 +675,7 @@
                   {
                     "name": "voorwerpAnders",
                     "inputType": "text",
-                    "inhoud": "Andere kenmerken (bijv. achtergond van smartphone)"
+                    "inhoud": "Andere kenmerken"
                   }
                 ]
               },
@@ -730,7 +730,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -842,7 +842,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -960,7 +960,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
+                    "inhoud": "opvallende kenmerken?"
                   }
                 ]
               },
@@ -1079,7 +1079,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -1129,7 +1129,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
+                    "inhoud": "opvallende kenmerken?"
                   }
                 ]
               },
