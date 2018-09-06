@@ -51,11 +51,11 @@
         ]
       }
     ],
-    "Ongeval": [
+    "Ongeval(EHBO)": [
       {
         "content": [
           {
-            "text": "Ongeval",
+            "text": "Ongeval(EHBO)",
             "type": "textbox",
             "color": "purple"
           },
