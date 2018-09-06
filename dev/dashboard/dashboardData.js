@@ -12,11 +12,11 @@ function checkDB(mode) {
     // console.log(currentID);
     // Data.append("school", schoolNaam);
     var xDBhttp = new XMLHttpRequest();
-    if (mode == 'archief') {
+    if (mode === 'archief') {
         xDBhttp.open("POST", "Dashboard/retrieveElements", true);
     }// adding model function
     else {
-        xDBhttp.open("POST", "Dashboard/retrieveElements/dashboard", true);
+        xDBhttp.open("POST", "Dashboard/retrieveElements", true);
     }
     // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
     xDBhttp.onreadystatechange = function () {

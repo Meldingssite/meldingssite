@@ -18,7 +18,7 @@ function checkDB(mode) {
     xDBhttp.open("POST", "Dashboard/retrieveElements", true);
   } // adding model function
   else {
-      xDBhttp.open("POST", "Dashboard/retrieveElements/dashboard", true);
+      xDBhttp.open("POST", "Dashboard/retrieveElements", true);
     } // xDBhttp.setRequestHeader( "Content-Type", "application/json" );
 
 
