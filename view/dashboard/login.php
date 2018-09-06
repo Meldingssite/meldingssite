@@ -52,13 +52,14 @@ function getMessage($msg)
                     placeholder="Wachtwoord"
                     required
             >
+            <div class="buttonContainer">
+                <a href="<?php echo URL ?>dashboard/retrieveLogin">
+                    <button id="btnForgotLogin">Login vergeten</button>
+                </a>
+                <input id="btnLogin" type="submit" value="Login" form="formLogin">
+            </div>
         </form>
-        <div class="buttonContainer">
-            <a href="<?php echo URL ?>dashboard/retrieveLogin">
-                <button id="btnForgotLogin">Login vergeten</button>
-            </a>
-            <input id="btnLogin" type="submit" value="Login" form="formLogin">
-        </div>
+
 
         <p class="errorMessage">- <?php echo getMessage($data['msg']) ?></p>
 
