@@ -132,7 +132,7 @@ function submitContents(NaamString, school, id) {
             if (check === true) {
                 var naamTemp;
 
-                if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.includes("extraInfo")) {
+                if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.indexOf("extraInfo")) {
                     naamTemp = document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.replace("extraInfo", "");
                 } else {
                     // console.log(naam[x][0]);

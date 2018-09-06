@@ -9,7 +9,7 @@ var imgHeight = 150;
 var refreshRate = 250;
 var imageURL = imageURL = document.location.origin + "/public/uploads/";
 
-if (document.location.origin.includes('localhost')) {
+if (document.location.origin.indexOf('localhost')) {
   imageURL = document.location.origin + "/meldingssite/public/uploads/";
 }
 
