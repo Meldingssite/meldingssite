@@ -1,2 +1,4 @@
 /node_modules
 /public/uploads
+/public/js/dashboard
+/public/js/home
