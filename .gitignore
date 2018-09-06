@@ -1,6 +1,3 @@
-#  symbolic links
-/js
-/config.php
-/public/uploads
 /node_modules
+/public/uploads
 core/config\.php
