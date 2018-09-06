@@ -57,6 +57,7 @@
 }
 
 .alertItem > div:nth-child(3) {
+    position: relative;
     background: #fff;
     width: 400px;
     padding: 20px 12px;
