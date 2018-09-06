@@ -57,6 +57,7 @@
 }
 
 .alertItem > div:nth-child(3) {
+    position: relative;
     background: #fff;
     width: 400px;
     padding: 20px 12px;
@@ -105,10 +106,14 @@
 }
 
 .icon-list {
-    position: absolute;
+
     bottom: 0;
     right: 0;
     margin: 15px 12px;
+}
+
+.alertItem:last-child {
+    position: relative;
 }
 
 .extraInfo {
