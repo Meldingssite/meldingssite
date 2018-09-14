@@ -115,6 +115,7 @@ select {
 
 input {
     height: 42px;
+    -webkit-user-select: text;
     /*width: 90px;*/
     /*TODO Discuss best way to style inputs(small or underneath each other)*/
 }
