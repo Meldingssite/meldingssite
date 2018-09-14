@@ -3,25 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-    /* Disables User Highlight */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
-    supported by Chrome and Opera */
 }
-
-input, input:before, input:after {
-    -webkit-user-select: initial;
-    -khtml-user-select: initial;
-    -moz-user-select: initial;
-    -ms-user-select: initial;
-    user-select: initial;
-   } 
 
 button:focus {
     outline: 0;
