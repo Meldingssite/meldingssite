@@ -5,8 +5,6 @@
 /*** All Functions used to render elements to the page go here ***/
 
 /*****************************************************************/
-var legendHeight = 40;
-var textHeight = 45;
 var ID = 0; //ID for remembering which question you're at
 
 var locatieSubmit = false; //Houd bij of de locatie al is ingevoerd.
@@ -132,11 +130,10 @@ function renderTextInput(textInputObj) {
     var options = textInputObj.options;
     var textInputHTML = "";
     var names = [];
-    var height = 0; // Opening tag for radiobutton
+    // Opening tag for radiobutton
 
     if (textInputObj.toggle === 'true') {
-        textInputHTML += "<fieldset class='extraInfo' id='extraInfo" + textInputObj.name + "'><legend>" + textInputObj.text + "</legend>";
-        height += legendHeight;
+        textInputHTML += "<fieldset class='extraInfo hidden' id='extraInfo" + textInputObj.name + "'><legend>" + textInputObj.text + "</legend>";
     } else if (textInputObj.name) {
         textInputHTML += "<fieldset id='" + textInputObj.name + "'><legend>" + textInputObj.text + "</legend>";
     } else if (options.length = 1) {
@@ -148,7 +145,6 @@ function renderTextInput(textInputObj) {
 
     for (var option in options) {
         if (textInputObj.toggle === 'true') {
-            height += textHeight;
         }
 
         textInputHTML += "<input";
@@ -161,7 +157,6 @@ function renderTextInput(textInputObj) {
         names.push(options[option].name);
     }
 
-    textInputHTML += '<div hidden=true id="height' + textInputObj.name + '">' + height + "</div>" + "</div>"; //closing tags
 
     textInputHTML += "</section></fieldset>";
     pageHTML.innerHTML += textInputHTML;
