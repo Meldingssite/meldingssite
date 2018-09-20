@@ -233,7 +233,7 @@ function renderDropDown(dropObj) {
     return dropObj.name;
 }
 
-function renderFileUpload(uploadObj) {
+function renderFileUpload() {
     /**************************
      * renderFileUpload()
      **************************
@@ -242,14 +242,14 @@ function renderFileUpload(uploadObj) {
     var mainHTML = document.getElementById('FORM');
     var uploadHTML = ""; // Opening tag for fileupload
 
-    uploadHTML += "<fieldset><legend>" + uploadObj.text + "</legend>"; //section
+    uploadHTML += "<fieldset><legend>" + "Foto van het incident" + "</legend>"; //section
 
-    uploadHTML += "<section class=input>" + '<input type="file" name="file ' + uploadObj.name + '" class="fileUpload">'; //knop
+    uploadHTML += "<section class=input>" + '<input type="file" name="file" class="fileUpload">'; //knop
     //closing tags
 
     uploadHTML += "</section></fieldset>";
     mainHTML.innerHTML += uploadHTML;
-    return "file_" + uploadObj.name;
+    return "file";
 }
 
 function renderForm(form, school, id) {
@@ -260,20 +260,22 @@ function renderForm(form, school, id) {
      */
     var content = form.content;
     document.getElementById("page").innerHTML += "<form action='" + form.formAction + "' enctype='multipart/form-data' id='FORM'>";
-
+    FormList.push(renderFileUpload());
     for (var formElement in content) //  determine pageElement type
     {
+
+
         if (content[formElement].type === "textInput") {
             var textInputList = renderTextInput(content[formElement]);
 
             if (textInputList.length === 1) {
                 FormList.push(textInputList[0]);
             } else FormList.push(textInputList);
-        } else if (content[formElement].type === "radioButtons") FormList.push(renderRadio(content[formElement])); // else if (content[formElement].type === "textMultipleInputs")
-        //     FormList.push(renderMultipleTextInput(content[formElement]));
+        }
+        else if (content[formElement].type === "radioButtons") FormList.push(renderRadio(content[formElement])); // else if (content[formElement].type === "textMultipleInputs")
         else if (content[formElement].type === "formButton") FormList.push(renderFormButton(content[formElement]));
         else if (content[formElement].type === "dropDown") FormList.push(renderDropDown(content[formElement]));
-        else if (content[formElement].type === "upload") FormList.push(renderFileUpload(content[formElement])); // type is unknown
+        // else if (content[formElement].type === "upload") ; // type is unknown
         else console.log("Unknown type: " + content[formElement].type);
     }
 

@@ -64,11 +64,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
                 "text": "Is het slachtoffer bewusteloos?",
                 "type": "radioButtons",
                 "name": "unconscious",
@@ -251,8 +246,8 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "toggle": "true",
                 "name": "persoon",
+                "toggle": "true",
                 "options": [
                   {
                     "name": "naam",
@@ -496,11 +491,6 @@
                 ]
               },
               {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
                 "text": "wie heeft u gezien?",
                 "type": "textInput",
                 "name": "extraPersoon",
@@ -583,7 +573,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
+                    "inhoud": "opvallende kenmerken?"
                   }
                 ]
               },
@@ -683,7 +673,7 @@
                   {
                     "name": "voorwerpAnders",
                     "inputType": "text",
-                    "inhoud": "Andere kenmerken (bijv. achtergond van smartphone)"
+                    "inhoud": "Andere kenmerken"
                   }
                 ]
               },
@@ -738,7 +728,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -850,7 +840,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -968,7 +958,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
+                    "inhoud": "andere kenmerken?"
                   }
                 ]
               },
@@ -1087,7 +1077,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
+                    "inhoud": "Opvallende kenmerken"
                   }
                 ]
               },
@@ -1137,7 +1127,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
+                    "inhoud": "andere kenmerken?"
                   }
                 ]
               },
@@ -1176,7 +1166,7 @@
         "type": "locatieForm",
         "formAction": "",
         "content": {
-          "Dordrecht": "label",
+          "Dordrecht": [],
           "Leerparkpromenade 100": [],
           "Drechtsteden College": [],
           "SamenwerkingsGebouw": [],
@@ -1189,14 +1179,16 @@
           "Azzurro": [],
           "Betaalde Parkeerplaats": [],
           "Parkeerplaats langs de N3": [],
-          "Parkeerplaats Langs Spoor": [],
+          "Parkeerplaats langs het spoor": [],
           "Openbare Weg": [],
-          "Gorinchem": "label",
+          "Gorinchem": [],
           "Mollenburgseweg": [
-            "De snoekzone"
           ]
         }
       }
     ]
   }
 }
+
+
+

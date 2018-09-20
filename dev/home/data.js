@@ -108,28 +108,34 @@ function submitContents(NaamString, school, id) {
 
     for (var x = 0; x < naam.length; x++) {
         var check = false; // console.dir(naam);
-        //Case Multiple Items in array
 
+        //Case Multiple Items in array
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
             var nameElementsArray = [];
-
+            console.dir(naam);
+            // if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.indexOf("extraInfo")) {
+                console.log("Stuff works" + naam[x][0]);
+                dataElementsArray.push(document.getElementsByName(naam[x][0])[0].parentElement.parentElement.firstChild.innerHTML);
+            // }
             for (var y = 0; naam[x].length > y; y++) {
                 var name = naam[x][y];
 
+
                 if (name) {
                     // console.log(name);
-
+                        //If element if extraInfo
                         if (document.getElementsByName(name)[0].parentElement.parentElement.id.indexOf("extraInfo")) {
                             if (document.getElementsByName(name)[0].value) {
-                                dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
-                                nameElementsArray[y] = name;
+                                console.log("its a extraInfo");
+                                dataElementsArray.push(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
+                                nameElementsArray.push(name);
                                 check = true;
                             }
                         } else if (document.getElementsByName(name)[0].value) {
                             // console.log("Hij doet hier:" + name);
-                            dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
-                            nameElementsArray[y] = name; // console.log(name);
+                            dataElementsArray.push(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
+                            nameElementsArray.push(name); // console.log(name);
                             // console.log(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
 
                             check = true;

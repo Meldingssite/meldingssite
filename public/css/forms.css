@@ -108,7 +108,7 @@ select {
 .inputGroup input[type="radio"] {
     opacity: 0;
     min-width: 42px;
-    /*height: 42px;*/
+    height: 42px;
     z-index: 2;
     position: absolute;
 }
