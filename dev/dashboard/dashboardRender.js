@@ -121,29 +121,61 @@ function constructMelding(meldingData) {
         melding += '</h1>+' + '<p>' + meldingData['locatie'] + '</p>';
     }
 
-    melding += '</div>' + '<div>' + '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' + '<div class="icon-list">' + '<button id="remove' + meldingData['id'] + '"><i class="fas fa-times"></i></button>' + '<button id="' + elementName + '"><i class="far fa-eye"></i></button>' + //TODO add fadein and FadeOut onclick
-        '<button id="finished' + meldingData['id'] + '"><i class="fas fa-check"></i></button>' + '</div>' + '</div>' + '</div>' + //  Extra Info
-        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">'; //Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
+    melding +=
+        '</div>' +
+        '<div>' +
+        '<p><i class="fas fa-exclamation-circle"></i>er is iets gebeurt</p>' +
+        '<div class="icon-list">' +
+        '<button id="remove' + meldingData['id'] +
+        '"><i class="fas fa-times"></i></button>' +
+        '<button id="' +
+        elementName +
+        '"><i class="far fa-eye"></i></button>' + 
+        //TODO add fadein and FadeOut onclick
+        '<button id="finished' +
+        meldingData['id'] +
+        '"><i class="fas fa-check"></i></button>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        //  Extra Info
+        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+
+    //  Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
 
     var keys = Object.keys(meldingData);
     var height = 30;
 
-    for (var x = 0; keys.length > x; x++) {
-        var Inhoud = meldingData[keys[x]];
+    for (var i = 0; keys.length > i; i++) {
+        var Inhoud = meldingData[keys[i]];
         var comma = Inhoud.match(/,/g || []);
-        var content = meldingData[keys[x]];
+        var content = meldingData[keys[i]];
 
         if (comma != null) {
             var calculation = TextHeight * comma.length - 1;
             height += calculation;
-            content = meldingData[keys[x]].replace(new RegExp(",", "g"), '<br>');
+            content = meldingData[keys[i]].replace(new RegExp(",", "g"), '<br>');
         }
 
-        if (keys[x] !== "Completed" && meldingData[keys[x]] != null && meldingData[keys[x]] !== "" && keys[x] !== 'locatie' && keys[x] !== 'school' && keys[x] !== 'type' && keys[x] !== 'FILE' && keys[x] !== 'id' && keys[x] !== 'TimeStamp') {
-            melding += "<p id ='" + keys[x] + "" + meldingData['id'] + "'>" + content + "</p>";
+        if (
+            meldingData[keys[i]] != null &&
+            meldingData[keys[i]] !== "" &&
+            keys[i] !== "Completed" &&
+            keys[i] !== 'TimeStamp' &&
+            keys[i] !== 'locatie' &&
+            keys[i] !== 'school' &&
+            keys[i] !== 'FILE' &&
+            keys[i] !== 'type' &&
+            keys[i] !== 'id'
+        )
+        {
+            melding += "<p id ='" + keys[i] + "" + meldingData['id'] + "'>" + content + "</p>";
             height += TextHeight;
-        } else if (keys[x] === 'FILE') {
-            melding += "<p>Foto:</p><a href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[x]] + "' target='_blank' ><img height='" + imgHeight + "px' src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[x]] + "' id='" + keys[x] + meldingData['id'] + "'></a>";
+        }
+        else if (keys[i] === 'FILE')
+        {
+            melding +="<p>Foto:</p><a href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' target='_blank' ><img height='" + imgHeight + "px' src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' id='" + keys[i] + meldingData['id'] + "'></a>";
             height += imgHeight + TextHeight;
         }
     }
