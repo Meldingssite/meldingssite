@@ -83,8 +83,8 @@ function addElements(dataRetrieve) {
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
             currentID = dataRetrieve[1]; //delete onnodige null values
 
-            var items = deleteNullProperties(dataRetrieve[0]); // console.log(items["type"]);
-            // console.dir(items);
+            var items = deleteNullProperties(dataRetrieve[0]);
+            //console.dir(items);
 
             var pageContent = document.getElementById('Dashboard');
             var content = constructMelding(items) + pageContent.innerHTML;
@@ -115,7 +115,34 @@ function constructMelding(meldingData) {
     alertSound("Alert");
     var melding = "";
     var elementName = 'view' + meldingData['id'];
-    melding += '<div class="alertItem" id=alertItem' + meldingData['id'] + '>' + '<div>' + '<img src = "' + IMAGE_DIR + '/Categories/category-' + meldingData['type'] + '.png" alt="alert type">' + '<p class="type">' + meldingData['type'] + '</p>' + '<p class="time">' + meldingData['TimeStamp'] + "</p>" + "</div>" + "<div style='" + 'background-image:url("' + IMAGE_DIR + '/DashboardBuildings/building-' + meldingData['school'] + '.jpg")' + "'>" + '<h1>' + meldingData['school'];
+    melding +=
+        '<div class="alertItem" id=alertItem' +
+        meldingData['id'] + '>' +
+        '<div>' +
+
+        '<img src = "' +
+        IMAGE_DIR +
+        '/Categories/category-' +
+        meldingData['type'] +
+        '.png" alt="alert type">' +
+        '<p class="type">' +
+        meldingData['type'] +
+        '</p>' +
+
+        '<p class="time">' +
+        meldingData['TimeStamp'] +
+        "</p>" +
+        "</div>" +
+
+        "<div style='" +
+        'background-image:url("' +
+        IMAGE_DIR +
+        '/DashboardBuildings/building-' +
+        meldingData['school'] +
+        '.jpg")' +
+        "'>" +
+
+        '<h1>' + meldingData['school'];
 
     if (meldingData['locatie'] && meldingData['locatie'] !== undefined) {
         melding += '</h1>+' + '<p>' + meldingData['locatie'] + '</p>';
@@ -145,6 +172,8 @@ function constructMelding(meldingData) {
     //  Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
 
     var keys = Object.keys(meldingData);
+    //console.dir(meldingData);
+    //console.dir(keys);
     var height = 30;
 
     for (var i = 0; keys.length > i; i++) {
