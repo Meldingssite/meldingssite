@@ -249,7 +249,7 @@ function updateContent(items) {
                 // console.log(keys[x] + items['id']);
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<p id ='" + keys[x] + "" + items['id'] + "'>" + content + "</p>";
+                addItems += "<p id ='" + keys[x] + "" + items['id'] + "' class='ExtraItem'>" + content + "</p>";
                 DIV.innerHTML += addItems;
                 updated = true;
             } else {
@@ -269,7 +269,7 @@ function updateContent(items) {
 
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<p>Foto:</p><a href=''" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' target='_blank' ><img src='" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' id='" + keys[x] + items['id'] + "'>";
+                addItems += "<p class='ExtraItem'>Foto:</p><a href=''" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' target='_blank' ><img src='" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' id='" + keys[x] + items['id'] + "'>";
                 DIV.innerHTML += addItems;
             } else {// console.log(keys[x] + items['id']);
             }

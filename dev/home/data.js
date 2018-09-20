@@ -80,48 +80,62 @@ function submitContents(NaamString, school, id) {
      * Prepares data to be send to database
      */
     document.getElementById('submit').innerHTML = 'Aanpassing verzenden';
-    var naam = NaamString.split("|");
-    console.log(naam);
-    var finalArray;
-    finalArray = naam[0].split(',');
-    console.log(finalArray);
+    var finalArray = NaamString.split("|");
+    // console.log(finalArray);
 
-    for (var x = 1; naam.length > x; x++) {
-        naam[x] = naam[x].split(',');
-        if (naam[x] != "" && naam[x] !== undefined && naam[x] != null) if (naam[x][0] == "") naam[x].splice(0, 1);
-        finalArray[finalArray.length] = naam[x]; // }
+    // console.dir(finalArray['wapen']);
+
+    console.log(finalArray.length);
+    for(var i = 0; finalArray.length > i; i++){
+        finalArray[i] = finalArray[i].split(',');
+        if(finalArray[i] instanceof Array){
+            if(finalArray[i].length === 1)
+            {
+                finalArray[i] = finalArray[i][0].toString();
+            }
+        }
     }
+    // console.dir(finalArray);
 
+
+
+    var naam = finalArray;
     sendArray = [];
     var dataArray = [];
     var nameArray = [];
-    naam = finalArray;
+    // naam = finalArray;
     console.dir(finalArray);
 
     for (var x = 0; x < naam.length; x++) {
         var check = false; // console.dir(naam);
-        //Case Multiple Items in array
 
+        //Case Multiple Items in array
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
             var nameElementsArray = [];
-
-            for (var y = 0; naam[x].length > y; y++) {
+            // console.dir(naam);
+            // if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.indexOf("extraInfo")) {
+                console.log("Stuff works" + naam[x][0]);
+                dataElementsArray.push("document.getElementsByName(naam[x][0])[0].parentElement.parentElement.firstChild.innerHTML");
+            // }
+            for (var y = 0; naam[x].length > y; y++){
                 var name = naam[x][y];
+
 
                 if (name) {
                     // console.log(name);
-
+                        //If element if extraInfo
                         if (document.getElementsByName(name)[0].parentElement.parentElement.id.indexOf("extraInfo")) {
                             if (document.getElementsByName(name)[0].value) {
-                                dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
-                                nameElementsArray[y] = name;
+                                console.log("its a extraInfo");
+                                dataElementsArray.push(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
+                                nameElementsArray.push(name);
                                 check = true;
                             }
                         } else if (document.getElementsByName(name)[0].value) {
                             // console.log("Hij doet hier:" + name);
-                            dataElementsArray[y] = document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value;
-                            nameElementsArray[y] = name; // console.log(name);
+                            dataElementsArray.push(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
+                            nameElementsArray.push(name); // console.log(name);
                             // console.log(document.getElementsByName(name)[0].placeholder + ": " + document.getElementsByName(name)[0].value);
 
                             check = true;
@@ -146,9 +160,10 @@ function submitContents(NaamString, school, id) {
         else if (document.getElementsByName(naam[x]).length > 1) {
             // console.log(naam[x]);
             for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
+                //Case Radio Buttons
                 if (document.getElementsByName(naam[x])[y].checked) {
                     // if (document.getElementsByName(naam[x])[y].value) {
-                    // console.log(naam[x]);
+                    console.log(naam[x]);
                     dataArray[x] = document.getElementsByName(naam[x])[y].placeholder + ": " + document.getElementsByName(naam[x])[y].value;
                     nameArray[x] = naam[x]; // }
                 }

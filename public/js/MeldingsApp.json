@@ -47,6 +47,11 @@
             "name": "Overige",
             "type": "button",
             "image_url": "category-other.png"
+          },
+          {
+            "name": "Help Me",
+            "type": "button",
+            "image_url": "category-Help Me.png"
           }
         ]
       }
@@ -63,22 +68,6 @@
             "type": "form",
             "formAction": "formSubmit",
             "content": [
-              {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
-                "text": "Wat is er precies gebeurt?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "Wat is er gebeurt?"
-                  }
-                ]
-              },
               {
                 "text": "Is het slachtoffer bewusteloos?",
                 "type": "radioButtons",
@@ -262,8 +251,8 @@
               {
                 "text": "contact gegevens",
                 "type": "textInput",
-                "toggle": "true",
                 "name": "persoon",
+                "toggle": "true",
                 "options": [
                   {
                     "name": "naam",
@@ -303,6 +292,7 @@
                 "text": "wat voor een wapen heeft u gezien",
                 "type": "dropDown",
                 "name": "wapen",
+                "target": "overigWapens",
                 "options": [
                   {
                     "name": "geweer",
@@ -315,6 +305,24 @@
                   {
                     "name": "knuppel",
                     "text": "knuppel"
+                  },
+                  {
+                    "name": "overig",
+                    "text": "overig",
+                    "expand": "true"
+                  }
+                ]
+              },
+              {
+                "text": "overige Wapens",
+                "type": "textInput",
+                "name": "overigWapens",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "extraInfooverigWapens",
+                    "inputType": "text",
+                    "inhoud": "Wat voor een wapen?"
                   }
                 ]
               },
@@ -442,11 +450,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
                 "type": "radioButtons",
                 "text": "Wat heeft u gezien?",
                 "name": "drugsToggle",
@@ -525,7 +528,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken"
+                    "inhoud": "Opvallende kenmerken aan persoon"
                   }
                 ]
               },
@@ -960,7 +963,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "opvallende kenmerken?"
+                    "inhoud": "andere kenmerken?"
                   }
                 ]
               },
@@ -1129,7 +1132,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "opvallende kenmerken?"
+                    "inhoud": "andere kenmerken?"
                   }
                 ]
               },
@@ -1163,17 +1166,54 @@
         ]
       }
     ],
+    "Help Me": [{
+      "content": [
+
+      {
+        "text": "Overige",
+        "type": "textbox",
+        "color": "purple"
+      },
+      {
+        "type": "form",
+        "formAction": "formSubmit",
+        "content": [
+          {
+            "text": "Wie ben je?",
+            "type": "textInput",
+            "name": "persoon",
+            "options": [
+              {
+                "name": "naam",
+                "inputType": "text",
+                "inhoud": "naam"
+              },
+              {
+                "name": "achternaam",
+                "inputType": "text",
+                "inhoud": "Achternaam"
+              }
+            ]
+          }
+
+
+        ]
+      }
+
+      ]}
+
+    ],
     "Locaties": [
       {
         "type": "locatieForm",
         "formAction": "",
         "content": {
-          "Dordrecht": "label",
+          "Dordrecht": [],
           "Leerparkpromenade 100": [],
           "Drechtsteden College": [],
           "SamenwerkingsGebouw": [],
           "Wartburg College": [],
-          "Sport Plein": [],
+          "Sport+": [],
           "Schippers Internaat": [],
           "Karel Lotsyweg": [],
           "Patersweg": [],
@@ -1181,14 +1221,16 @@
           "Azzurro": [],
           "Betaalde Parkeerplaats": [],
           "Parkeerplaats langs de N3": [],
-          "Parkeerplaats Langs Spoor": [],
+          "Parkeerplaats langs het spoor": [],
           "Openbare Weg": [],
-          "Gorinchem": "label",
+          "Gorinchem": [],
           "Mollenburgseweg": [
-            "De snoekzone"
           ]
         }
       }
     ]
   }
 }
+
+
+

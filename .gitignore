@@ -3,3 +3,7 @@
 /public/js/dashboard
 /public/js/home
 core/config\.php
+
+dataBarry\.sql
+
+*.sql

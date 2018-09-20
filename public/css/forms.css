@@ -14,12 +14,6 @@ form {
     color: #333;
 }
 
-/*form > * {*/
-/*display: inline-block;*/
-/*width: 100%;*/
-/*height: 2em;*/
-/*}*/
-
 fieldset {
     display: block;
 }
@@ -108,7 +102,7 @@ select {
 .inputGroup input[type="radio"] {
     opacity: 0;
     min-width: 42px;
-    /*height: 42px;*/
+    height: 42px;
     z-index: 2;
     position: absolute;
 }
@@ -129,13 +123,14 @@ input[type="radio"]:checked + label {
 /*hidden extra info*/
 .extraInfo {
     overflow: hidden;
-    display: none;
+    opacity: 1;
+
+    transition: opacity 0.6s ease-out;
+}
+
+.hidden {
     height: 0px;
     opacity: 0;
-    transition-property: height;
-    transition-duration: 1s;
-    transition-timing-function: linear;
-    transition-delay: 0s;
 }
 
 #login {
@@ -150,11 +145,6 @@ input[type="radio"]:checked + label {
     border-bottom-right-radius: 15px;
     overflow: hidden;
 }
-
-/* #container {
-    position: relative;
-    top: -30px;
-} */
 
 #login form, #login div {
     width: 300px;
@@ -201,10 +191,6 @@ input[type="radio"]:checked + label {
     color: white;
     border: none;
 }
-
-/*#Menu:hover{width: 100%;}*/
-/*#Menu:not(:hover){width: 10px;}*/
-/*#Menu{position: fixed;}*/
 
 #btnForgotLogin {
     background: rgb(255, 44, 44);
