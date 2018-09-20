@@ -23,7 +23,7 @@ function checkDB(mode) {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response) {
                 dataRetrieve = JSON.parse(this.response);
-                // console.log('adding Elements');
+                //console.dir(dataRetrieve);
                 addElements(dataRetrieve);
             }
             else {
@@ -32,7 +32,7 @@ function checkDB(mode) {
         }
     };
     xDBhttp.send(Data);
-    console.log("Checking Database");
+    //console.log("Checking Database");
 }
 
 function remove(item) {

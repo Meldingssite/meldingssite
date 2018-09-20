@@ -40,71 +40,13 @@ function toggleSpace(item) {
   return returnItem;
 }
 
-function extraInfo(elementID) {
+function extraInfo(ID) {
   /**************************
    * extraInfo()
    **************************
-   * DESCRIPTION HERE
+   * Toggles if the extra info is shown
    */
-  document.getElementById('view' + elementID).style.color = "white";
-  var target = document.getElementById('extraInfo' + elementID);
-
-  if (target.style.height == 0 || target.style.height < "10px") {
-    unfade(target, elementID, 'block');
-  } else {
-    fade(target, elementID);
-  }
-}
-
-function unfade(element) {
-  var elementID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var display = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'block';
-
-  /**************************
-   * unfade()
-   **************************
-   * Makes item reappear
-   */
-  var op = 0.1; // initial opacity
-
-  element.style.display = display;
-  if (elementID != null) var height = document.getElementById('height' + elementID).innerHTML; // console.log(height);
-
-  var timer = setInterval(function () {
-    if (op >= 1) {
-      element.style.height = height + 'px';
-      clearInterval(timer);
-      element.style.opacity = 1; // element.style.padding = 0;
-    }
-
-    element.style.opacity = op;
-    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-    op += op * 0.1;
-  }, 10);
-}
-
-function fade(element) {
-  var elementID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-  /**************************
-   * fade()
-   **************************
-   * DESCRIPTION HERE
-   */
-  document.querySelector('div > input[name="test1"]');
-  var op = 1; // initial opacity
-
-  element.style.height = '0';
-  var timer = setInterval(function () {
-    if (op <= 0.1) {
-      clearInterval(timer); // element.style.display = 'none';
-      // element.style.padding = 0;
-    }
-
-    element.style.opacity = op;
-    element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-    op -= op * 0.1;
-  }, 30);
+  document.getElementById('extraInfo' + ID).classList.toggle("hidden");
 }
 
 function updateNotify(element) {
