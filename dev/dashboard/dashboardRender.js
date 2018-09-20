@@ -201,7 +201,7 @@ function constructMelding(meldingData) {
         }
         else if (keys[i] === 'FILE')
         {
-            melding +="<p>Foto:</p><a href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' target='_blank' ><img src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' id='" + keys[i] + meldingData['id'] + "'></a>";
+            melding +="<a class='ExtraItem' href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' target='_blank' ><img src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' id='" + keys[i] + meldingData['id'] + "'></a>";
         }
 
     }
