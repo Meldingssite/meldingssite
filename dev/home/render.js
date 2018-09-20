@@ -107,7 +107,7 @@ function renderButton(buttonObj) {
 
     buttonHTML += "<div class='btn'" + "onclick=renderPage('" + buttonObj.name + "')";
     if (buttonObj.name == "Help Me") {
-        buttonHTML +=  " style='background-color:red;'";
+        buttonHTML +=  " style='background-color:red;color:white'";
 }
 
     buttonHTML += " >"; // img tag
