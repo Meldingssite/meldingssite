@@ -157,3 +157,12 @@
     align-content: space-between;
     /*float: right;*/
 }
+
+.ExtraItem {
+    display: inline-block;
+    color: black;
+    text-shadow: initial;
+    background: white;
+    width: 300px;
+
+}

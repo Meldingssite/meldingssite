@@ -77,7 +77,7 @@ function addElements(dataRetrieve) {
      **************************
      * Begin of constructing a element
      */
-    // console.dir(dataRetrieve);
+    //console.dir(dataRetrieve);
     if (dataRetrieve[0] !== null) {
         // console.log(dataRetrieve[1] + " " + currentID);
         if (currentID !== dataRetrieve[1] && !document.getElementById('alertItem' + dataRetrieve[0]['id']) && document.getElementById('alertItem' + dataRetrieve[0]['id']) == null) {
@@ -199,7 +199,13 @@ function constructMelding(meldingData) {
             keys[i] !== 'id'
         )
         {
-            melding += "<p id ='" + keys[i] + "" + meldingData['id'] + "'>" + content + "</p>";
+            melding += 
+                "<p " + 
+                "id ='" + keys[i] + "" + meldingData['id'] + "' " +
+                "class ='ExtraItem'" +
+                ">" +
+                content +
+                "</p>";
             height += TextHeight;
         }
         else if (keys[i] === 'FILE')
