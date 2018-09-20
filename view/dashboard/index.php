@@ -5,14 +5,11 @@
 <script src="<?php echo URL . SCRIPT_DIR ?>dashboard/dashboardMain.js"></script>
 <script>window.onload = startbasic();</script>
 <header>
-    <!--    <img src="--><?php //echo IMAGE_DIR ?><!--banner.jpg" alt="">-->
-    <!--    TODO logout Button (logOut function PHP)-->
     <div id="Menu">
         <a id="btnArchive" onclick="archief()">
             <i class="fas fa-archive fa-lg"></i>
             <p>Archief</p>
         </a>
-
 
         <?php if ($_SESSION['rights'] > 1) {
             echo '<div class="clearfix"></div><a id="btnChangePasswords" href="users"><i class="fas fa-users fa-lg"></i><p>Account Beheer</p></a>';
