@@ -77,6 +77,25 @@ function renderLabel(text) {
     pageHTML.innerHTML += labelHTML;
 }
 
+function renderEmergencyButton() {
+    /**************************
+     * renderButton
+     **************************
+     * Render Button Element
+     */
+    var pageHTML = document.getElementById("page");
+    var buttonHTML = ""; // Opening tag for .btn
+
+    buttonHTML += "<div class='btn'" + "onclick=renderPage('Emergency')>"; // img tag
+
+    buttonHTML += "<img src='" + IMAGE_DIR + "/Categories/category-Emergency.png" + "'>"; // button text
+
+    buttonHTML += "Help Mij"; // Closing tag for .btn
+
+    buttonHTML += "</div>";
+    pageHTML.innerHTML += buttonHTML;
+}
+
 function renderButton(buttonObj) {
     /**************************
      * renderButton
@@ -305,7 +324,7 @@ function renderLocatieScholen(alertType, content) {
      * Renders a list with locations
      */
     var pageHTML = document.getElementById("page");
-    renderTextbox(new Textbox("Waar vindt plaats?", "purple"));
+    renderTextbox(new Textbox("Waar is er hulp nodig?", "purple"));
 
     for (var i = 0; i < Object.keys(content).length; i++) {
         //  Check if it is a label
@@ -361,7 +380,7 @@ function renderSubmit(naam, school, id) {
      **************************
      * Renders a submit button which advances to the next page
      */
-    console.dir(naam);
+    // console.dir(naam);
     var submitHTML = "";
     submitHTML += "<div id = 'submit' class='btn'" + "onclick=submitContents('";
 
@@ -413,13 +432,21 @@ function renderPage() {
     var page = getPage(i);
 
     if (page) {
-        if (locatieSubmit == true || i == "Home") {
+        if (locatieSubmit == true || i == "Home" ) {
             var content = page[ID].content;
-
+            console.log(page + " " + i);
             for (var pageElement in content) {
-                if (content[pageElement].type === "textbox") renderTextbox(content[pageElement]); else if (content[pageElement].type === "button") renderButton(content[pageElement]); else if (content[pageElement].type === "form") renderForm(content[pageElement], school, id); // type is unknown
+                if (content[pageElement].type === "textbox")
+                    renderTextbox(content[pageElement]);
+                else if (content[pageElement].type === "button")
+                    renderButton(content[pageElement]);
+                else if (content[pageElement].type === "form")
+                    renderForm(content[pageElement], school, id); // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             } //  determine pageElement type
+            if(i != "Emergency"){
+            renderEmergencyButton();
+            }
 
         } else {
             renderLocatieForm(i);

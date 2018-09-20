@@ -1161,6 +1161,43 @@
         ]
       }
     ],
+    "Emergency": [{
+      "content": [
+
+      {
+        "text": "Overige",
+        "type": "textbox",
+        "color": "purple"
+      },
+      {
+        "type": "form",
+        "formAction": "formSubmit",
+        "content": [
+          {
+            "text": "Wie ben je?",
+            "type": "textInput",
+            "name": "persoon",
+            "options": [
+              {
+                "name": "naam",
+                "inputType": "text",
+                "inhoud": "naam"
+              },
+              {
+                "name": "achternaam",
+                "inputType": "text",
+                "inhoud": "Achternaam"
+              }
+            ]
+          }
+
+
+        ]
+      }
+
+      ]}
+
+    ],
     "Locaties": [
       {
         "type": "locatieForm",
@@ -1171,7 +1208,7 @@
           "Drechtsteden College": [],
           "SamenwerkingsGebouw": [],
           "Wartburg College": [],
-          "Sport Plein": [],
+          "Sport+": [],
           "Schippers Internaat": [],
           "Karel Lotsyweg": [],
           "Patersweg": [],

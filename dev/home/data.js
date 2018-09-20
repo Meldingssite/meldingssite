@@ -113,12 +113,12 @@ function submitContents(NaamString, school, id) {
         if (Array.isArray(naam[x]) === true) {
             var dataElementsArray = [];
             var nameElementsArray = [];
-            console.dir(naam);
+            // console.dir(naam);
             // if (document.getElementsByName(naam[x][0])[0].parentElement.parentElement.id.indexOf("extraInfo")) {
                 console.log("Stuff works" + naam[x][0]);
-                dataElementsArray.push(document.getElementsByName(naam[x][0])[0].parentElement.parentElement.firstChild.innerHTML);
+                dataElementsArray.push("document.getElementsByName(naam[x][0])[0].parentElement.parentElement.firstChild.innerHTML");
             // }
-            for (var y = 0; naam[x].length > y; y++) {
+            for (var y = 0; naam[x].length > y; y++){
                 var name = naam[x][y];
 
 
