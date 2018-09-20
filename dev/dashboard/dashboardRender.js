@@ -4,8 +4,6 @@
 //Testing commit
 var currentID = 1;
 var dataRetrieve = null;
-var TextHeight = 19;
-var imgHeight = 150;
 var refreshRate = 250;
 var imageURL = imageURL = document.location.origin + "/public/uploads/";
 
@@ -52,7 +50,7 @@ function startbasic() {
         }
     };
 
-    console.log("Checking Database");
+    //console.log("Checking Database");
     IDhttp.send();
 }
 
@@ -158,7 +156,6 @@ function constructMelding(meldingData) {
         '<button id="' +
         elementName +
         '"><i class="far fa-eye"></i></button>' + 
-        //TODO add fadein and FadeOut onclick
         '<button id="finished' +
         meldingData['id'] +
         '"><i class="fas fa-check"></i></button>' +
@@ -167,14 +164,11 @@ function constructMelding(meldingData) {
         '</div>' +
 
         //  Extra Info
-        '<div class = "extraInfo" id="extraInfo' + meldingData['id'] + '">';
+        '<div class = "extraInfo hidden" id="extraInfo' + meldingData['id'] + '">';
 
     //  Adds extra information to the melding(Automatically excludes type, id, locatie en locatieSpecifiek)
 
     var keys = Object.keys(meldingData);
-    //console.dir(meldingData);
-    //console.dir(keys);
-    var height = 30;
 
     for (var i = 0; keys.length > i; i++) {
         var Inhoud = meldingData[keys[i]];
@@ -182,8 +176,6 @@ function constructMelding(meldingData) {
         var content = meldingData[keys[i]];
 
         if (comma != null) {
-            var calculation = TextHeight * comma.length - 1;
-            height += calculation;
             content = meldingData[keys[i]].replace(new RegExp(",", "g"), '<br>');
         }
 
@@ -206,16 +198,16 @@ function constructMelding(meldingData) {
                 ">" +
                 content +
                 "</p>";
-            height += TextHeight;
         }
         else if (keys[i] === 'FILE')
         {
-            melding +="<p>Foto:</p><a href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' target='_blank' ><img height='" + imgHeight + "px' src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' id='" + keys[i] + meldingData['id'] + "'></a>";
-            height += imgHeight + TextHeight;
+            melding +="<p>Foto:</p><a href='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' target='_blank' ><img src='" + imageURL + '/' + meldingData['id'] + '/' + meldingData[keys[i]] + "' id='" + keys[i] + meldingData['id'] + "'></a>";
         }
+
     }
 
-    melding += '<div hidden=true id="height' + meldingData['id'] + '">' + height + "</div>" + "</div>";
+    melding += "</div>";
+
     return melding;
 }
 
@@ -228,7 +220,6 @@ function updateContent(items) {
         // console.log("Updating content");
     var updated = false;
     var keys = Object.keys(items);
-    var height = Number(document.getElementById('height' + items['id']).innerHTML);
 
     for (var x = 0; keys.length > x; x++) {
         var Inhoud = items[keys[x]];
@@ -237,9 +228,7 @@ function updateContent(items) {
         content = items[keys[x]];
 
         if (comma != null && keys[x] !== 'FILE') {
-            console.log(comma.length);
-            var calculation = TextHeight * comma.length - 1;
-            height += calculation;
+            //console.log(comma.length);
             content = items[keys[x]].replace(new RegExp(",", "g"), '<br>');
         }
 
@@ -249,7 +238,7 @@ function updateContent(items) {
                 if (document.getElementById(keys[x] + items['id']).innerHTML !== content && document.getElementById(keys[x] + items['id']) != null) {
                     if (keys[x] !== 'type' && keys[x] !== 'locatieSpecifiek' && keys[x] !== 'locatie') {
                         document.getElementById(keys[x] + items['id']).innerHTML = content;
-                        console.log(content);
+                        //console.log(content);
                         updated = true;
                     } else {
                         document.getElementById(keys[x] + items['id']).innerHTML = toggleSpace(items[keys[x]], true);
@@ -262,7 +251,6 @@ function updateContent(items) {
                 var addItems = "";
                 addItems += "<p id ='" + keys[x] + "" + items['id'] + "'>" + content + "</p>";
                 DIV.innerHTML += addItems;
-                height += TextHeight;
                 updated = true;
             } else {
                 // console.log(keys[x] + items['id']);
@@ -281,8 +269,7 @@ function updateContent(items) {
 
                 var DIV = document.getElementById('extraInfo' + items['id']);
                 var addItems = "";
-                addItems += "<p>Foto:</p><a href=''" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' target='_blank' ><img height='" + imgHeight + "px' src='" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' id='" + keys[x] + items['id'] + "'>";
-                height += imgHeight;
+                addItems += "<p>Foto:</p><a href=''" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' target='_blank' ><img src='" + IMAGE_DIR + '../uploads/' + +items['id'] + '/' + content + "' id='" + keys[x] + items['id'] + "'>";
                 DIV.innerHTML += addItems;
             } else {// console.log(keys[x] + items['id']);
             }
@@ -292,6 +279,5 @@ function updateContent(items) {
 
     if (updated === true) {
         updateNotify(items);
-        document.getElementById('height' + items['id']).innerHTML = height.toString();
     }
 }

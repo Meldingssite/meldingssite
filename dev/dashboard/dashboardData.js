@@ -32,7 +32,7 @@ function checkDB(mode) {
         }
     };
     xDBhttp.send(Data);
-    console.log("Checking Database");
+    //console.log("Checking Database");
 }
 
 function remove(item) {
