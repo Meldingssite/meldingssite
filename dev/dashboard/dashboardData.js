@@ -41,6 +41,9 @@ function remove(item) {
      **************************
      * DESCRIPTION HERE
      */
+    if(item == currentID){
+        currentID--;
+    }
 
     if (confirm("weet u zeker dat u deze melding wilt verwijderen?") === true) {
         var Data = new FormData();
@@ -61,8 +64,8 @@ function remove(item) {
         };
         Removehttp.send(Data);
         console.log("removing Item");
-        if(fade(document.getElementById('extraInfo' + item)))
-        if(fade(document.getElementById('alertItem' + item)))
+        if(document.getElementById('extraInfo' + item).classList.add('hidden'))
+        if(document.getElementById('alertItem' + item).classList.add('hidden'))
         document.getElementById('extraInfo' + item).removeItem();
         document.getElementById('alertItem' + item).removeItem();
 
