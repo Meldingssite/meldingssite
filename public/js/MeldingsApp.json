@@ -69,17 +69,6 @@
                 "name": "test"
               },
               {
-                "text": "Wat is er precies gebeurt?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "Wat is er gebeurt?"
-                  }
-                ]
-              },
-              {
                 "text": "Is het slachtoffer bewusteloos?",
                 "type": "radioButtons",
                 "name": "unconscious",
@@ -303,6 +292,7 @@
                 "text": "wat voor een wapen heeft u gezien",
                 "type": "dropDown",
                 "name": "wapen",
+                "target": "overigWapens",
                 "options": [
                   {
                     "name": "geweer",
@@ -315,6 +305,24 @@
                   {
                     "name": "knuppel",
                     "text": "knuppel"
+                  },
+                  {
+                    "name": "overig",
+                    "text": "overig",
+                    "expand": "true"
+                  }
+                ]
+              },
+              {
+                "text": "overige Wapens",
+                "type": "textInput",
+                "name": "overigWapens",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "extraInfooverigWapens",
+                    "inputType": "text",
+                    "inhoud": "Wat voor een wapen?"
                   }
                 ]
               },
@@ -442,11 +450,6 @@
             "formAction": "formSubmit",
             "content": [
               {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
                 "type": "radioButtons",
                 "text": "Wat heeft u gezien?",
                 "name": "drugsToggle",
@@ -493,6 +496,11 @@
                 ]
               },
               {
+                "text": "Foto toevoegen",
+                "type": "upload",
+                "name": "test"
+              },
+              {
                 "text": "wie heeft u gezien?",
                 "type": "textInput",
                 "name": "extraPersoon",
@@ -525,7 +533,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken"
+                    "inhoud": "Opvallende kenmerken aan persoon"
                   }
                 ]
               },
@@ -575,7 +583,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -675,7 +683,7 @@
                   {
                     "name": "voorwerpAnders",
                     "inputType": "text",
-                    "inhoud": "Andere kenmerken"
+                    "inhoud": "Andere kenmerken (bijv. achtergond van smartphone)"
                   }
                 ]
               },
@@ -730,7 +738,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken"
+                    "inhoud": "Opvallende kenmerken aan persoon"
                   }
                 ]
               },
@@ -842,7 +850,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken"
+                    "inhoud": "Opvallende kenmerken aan persoon"
                   }
                 ]
               },
@@ -960,7 +968,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },
@@ -1079,7 +1087,7 @@
                   {
                     "name": "p2anders",
                     "inputType": "text",
-                    "inhoud": "Opvallende kenmerken"
+                    "inhoud": "Opvallende kenmerken aan persoon"
                   }
                 ]
               },
@@ -1129,7 +1137,7 @@
                   {
                     "name": "voertuiganders",
                     "inputType": "text",
-                    "inhoud": "opvallende kenmerken?"
+                    "inhoud": "andere opvallende kenmerken?"
                   }
                 ]
               },

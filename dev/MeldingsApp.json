@@ -51,11 +51,11 @@
         ]
       }
     ],
-    "Ongeval": [
+    "Ongeval(EHBO)": [
       {
         "content": [
           {
-            "text": "Ongeval",
+            "text": "Ongeval(EHBO)",
             "type": "textbox",
             "color": "purple"
           },
@@ -292,6 +292,7 @@
                 "text": "wat voor een wapen heeft u gezien",
                 "type": "dropDown",
                 "name": "wapen",
+                "target": "overigWapens",
                 "options": [
                   {
                     "name": "geweer",
@@ -304,6 +305,24 @@
                   {
                     "name": "knuppel",
                     "text": "knuppel"
+                  },
+                  {
+                    "name": "overig",
+                    "text": "overig",
+                    "expand": "true"
+                  }
+                ]
+              },
+              {
+                "text": "overige Wapens",
+                "type": "textInput",
+                "name": "overigWapens",
+                "toggle": "true",
+                "options": [
+                  {
+                    "name": "extraInfooverigWapens",
+                    "inputType": "text",
+                    "inhoud": "Wat voor een wapen?"
                   }
                 ]
               },
