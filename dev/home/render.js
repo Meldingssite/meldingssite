@@ -77,7 +77,7 @@ function renderLabel(text) {
     pageHTML.innerHTML += labelHTML;
 }
 
-function renderEmergencyButton() {
+function renderHelpMeButton() {
     /**************************
      * renderButton
      **************************
@@ -86,9 +86,9 @@ function renderEmergencyButton() {
     var pageHTML = document.getElementById("page");
     var buttonHTML = ""; // Opening tag for .btn
 
-    buttonHTML += "<div class='btn'" + "onclick=renderPage('Emergency')>"; // img tag
+    buttonHTML += "<div class='btn'" + "onclick=renderPage('Help Me')>"; // img tag
 
-    buttonHTML += "<img src='" + IMAGE_DIR + "/Categories/category-Emergency.png" + "'>"; // button text
+    buttonHTML += "<img src='" + IMAGE_DIR + "/Categories/category-Help Me.png" + "'>"; // button text
 
     buttonHTML += "Help Mij"; // Closing tag for .btn
 
@@ -105,7 +105,12 @@ function renderButton(buttonObj) {
     var pageHTML = document.getElementById("page");
     var buttonHTML = ""; // Opening tag for .btn
 
-    buttonHTML += "<div class='btn'" + "onclick=renderPage('" + buttonObj.name + "')>"; // img tag
+    buttonHTML += "<div class='btn'" + "onclick=renderPage('" + buttonObj.name + "')";
+    if (buttonObj.name == "Help Me") {
+        buttonHTML +=  " style='background-color:red;'";
+}
+
+    buttonHTML += " >"; // img tag
 
     buttonHTML += "<img src='" + IMAGE_DIR + "/Categories/category-" + buttonObj.name + ".png" + "'>"; // button text
 
@@ -258,12 +263,12 @@ function renderFileUpload() {
 
     uploadHTML += "<fieldset><legend>" + "Foto van het incident" + "</legend>"; //section
 
-    uploadHTML += "<section class=input>" + '<input type="file" name="file" class="fileUpload">'; //knop
+    uploadHTML += "<section class=input>" + '<input type="file" name="fileUpload" class="fileUpload">'; //knop
     //closing tags
 
     uploadHTML += "</section></fieldset>";
     mainHTML.innerHTML += uploadHTML;
-    return "file";
+    return "fileUpload";
 }
 
 function renderForm(form, school, id) {
@@ -380,7 +385,7 @@ function renderSubmit(naam, school, id) {
      **************************
      * Renders a submit button which advances to the next page
      */
-    // console.dir(naam);
+        // console.dir(naam);
     var submitHTML = "";
     submitHTML += "<div id = 'submit' class='btn'" + "onclick=submitContents('";
 
@@ -432,7 +437,7 @@ function renderPage() {
     var page = getPage(i);
 
     if (page) {
-        if (locatieSubmit == true || i == "Home" ) {
+        if (locatieSubmit == true || i == "Home") {
             var content = page[ID].content;
             console.log(page + " " + i);
             for (var pageElement in content) {
@@ -444,9 +449,9 @@ function renderPage() {
                     renderForm(content[pageElement], school, id); // type is unknown
                 else console.log("Unknown type: " + page[pageElement].type);
             } //  determine pageElement type
-            if(i != "Emergency"){
-            renderEmergencyButton();
-            }
+            // if(i != "Help Me"){
+            // renderHelpMeButton();
+            // }
 
         } else {
             renderLocatieForm(i);

@@ -47,6 +47,11 @@
             "name": "Overige",
             "type": "button",
             "image_url": "category-other.png"
+          },
+          {
+            "name": "Help Me",
+            "type": "button",
+            "image_url": "category-Help Me.png"
           }
         ]
       }
@@ -1161,7 +1166,7 @@
         ]
       }
     ],
-    "Emergency": [{
+    "Help Me": [{
       "content": [
 
       {
@@ -1208,7 +1213,7 @@
           "Drechtsteden College": [],
           "SamenwerkingsGebouw": [],
           "Wartburg College": [],
-          "Sport Plein": [],
+          "Sport+": [],
           "Schippers Internaat": [],
           "Karel Lotsyweg": [],
           "Patersweg": [],
