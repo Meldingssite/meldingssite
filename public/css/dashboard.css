@@ -123,7 +123,7 @@
     flex-wrap: wrap;
     align-content: start;
     
-    max-height: 500px;
+    height: 450px;
     padding-left: 15px;
     /*margin-top: 15px;*/
 
@@ -132,11 +132,22 @@
     position: relative;
     top: -5px;
 
+    transition: height 1s;
+
+}
+
+.extraInfo * {
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 .hidden {
-    display: none;
+    /* display: none; */
     height: 0px;
+}
+
+.hidden * {
+    opacity: 0;
 }
 
 .extraInfo p {
