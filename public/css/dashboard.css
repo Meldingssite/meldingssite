@@ -118,37 +118,33 @@
 
 .extraInfo {
     overflow: hidden;
-    display: block;
-    height: 0;
-    opacity: 0;
-    transition-property: height;
-    transition-duration: 0.3s;
-    transition-timing-function: linear;
-    transition-delay: 0s;
-
-    padding-left: 65px;
+    display: flex;   
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: start;
+    
+    max-height: 500px;
+    padding-left: 15px;
     /*margin-top: 15px;*/
 
     background: #669;
-    color: white;
-    text-shadow: 0 0 5px black;
 
     position: relative;
     top: -5px;
 
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: flex-end;
+}
+
+.hidden {
+    display: none;
+    height: 0px;
 }
 
 .extraInfo p {
     display: block;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 
 }
 
-.extraInfo:not(img) {
-    /*margin: 15px 0;*/
-}
 
 .extraInfo img {
     order: 99;
@@ -164,5 +160,8 @@
     text-shadow: initial;
     background: white;
     width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
 
 }
