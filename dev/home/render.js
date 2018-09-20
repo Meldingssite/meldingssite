@@ -364,6 +364,7 @@ function renderSubmit(naam, school, id) {
      **************************
      * Renders a submit button which advances to the next page
      */
+    console.dir(naam);
     var submitHTML = "";
     submitHTML += "<div id = 'submit' class='btn'" + "onclick=submitContents('";
 
@@ -374,14 +375,14 @@ function renderSubmit(naam, school, id) {
             submitHTML += naam[x];
 
             if (x !== naam.length - 1) {
-                submitHTML += "|";
-                submitHTML += ',';
+                // submitHTML += "|";
+                submitHTML += '|';
             }
         } else {
             submitHTML += naam[x];
 
             if (x !== naam.length - 1) {
-                submitHTML += ',';
+                submitHTML += '|';
             }
         }
     }

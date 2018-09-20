@@ -268,935 +268,953 @@
                     "name": "telefoon",
                     "inputType": "Tel",
                     "inhoud": "telefoon"
+                  },
+                  {
+                    "type": "form",
+                    "formAction": "formSubmit",
+                    "content": [
+                      {
+                        "text": "Foto toevoegen",
+                        "type": "upload",
+                        "name": "test"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    ],
-    "Wapens": [
-      {
-        "content": [
+        ],
+        "Wapens": [
           {
-            "text": "Wapens",
-            "type": "textbox",
-            "color": "purple"
-          },
-          {
-            "type": "form",
-            "formAction": "formSubmit",
             "content": [
               {
-                "text": "wat voor een wapen heeft u gezien",
-                "type": "dropDown",
-                "name": "wapen",
-                "target": "overigWapens",
-                "options": [
-                  {
-                    "name": "geweer",
-                    "text": "geweer"
-                  },
-                  {
-                    "name": "mes",
-                    "text": "mes"
-                  },
-                  {
-                    "name": "knuppel",
-                    "text": "knuppel"
-                  },
-                  {
-                    "name": "overig",
-                    "text": "overig",
-                    "expand": "true"
-                  }
-                ]
+                "text": "Wapens",
+                "type": "textbox",
+                "color": "purple"
               },
               {
-                "text": "overige Wapens",
-                "type": "textInput",
-                "name": "overigWapens",
-                "toggle": "true",
-                "options": [
+                "type": "form",
+                "formAction": "formSubmit",
+                "content": [
                   {
-                    "name": "extraInfooverigWapens",
-                    "inputType": "text",
-                    "inhoud": "Wat voor een wapen?"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "Moet er een persoon gemeldt worden?",
-                "name": "persoonToggle",
-                "toggle": "true",
-                "target": "extraPersoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
+                    "text": "wat voor een wapen heeft u gezien",
+                    "type": "dropDown",
+                    "name": "wapen",
+                    "target": "overigWapens",
+                    "options": [
+                      {
+                        "name": "geweer",
+                        "text": "geweer"
+                      },
+                      {
+                        "name": "mes",
+                        "text": "mes"
+                      },
+                      {
+                        "name": "knuppel",
+                        "text": "knuppel"
+                      },
+                      {
+                        "name": "overig",
+                        "text": "overig",
+                        "expand": "true"
+                      }
+                    ]
                   },
                   {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "Beschrijf de persoon",
-                "type": "textInput",
-                "name": "extraPersoon",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "p2naam",
-                    "inputType": "text",
-                    "inhoud": "Naam"
+                    "text": "overige Wapens",
+                    "type": "textInput",
+                    "name": "overigWapens",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "extraInfooverigWapens",
+                        "inputType": "text",
+                        "inhoud": "Wat voor een wapen?"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2huidskleur",
-                    "inputType": "text",
-                    "inhoud": "Huidskleur"
+                    "type": "form",
+                    "formAction": "formSubmit",
+                    "content": [
+                      {
+                        "text": "Foto toevoegen",
+                        "type": "upload",
+                        "name": "Wilt u een foto toevoegen?"
+                      },
+                  {
+                    "type": "radioButtons",
+                    "text": "Moet er een persoon gemeldt worden?",
+                    "name": "persoonToggle",
+                    "toggle": "true",
+                    "target": "extraPersoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2geslacht",
-                    "inputType": "text",
-                    "inhoud": "Geslacht"
+                    "text": "Beschrijf de persoon",
+                    "type": "textInput",
+                    "name": "extraPersoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "p2naam",
+                        "inputType": "text",
+                        "inhoud": "Naam"
+                      },
+                      {
+                        "name": "p2huidskleur",
+                        "inputType": "text",
+                        "inhoud": "Huidskleur"
+                      },
+                      {
+                        "name": "p2geslacht",
+                        "inputType": "text",
+                        "inhoud": "Geslacht"
+                      },
+                      {
+                        "name": "p2leeftijd",
+                        "inputType": "text",
+                        "inhoud": "Leeftijd"
+                      },
+                      {
+                        "name": "p2kleding",
+                        "inputType": "text",
+                        "inhoud": "Kleding"
+                      },
+                      {
+                        "name": "p2anders",
+                        "inputType": "text",
+                        "inhoud": "Opvallende kenmerken aan persoon"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2leeftijd",
-                    "inputType": "text",
-                    "inhoud": "Leeftijd"
+                    "text": " wat kunt u hier verder over vertellen?",
+                    "type": "textInput",
+                    "options": [
+                      {
+                        "name": "extra",
+                        "inputType": "text",
+                        "inhoud": "extra informatie"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2kleding",
-                    "inputType": "text",
-                    "inhoud": "Kleding"
+                    "type": "radioButtons",
+                    "text": "mogen we contact met u opnemen?",
+                    "name": "contact",
+                    "toggle": "true",
+                    "target": "persoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2anders",
-                    "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
-                  }
-                ]
-              },
-              {
-                "text": " wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "mogen we contact met u opnemen?",
-                "name": "contact",
-                "toggle": "true",
-                "target": "persoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "contact gegevens",
-                "type": "textInput",
-                "toggle": "true",
-                "name": "persoon",
-                "options": [
-                  {
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "text": "contact gegevens",
+                    "type": "textInput",
+                    "toggle": "true",
+                    "name": "persoon",
+                    "options": [
+                      {
+                        "name": "naam",
+                        "inputType": "text",
+                        "inhoud": "naam"
+                      },
+                      {
+                        "name": "email",
+                        "inputType": "email",
+                        "inhoud": "email"
+                      },
+                      {
+                        "name": "telefoon",
+                        "inputType": "Tel",
+                        "inhoud": "telefoon"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    ],
-    "Drugs": [
-      {
-        "content": [
+        ],
+        "Drugs": [
           {
-            "text": "Drugs",
-            "type": "textbox",
-            "color": "purple"
-          },
-          {
-            "type": "form",
-            "formAction": "formSubmit",
             "content": [
               {
-                "type": "radioButtons",
-                "text": "Wat heeft u gezien?",
-                "name": "drugsToggle",
-                "toggle": "true",
-                "target": "drugs",
-                "options": [
-                  {
-                    "optie": "handel",
-                    "text": "handel"
-                  },
-                  {
-                    "optie": "gebruik",
-                    "text": "gebruik"
-                  },
-                  {
-                    "optie": "ja",
-                    "text": "anders"
-                  }
-                ]
+                "text": "Drugs",
+                "type": "textbox",
+                "color": "purple"
               },
               {
-                "text": "Anders",
-                "type": "textInput",
-                "name": "drugs",
-                "toggle": "true",
-                "options": [
+                "type": "form",
+                "formAction": "formSubmit",
+                "content": [
                   {
-                    "name": "drugsAnders",
-                    "inputType": "text",
-                    "inhoud": "Wat is er aan de hand?"
-                  }
-                ]
-              },
-              {
-                "text": "wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "name": "extra",
-                "options": [
+                    "type": "radioButtons",
+                    "text": "Wat heeft u gezien?",
+                    "name": "drugsToggle",
+                    "toggle": "true",
+                    "target": "drugs",
+                    "options": [
+                      {
+                        "optie": "handel",
+                        "text": "handel"
+                      },
+                      {
+                        "optie": "gebruik",
+                        "text": "gebruik"
+                      },
+                      {
+                        "optie": "ja",
+                        "text": "anders"
+                      }
+                    ]
+                  },
                   {
+                    "text": "Anders",
+                    "type": "textInput",
+                    "name": "drugs",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "drugsAnders",
+                        "inputType": "text",
+                        "inhoud": "Wat is er aan de hand?"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "wat kunt u hier verder over vertellen?",
+                    "type": "textInput",
                     "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
-              },
-              {
-                "text": "Foto toevoegen",
-                "type": "upload",
-                "name": "test"
-              },
-              {
-                "text": "wie heeft u gezien?",
-                "type": "textInput",
-                "name": "extraPersoon",
-                "options": [
-                  {
-                    "name": "p2naam",
-                    "inputType": "text",
-                    "inhoud": "Naam"
+                    "options": [
+                      {
+                        "name": "extra",
+                        "inputType": "text",
+                        "inhoud": "extra informatie"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2huidskleur",
-                    "inputType": "text",
-                    "inhoud": "Huidskleur"
+                    "text": "Foto toevoegen",
+                    "type": "upload",
+                    "name": "test"
                   },
                   {
-                    "name": "p2geslacht",
-                    "inputType": "text",
-                    "inhoud": "Geslacht"
+                    "text": "wie heeft u gezien?",
+                    "type": "textInput",
+                    "name": "extraPersoon",
+                    "options": [
+                      {
+                        "name": "p2naam",
+                        "inputType": "text",
+                        "inhoud": "Naam"
+                      },
+                      {
+                        "name": "p2huidskleur",
+                        "inputType": "text",
+                        "inhoud": "Huidskleur"
+                      },
+                      {
+                        "name": "p2geslacht",
+                        "inputType": "text",
+                        "inhoud": "Geslacht"
+                      },
+                      {
+                        "name": "p2leeftijd",
+                        "inputType": "text",
+                        "inhoud": "Leeftijd"
+                      },
+                      {
+                        "name": "p2kleding",
+                        "inputType": "text",
+                        "inhoud": "Kleding"
+                      },
+                      {
+                        "name": "p2anders",
+                        "inputType": "text",
+                        "inhoud": "Opvallende kenmerken aan persoon"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2leeftijd",
-                    "inputType": "text",
-                    "inhoud": "Leeftijd"
+                    "type": "radioButtons",
+                    "text": "Is er een voertuig bij betrokken?",
+                    "name": "voertuigToggle",
+                    "toggle": "true",
+                    "target": "voertuig",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2kleding",
-                    "inputType": "text",
-                    "inhoud": "Kleding"
+                    "text": "Voertuig",
+                    "type": "textInput",
+                    "name": "voertuig",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "voertuigtype",
+                        "inputType": "text",
+                        "inhoud": "Wat voor voertuig is het?"
+                      },
+                      {
+                        "name": "voertuigmerk",
+                        "inputType": "text",
+                        "inhoud": "Voertuig merk"
+                      },
+                      {
+                        "name": "voertuigkenteken",
+                        "inputType": "text",
+                        "inhoud": "Kenteken"
+                      },
+                      {
+                        "name": "voertuigkleur",
+                        "inputType": "text",
+                        "inhoud": "Kleur van het voertuig"
+                      },
+                      {
+                        "name": "voertuiganders",
+                        "inputType": "text",
+                        "inhoud": "andere opvallende kenmerken?"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2anders",
-                    "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "Is er een voertuig bij betrokken?",
-                "name": "voertuigToggle",
-                "toggle": "true",
-                "target": "voertuig",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
+                    "type": "radioButtons",
+                    "text": "mogen we contact met u opnemen?",
+                    "name": "contact",
+                    "toggle": "true",
+                    "target": "persoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "Voertuig",
-                "type": "textInput",
-                "name": "voertuig",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "voertuigtype",
-                    "inputType": "text",
-                    "inhoud": "Wat voor voertuig is het?"
-                  },
-                  {
-                    "name": "voertuigmerk",
-                    "inputType": "text",
-                    "inhoud": "Voertuig merk"
-                  },
-                  {
-                    "name": "voertuigkenteken",
-                    "inputType": "text",
-                    "inhoud": "Kenteken"
-                  },
-                  {
-                    "name": "voertuigkleur",
-                    "inputType": "text",
-                    "inhoud": "Kleur van het voertuig"
-                  },
-                  {
-                    "name": "voertuiganders",
-                    "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "mogen we contact met u opnemen?",
-                "name": "contact",
-                "toggle": "true",
-                "target": "persoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "contact gegevens",
-                "type": "textInput",
-                "name": "persoon",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "text": "contact gegevens",
+                    "type": "textInput",
+                    "name": "persoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "naam",
+                        "inputType": "text",
+                        "inhoud": "naam"
+                      },
+                      {
+                        "name": "email",
+                        "inputType": "email",
+                        "inhoud": "email"
+                      },
+                      {
+                        "name": "telefoon",
+                        "inputType": "Tel",
+                        "inhoud": "telefoon"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    ],
-    "Diefstal": [
-      {
-        "content": [
+        ],
+        "Diefstal": [
           {
-            "text": "Diefstal",
-            "type": "textbox",
-            "color": "purple"
-          },
-          {
-            "type": "form",
-            "formAction": "formSubmit",
             "content": [
               {
-                "text": "wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
+                "text": "Diefstal",
+                "type": "textbox",
+                "color": "purple"
               },
               {
-                "text": "Wat is er gestolen?",
-                "type": "textInput",
-                "name": "voorwerp",
-                "options": [
+                "type": "form",
+                "formAction": "formSubmit",
+                "content": [
                   {
-                    "name": "voorwerpDescription",
-                    "inputType": "text",
-                    "inhoud": "Beschrijf het voorwerp"
+                    "text": "wat kunt u hier verder over vertellen?",
+                    "type": "textInput",
+                    "options": [
+                      {
+                        "name": "extra",
+                        "inputType": "text",
+                        "inhoud": "extra informatie"
+                      }
+                    ]
                   },
                   {
-                    "name": "voorwerpKleur",
-                    "inputType": "text",
-                    "inhoud": "Kleur van het gestolen voorwerp"
+                    "text": "Wat is er gestolen?",
+                    "type": "textInput",
+                    "name": "voorwerp",
+                    "options": [
+                      {
+                        "name": "voorwerpDescription",
+                        "inputType": "text",
+                        "inhoud": "Beschrijf het voorwerp"
+                      },
+                      {
+                        "name": "voorwerpKleur",
+                        "inputType": "text",
+                        "inhoud": "Kleur van het gestolen voorwerp"
+                      },
+                      {
+                        "name": "voorwerpMerk",
+                        "inputType": "text",
+                        "inhoud": "Merk"
+                      },
+                      {
+                        "name": "voorwerpInhoud",
+                        "inputType": "text",
+                        "inhoud": "Inhoud van voorwerp"
+                      },
+                      {
+                        "name": "voorwerpAnders",
+                        "inputType": "text",
+                        "inhoud": "Andere kenmerken (bijv. achtergond van smartphone)"
+                      }
+                    ]
                   },
                   {
-                    "name": "voorwerpMerk",
-                    "inputType": "text",
-                    "inhoud": "Merk"
+                    "type": "radioButtons",
+                    "text": "Is er een verdachte?",
+                    "name": "persoonToggle",
+                    "toggle": "true",
+                    "target": "extraPersoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "voorwerpInhoud",
-                    "inputType": "text",
-                    "inhoud": "Inhoud van voorwerp"
+                    "text": "Beschrijf de verdachte",
+                    "type": "textInput",
+                    "name": "extraPersoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "p2naam",
+                        "inputType": "text",
+                        "inhoud": "Naam"
+                      },
+                      {
+                        "name": "p2huidskleur",
+                        "inputType": "text",
+                        "inhoud": "Huidskleur"
+                      },
+                      {
+                        "name": "p2geslacht",
+                        "inputType": "text",
+                        "inhoud": "Geslacht"
+                      },
+                      {
+                        "name": "p2leeftijd",
+                        "inputType": "text",
+                        "inhoud": "Leeftijd"
+                      },
+                      {
+                        "name": "p2kleding",
+                        "inputType": "text",
+                        "inhoud": "Kleding"
+                      },
+                      {
+                        "name": "p2anders",
+                        "inputType": "text",
+                        "inhoud": "Opvallende kenmerken aan persoon"
+                      }
+                    ]
                   },
                   {
-                    "name": "voorwerpAnders",
-                    "inputType": "text",
-                    "inhoud": "Andere kenmerken (bijv. achtergond van smartphone)"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "Is er een verdachte?",
-                "name": "persoonToggle",
-                "toggle": "true",
-                "target": "extraPersoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
+                    "type": "radioButtons",
+                    "text": "mogen we contact met u opnemen?",
+                    "name": "contact",
+                    "toggle": "true",
+                    "target": "persoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "Beschrijf de verdachte",
-                "type": "textInput",
-                "name": "extraPersoon",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "p2naam",
-                    "inputType": "text",
-                    "inhoud": "Naam"
-                  },
-                  {
-                    "name": "p2huidskleur",
-                    "inputType": "text",
-                    "inhoud": "Huidskleur"
-                  },
-                  {
-                    "name": "p2geslacht",
-                    "inputType": "text",
-                    "inhoud": "Geslacht"
-                  },
-                  {
-                    "name": "p2leeftijd",
-                    "inputType": "text",
-                    "inhoud": "Leeftijd"
-                  },
-                  {
-                    "name": "p2kleding",
-                    "inputType": "text",
-                    "inhoud": "Kleding"
-                  },
-                  {
-                    "name": "p2anders",
-                    "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "mogen we contact met u opnemen?",
-                "name": "contact",
-                "toggle": "true",
-                "target": "persoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "contact gegevens",
-                "type": "textInput",
-                "name": "persoon",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "text": "contact gegevens",
+                    "type": "textInput",
+                    "name": "persoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "naam",
+                        "inputType": "text",
+                        "inhoud": "naam"
+                      },
+                      {
+                        "name": "email",
+                        "inputType": "email",
+                        "inhoud": "email"
+                      },
+                      {
+                        "name": "telefoon",
+                        "inputType": "Tel",
+                        "inhoud": "telefoon"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    ],
-    "Pesten": [
-      {
-        "content": [
+        ],
+        "Pesten": [
           {
-            "text": "Pesten",
-            "type": "textbox",
-            "color": "purple"
-          },
-          {
-            "type": "form",
-            "formAction": "formSubmit",
             "content": [
               {
-                "type": "radioButtons",
-                "text": "Moet er een persoon gemeldt worden?",
-                "name": "persoonToggle",
-                "toggle": "true",
-                "target": "extraPersoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
+                "text": "Pesten",
+                "type": "textbox",
+                "color": "purple"
               },
               {
-                "text": "Beschrijf de persoon",
-                "type": "textInput",
-                "name": "extraPersoon",
-                "toggle": "true",
-                "options": [
+                "type": "form",
+                "formAction": "formSubmit",
+                "content": [
                   {
-                    "name": "p2naam",
-                    "inputType": "text",
-                    "inhoud": "Naam"
+                    "type": "radioButtons",
+                    "text": "Moet er een persoon gemeldt worden?",
+                    "name": "persoonToggle",
+                    "toggle": "true",
+                    "target": "extraPersoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2huidskleur",
-                    "inputType": "text",
-                    "inhoud": "Huidskleur"
+                    "text": "Beschrijf de persoon",
+                    "type": "textInput",
+                    "name": "extraPersoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "p2naam",
+                        "inputType": "text",
+                        "inhoud": "Naam"
+                      },
+                      {
+                        "name": "p2huidskleur",
+                        "inputType": "text",
+                        "inhoud": "Huidskleur"
+                      },
+                      {
+                        "name": "p2geslacht",
+                        "inputType": "text",
+                        "inhoud": "Geslacht"
+                      },
+                      {
+                        "name": "p2leeftijd",
+                        "inputType": "text",
+                        "inhoud": "Leeftijd"
+                      },
+                      {
+                        "name": "p2kleding",
+                        "inputType": "text",
+                        "inhoud": "Kleding"
+                      },
+                      {
+                        "name": "p2anders",
+                        "inputType": "text",
+                        "inhoud": "Opvallende kenmerken aan persoon"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2geslacht",
-                    "inputType": "text",
-                    "inhoud": "Geslacht"
+                    "text": "wat kunt u hier verder over vertellen?",
+                    "type": "textInput",
+                    "options": [
+                      {
+                        "name": "extra",
+                        "inputType": "text",
+                        "inhoud": "extra informatie"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2leeftijd",
-                    "inputType": "text",
-                    "inhoud": "Leeftijd"
+                    "type": "radioButtons",
+                    "text": "mogen we contact met u opnemen?",
+                    "name": "contact",
+                    "toggle": "true",
+                    "target": "persoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2kleding",
-                    "inputType": "text",
-                    "inhoud": "Kleding"
-                  },
-                  {
-                    "name": "p2anders",
-                    "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
-                  }
-                ]
-              },
-              {
-                "text": "wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "mogen we contact met u opnemen?",
-                "name": "contact",
-                "toggle": "true",
-                "target": "persoon",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "contact gegevens",
-                "type": "textInput",
-                "name": "persoon",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "text": "contact gegevens",
+                    "type": "textInput",
+                    "name": "persoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "naam",
+                        "inputType": "text",
+                        "inhoud": "naam"
+                      },
+                      {
+                        "name": "email",
+                        "inputType": "email",
+                        "inhoud": "email"
+                      },
+                      {
+                        "name": "telefoon",
+                        "inputType": "Tel",
+                        "inhoud": "telefoon"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    ],
-    "Overlast": [
-      {
-        "content": [
+        ],
+        "Overlast": [
           {
-            "text": "Overlast",
-            "type": "textbox",
-            "color": "purple"
-          },
-          {
-            "type": "form",
-            "formAction": "formSubmit",
             "content": [
               {
-                "type": "radioButtons",
-                "text": "Is er een voertuig bij betrokken?",
-                "name": "voertuigToggle",
-                "toggle": "true",
-                "target": "voertuig",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
+                "text": "Overlast",
+                "type": "textbox",
+                "color": "purple"
               },
               {
-                "text": "Voertuig",
-                "type": "textInput",
-                "name": "voertuig",
-                "toggle": "true",
-                "options": [
+                "type": "form",
+                "formAction": "formSubmit",
+                "content": [
                   {
-                    "name": "voertuigtype",
-                    "inputType": "text",
-                    "inhoud": "Wat voor voertuig is het?"
+                    "type": "radioButtons",
+                    "text": "Is er een voertuig bij betrokken?",
+                    "name": "voertuigToggle",
+                    "toggle": "true",
+                    "target": "voertuig",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "voertuigmerk",
-                    "inputType": "text",
-                    "inhoud": "Voertuig merk"
+                    "text": "Voertuig",
+                    "type": "textInput",
+                    "name": "voertuig",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "voertuigtype",
+                        "inputType": "text",
+                        "inhoud": "Wat voor voertuig is het?"
+                      },
+                      {
+                        "name": "voertuigmerk",
+                        "inputType": "text",
+                        "inhoud": "Voertuig merk"
+                      },
+                      {
+                        "name": "voertuigkenteken",
+                        "inputType": "text",
+                        "inhoud": "Kenteken"
+                      },
+                      {
+                        "name": "voertuigkleur",
+                        "inputType": "text",
+                        "inhoud": "Kleur van het voertuig"
+                      },
+                      {
+                        "name": "voertuiganders",
+                        "inputType": "text",
+                        "inhoud": "andere opvallende kenmerken?"
+                      }
+                    ]
                   },
                   {
-                    "name": "voertuigkenteken",
-                    "inputType": "text",
-                    "inhoud": "Kenteken"
+                    "text": " wat kunt u hier verder over vertellen?",
+                    "type": "textInput",
+                    "options": [
+                      {
+                        "name": "extra",
+                        "inputType": "text",
+                        "inhoud": "extra informatie"
+                      }
+                    ]
                   },
                   {
-                    "name": "voertuigkleur",
-                    "inputType": "text",
-                    "inhoud": "Kleur van het voertuig"
-                  },
-                  {
-                    "name": "voertuiganders",
-                    "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
-                  }
-                ]
-              },
-              {
-                "text": " wat kunt u hier verder over vertellen?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "extra informatie"
-                  }
-                ]
-              },
-              {
-                "text": "contact gegevens",
-                "type": "textInput",
-                "name": "persoon",
-                "options": [
-                  {
-                    "required": "true",
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "required": "true",
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "required": "true",
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "text": "contact gegevens",
+                    "type": "textInput",
+                    "name": "persoon",
+                    "options": [
+                      {
+                        "required": "true",
+                        "name": "naam",
+                        "inputType": "text",
+                        "inhoud": "naam"
+                      },
+                      {
+                        "required": "true",
+                        "name": "email",
+                        "inputType": "email",
+                        "inhoud": "email"
+                      },
+                      {
+                        "required": "true",
+                        "name": "telefoon",
+                        "inputType": "Tel",
+                        "inhoud": "telefoon"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
-      }
-    ],
-    "Overige": [
-      {
-        "content": [
+        ],
+        "Overige": [
           {
-            "text": "Overige",
-            "type": "textbox",
-            "color": "purple"
-          },
-          {
-            "type": "form",
-            "formAction": "formSubmit",
             "content": [
               {
-                "text": "wat is het probleem?",
-                "type": "textInput",
-                "options": [
-                  {
-                    "name": "extra",
-                    "inputType": "text",
-                    "inhoud": "Beschrijf het probleem"
-                  }
-                ]
+                "text": "Overige",
+                "type": "textbox",
+                "color": "purple"
               },
               {
-                "type": "radioButtons",
-                "text": "Moet er een persoon gemeldt worden?",
-                "name": "persoonToggle",
-                "toggle": "true",
-                "target": "extraPersoon",
-                "options": [
+                "type": "form",
+                "formAction": "formSubmit",
+                "content": [
                   {
-                    "optie": "Ja",
-                    "text": "ja"
+                    "text": "wat is het probleem?",
+                    "type": "textInput",
+                    "options": [
+                      {
+                        "name": "extra",
+                        "inputType": "text",
+                        "inhoud": "Beschrijf het probleem"
+                      }
+                    ]
                   },
                   {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "Beschrijf de persoon",
-                "type": "textInput",
-                "name": "extraPersoon",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "p2naam",
-                    "inputType": "text",
-                    "inhoud": "Naam"
+                    "type": "radioButtons",
+                    "text": "Moet er een persoon gemeldt worden?",
+                    "name": "persoonToggle",
+                    "toggle": "true",
+                    "target": "extraPersoon",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2huidskleur",
-                    "inputType": "text",
-                    "inhoud": "Huidskleur"
+                    "text": "Beschrijf de persoon",
+                    "type": "textInput",
+                    "name": "extraPersoon",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "p2naam",
+                        "inputType": "text",
+                        "inhoud": "Naam"
+                      },
+                      {
+                        "name": "p2huidskleur",
+                        "inputType": "text",
+                        "inhoud": "Huidskleur"
+                      },
+                      {
+                        "name": "p2geslacht",
+                        "inputType": "text",
+                        "inhoud": "Geslacht"
+                      },
+                      {
+                        "name": "p2leeftijd",
+                        "inputType": "text",
+                        "inhoud": "Leeftijd"
+                      },
+                      {
+                        "name": "p2kleding",
+                        "inputType": "text",
+                        "inhoud": "Kleding"
+                      },
+                      {
+                        "name": "p2anders",
+                        "inputType": "text",
+                        "inhoud": "Opvallende kenmerken aan persoon"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2geslacht",
-                    "inputType": "text",
-                    "inhoud": "Geslacht"
+                    "type": "radioButtons",
+                    "text": "Moet er een voertuig gemeldt worden?",
+                    "name": "voertuigToggle",
+                    "toggle": "true",
+                    "target": "voertuig",
+                    "options": [
+                      {
+                        "optie": "Ja",
+                        "text": "ja"
+                      },
+                      {
+                        "optie": "Nee",
+                        "text": "nee"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2leeftijd",
-                    "inputType": "text",
-                    "inhoud": "Leeftijd"
+                    "text": "Voertuig",
+                    "type": "textInput",
+                    "name": "voertuig",
+                    "toggle": "true",
+                    "options": [
+                      {
+                        "name": "voertuigtype",
+                        "inputType": "text",
+                        "inhoud": "Wat voor voertuig is het?"
+                      },
+                      {
+                        "name": "voertuigmerk",
+                        "inputType": "text",
+                        "inhoud": "Voertuig merk"
+                      },
+                      {
+                        "name": "voertuigkenteken",
+                        "inputType": "text",
+                        "inhoud": "Kenteken"
+                      },
+                      {
+                        "name": "voertuigkleur",
+                        "inputType": "text",
+                        "inhoud": "Kleur van het voertuig"
+                      },
+                      {
+                        "name": "voertuiganders",
+                        "inputType": "text",
+                        "inhoud": "andere opvallende kenmerken?"
+                      }
+                    ]
                   },
                   {
-                    "name": "p2kleding",
-                    "inputType": "text",
-                    "inhoud": "Kleding"
-                  },
-                  {
-                    "name": "p2anders",
-                    "inputType": "text",
-                    "inhoud": "Opvallende kenmerken aan persoon"
-                  }
-                ]
-              },
-              {
-                "type": "radioButtons",
-                "text": "Moet er een voertuig gemeldt worden?",
-                "name": "voertuigToggle",
-                "toggle": "true",
-                "target": "voertuig",
-                "options": [
-                  {
-                    "optie": "Ja",
-                    "text": "ja"
-                  },
-                  {
-                    "optie": "Nee",
-                    "text": "nee"
-                  }
-                ]
-              },
-              {
-                "text": "Voertuig",
-                "type": "textInput",
-                "name": "voertuig",
-                "toggle": "true",
-                "options": [
-                  {
-                    "name": "voertuigtype",
-                    "inputType": "text",
-                    "inhoud": "Wat voor voertuig is het?"
-                  },
-                  {
-                    "name": "voertuigmerk",
-                    "inputType": "text",
-                    "inhoud": "Voertuig merk"
-                  },
-                  {
-                    "name": "voertuigkenteken",
-                    "inputType": "text",
-                    "inhoud": "Kenteken"
-                  },
-                  {
-                    "name": "voertuigkleur",
-                    "inputType": "text",
-                    "inhoud": "Kleur van het voertuig"
-                  },
-                  {
-                    "name": "voertuiganders",
-                    "inputType": "text",
-                    "inhoud": "andere opvallende kenmerken?"
-                  }
-                ]
-              },
-              {
-                "text": "contact gegevens",
-                "type": "textInput",
-                "name": "persoon",
-                "options": [
-                  {
-                    "required": "true",
-                    "name": "naam",
-                    "inputType": "text",
-                    "inhoud": "naam"
-                  },
-                  {
-                    "required": "true",
-                    "name": "email",
-                    "inputType": "email",
-                    "inhoud": "email"
-                  },
-                  {
-                    "required": "true",
-                    "name": "telefoon",
-                    "inputType": "Tel",
-                    "inhoud": "telefoon"
+                    "text": "contact gegevens",
+                    "type": "textInput",
+                    "name": "persoon",
+                    "options": [
+                      {
+                        "required": "true",
+                        "name": "naam",
+                        "inputType": "text",
+                        "inhoud": "naam"
+                      },
+                      {
+                        "required": "true",
+                        "name": "email",
+                        "inputType": "email",
+                        "inhoud": "email"
+                      },
+                      {
+                        "required": "true",
+                        "name": "telefoon",
+                        "inputType": "Tel",
+                        "inhoud": "telefoon"
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
+        ],
+        "Locaties": [
+          {
+            "type": "locatieForm",
+            "formAction": "",
+            "content": {
+              "Dordrecht": "label",
+              "Leerparkpromenade 100": [],
+              "Drechtsteden College": [],
+              "SamenwerkingsGebouw": [],
+              "Wartburg College": [],
+              "Sport Plein": [],
+              "Schippers Internaat": [],
+              "Karel Lotsyweg": [],
+              "Patersweg": [],
+              "Duurzaamheidsfabriek": [],
+              "Azzurro": [],
+              "Betaalde Parkeerplaats": [],
+              "Parkeerplaats langs de N3": [],
+              "Parkeerplaats Langs Spoor": [],
+              "Openbare Weg": [],
+              "Gorinchem": "label",
+              "Mollenburgseweg": [
+                "De snoekzone"
+              ]
+            }
+          }
         ]
       }
-    ],
-    "Locaties": [
-      {
-        "type": "locatieForm",
-        "formAction": "",
-        "content": {
-          "Dordrecht": "label",
-          "Leerparkpromenade 100": [],
-          "Drechtsteden College": [],
-          "SamenwerkingsGebouw": [],
-          "Wartburg College": [],
-          "Sport Plein": [],
-          "Schippers Internaat": [],
-          "Karel Lotsyweg": [],
-          "Patersweg": [],
-          "Duurzaamheidsfabriek": [],
-          "Azzurro": [],
-          "Betaalde Parkeerplaats": [],
-          "Parkeerplaats langs de N3": [],
-          "Parkeerplaats Langs Spoor": [],
-          "Openbare Weg": [],
-          "Gorinchem": "label",
-          "Mollenburgseweg": [
-            "De snoekzone"
-          ]
-        }
       }
-    ]
-  }
-}

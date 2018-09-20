@@ -80,22 +80,30 @@ function submitContents(NaamString, school, id) {
      * Prepares data to be send to database
      */
     document.getElementById('submit').innerHTML = 'Aanpassing verzenden';
-    var naam = NaamString.split("|");
-    console.log(naam);
-    var finalArray;
-    finalArray = naam[0].split(',');
-    console.log(finalArray);
+    var finalArray = NaamString.split("|");
+    // console.log(finalArray);
 
-    for (var x = 1; naam.length > x; x++) {
-        naam[x] = naam[x].split(',');
-        if (naam[x] != "" && naam[x] !== undefined && naam[x] != null) if (naam[x][0] == "") naam[x].splice(0, 1);
-        finalArray[finalArray.length] = naam[x]; // }
+    // console.dir(finalArray['wapen']);
+
+    console.log(finalArray.length);
+    for(var i = 0; finalArray.length > i; i++){
+        finalArray[i] = finalArray[i].split(',');
+        if(finalArray[i] instanceof Array){
+            if(finalArray[i].length === 1)
+            {
+                finalArray[i] = finalArray[i][0].toString();
+            }
+        }
     }
+    // console.dir(finalArray);
 
+
+
+    var naam = finalArray;
     sendArray = [];
     var dataArray = [];
     var nameArray = [];
-    naam = finalArray;
+    // naam = finalArray;
     console.dir(finalArray);
 
     for (var x = 0; x < naam.length; x++) {
@@ -146,9 +154,10 @@ function submitContents(NaamString, school, id) {
         else if (document.getElementsByName(naam[x]).length > 1) {
             // console.log(naam[x]);
             for (var y = 0; document.getElementsByName(naam[x]).length > y; y++) {
+                //Case Radio Buttons
                 if (document.getElementsByName(naam[x])[y].checked) {
                     // if (document.getElementsByName(naam[x])[y].value) {
-                    // console.log(naam[x]);
+                    console.log(naam[x]);
                     dataArray[x] = document.getElementsByName(naam[x])[y].placeholder + ": " + document.getElementsByName(naam[x])[y].value;
                     nameArray[x] = naam[x]; // }
                 }
